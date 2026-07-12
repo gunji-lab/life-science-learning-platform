@@ -6,6 +6,7 @@
 
 const LOG_SHEET_NAME = "Log";
 const COUNT_SHEET_NAME = "Counts";
+const LOGIN_SHEET_NAME = "LoginLog";
 const SCHOOL_DOMAIN = "toyo.jp";
 const AUTH_TOKEN_HOURS = 12;
 const AUTH_SECRET_PROPERTY = "MOL_AUTH_SECRET";
@@ -124,7 +125,8 @@ function setup() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   setupHeaders_(
     getOrCreateSheet_(ss, LOG_SHEET_NAME),
-    getOrCreateSheet_(ss, COUNT_SHEET_NAME)
+    getOrCreateSheet_(ss, COUNT_SHEET_NAME),
+    getOrCreateSheet_(ss, LOGIN_SHEET_NAME)
   );
 }
 
@@ -151,13 +153,25 @@ function buildAuthResponse_(params) {
   const requested = String(params.return || "");
   const fallback = NEW_TRAINER_BASE_URL + "/index.html";
   const returnUrl = requested.indexOf(NEW_TRAINER_BASE_URL) === 0 ? requested : fallback;
+  recordLogin_(studentId, returnUrl, "auth");
   const token = createAuthToken_(studentId);
   const destination = returnUrl + "#auth=" + encodeURIComponent(token);
+  const destinationJson = JSON.stringify(destination);
 
   return HtmlService.createHtmlOutput(`<!doctype html><html lang="ja"><head><meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1"><title>ログイン完了</title>
-    <style>body{font-family:system-ui,sans-serif;background:#f6f8fb;color:#162033;margin:0}.card{max-width:560px;margin:10vh auto;background:#fff;border:1px solid #d8e1ec;border-radius:8px;padding:28px;box-shadow:0 14px 34px #16203317}a{display:inline-block;background:#0f766e;color:#fff;text-decoration:none;font-weight:800;padding:12px 18px;border-radius:8px}</style></head>
-    <body><main class="card"><h1>ログインしました</h1><p>学籍番号 ${escapeHtml_(studentId)} としてmol Trainerを利用します。メールアドレス自体は学習記録に保存しません。</p><p><a href="${escapeHtml_(destination)}">mol Trainerへ進む</a></p></main></body></html>`)
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="refresh" content="1;url=${escapeHtml_(destination)}">
+    <title>ログイン完了</title>
+    <style>body{font-family:system-ui,sans-serif;background:#f6f8fb;color:#162033;margin:0}.card{max-width:560px;margin:10vh auto;background:#fff;border:1px solid #d8e1ec;border-radius:8px;padding:28px;box-shadow:0 14px 34px #16203317}a{display:inline-block;background:#0f766e;color:#fff;text-decoration:none;font-weight:800;padding:12px 18px;border-radius:8px}@media(max-width:640px){.card{margin:0;min-height:100vh;border:0;border-radius:0;box-shadow:none;box-sizing:border-box;padding:32px 22px}h1{font-size:2rem;line-height:1.2}p{font-size:1.05rem;line-height:1.8}a{display:flex;align-items:center;justify-content:center;min-height:54px}}</style></head>
+    <body><main class="card"><h1>ログインしました</h1><p>学籍番号 ${escapeHtml_(studentId)} としてmol Trainerを開きます。自動で切り替わらない場合だけ、下のボタンを押してください。</p><p><a href="${escapeHtml_(destination)}" target="_top" rel="noopener">mol Trainerへ進む</a></p></main>
+    <script>
+      const destination = ${destinationJson};
+      try {
+        window.top.location.replace(destination);
+      } catch (err) {
+        window.location.replace(destination);
+      }
+    </script></body></html>`)
     .setTitle("mol Trainer ログイン");
 }
 
@@ -171,6 +185,7 @@ function buildAppEntryResponse_() {
 
   const token = createAuthToken_(studentId);
   const destination = NEW_TRAINER_BASE_URL + "/index.html#auth=" + encodeURIComponent(token);
+  recordLogin_(studentId, NEW_TRAINER_BASE_URL + "/index.html", "app");
 
   return HtmlService.createHtmlOutput(`<!doctype html><html lang="ja"><head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"><title>mol Trainerへ移動中</title>
@@ -233,7 +248,7 @@ function getOrCreateSheet_(ss, name) {
   return ss.getSheetByName(name) || ss.insertSheet(name);
 }
 
-function setupHeaders_(logSheet, countSheet) {
+function setupHeaders_(logSheet, countSheet, loginSheet) {
   if (logSheet.getLastRow() === 0) {
     logSheet.appendRow([
       "学籍番号",
@@ -262,6 +277,39 @@ function setupHeaders_(logSheet, countSheet) {
       "最終更新"
     ]);
     countSheet.setFrozenRows(1);
+  }
+
+  if (loginSheet && loginSheet.getLastRow() === 0) {
+    loginSheet.appendRow([
+      "学籍番号",
+      "日時",
+      "戻り先",
+      "認証入口"
+    ]);
+    loginSheet.setFrozenRows(1);
+  }
+}
+
+function recordLogin_(studentId, returnUrl, entryView) {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const loginSheet = getOrCreateSheet_(ss, LOGIN_SHEET_NAME);
+    setupHeaders_(
+      getOrCreateSheet_(ss, LOG_SHEET_NAME),
+      getOrCreateSheet_(ss, COUNT_SHEET_NAME),
+      loginSheet
+    );
+    loginSheet.appendRow([
+      studentId,
+      new Date(),
+      String(returnUrl || ""),
+      String(entryView || "")
+    ]);
+  } finally {
+    lock.releaseLock();
   }
 }
 
@@ -307,14 +355,21 @@ function buildTeacherDashboardHtml_() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const logSheet = ss.getSheetByName(LOG_SHEET_NAME);
   const countSheet = ss.getSheetByName(COUNT_SHEET_NAME);
+  const loginSheet = ss.getSheetByName(LOGIN_SHEET_NAME);
   const logs = logSheet ? readSheetObjects_(logSheet).reverse() : [];
   const counts = countSheet ? readSheetObjects_(countSheet) : [];
+  const logins = loginSheet ? readSheetObjects_(loginSheet).reverse() : [];
 
   const totalAttempts = logs.length;
   const students = {};
   logs.forEach(row => {
     const id = String(row["学籍番号"] || "");
     if (id) students[id] = true;
+  });
+  const loginStudents = {};
+  logins.forEach(row => {
+    const id = String(row["学籍番号"] || "");
+    if (id) loginStudents[id] = true;
   });
 
   const recentRows = logs.slice(0, 80).map(row => `<tr>
@@ -335,19 +390,28 @@ function buildTeacherDashboardHtml_() {
     <td>${escapeHtml_(row["最終更新"])}</td>
   </tr>`).join("");
 
+  const loginRows = logins.slice(0, 120).map(row => `<tr>
+    <td>${escapeHtml_(row["日時"])}</td>
+    <td>${escapeHtml_(row["学籍番号"])}</td>
+    <td>${escapeHtml_(row["戻り先"])}</td>
+    <td>${escapeHtml_(row["認証入口"])}</td>
+  </tr>`).join("");
+
   return `<!doctype html><html lang="ja"><head><meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1"><title>mol Trainer Dashboard</title>
   <style>
     body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic",sans-serif;margin:0;background:#f6f8fb;color:#162033}
     main{max-width:1180px;margin:0 auto;padding:28px 16px 48px}
-    h1{margin:0 0 14px;font-size:28px}.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:22px}
+    h1{margin:0 0 14px;font-size:28px}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:22px}
     .kpi{background:#fff;border:1px solid #d8e1ec;border-radius:8px;padding:16px}.kpi b{display:block;font-size:28px}
     h2{margin:26px 0 10px}table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #d8e1ec}
     th,td{padding:10px 12px;border-bottom:1px solid #d8e1ec;text-align:left;font-size:13px;vertical-align:top}
     th{position:sticky;top:0;background:#eef7ff}tr:hover td{background:#f9fbfd}.table-wrap{overflow:auto}
+    @media(max-width:760px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
   </style></head><body><main>
     <h1>mol Trainer Dashboard</h1>
-    <div class="kpis"><div class="kpi">利用者数<b>${Object.keys(students).length}</b></div><div class="kpi">提出数<b>${totalAttempts}</b></div></div>
+    <div class="kpis"><div class="kpi">ログイン者数<b>${Object.keys(loginStudents).length}</b></div><div class="kpi">ログイン回数<b>${logins.length}</b></div><div class="kpi">提出者数<b>${Object.keys(students).length}</b></div><div class="kpi">提出数<b>${totalAttempts}</b></div></div>
+    <h2>最近のログイン</h2><div class="table-wrap"><table><thead><tr><th>日時</th><th>学籍番号</th><th>戻り先</th><th>認証入口</th></tr></thead><tbody>${loginRows}</tbody></table></div>
     <h2>最近の提出</h2><div class="table-wrap"><table><thead><tr><th>日時</th><th>学籍番号</th><th>Stage</th><th>得点</th><th>正答率</th><th>時間</th><th>クリア</th></tr></thead><tbody>${recentRows}</tbody></table></div>
     <h2>挑戦回数</h2><div class="table-wrap"><table><thead><tr><th>学籍番号</th><th>Stage</th><th>Stage挑戦</th><th>全体挑戦</th><th>最終更新</th></tr></thead><tbody>${countRows}</tbody></table></div>
   </main></body></html>`;
