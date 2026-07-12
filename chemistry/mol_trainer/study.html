@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>5分でわかるmol｜mol Trainer</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <nav class="top-nav"><div class="top-nav-inner"><a class="brand" href="index.html">← トップページに戻る</a><span class="progress-mini" id="note-step-label">Study Notes 1 / 5</span></div></nav>
+
+  <main class="note-container">
+    <section class="study-step" data-step="1">
+      <section class="note-card big-idea">
+        <p class="eyebrow">POINT 1</p>
+        <h1 class="study-page-title">molとは何か</h1>
+        <div class="title-spacer" aria-hidden="true"></div>
+        <p>ダース（12個）のように、たくさんのものをひとまとめにして数える単位があります。原子や分子はとても小さく、1個、2個と数えて扱うのは現実的ではありません。そこで、<strong>6.0×10<sup>23</sup>個</strong>の粒子をまとめて<strong>1 mol</strong>と呼びます。</p>
+        <div class="count-illustration" aria-label="ダースとmolの比較">
+          <div class="count-card">
+            <div class="egg-grid" aria-hidden="true"><span>🥚</span><span>🥚</span><span>🥚</span><span>🥚</span><span>🥚</span><span>🥚</span><span>🥚</span><span>🥚</span><span>🥚</span><span>🥚</span><span>🥚</span><span>🥚</span></div>
+            <strong>1ダース＝12個</strong>
+          </div>
+          <div class="count-arrow" aria-hidden="true">→</div>
+          <div class="count-card mol-count-card">
+            <div class="particle-matrix" aria-hidden="true">
+              <div class="particle-row"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="particle-row"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="particle-row"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="particle-row"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <strong>1 mol＝6.0×10<sup>23</sup>個</strong>
+          </div>
+        </div>
+        <div class="key-message">molは「重さ」ではなく、粒子の個数を表す単位です。</div>
+        <aside class="inline-tip"><strong>💡 Tips　なぜ6.0×10<sup>23</sup>個なの？</strong><p>炭素原子1個の質量は約2.0×10<sup>−23</sup> gで、普通の天びんでは量れないほど軽い値です。しかし、炭素原子を6.0×10<sup>23</sup>個集めると、質量は約12 gになります。つまり、6.0×10<sup>23</sup>という数を使うと、目に見えないほど小さな粒子の個数を、実験室で量れる質量と結びつけられます。</p></aside>
+      </section>
+      <div class="study-nav-row"><button class="primary-button" type="button" data-next-step="2">次へ：Point 2</button></div>
+    </section>
+
+    <section class="study-step hidden" data-step="2">
+      <section class="note-card big-idea">
+        <p class="eyebrow">POINT 2</p>
+        <h1 class="study-page-title">モル質量</h1>
+        <div class="title-spacer" aria-hidden="true"></div>
+        <h2 class="study-subtitle">2-1　モル質量とは何か</h2>
+        <p><strong>モル質量</strong>とは、その物質<strong>1 molあたりの質量</strong>です。単位は <strong>g/mol</strong> です。どの物質も1 molなら粒子数は同じですが、粒子1個の重さが違うため、1 molの質量も物質ごとに異なります。</p>
+        <table class="simple-table"><thead><tr><th>物質</th><th>モル質量</th></tr></thead><tbody><tr><td>水素 H₂</td><td>2 g/mol</td></tr><tr><td>水 H₂O</td><td>18 g/mol</td></tr><tr><td>酸素 O₂</td><td>32 g/mol</td></tr><tr><td>二酸化炭素 CO₂</td><td>44 g/mol</td></tr></tbody></table>
+        <div class="subpoint-block">
+          <h2 class="study-subtitle">2-2　モル質量の求め方</h2>
+          <p>分子をつくる原子の<strong>原子量をすべて足す</strong>と、その物質のモル質量を求められます。ここでは、原子量を <strong>H＝1、C＝12、O＝16</strong> とします。</p>
+          <div class="example-grid">
+            <div class="example-card"><strong>水 H₂O</strong><span>H：1、O：16</span><span>Hが2個、Oが1個</span><b>1×2＋16＝18 g/mol</b></div>
+            <div class="example-card"><strong>二酸化炭素 CO₂</strong><span>C：12、O：16</span><span>Cが1個、Oが2個</span><b>12＋16×2＝44 g/mol</b></div>
+            <div class="example-card"><strong>メタン CH₄</strong><span>C：12、H：1</span><span>Cが1個、Hが4個</span><b>12＋1×4＝16 g/mol</b></div>
+          </div>
+          <aside class="inline-tip"><strong>💡 Tips　原子量・分子量とは？</strong><p><strong>原子量</strong>は、原子1個の重さを比較しやすく表した値です。<strong>分子量</strong>は、その分子をつくる原子の原子量をすべて足した値です。原子量・分子量そのものには単位はありません。モル質量として表すときの単位は g/mol です。</p></aside>
+        </div>
+      </section>
+      <div class="study-nav-row split"><button class="secondary-button" type="button" data-next-step="1">戻る</button><button class="primary-button" type="button" data-next-step="3">次へ：Point 3</button></div>
+    </section>
+
+    <section class="study-step hidden" data-step="3">
+      <section class="note-card big-idea">
+        <p class="eyebrow">POINT 3</p>
+        <h1 class="study-page-title">質量とmolの変換</h1>
+        <div class="title-spacer" aria-hidden="true"></div>
+        <h2 class="study-subtitle">3-1　質量 → mol</h2>
+        <p>何molあるか知りたいときは、「全体の質量の中に、1 mol分の質量がいくつ入っているか」を考えます。たとえば、モル質量が18 g/molの物質が36 gあるなら、18 gが2つ分あるので、物質量は2 molです。</p>
+        <div class="formula">物質量［mol］＝ 質量［g］÷ モル質量［g/mol］</div>
+        <div class="subpoint-block">
+          <h2 class="study-subtitle">3-2　mol → 質量</h2>
+          <p>質量を知りたいときは、「1 mol分の質量」が何mol分あるかを考えます。たとえば、モル質量が18 g/molの物質が2 molあるなら、18 gが2つ分あるので、質量は36 gです。</p>
+          <div class="formula">質量［g］＝ 物質量［mol］× モル質量［g/mol］</div>
+        </div>
+      </section>
+      <div class="study-nav-row split"><button class="secondary-button" type="button" data-next-step="2">戻る</button><button class="primary-button" type="button" data-next-step="4">次へ：まとめ</button></div>
+    </section>
+
+    <section class="study-step hidden" data-step="4">
+      <section class="note-card big-idea summary-page-card">
+        <p class="eyebrow">SUMMARY</p>
+        <h1 class="study-page-title">ここまでで覚えること</h1>
+        <div class="title-spacer" aria-hidden="true"></div>
+        <ul class="review-list"><li>molは、原子や分子などの粒子の個数をまとめて表す単位。</li><li>1 mol＝6.0×10<sup>23</sup>個。</li><li>モル質量は、物質1 molあたりの質量。単位は g/mol。</li><li>モル質量は、分子をつくる原子の原子量をすべて足して求める。</li><li>質量 → molでは、質量をモル質量で割る。</li><li>mol → 質量では、物質量にモル質量を掛ける。</li><li>粒子数・物質量・質量のどれを求める問題か、最初に確認する。</li></ul>
+        <div class="summary-concept-map" aria-label="粒子数、物質量、質量の関係">
+          <div class="concept-box"><strong>粒子数</strong></div>
+          <div class="concept-link"><span>÷ 6.0×10<sup>23</sup></span><b>⇄</b><span>× 6.0×10<sup>23</sup></span></div>
+          <div class="concept-box"><strong>物質量［mol］</strong></div>
+          <div class="concept-link"><span>÷ モル質量</span><b>⇄</b><span>× モル質量</span></div>
+          <div class="concept-box"><strong>質量［g］</strong></div>
+        </div>
+      </section>
+      <section class="note-card big-idea life-science-summary-card">
+        <p class="eyebrow">LIFE SCIENCE</p>
+        <h1 class="study-page-title">生命科学での利用</h1>
+        <div class="title-spacer" aria-hidden="true"></div>
+        <div class="bio-summary-illustration" aria-hidden="true"><span>🧬</span><span>🧪</span><span>🔬</span></div>
+        <p>DNA、タンパク質、ATP、グルコースなどの分子は非常に数が多く、通常の実験では1分子ずつ数えて扱うことはありません。そこで生命科学や化学では、mol、mmol、μmolといった単位を使って物質の量を表します。</p>
+        <p>このあと学ぶ生化学や分子生物学の実験でも、molやmmol、μmolは頻繁に登場します。今ここでmolを理解しておくと、今後の専門科目がぐっと分かりやすくなります。</p>
+      </section>
+      <div class="study-nav-row split"><button class="secondary-button" type="button" data-next-step="3">戻る</button><button class="primary-button" type="button" data-next-step="5">次へ：確認問題</button></div>
+    </section>
+
+    <section class="study-step hidden" data-step="5"><section class="note-card"><p class="eyebrow">CHECK</p><h1 class="study-page-title">確認問題 3問</h1><div class="title-spacer" aria-hidden="true"></div><div id="study-questions"></div><div id="study-complete" class="note-actions hidden"><p><strong>🎉 準備完了！</strong><br>次は5問のStage 1へ進みましょう。</p><a class="primary-button" href="stage.html?stage=1">Stage 1を始める</a></div></section><div class="study-nav-row"><button class="secondary-button" type="button" data-next-step="4">まとめに戻る</button></div></section>
+  </main>
+  <script src="js/tracking.js"></script>
+  <script src="js/study.js"></script>
+</body></html>
