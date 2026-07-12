@@ -1,6 +1,6 @@
 window.MOL_TRACKING = {
   gasUrl: "https://script.google.com/macros/s/AKfycbw0X89rHTk6ByZrIDoZdePR5L7ik-51DwxzGzZkRvTC6OJrEiZM7Oyw425YYLhFVgZC4g/exec",
-  trainerBaseUrl: "https://gunji-lab.github.io/mol_trainer",
+  trainerBaseUrl: "https://gunji-lab.github.io/life-science-learning-platform/chemistry/mol_trainer",
   tokenStorageKey: "molTrainerAuthToken"
 };
 
@@ -31,16 +31,12 @@ window.MOL_TRACKING = {
     return `${config.gasUrl}?view=auth&return=${encodeURIComponent(returnUrl)}`;
   }
 
-  function appEntryUrl(){
-    return `${config.gasUrl}?view=app`;
-  }
-
   function addSessionUrl(){
-    return `https://accounts.google.com/AddSession?hl=ja&continue=${encodeURIComponent(appEntryUrl())}`;
+    return `https://accounts.google.com/AddSession?hl=ja&continue=${encodeURIComponent(loginUrl())}`;
   }
 
   function accountChooserUrl(){
-    return `https://accounts.google.com/AccountChooser?hd=toyo.jp&continue=${encodeURIComponent(appEntryUrl())}`;
+    return `https://accounts.google.com/AccountChooser?hd=toyo.jp&continue=${encodeURIComponent(loginUrl())}`;
   }
 
   function dashboardUrl(){

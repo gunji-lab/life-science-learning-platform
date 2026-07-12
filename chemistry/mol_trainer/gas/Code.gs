@@ -14,7 +14,7 @@ const STAFF_TEST_STUDENT_IDS = {
 };
 
 // GitHub Pagesで公開したmol TrainerのURLに変更する（末尾の / は含めない）。
-const NEW_TRAINER_BASE_URL = "https://gunji-lab.github.io/mol_trainer";
+const NEW_TRAINER_BASE_URL = "https://gunji-lab.github.io/life-science-learning-platform/chemistry/mol_trainer";
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
@@ -181,9 +181,9 @@ function buildAppEntryResponse_() {
 }
 
 function buildUniversityAccountGuide_(detail) {
-  const appUrl = ScriptApp.getService().getUrl() + "?view=app";
-  const addSessionUrl = "https://accounts.google.com/AddSession?hl=ja&continue=" + encodeURIComponent(appUrl);
-  const chooserUrl = "https://accounts.google.com/AccountChooser?hd=" + encodeURIComponent(SCHOOL_DOMAIN) + "&continue=" + encodeURIComponent(appUrl);
+  const authUrl = ScriptApp.getService().getUrl() + "?view=auth&return=" + encodeURIComponent(NEW_TRAINER_BASE_URL + "/index.html");
+  const addSessionUrl = "https://accounts.google.com/AddSession?hl=ja&continue=" + encodeURIComponent(authUrl);
+  const chooserUrl = "https://accounts.google.com/AccountChooser?hd=" + encodeURIComponent(SCHOOL_DOMAIN) + "&continue=" + encodeURIComponent(authUrl);
   return HtmlService.createHtmlOutput(`<!doctype html><html lang="ja"><head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"><title>大学アカウントでログイン</title>
     <style>body{font-family:system-ui,sans-serif;background:#f6f8fb;color:#162033;margin:0}.card{max-width:680px;margin:10vh auto;background:#fff;border:1px solid #d8e1ec;border-top:5px solid #0f766e;border-radius:8px;padding:28px}p{line-height:1.8}.actions{display:grid;gap:12px;margin:22px 0}a{display:flex;align-items:center;justify-content:center;min-height:50px;background:#0f766e;color:#fff;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:800;text-align:center}.secondary{background:#e7f6f3;color:#0b5e58}.help{color:#5e6b7f}</style></head>
