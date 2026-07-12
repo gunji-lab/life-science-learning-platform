@@ -50,8 +50,7 @@ window.MOL_TRACKING = {
       <main id="mol-login-gate" class="login-gate">
         <section class="login-panel">
           <p class="login-eyebrow">mol Trainer</p>
-          <h1>molの基本を学ぶWebアプリ</h1>
-          <h2>大学Googleアカウントでログイン</h2>
+          <h1>大学Googleアカウントでログイン</h1>
           <p>本ページは <strong>@toyo.jp</strong> の大学アカウント専用です。個人Gmailだけでログインしている場合は、先に大学アカウントを追加してください。</p>
           <div class="login-actions">
             <a class="primary-login" href="${addSessionUrl()}">大学アカウントを追加してログイン</a>
