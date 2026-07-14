@@ -7,6 +7,7 @@ const interestRoutes = [
     id: 'animals',
     label: '動物やからだが気になる',
     description: '動物の形、動き、発生、神経などから生命を見たい人へ。',
+    required: ['動物', '野生動物', '哺乳類', '鳥類', '魚類', 'キリン', '骨格', '筋肉', '心臓', '神経', '脳', '比較解剖学', '機能形態学', 'バイオメカニクス'],
     terms: ['動物', '野生動物', '哺乳類', '鳥類', '魚類', 'キリン', '骨格', '筋肉', '形態', '発生', '胚', '心臓', '神経', '脳', '行動', '運動', '比較解剖学', '機能形態学', 'バイオメカニクス']
   },
   {
@@ -223,7 +224,11 @@ function routeMatchCount(route) {
 function matchesRoute(lab, route) {
   const overrides = lab.interest_overrides || [];
   if (overrides.includes(route.id) || overrides.includes(route.label)) return true;
-  return route.terms.some((term) => routeText(lab).includes(String(term).toLowerCase()));
+  const text = routeText(lab);
+  if (route.required && !route.required.some((term) => text.includes(String(term).toLowerCase()))) {
+    return false;
+  }
+  return route.terms.some((term) => text.includes(String(term).toLowerCase()));
 }
 
 function searchableText(lab) {
