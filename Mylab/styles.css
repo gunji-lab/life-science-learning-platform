@@ -401,9 +401,9 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
 
 /* Lab Card prototype v0.3.3 — unified institutional/My Lab logo lockup */
 .brand-lockup{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
+  display:grid;
+  grid-template-columns:max-content;
+  align-items:start;
   gap:4px;
   min-width:0;
 }
@@ -466,40 +466,50 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   .brand-tagline{font-size:.61rem;letter-spacing:-.025em}
 }
 
-/* β1 polish — aligned, confident header lockup without changing copy or artwork */
+/* β1 logo reset — keep the original v0.3.2 balance, enlarge the faculty line */
 .topbar{
-  padding-top:20px;
-  padding-bottom:14px;
+  padding-top:18px;
+  padding-bottom:10px;
   align-items:center;
 }
 .brand-lockup{
-  width:max-content;
-  gap:7px;
+  display:grid;
+  grid-template-columns:max-content;
+  align-items:start;
+  gap:4px;
+  min-width:0;
 }
 .brand-core{
   display:inline-grid;
-  grid-template-columns:max-content;
+  grid-template-columns:1fr;
   width:max-content;
-  gap:7px;
+  align-items:start;
+  gap:4px;
 }
 .brand-core .institution{
   display:block;
   width:100%;
-  border-bottom:1px solid rgba(29,48,89,.2);
-  color:#4f5b69;
-  font-size:.8rem;
-  font-weight:850;
-  letter-spacing:.03em;
+  justify-self:stretch;
+  margin:0;
+  padding:0 0 4px;
+  color:var(--navy);
+  font-size:1.08rem;
   line-height:1.15;
-  padding:0 1px 5px;
+  font-weight:900;
+  letter-spacing:0;
+  white-space:nowrap;
+  text-align:left;
+  border-bottom:1px solid rgba(29,48,89,.22);
 }
 .brand-core .brand-logo-row{
-  gap:12px;
+  display:flex;
+  align-items:center;
+  gap:11px;
   width:max-content;
 }
 .brand-art{
-  width:60px;
-  height:60px;
+  width:54px;
+  height:54px;
   object-fit:contain;
   object-position:center;
   border:0;
@@ -510,37 +520,32 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   flex:0 0 auto;
 }
 .brand-core .brand-text h1{
-  font-size:2.02rem;
+  margin:0;
+  color:var(--navy);
+  font-size:1.78rem;
   line-height:1;
   letter-spacing:0;
 }
 .brand-tagline{
-  margin:0;
-  color:#6b7178;
-  font-size:.78rem;
-  line-height:1.45;
-  letter-spacing:0;
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:.82rem;
+  line-height:1.35;
+  white-space:nowrap;
 }
 @media(max-width:600px){
   .topbar{
     align-items:flex-start;
-    padding-top:14px;
-    padding-bottom:12px;
   }
-  .brand-lockup{width:auto;gap:5px}
-  .brand-core{gap:5px}
-  .brand-core .institution{font-size:.68rem;letter-spacing:.02em;padding-bottom:4px}
-  .brand-core .brand-logo-row{gap:9px}
-  .brand-art{width:48px;height:48px}
-  .brand-core .brand-text h1{font-size:1.55rem}
-  .brand-tagline{
-    max-width:62vw;
-    font-size:.64rem;
-    line-height:1.35;
-    white-space:normal;
-  }
+  .brand-lockup{gap:3px}
+  .brand-core{gap:3px}
+  .brand-core .institution{font-size:.88rem;padding-bottom:3px}
+  .brand-core .brand-logo-row{gap:8px}
+  .brand-art{width:44px;height:44px}
+  .brand-core .brand-text h1{font-size:1.38rem}
+  .brand-tagline{font-size:.65rem;line-height:1.25;white-space:nowrap}
 }
 @media(max-width:420px){
-  .brand-core .institution{font-size:.64rem}
-  .brand-tagline{font-size:.6rem;letter-spacing:0}
+  .brand-core .institution{font-size:.8rem}
+  .brand-tagline{font-size:.61rem;letter-spacing:-.025em}
 }
