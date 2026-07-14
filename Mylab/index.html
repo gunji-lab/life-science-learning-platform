@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Lab β1｜あなたの「好き」から、未来の研究室を見つけよう。</title>
+<meta name="description" content="東洋大学生命科学部の研究室を、興味や問いから探せるWebアプリです。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-lockup">
+    <div class="brand-core">
+      <span class="institution">東洋大学生命科学部</span>
+      <div class="brand-logo-row">
+        <img src="assets/mylab-mark.png" alt="研究室の扉を表したMy Labのロゴイラスト" class="brand-art">
+        <div class="brand-text"><h1>My Lab</h1></div>
+      </div>
+    </div>
+    <p class="brand-tagline">あなたの「好き」から、未来の研究室を見つけよう。</p>
+  </div>
+  <div class="header-actions">
+    <button class="header-favorite" data-go="favorites" aria-label="お気に入りを見る">♡ お気に入り <span id="favorite-count" class="favorite-count">0</span></button>
+    <span class="prototype">β1</span>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="メインメニュー">
+  <button class="tab active" data-view="home">ホーム</button>
+  <button class="tab" data-view="interest">興味から探す</button>
+  <button class="tab" data-view="labs">研究室一覧</button>
+</nav>
+
+<main>
+<section id="view-home" class="view active">
+  <div class="home-grid">
+    <section class="welcome">
+      <span class="eyebrow">WELCOME TO MY LAB</span>
+      <h2>研究室って、<br>どんなところだろう？</h2>
+      <p>大学では、同じ「生命科学」でも、研究室によって向き合う問いも、使う方法も大きく違います。最初から研究室名を知っていなくても大丈夫。まずは、あなたが気になることから一緒に見ていきましょう。</p>
+      <div class="home-buttons">
+        <button class="primary" data-go="interest">「好き」から探してみる</button>
+        <button class="secondary" data-go="labs">研究室を一覧で見る</button>
+      </div>
+    </section>
+    <section class="hero-card card">
+      <img src="assets/mylab-hero.png" alt="いろいろな研究室の扉へ続く道">
+      <p class="hero-note"><strong>ひとつの興味から、いくつもの扉へ。</strong><br>研究室を知ることは、大学でできることを知ることです。</p>
+    </section>
+  </div>
+  <section class="quick-start card">
+    <div>
+      <span class="eyebrow">QUICK START</span>
+      <h3>今、気になるものは？</h3>
+      <p>ひとつ選ぶと、関連する研究室をすぐに見られます。</p>
+    </div>
+    <div id="home-tags" class="tag-grid"></div>
+  </section>
+  <section class="guide-grid">
+    <article class="guide-card card"><span class="number">01</span><h3>興味を選ぶ</h3><p>動物、健康、植物、環境など、今の「好き」で大丈夫。</p></article>
+    <article class="guide-card card"><span class="number">02</span><h3>研究室に出会う</h3><p>研究の問い、対象、方法の違いを比べてみよう。</p></article>
+    <article class="guide-card card"><span class="number">03</span><h3>次の扉を開く。</h3><p>気になる研究室が見つかったら、公式ページやWeb体験授業へ進もう。</p></article>
+  </section>
+</section>
+
+<section id="view-interest" class="view">
+  <div class="section-head">
+    <div><span class="eyebrow">START FROM YOUR INTEREST</span><h2>興味から研究室を探す</h2><p>気になるキーワードはいくつ選んでもOKです。</p></div>
+    <button id="clear-filters" class="text-button">選択をクリア</button>
+  </div>
+  <div id="interest-tags" class="interest-panel card"></div>
+  <div class="result-head"><p id="result-message">すべての研究室を表示しています。</p><span id="result-count"></span></div>
+  <div id="interest-results" class="lab-grid"></div>
+</section>
+
+<section id="view-labs" class="view">
+  <div class="section-head">
+    <div><span class="eyebrow">LAB DIRECTORY</span><h2>研究室一覧</h2><p>東洋大学生命科学部の生命科学科・生物資源学科、計26研究室を掲載しています。</p></div>
+  </div>
+  <div class="search-row card">
+    <input id="lab-search" type="search" placeholder="研究室名・先生名・キーワードで検索">
+    <select id="department-filter">
+      <option value="all">すべての学科</option>
+      <option value="生命科学科">生命科学科</option>
+      <option value="生物資源学科">生物資源学科</option>
+    </select>
+  </div>
+  <div id="lab-list" class="lab-grid"></div>
+</section>
+
+<section id="view-favorites" class="view">
+  <div class="section-head">
+    <div><span class="eyebrow">MY FAVORITES</span><h2>気になる研究室</h2><p>あとで見返したい研究室を保存できます。オープンキャンパスや研究室見学の候補づくりにも使えます。</p></div>
+    <button id="clear-favorites" class="text-button">お気に入りをすべて解除</button>
+  </div>
+  <div id="favorite-list" class="lab-grid"></div>
+</section>
+</main>
+
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <article class="modal-panel">
+    <button class="modal-close" data-close aria-label="閉じる">×</button>
+    <div id="modal-content"></div>
+  </article>
+</div>
+
+<footer>
+  <p>My Lab β1 · 東洋大学生命科学部の公式研究室一覧と公開情報をもとに構成</p>
+  <p>© Megu GUNJI [ Toyo University ]</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
