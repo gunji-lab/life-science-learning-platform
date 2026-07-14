@@ -551,57 +551,49 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
 }
 
 /* β1 keyword hierarchy */
-.home-pathway{
-  margin-top:24px;
-}
-.section-head.compact{
-  margin-bottom:12px;
-}
-.section-head.compact h2{
-  font-size:1.45rem;
-  margin-bottom:6px;
-}
-.category-grid{
+.search-flow{
+  margin-top:26px;
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:12px;
 }
-.category-card{
-  min-height:132px;
-  text-align:left;
+.flow-card{
+  display:grid;
+  grid-template-columns:42px 1fr;
+  gap:12px;
+  align-items:start;
   border:1px solid var(--line);
   border-radius:16px;
   background:#fff;
-  padding:16px;
-  color:inherit;
+  padding:17px;
   box-shadow:0 2px 9px rgba(25,34,45,.035);
-  transition:.18s;
 }
-.category-card:hover,
-.category-card:focus-visible{
-  transform:translateY(-2px);
-  border-color:#c8ced2;
-  box-shadow:0 10px 23px rgba(25,34,45,.075);
-  outline:0;
-}
-.category-card span{
-  display:block;
-  color:var(--navy);
+.flow-number{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:var(--navy);
+  color:#fff;
+  font-size:.72rem;
   font-weight:900;
+  letter-spacing:.04em;
+}
+.flow-card h3{
+  margin:0 0 6px;
+  color:var(--navy);
+  font-size:1rem;
   line-height:1.35;
 }
-.category-card strong{
-  display:inline-block;
-  margin:8px 0;
-  color:#7b856d;
-  font-size:.72rem;
-  letter-spacing:.08em;
-}
-.category-card p{
+.flow-card p{
   margin:0;
   color:var(--muted);
-  font-size:.82rem;
-  line-height:1.6;
+  font-size:.84rem;
+  line-height:1.65;
+}
+.search-flow + .quick-start{
+  margin-top:12px;
 }
 .interest-panel{
   display:grid;
@@ -669,18 +661,14 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   gap:9px;
 }
 @media(max-width:850px){
-  .category-grid,
-  .category-tabs{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-}
-@media(max-width:600px){
-  .category-grid,
+  .search-flow,
   .category-tabs{
     grid-template-columns:1fr;
   }
-  .category-card{
-    min-height:0;
+}
+@media(max-width:600px){
+  .category-tabs{
+    grid-template-columns:1fr;
   }
   .keyword-panel-head{
     display:block;

@@ -74,7 +74,6 @@ async function init() {
     if (!response.ok) throw new Error(`labs.json: ${response.status}`);
     labs = await response.json();
     renderHomeTags();
-    renderHomeCategories();
     renderInterest();
     renderLabList();
   } catch (error) {
@@ -163,23 +162,6 @@ function renderHomeTags() {
   const container = qs('#home-tags');
   container.innerHTML = '';
   featuredKeywords().forEach((tag) => container.appendChild(tagButton(tag)));
-}
-
-function renderHomeCategories() {
-  const container = qs('#home-categories');
-  if (!container) return;
-  container.innerHTML = '';
-  keywordCategories.forEach((category) => {
-    const button = document.createElement('button');
-    button.className = 'category-card';
-    button.innerHTML = `<span>${escapeHtml(category.label)}</span><strong>${categoryMatchCount(category)} LABS</strong><p>${escapeHtml(category.description)}</p>`;
-    button.onclick = () => {
-      activeCategory = category.id;
-      selected.clear();
-      switchView('interest');
-    };
-    container.appendChild(button);
-  });
 }
 
 function featuredKeywords() {
