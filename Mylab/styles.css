@@ -465,3 +465,74 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   .brand-core .institution{font-size:.69rem}
   .brand-tagline{font-size:.61rem;letter-spacing:-.025em}
 }
+
+/* β1 polish — calmer header lockup without changing copy or artwork */
+.topbar{
+  padding-top:20px;
+  padding-bottom:14px;
+  align-items:center;
+}
+.brand-lockup{
+  gap:6px;
+}
+.brand-core{
+  gap:6px;
+}
+.brand-core .institution{
+  border-bottom:0;
+  color:#4f5b69;
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.04em;
+  padding:0;
+}
+.brand-core .brand-logo-row{
+  gap:10px;
+}
+.brand-art{
+  width:46px;
+  height:46px;
+  object-fit:contain;
+  object-position:center;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  padding:0;
+  box-shadow:none;
+  flex:0 0 auto;
+}
+.brand-core .brand-text h1{
+  font-size:1.72rem;
+  line-height:.98;
+  letter-spacing:0;
+}
+.brand-tagline{
+  margin:0;
+  color:#6b7178;
+  font-size:.78rem;
+  line-height:1.45;
+  letter-spacing:0;
+}
+@media(max-width:600px){
+  .topbar{
+    align-items:flex-start;
+    padding-top:14px;
+    padding-bottom:12px;
+  }
+  .brand-lockup{gap:5px}
+  .brand-core{gap:5px}
+  .brand-core .institution{font-size:.68rem;letter-spacing:.02em}
+  .brand-core .brand-logo-row{gap:8px}
+  .brand-art{width:40px;height:40px}
+  .brand-core .brand-text h1{font-size:1.32rem}
+  .brand-tagline{
+    max-width:58vw;
+    font-size:.64rem;
+    line-height:1.35;
+    white-space:normal;
+  }
+}
+@media(max-width:420px){
+  .brand-core .institution{font-size:.64rem}
+  .brand-tagline{font-size:.6rem;letter-spacing:0}
+}
