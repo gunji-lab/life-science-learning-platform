@@ -466,32 +466,40 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   .brand-tagline{font-size:.61rem;letter-spacing:-.025em}
 }
 
-/* β1 polish — calmer header lockup without changing copy or artwork */
+/* β1 polish — aligned, confident header lockup without changing copy or artwork */
 .topbar{
   padding-top:20px;
   padding-bottom:14px;
   align-items:center;
 }
 .brand-lockup{
-  gap:6px;
+  width:max-content;
+  gap:7px;
 }
 .brand-core{
-  gap:6px;
+  display:inline-grid;
+  grid-template-columns:max-content;
+  width:max-content;
+  gap:7px;
 }
 .brand-core .institution{
-  border-bottom:0;
+  display:block;
+  width:100%;
+  border-bottom:1px solid rgba(29,48,89,.2);
   color:#4f5b69;
-  font-size:.78rem;
-  font-weight:800;
-  letter-spacing:.04em;
-  padding:0;
+  font-size:.8rem;
+  font-weight:850;
+  letter-spacing:.03em;
+  line-height:1.15;
+  padding:0 1px 5px;
 }
 .brand-core .brand-logo-row{
-  gap:10px;
+  gap:12px;
+  width:max-content;
 }
 .brand-art{
-  width:46px;
-  height:46px;
+  width:60px;
+  height:60px;
   object-fit:contain;
   object-position:center;
   border:0;
@@ -502,8 +510,8 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   flex:0 0 auto;
 }
 .brand-core .brand-text h1{
-  font-size:1.72rem;
-  line-height:.98;
+  font-size:2.02rem;
+  line-height:1;
   letter-spacing:0;
 }
 .brand-tagline{
@@ -519,14 +527,14 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
     padding-top:14px;
     padding-bottom:12px;
   }
-  .brand-lockup{gap:5px}
+  .brand-lockup{width:auto;gap:5px}
   .brand-core{gap:5px}
-  .brand-core .institution{font-size:.68rem;letter-spacing:.02em}
-  .brand-core .brand-logo-row{gap:8px}
-  .brand-art{width:40px;height:40px}
-  .brand-core .brand-text h1{font-size:1.32rem}
+  .brand-core .institution{font-size:.68rem;letter-spacing:.02em;padding-bottom:4px}
+  .brand-core .brand-logo-row{gap:9px}
+  .brand-art{width:48px;height:48px}
+  .brand-core .brand-text h1{font-size:1.55rem}
   .brand-tagline{
-    max-width:58vw;
+    max-width:62vw;
     font-size:.64rem;
     line-height:1.35;
     white-space:normal;
