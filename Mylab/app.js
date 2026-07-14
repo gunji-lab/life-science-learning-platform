@@ -1,5 +1,8 @@
 let labs = [];
+let eventData = null;
 let selected = new Set();
+let selectedEventFilters = new Set();
+let selectedEventDate = '';
 let favorites = new Set(safeStoredFavorites());
 
 const interestRoutes = [
@@ -82,12 +85,19 @@ async function init() {
   updateFavoriteCount();
 
   try {
-    const response = await fetch('data/labs.json');
-    if (!response.ok) throw new Error(`labs.json: ${response.status}`);
-    labs = await response.json();
+    const [labResponse, eventResponse] = await Promise.all([
+      fetch('data/labs.json'),
+      fetch('data/events.json')
+    ]);
+    if (!labResponse.ok) throw new Error(`labs.json: ${labResponse.status}`);
+    if (!eventResponse.ok) throw new Error(`events.json: ${eventResponse.status}`);
+    labs = await labResponse.json();
+    eventData = await eventResponse.json();
+    selectedEventDate = eventData.dates?.[0]?.date || '';
     renderHomeTags();
     renderInterest();
     renderLabList();
+    renderVisitors();
   } catch (error) {
     showLoadError(error);
   }
@@ -150,6 +160,7 @@ function renderCurrentView() {
   const active = qs('.view.active')?.id.replace('view-', '');
   if (active === 'interest') renderInterest();
   if (active === 'labs') renderLabList();
+  if (active === 'visitors') renderVisitors();
   if (active === 'favorites') renderFavorites();
 }
 
@@ -352,6 +363,191 @@ function renderLabList() {
 
 function renderFavorites() {
   renderGroupedLabs(qs('#favorite-list'), labs.filter((lab) => favorites.has(lab.id)));
+}
+
+function renderVisitors() {
+  if (!eventData) return;
+  renderEventSummary();
+  renderEventDates();
+  renderEventFilters();
+
+  const programs = filteredPrograms();
+  const list = qs('#event-list');
+  list.innerHTML = '';
+  if (!programs.length) {
+    list.innerHTML = '<div class="empty-result card">条件に合うプログラムがありません。</div>';
+  } else {
+    programs.forEach((program) => list.appendChild(eventCard(program)));
+  }
+  qs('#event-count').textContent = `${programs.length} programs`;
+  const currentDate = currentEventDateBlock();
+  qs('#event-message').textContent = selectedEventFilters.size
+    ? `${currentDate?.label || ''}の「${[...selectedEventFilters].join('・')}」に合うプログラムです。`
+    : `${currentDate?.label || ''}のプログラムを表示しています。`;
+}
+
+function renderEventSummary() {
+  const summary = qs('#event-summary');
+  const dates = eventData.dates || [];
+  const currentDate = currentEventDateBlock();
+  const programCount = currentDate?.programs?.length || 0;
+  summary.innerHTML = `
+    <div>
+      <span class="eyebrow">EVENT</span>
+      <h3>${escapeHtml(eventData.event)}</h3>
+      <p>${escapeHtml(eventData.lead || '今日、会える先生・見られる研究を知るページです。')}</p>
+    </div>
+    <div class="event-summary-stats">
+      <span><strong>${dates.length}</strong>日程</span>
+      <span><strong>${programCount}</strong>件表示</span>
+    </div>`;
+}
+
+function renderEventDates() {
+  const container = qs('#event-date-tabs');
+  if (!container) return;
+  container.innerHTML = '';
+  (eventData.dates || []).forEach((dateBlock) => {
+    const button = document.createElement('button');
+    button.className = `event-date-tab${selectedEventDate === dateBlock.date ? ' active' : ''}`;
+    button.innerHTML = `<span>${escapeHtml(dateBlock.label)}</span><small>${dateBlock.programs?.length || 0}件</small>`;
+    button.onclick = () => {
+      selectedEventDate = dateBlock.date;
+      selectedEventFilters.clear();
+      renderVisitors();
+    };
+    container.appendChild(button);
+  });
+}
+
+function renderEventFilters() {
+  const filters = ['実験プログラム', '学科紹介', '学科相談', 'お気に入り', '生命科学科', '生物資源学科'];
+  const container = qs('#event-filters');
+  container.innerHTML = `
+    <div class="keyword-panel-head">
+      <strong>当日の見方で絞る</strong>
+      <p>気になる形式や学科を選ぶと、見学候補をしぼれます。</p>
+    </div>
+    <div class="event-filter-grid"></div>`;
+  const grid = container.querySelector('.event-filter-grid');
+  filters.forEach((filter) => {
+    const button = document.createElement('button');
+    button.className = `event-filter${selectedEventFilters.has(filter) ? ' selected' : ''}`;
+    button.textContent = filter;
+    button.onclick = () => {
+      selectedEventFilters.has(filter) ? selectedEventFilters.delete(filter) : selectedEventFilters.add(filter);
+      renderVisitors();
+    };
+    grid.appendChild(button);
+  });
+  if (selectedEventFilters.size) {
+    const clear = document.createElement('button');
+    clear.className = 'event-filter clear';
+    clear.textContent = 'クリア';
+    clear.onclick = () => {
+      selectedEventFilters.clear();
+      renderVisitors();
+    };
+    grid.appendChild(clear);
+  }
+}
+
+function flattenPrograms() {
+  return (eventData?.dates || []).flatMap((dateBlock) => {
+    return (dateBlock.programs || []).map((program) => ({
+      ...program,
+      date: dateBlock.date,
+      dateLabel: dateBlock.label
+    }));
+  });
+}
+
+function currentEventDateBlock() {
+  return (eventData?.dates || []).find((dateBlock) => dateBlock.date === selectedEventDate) || eventData?.dates?.[0];
+}
+
+function filteredPrograms() {
+  const filters = [...selectedEventFilters];
+  const dateBlock = currentEventDateBlock();
+  const programs = (dateBlock?.programs || []).map((program) => ({
+    ...program,
+    date: dateBlock.date,
+    dateLabel: dateBlock.label
+  }));
+  return programs.filter((program) => {
+    if (!filters.length) return true;
+    return filters.some((filter) => programMatchesFilter(program, filter));
+  });
+}
+
+function programMatchesFilter(program, filter) {
+  const programLabs = labsForProgram(program);
+  if (filter === 'お気に入り') return programLabs.some((lab) => favorites.has(lab.id));
+  if (program.type === filter) return true;
+  if ((program.tags || []).includes(filter)) return true;
+  return programLabs.some((lab) => lab.department === filter);
+}
+
+function labsForProgram(program) {
+  const ids = program.lab_ids || (program.lab_id ? [program.lab_id] : []);
+  return ids.map((id) => labs.find((lab) => lab.id === id)).filter(Boolean);
+}
+
+function eventCard(program) {
+  const article = document.createElement('article');
+  const programLabs = labsForProgram(program);
+  const primaryLab = programLabs[0];
+  const isSingle = programLabs.length === 1;
+  article.className = `event-card card ${primaryLab ? deptClass(primaryLab.department) : ''}`;
+  article.innerHTML = `
+    <div class="event-card-top">
+      <span class="event-date">${escapeHtml(program.dateLabel)}</span>
+      <span class="event-type">${escapeHtml(program.type)}</span>
+    </div>
+    <h3>${escapeHtml(displayProgramTitle(program.title))}</h3>
+    <p class="event-program">${escapeHtml(program.program)}</p>
+    <dl class="event-meta">
+      <div><dt>時間</dt><dd>${program.times?.length ? program.times.map((time) => `<span>${escapeHtml(time)}</span>`).join('') : '当日案内を確認'}</dd></div>
+      <div><dt>場所</dt><dd>${escapeHtml(program.place || '当日案内を確認')}</dd></div>
+      <div><dt>対象</dt><dd>${escapeHtml(program.audience || '受験生・保護者')}</dd></div>
+    </dl>
+    ${program.notes?.length ? `<div class="event-notes">${program.notes.map((note) => `<span>${escapeHtml(note)}</span>`).join('')}</div>` : ''}
+    <div class="event-actions"></div>`;
+
+  const actions = article.querySelector('.event-actions');
+  if (isSingle && primaryLab) {
+    const favorite = document.createElement('button');
+    const isFav = favorites.has(primaryLab.id);
+    favorite.className = `favorite-button ${isFav ? 'active' : ''}`;
+    favorite.setAttribute('aria-label', isFav ? 'お気に入りから外す' : 'お気に入りに追加');
+    favorite.textContent = isFav ? '♥' : '♡';
+    favorite.onclick = () => toggleFavorite(primaryLab.id);
+    actions.appendChild(favorite);
+
+    const detail = document.createElement('button');
+    detail.className = 'open-lab';
+    detail.textContent = '担当する先生は？ →';
+    detail.onclick = () => openModal(primaryLab);
+    actions.appendChild(detail);
+  } else {
+    const label = document.createElement('span');
+    label.className = 'event-action-label';
+    label.textContent = '担当する先生は？';
+    actions.appendChild(label);
+    programLabs.forEach((lab) => {
+      const button = document.createElement('button');
+      button.className = 'event-lab-button';
+      button.textContent = `${lab.pi_name.replace(/\s+/g, ' ')}先生`;
+      button.onclick = () => openModal(lab);
+      actions.appendChild(button);
+    });
+  }
+  return article;
+}
+
+function displayProgramTitle(title = '') {
+  const parts = String(title).split('：');
+  return parts.length > 1 ? parts.slice(1).join('：') : title;
 }
 
 function courseCards(courses) {

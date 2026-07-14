@@ -31,6 +31,7 @@
   <button class="tab active" data-view="home">ホーム</button>
   <button class="tab" data-view="interest">興味から探す</button>
   <button class="tab" data-view="labs">研究室一覧</button>
+  <button class="tab" data-view="visitors">受験生のみなさんへ</button>
 </nav>
 
 <main>
@@ -39,7 +40,7 @@
     <section class="welcome">
       <span class="eyebrow">WELCOME TO MY LAB</span>
       <h2>研究室って、<br>どんなところだろう？</h2>
-      <p>同じ生命科学分野であっても、研究室によって、向き合う問いも使う手法も大きく違います。最初から研究室名を知っていなくても大丈夫。まずは、あなたが気になることから一緒に見ていきましょう。</p>
+      <p>大学では、同じ「生命科学」でも、研究室によって向き合う問いも、使う方法も大きく違います。最初から研究室名を知っていなくても大丈夫。まずは、あなたが気になることから一緒に見ていきましょう。</p>
       <div class="home-buttons">
         <button class="primary" data-go="interest">「好き」から探してみる</button>
         <button class="secondary" data-go="labs">研究室を一覧で見る</button>
@@ -50,12 +51,25 @@
       <p class="hero-note"><strong>ひとつの興味から、いくつもの扉へ。</strong><br>研究室を知ることは、大学でできることを知ることです。</p>
     </section>
   </div>
- 
+  <section class="search-flow" aria-label="研究室を探す流れ">
+    <article class="flow-card">
+      <span class="flow-number">01</span>
+      <div><h3>興味を選ぶ</h3><p>まずは、動物・細胞・植物・環境など、今気になる言葉をひとつ選びます。</p></div>
+    </article>
+    <article class="flow-card">
+      <span class="flow-number">02</span>
+      <div><h3>研究室に出会う</h3><p>選んだ興味に近い研究室が並びます。Questionを見比べると、研究の違いが見えてきます。</p></div>
+    </article>
+    <article class="flow-card">
+      <span class="flow-number">03</span>
+      <div><h3>次の扉を開く。</h3><p>気になる研究室を開いたら、公式ページやWeb体験授業へ進んで、さらに深く知れます。</p></div>
+    </article>
+  </section>
   <section class="quick-start card">
     <div>
       <span class="eyebrow">QUICK START</span>
       <h3>今、気になるものは？</h3>
-      <p>トピックを選ぶと、関連する研究室をすぐに見られます。</p>
+      <p>高校生のことばで入口を選ぶと、関連する研究室をすぐに見られます。</p>
     </div>
     <div id="home-tags" class="tag-grid"></div>
   </section>
@@ -84,6 +98,19 @@
     </select>
   </div>
   <div id="lab-list" class="lab-grid"></div>
+</section>
+
+<section id="view-visitors" class="view">
+  <div class="visitor-hero">
+    <span class="eyebrow">OPEN CAMPUS GUIDE</span>
+    <h2>受験生のみなさんへ</h2>
+    <p>オープンキャンパスや文化祭では、研究室ごとに展示・実験プログラム・相談会などを行っています。気になる研究を見つけたら、ぜひ先生や学生に話を聞いてみてください。</p>
+  </div>
+  <div id="event-summary" class="event-summary card"></div>
+  <div id="event-date-tabs" class="event-date-tabs" aria-label="日付を選ぶ"></div>
+  <div id="event-filters" class="event-filters card"></div>
+  <div class="result-head"><p id="event-message">イベント情報を表示しています。</p><span id="event-count"></span></div>
+  <div id="event-list" class="event-grid"></div>
 </section>
 
 <section id="view-favorites" class="view">
