@@ -863,17 +863,17 @@
     ],
     "courses": [
       {
+        "title": "進化生物学特論",
+        "meta": "春学期・火,２限・対面・1〜2年次",
+        "description": "この分野の考え方や研究の入口を、授業を通して学びます。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      },
+      {
         "title": "物理Ⅰ／基礎物理学 （生命・生体・資源・応用）",
         "meta": "春学期・金,２限・対面・1〜4年次",
         "description": "生命現象を理解する土台として、力・エネルギー・測定の考え方を学びます。",
         "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
       },
-      {
-        "title": "解剖学",
-        "meta": "秋学期・金,３限・対面・1〜4年次",
-        "description": "この分野の考え方や研究の入口を、授業を通して学びます。",
-        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
-      },      
       {
         "title": "物理実験／物理学実験 （生命・生体・資源・応用）",
         "meta": "秋学期・火,３限 火,４限 火,５限・対面・1〜4年次",

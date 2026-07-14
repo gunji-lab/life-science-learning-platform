@@ -1,50 +1,61 @@
 let labs = [];
 let selected = new Set();
-let activeCategory = 'all';
 let favorites = new Set(safeStoredFavorites());
 
-const keywordCategories = [
+const interestRoutes = [
   {
     id: 'animals',
-    label: '動物・からだ',
-    description: '動物の形、行動、発生、神経を入口に探す。',
-    keywords: ['動物', '野生動物', '行動', '神経', '脳', '神経細胞', '運動', '感覚', '発生', '胚', '心臓', '形態', '器官形成', '骨格', '筋肉', '鳥類', 'キリン', '哺乳類', '魚類', '比較解剖学', '機能形態学', 'バイオメカニクス', '比較生物学', '進化']
-  },
-  {
-    id: 'cells',
-    label: '細胞・遺伝子',
-    description: '細胞、DNA、タンパク質、分子のしくみから探す。',
-    keywords: ['細胞', '細胞培養', '細胞工学', 'iPS細胞', 'DNA', '遺伝子', '遺伝子解析', 'ゲノム', '突然変異', 'DNA修復', '分子遺伝学', '分子生物学', 'タンパク質', '受容体', '代謝', '代謝物', 'マイオカイン', '細胞外小胞', 'ストレス応答', '環境ストレス']
+    label: '動物やからだが気になる',
+    description: '動物の形、動き、発生、神経などから生命を見たい人へ。',
+    terms: ['動物', '野生動物', '哺乳類', '鳥類', '魚類', 'キリン', '骨格', '筋肉', '形態', '発生', '胚', '心臓', '神経', '脳', '行動', '運動', '比較解剖学', '機能形態学', 'バイオメカニクス']
   },
   {
     id: 'health',
-    label: '健康・医療',
-    description: '健康、医療、環境保健、リスクを入口に探す。',
-    keywords: ['健康', '医療', 'メンタルヘルス', '環境保健', '疫学', '生物統計', '公衆衛生', '曝露', '毒性', '化学物質', '環境化学物質', 'ダイオキシン', 'リスク評価', '生態リスク', '生物応答', '環境影響', '耐性']
+    label: '病気・健康・医療に興味がある',
+    description: '健康、毒性、医療、リスク、こころと体の状態を考えたい人へ。',
+    terms: ['健康', '医療', '毒性', '環境健康', '環境保健', 'メンタルヘルス', 'リスク', '曝露', '公衆衛生', '細胞外小胞', 'ストレス応答', '運動', '代謝', 'ダイオキシン', '受容体']
+  },
+  {
+    id: 'plants_food',
+    label: '植物や食べものに関わりたい',
+    description: '植物、作物、食料、栄養、植物が作る成分に興味がある人へ。',
+    terms: ['植物', 'イネ', '作物', '光合成', '植物生理', '植物ホルモン', '成長制御', '植物バイオーム', '食料', '栄養', '収量', '植物化学', '天然物', '植物生化学']
   },
   {
     id: 'environment',
-    label: '環境・生態系',
-    description: '水、地球環境、生態系、生物多様性から探す。',
-    keywords: ['環境', '環境応答', '環境適応', '環境保全', '自然環境', '環境変動', '環境問題', '地球環境', '気候変動', '環境科学', '水環境', '水質', '浄化', '生態系', '生態学', '生態工学', '海洋生態系', '生物多様性', '多様性', '分類', '分布', '種多様性', '自然史', '保全', '持続可能性', '物質循環']
+    label: '環境問題を考えたい',
+    description: '水、地球環境、生態系、生物多様性、環境リスクを考えたい人へ。',
+    terms: ['水環境', '水質', '地球環境', '気候変動', '環境変動', '環境保全', '環境修復', '生態系', '生態学', '生態リスク', '生物多様性', '保全', '海洋生態系', '持続可能性', '物質循環', '環境問題']
   },
   {
-    id: 'plants',
-    label: '植物・食料',
-    description: '植物、作物、食料、栄養から探す。',
-    keywords: ['植物', 'イネ', '作物学', '植物生理学', '光合成', '植物ホルモン', '成長制御', '発芽', '形態形成', '栽培実験', '植物バイオーム', '植物化学', '化学成分', '天然物', '生理活性', '食料', '食料問題', '栄養', '収量']
+    id: 'micro_world',
+    label: '微生物や見えない世界が気になる',
+    description: '微生物、極限環境、酵素、放射線、宇宙につながる生命を見たい人へ。',
+    terms: ['微生物', 'バクテリア', '極限環境', '超好熱菌', '極域', '南極', '低温適応', '放射線', '宇宙', '酵素', '生体触媒', '発酵', '微生物学', '電気微生物']
   },
   {
-    id: 'microbes',
-    label: '微生物・極限環境',
-    description: '微生物、極限環境、宇宙、低温や高温への適応から探す。',
-    keywords: ['微生物', 'バクテリア', '極限環境', '超好熱菌', '極域', '南極', '低温適応', '放射線', '宇宙', '生命の限界', '電気微生物', '電気化学', '環境浄化', '酵素', '生体触媒', '応用微生物', '発酵', '生理工学']
+    id: 'dna_cells',
+    label: 'DNA・細胞・遺伝子を知りたい',
+    description: 'DNA、細胞、遺伝子、タンパク質など、生命の小さなしくみへ。',
+    terms: ['DNA', 'DNA修復', '遺伝子', '遺伝子解析', 'ゲノム', '突然変異', '細胞', '細胞培養', '細胞工学', 'iPS細胞', '分子生物学', 'タンパク質', '分子遺伝学', '代謝', '分子']
   },
   {
-    id: 'tools',
-    label: '技術・データ・ものづくり',
-    description: 'データ解析、計測、化学、材料、商品開発から探す。',
-    keywords: ['データ解析', '計測', 'フィールド調査', '顕微鏡', '化学', '有機化学', '化学分析', '分子化学', '生化学', '糖質', '糖鎖', '多糖', '材料', '構造解析', '生物資源', 'バイオテクノロジー', 'ものづくり', '商品開発', 'バイオプロセス', 'エネルギー', '生体分子', 'モータータンパク質', '細胞運動', '生命科学', '情報学']
+    id: 'experiments',
+    label: '実験や分析が好き',
+    description: '実験、観察、培養、化学分析、測定を通して確かめたい人へ。',
+    terms: ['顕微鏡', '細胞培養', '培養', '化学分析', '成分分析', '測定', '生理測定', '生化学', '有機化学', '糖質', '糖鎖', '材料', '酵素活性', '分子生物学実験', '物理実験', '標本', '解剖', 'CT']
+  },
+  {
+    id: 'fieldwork',
+    label: '野外で生き物を調べたい',
+    description: 'フィールド調査、野生動物、生態系、自然環境を自分の目で見たい人へ。',
+    terms: ['フィールド', '野外', '野生動物', '自然環境', '生態系', '生物多様性', '分布', '分類', '海洋生態系', '水環境', '保全', '行動観察']
+  },
+  {
+    id: 'data',
+    label: 'データで生命を読み解きたい',
+    description: 'データ解析、統計、情報、ゲノム、計測から生命を理解したい人へ。',
+    terms: ['データ解析', '統計', '生物統計', '情報', 'ゲノム', 'バイオインフォマティクス', '計測', 'リスク評価', '疫学', '分布データ', '環境データ']
   }
 ];
 const syllabusUrl = 'https://g-sys.toyo.ac.jp/syllabus/';
@@ -98,7 +109,6 @@ function bindNavigation() {
     button.onclick = () => switchView(button.dataset.go);
   });
   qs('#clear-filters').onclick = () => {
-    activeCategory = 'all';
     selected.clear();
     renderInterest();
   };
@@ -161,50 +171,17 @@ function toggleFavorite(id) {
 function renderHomeTags() {
   const container = qs('#home-tags');
   container.innerHTML = '';
-  featuredKeywords().forEach((tag) => container.appendChild(tagButton(tag)));
+  interestRoutes.forEach((route) => {
+    if (routeMatchCount(route)) container.appendChild(tagButton(route));
+  });
 }
 
-function featuredKeywords() {
-  const priority = ['動物', '神経', '細胞', '健康', '微生物', '植物', 'DNA', '環境', '食料問題', 'データ解析'];
-  const available = new Set(allKeywords());
-  return priority.filter((keyword) => available.has(keyword));
-}
-
-function allKeywords() {
-  return [...new Set(labs.flatMap((lab) => lab.keywords || []))].sort((a, b) => a.localeCompare(b, 'ja'));
-}
-
-function categoryList() {
-  return [
-    { id: 'all', label: 'すべて', description: 'すべてのキーワードから探す。', keywords: allKeywords() },
-    ...keywordCategories,
-    { id: 'other', label: 'その他', description: 'どの入口にもまだ整理していないキーワード。', keywords: uncategorizedKeywords() }
-  ].filter((category) => category.id !== 'other' || category.keywords.length);
-}
-
-function uncategorizedKeywords() {
-  const assigned = new Set(keywordCategories.flatMap((category) => category.keywords));
-  return allKeywords().filter((keyword) => !assigned.has(keyword));
-}
-
-function categoryKeywords(categoryId = activeCategory) {
-  const category = categoryList().find((item) => item.id === categoryId) || categoryList()[0];
-  const available = new Set(allKeywords());
-  return category.keywords.filter((keyword) => available.has(keyword));
-}
-
-function categoryMatchCount(category) {
-  const keywords = category.keywords;
-  return labs.filter((lab) => keywords.some((keyword) => matches(lab, keyword))).length;
-}
-
-function tagButton(tag, categoryId = 'all') {
+function tagButton(route) {
   const button = document.createElement('button');
   button.className = 'interest-tag';
-  button.textContent = tag;
+  button.textContent = route.label;
   button.onclick = () => {
-    activeCategory = categoryId;
-    selected = new Set([tag]);
+    selected = new Set([route.id]);
     switchView('interest');
   };
   return button;
@@ -213,43 +190,40 @@ function tagButton(tag, categoryId = 'all') {
 function renderTagPanels() {
   const panel = qs('#interest-tags');
   panel.innerHTML = '';
-  const categoryWrap = document.createElement('div');
-  categoryWrap.className = 'category-tabs';
-  categoryList().forEach((category) => {
-    const button = document.createElement('button');
-    button.className = `category-tab${activeCategory === category.id ? ' active' : ''}`;
-    button.innerHTML = `<span>${escapeHtml(category.label)}</span><small>${categoryKeywords(category.id).length}</small>`;
-    button.onclick = () => {
-      activeCategory = category.id;
-      selected.clear();
-      renderInterest();
-    };
-    categoryWrap.appendChild(button);
-  });
-  panel.appendChild(categoryWrap);
+  const intro = document.createElement('div');
+  intro.className = 'keyword-panel-head';
+  intro.innerHTML = '<strong>高校生のことばで選ぶ</strong><p>研究室データのキーワードや研究方法から、入口タグを自動で判定しています。</p>';
+  panel.appendChild(intro);
 
-  const active = categoryList().find((category) => category.id === activeCategory) || categoryList()[0];
-  const keywordWrap = document.createElement('div');
-  keywordWrap.className = 'keyword-panel';
-  keywordWrap.innerHTML = `<div class="keyword-panel-head"><strong>${escapeHtml(active.label)}</strong><p>${escapeHtml(active.description)}</p></div>`;
-  const keywordGrid = document.createElement('div');
-  keywordGrid.className = 'keyword-grid';
-  categoryKeywords().forEach((tag) => {
+  const routeGrid = document.createElement('div');
+  routeGrid.className = 'interest-route-grid';
+  interestRoutes.forEach((route) => {
+    const count = routeMatchCount(route);
+    if (!count) return;
     const button = document.createElement('button');
-    button.className = `interest-tag${selected.has(tag) ? ' selected' : ''}`;
-    button.textContent = tag;
+    button.className = `interest-route${selected.has(route.id) ? ' selected' : ''}`;
+    button.innerHTML = `<span>${escapeHtml(route.label)}</span><small>${count} LABS</small><p>${escapeHtml(route.description)}</p>`;
     button.onclick = () => {
-      selected.has(tag) ? selected.delete(tag) : selected.add(tag);
+      selected.has(route.id) ? selected.delete(route.id) : selected.add(route.id);
       renderInterest();
     };
-    keywordGrid.appendChild(button);
+    routeGrid.appendChild(button);
   });
-  keywordWrap.appendChild(keywordGrid);
-  panel.appendChild(keywordWrap);
+  panel.appendChild(routeGrid);
 }
 
-function matches(lab, tag) {
-  return searchableText(lab).includes(String(tag).toLowerCase());
+function routeById(id) {
+  return interestRoutes.find((route) => route.id === id);
+}
+
+function routeMatchCount(route) {
+  return labs.filter((lab) => matchesRoute(lab, route)).length;
+}
+
+function matchesRoute(lab, route) {
+  const overrides = lab.interest_overrides || [];
+  if (overrides.includes(route.id) || overrides.includes(route.label)) return true;
+  return route.terms.some((term) => routeText(lab).includes(String(term).toLowerCase()));
 }
 
 function searchableText(lab) {
@@ -258,6 +232,18 @@ function searchableText(lab) {
     lab.pi_name,
     lab.position,
     lab.department,
+    lab.summary,
+    lab.question,
+    lab.description,
+    ...(lab.keywords || []),
+    ...(lab.methods || []),
+    ...(lab.courses || []).map((course) => course.title)
+  ].join(' ').toLowerCase();
+}
+
+function routeText(lab) {
+  return [
+    lab.lab_name,
     lab.summary,
     lab.question,
     lab.description,
@@ -290,7 +276,20 @@ function card(lab, match = '') {
     event.stopPropagation();
     toggleFavorite(lab.id);
   };
-  article.querySelector('.open-lab').onclick = () => openModal(lab);
+  article.querySelector('.open-lab').onclick = (event) => {
+    event.stopPropagation();
+    openModal(lab);
+  };
+  article.onclick = () => openModal(lab);
+  article.tabIndex = 0;
+  article.setAttribute('role', 'button');
+  article.setAttribute('aria-label', `${lab.lab_name}の詳細を見る`);
+  article.onkeydown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openModal(lab);
+    }
+  };
   return article;
 }
 
@@ -321,25 +320,19 @@ function renderGroupedLabs(container, items, matchLabel) {
 
 function renderInterest() {
   renderTagPanels();
-  const activeKeywords = activeCategory === 'all' ? [] : categoryKeywords();
+  const selectedRoutes = [...selected].map(routeById).filter(Boolean);
   const filtered = labs.filter((lab) => {
-    const categoryMatch = !activeKeywords.length || activeKeywords.some((tag) => matches(lab, tag));
-    const keywordMatch = !selected.size || [...selected].some((tag) => matches(lab, tag));
-    return categoryMatch && keywordMatch;
+    return !selectedRoutes.length || selectedRoutes.some((route) => matchesRoute(lab, route));
   });
   renderGroupedLabs(qs('#interest-results'), filtered, (lab) => {
-    const matchesSelected = [...selected].filter((tag) => matches(lab, tag)).length;
-    if (matchesSelected) return `${matchesSelected} keyword match`;
-    if (activeKeywords.length) return 'category match';
-    return '';
+    const routeLabels = selectedRoutes.filter((route) => matchesRoute(lab, route)).map((route) => route.label);
+    return routeLabels.length ? `${routeLabels.length}入口に一致` : '';
   });
   qs('#result-count').textContent = `${filtered.length} labs`;
-  const active = categoryList().find((category) => category.id === activeCategory) || categoryList()[0];
+  const selectedLabels = selectedRoutes.map((route) => route.label);
   qs('#result-message').textContent = selected.size
-    ? `「${active.label}」の中で「${[...selected].join('・')}」に関連する研究室です。`
-    : activeCategory === 'all'
-      ? `${labs.length}研究室を表示しています。`
-      : `「${active.label}」に関連する研究室です。`;
+    ? `「${selectedLabels.join('・')}」に関連する研究室です。`
+    : `${labs.length}研究室を表示しています。`;
 }
 
 function renderLabList() {
