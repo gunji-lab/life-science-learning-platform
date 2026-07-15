@@ -224,9 +224,7 @@ main{padding-top:30px}
 .lab-card-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;padding-right:94px}
 .lab-card-head h3{margin:0;color:var(--navy);font-size:1.28rem;letter-spacing:-.02em}
 .pi-name{margin:5px 0 0;color:var(--muted);font-size:.88rem}
-.card-question{padding:13px 14px;background:#faf9f4;border:1px solid #ece6d5;border-radius:13px;display:grid;gap:5px}
-.card-question span,.hero-question span{font-size:.64rem;letter-spacing:.16em;font-weight:900;color:#8b8168}
-.card-question strong{font-size:.93rem;line-height:1.65;color:var(--navy)}
+.hero-question span{font-size:.64rem;letter-spacing:.16em;font-weight:900;color:#8b8168}
 .hero-question{margin:18px 0;padding:20px 22px;background:#fff9e9;border:1px solid #f0dfaf;border-radius:16px}
 .hero-question h3{margin:7px 0 0;font-size:1.35rem;line-height:1.55;color:var(--navy)}
 .detail-section{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
@@ -256,7 +254,7 @@ main{padding-top:30px}
 /* Lab Card prototype v0.3 — quieter links, frameless hero, better Japanese wrapping */
 html{line-break:strict}
 body{overflow-wrap:normal;word-break:normal}
-p,li,.catch,.card-question strong,.more-card strong,.course-card strong,.detail-section-head h3,.modal-catch{
+p,li,.catch,.more-card strong,.course-card strong,.detail-section-head h3,.modal-catch{
   text-wrap:pretty;
   word-break:normal;
   overflow-wrap:normal;
@@ -291,7 +289,6 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
 .welcome p{font-size:.94rem;line-height:1.9}
 .lab-card h3,.lab-card-head h3{font-size:1.18rem;line-height:1.45}
 .catch{font-size:1rem;line-height:1.75}
-.card-question strong{font-size:.9rem;line-height:1.72}
 .modal-title h2{font-size:1.82rem;line-height:1.4}
 .modal-catch{font-size:1.08rem;line-height:1.8}
 .hero-question h3{font-size:1.23rem;line-height:1.65}
@@ -1311,20 +1308,6 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
     overflow:hidden;
     font-size:.9rem;
     line-height:1.55;
-  }
-  .card-question{
-    padding:9px 10px;
-  }
-  .card-question span{
-    font-size:.65rem;
-  }
-  .card-question strong{
-    display:-webkit-box;
-    -webkit-box-orient:vertical;
-    -webkit-line-clamp:2;
-    overflow:hidden;
-    font-size:.82rem;
-    line-height:1.5;
   }
   .keywords{
     gap:5px;

@@ -541,7 +541,6 @@ function card(lab, match = '') {
       </div>
     </div>
     <p class="catch">${escapeHtml(lab.summary)}</p>
-    <div class="card-question"><span>QUESTION</span><strong>${escapeHtml(lab.question)}</strong></div>
     <div class="keywords">${lab.keywords.slice(0, 5).map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join('')}</div>
     <div class="lab-actions">
       <button class="favorite-button ${isFav ? 'active' : ''}" aria-label="${isFav ? 'お気に入りから外す' : 'お気に入りに追加'}">${isFav ? '♥' : '♡'}</button>
