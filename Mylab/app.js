@@ -542,6 +542,7 @@ function card(lab, match = '') {
     <div class="keywords">${keywords.map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join('')}</div>` : '';
   const matchHtml = match ? `<span class="match">${escapeHtml(match)}</span>` : '';
   article.className = `lab-card card ${deptClass(lab.department)}`;
+  article.dataset.labId = lab.id;
   article.innerHTML = `
     <div class="lab-card-topline">
       <span class="lab-dept">${escapeHtml(lab.department)}</span>
@@ -662,7 +663,49 @@ function renderLabList() {
     const departmentMatch = department === 'all' || lab.department === department;
     return departmentMatch && (!query || searchableText(lab).includes(query));
   });
+  renderLabJumpList(filtered);
   renderGroupedLabs(qs('#lab-list'), filtered);
+}
+
+function renderLabJumpList(items) {
+  const container = qs('#lab-jump-list');
+  if (!container) return;
+  if (!items.length) {
+    container.innerHTML = '';
+    container.hidden = true;
+    return;
+  }
+  container.hidden = false;
+  container.innerHTML = `
+    <div class="lab-jump-head">
+      <div>
+        <span class="eyebrow">LAB QUICK INDEX</span>
+        <h3>研究室名から見る</h3>
+      </div>
+      <span>${items.length} labs</span>
+    </div>
+    <div class="lab-jump-grid"></div>`;
+  const grid = container.querySelector('.lab-jump-grid');
+  items.forEach((lab) => {
+    const button = document.createElement('button');
+    button.className = `lab-jump-item ${deptClass(lab.department)}`;
+    button.type = 'button';
+    button.innerHTML = `
+      <span class="lab-jump-dept">${escapeHtml(lab.department)}</span>
+      <strong>${escapeHtml(lab.lab_name)}</strong>
+      <span class="lab-jump-keywords">${(lab.keywords || []).slice(0, 3).map((keyword) => `<em>${escapeHtml(keyword)}</em>`).join('')}</span>`;
+    button.onclick = () => scrollToLabCard(lab.id);
+    grid.appendChild(button);
+  });
+}
+
+function scrollToLabCard(labId) {
+  const target = [...document.querySelectorAll('#lab-list .lab-card')]
+    .find((item) => item.dataset.labId === labId);
+  if (!target) return;
+  const top = target.getBoundingClientRect().top + window.scrollY - 74;
+  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+  target.focus({ preventScroll: true });
 }
 
 function renderFavorites() {
