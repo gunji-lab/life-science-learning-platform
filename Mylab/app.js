@@ -360,8 +360,8 @@ function renderTagPanels() {
     button.className = `interest-route${selected.has(route.id) ? ' selected' : ''}`;
     button.innerHTML = `<span>${escapeHtml(route.label)}</span><small>${count} LABS</small><p>${escapeHtml(route.description)}</p>`;
     button.onclick = () => {
-      selected.has(route.id) ? selected.delete(route.id) : selected.add(route.id);
-      pruneSelectedDetailTerms();
+      selected = new Set([route.id]);
+      selectedDetailTerms.clear();
       renderInterest();
       scrollToDetailTerms();
     };
@@ -447,7 +447,9 @@ function renderDetailTermPanel(panel) {
 function scrollToDetailTerms() {
   window.setTimeout(() => {
     const target = qs('.detail-term-panel');
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (!target) return;
+    const top = target.getBoundingClientRect().top + window.scrollY - 76;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
   }, 80);
 }
 
