@@ -18,7 +18,7 @@ const interestRoutes = [
     id: 'health',
     label: '病気・健康・医療に興味がある',
     description: '健康、毒性、医療、リスク、こころと体の状態を考えたい人へ。',
-    terms: ['健康', '医療', '毒性', '環境健康', '環境保健', 'メンタルヘルス', 'リスク', '曝露', '公衆衛生', '細胞外小胞', 'ストレス応答', '運動', '代謝', 'ダイオキシン', '受容体']
+    terms: ['健康', '医療', '毒性', '環境健康', '環境保健', 'メンタルヘルス', 'リスク', '曝露', '公衆衛生', '細胞外小胞', 'ダイオキシン', '受容体']
   },
   {
     id: 'plants_food',
@@ -42,7 +42,7 @@ const interestRoutes = [
     id: 'dna_cells',
     label: 'DNA・細胞・遺伝子を知りたい',
     description: 'DNA、細胞、遺伝子、タンパク質など、生命の小さなしくみへ。',
-    terms: ['DNA', 'DNA修復', '遺伝子', '遺伝子解析', 'ゲノム', '突然変異', '細胞', '細胞培養', '細胞工学', 'iPS細胞', '分子生物学', 'タンパク質', '分子遺伝学', '代謝', '分子']
+    terms: ['DNA', 'DNA修復', '遺伝子', '遺伝子解析', 'ゲノム', '突然変異', '細胞', '細胞培養', '細胞工学', 'iPS細胞', '分子生物学', 'タンパク質', '分子遺伝学', '分子']
   },
   {
     id: 'experiments',
@@ -54,7 +54,7 @@ const interestRoutes = [
     id: 'fieldwork',
     label: '野外で生き物を調べたい',
     description: 'フィールド調査、野生動物、生態系、自然環境を自分の目で見たい人へ。',
-    terms: ['フィールド', '野外', '野生動物', '自然環境', '生態系', '生物多様性', '分布', '分類', '海洋生態系', '水環境', '保全', '行動観察']
+    terms: ['フィールド', '野外', '野生動物', '自然環境', '生態系', '生物多様性', '分布', '分類', '海洋生態系', '水環境', '保全']
   },
   {
     id: 'data',
@@ -207,7 +207,7 @@ function renderTagPanels() {
   panel.innerHTML = '';
   const intro = document.createElement('div');
   intro.className = 'keyword-panel-head';
-  intro.innerHTML = '<strong>高校生のことばで選ぶ</strong><p>研究室データのキーワードや研究方法から、入口タグを自動で判定しています。</p>';
+  intro.innerHTML = '<strong>トピックで選ぶ</strong><p>研究室データのキーワードや研究方法から自動で判定しています。</p>';
   panel.appendChild(intro);
 
   const routeGrid = document.createElement('div');
@@ -240,7 +240,7 @@ function routeMatchCount(route) {
 function matchesRoute(lab, route) {
   const overrides = lab.interest_overrides || [];
   if (overrides.includes(route.id) || overrides.includes(route.label)) return true;
-  const text = routeText(lab);
+  const text = labTagText(lab);
   if (route.required && !route.required.some((term) => text.includes(String(term).toLowerCase()))) {
     return false;
   }
