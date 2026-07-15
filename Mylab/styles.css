@@ -226,7 +226,7 @@ main{padding-top:30px}
 .pi-name{margin:5px 0 0;color:var(--muted);font-size:.88rem}
 .hero-question span{font-size:.64rem;letter-spacing:.16em;font-weight:900;color:#8b8168}
 .hero-question{margin:18px 0;padding:20px 22px;background:#fff9e9;border:1px solid #f0dfaf;border-radius:16px}
-.hero-question h3{margin:7px 0 0;font-size:1.35rem;line-height:1.55;color:var(--navy)}
+.hero-question h3{margin:7px 0 0;font-size:1.35rem;line-height:1.55;color:var(--navy);max-width:100%;overflow-wrap:anywhere;word-break:normal}
 .detail-section{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
 .detail-section-head h3{margin:0 0 6px;color:var(--navy);font-size:1.35rem}
 .detail-section-head p{margin:0;color:var(--muted);line-height:1.7;font-size:.88rem}
@@ -320,7 +320,8 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   .hero-card img{max-height:250px}
   .modal-title h2{font-size:1.55rem}
   .modal-catch{font-size:1rem}
-  .hero-question h3{font-size:1.1rem}
+  .hero-question{padding:15px 16px;border-radius:14px}
+  .hero-question h3{font-size:1.06rem;line-height:1.7;overflow-wrap:anywhere;word-break:normal}
   .syllabus-note{text-align:left}
 }
 
@@ -2269,5 +2270,26 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   }
   .event-teachers{
     gap:6px;
+  }
+}
+
+/* Modal question wrapping */
+.hero-question h3{
+  max-width:100%;
+  min-width:0;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+@media(max-width:600px){
+  .hero-question{
+    height:auto;
+    min-height:0;
+    padding:15px 16px;
+  }
+  .hero-question h3{
+    font-size:1.06rem;
+    line-height:1.7;
   }
 }
