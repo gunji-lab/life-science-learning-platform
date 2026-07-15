@@ -4,6 +4,7 @@ let selected = new Set();
 let selectedDetailTerms = new Set();
 let selectedEventFilters = new Set();
 let selectedEventDate = '';
+let selectedLabJumpDepartment = '生命科学科';
 let favorites = new Set(safeStoredFavorites());
 
 const interestRoutes = [
@@ -613,11 +614,7 @@ function renderInterest() {
   renderTagPanels();
   const selectedRoutes = [...selected].map(routeById).filter(Boolean);
   const filtered = rankedInterestLabs(selectedRoutes);
-  if (selectedRoutes.length) {
-    renderRankedLabs(qs('#interest-results'), filtered);
-  } else {
-    renderGroupedLabs(qs('#interest-results'), filtered.map((item) => item.lab));
-  }
+  renderInterestIndex(qs('#interest-results'), filtered);
   qs('#result-count').textContent = `${filtered.length} labs`;
   const selectedLabels = selectedRoutes.map((route) => route.label);
   const detailText = selectedDetailTerms.size ? `、詳細キーワード「${[...selectedDetailTerms].join('・')}」` : '';
@@ -656,6 +653,27 @@ function renderRankedLabs(container, items) {
   });
 }
 
+function renderInterestIndex(container, items) {
+  container.innerHTML = '';
+  container.classList.remove('lab-grid', 'grouped');
+  container.classList.add('interest-index-list');
+  if (!items.length) {
+    container.innerHTML = '<div class="empty-result card">条件に合う研究室がありません。</div>';
+    return;
+  }
+  const grid = document.createElement('div');
+  grid.className = 'interest-index-grid';
+  items.forEach((item) => {
+    const matched = displayMatchedTerms(item.lab, item.matched).slice(0, 3);
+    grid.appendChild(miniLabButton(item.lab, {
+      keywords: matched.length ? matched : (item.lab.keywords || []).slice(0, 3),
+      showDepartment: true,
+      onClick: () => openModal(item.lab)
+    }));
+  });
+  container.appendChild(grid);
+}
+
 function renderLabList() {
   const query = qs('#lab-search').value.trim().toLowerCase();
   const department = qs('#department-filter').value;
@@ -675,28 +693,62 @@ function renderLabJumpList(items) {
     container.hidden = true;
     return;
   }
+  const departments = ['生命科学科', '生物資源学科'];
+  const available = departments.filter((department) => items.some((lab) => lab.department === department));
+  if (!available.includes(selectedLabJumpDepartment)) {
+    selectedLabJumpDepartment = available[0] || '生命科学科';
+  }
+  const visibleItems = items.filter((lab) => lab.department === selectedLabJumpDepartment);
+  const activeClass = deptClass(selectedLabJumpDepartment);
   container.hidden = false;
+  container.classList.toggle('life', selectedLabJumpDepartment === '生命科学科');
+  container.classList.toggle('resource', selectedLabJumpDepartment === '生物資源学科');
   container.innerHTML = `
     <div class="lab-jump-head">
       <div>
         <span class="eyebrow">LAB QUICK INDEX</span>
         <h3>研究室名から見る</h3>
       </div>
-      <span>${items.length} labs</span>
+      <span>${visibleItems.length} labs</span>
     </div>
+    <div class="lab-jump-tabs" aria-label="学科を切り替える"></div>
     <div class="lab-jump-grid"></div>`;
-  const grid = container.querySelector('.lab-jump-grid');
-  items.forEach((lab) => {
+  const tabs = container.querySelector('.lab-jump-tabs');
+  departments.forEach((department) => {
+    const count = items.filter((lab) => lab.department === department).length;
     const button = document.createElement('button');
-    button.className = `lab-jump-item ${deptClass(lab.department)}`;
     button.type = 'button';
-    button.innerHTML = `
-      <span class="lab-jump-dept">${escapeHtml(lab.department)}</span>
-      <strong>${escapeHtml(lab.lab_name)}</strong>
-      <span class="lab-jump-keywords">${(lab.keywords || []).slice(0, 3).map((keyword) => `<em>${escapeHtml(keyword)}</em>`).join('')}</span>`;
-    button.onclick = () => scrollToLabCard(lab.id);
-    grid.appendChild(button);
+    button.className = `lab-jump-tab ${deptClass(department)}${department === selectedLabJumpDepartment ? ' active' : ''}`;
+    button.disabled = !count;
+    button.innerHTML = `<span>${escapeHtml(department)}</span><small>${count}</small>`;
+    button.onclick = () => {
+      selectedLabJumpDepartment = department;
+      renderLabList();
+    };
+    tabs.appendChild(button);
   });
+  const grid = container.querySelector('.lab-jump-grid');
+  visibleItems.forEach((lab) => grid.appendChild(miniLabButton(lab, {
+    keywords: (lab.keywords || []).slice(0, 3),
+    showDepartment: false,
+    extraClass: activeClass,
+    onClick: () => scrollToLabCard(lab.id)
+  })));
+}
+
+function miniLabButton(lab, options = {}) {
+  const button = document.createElement('button');
+  const className = options.extraClass || deptClass(lab.department);
+  button.className = `lab-jump-item ${className}`;
+  button.type = 'button';
+  const dept = options.showDepartment ? `<span class="lab-jump-dept">${escapeHtml(lab.department)}</span>` : '';
+  const keywords = (options.keywords || []).slice(0, 3);
+  button.innerHTML = `
+    ${dept}
+    <strong>${escapeHtml(lab.lab_name)}</strong>
+    <span class="lab-jump-keywords">${keywords.map((keyword) => `<em>${escapeHtml(keyword)}</em>`).join('')}</span>`;
+  button.onclick = options.onClick || (() => openModal(lab));
+  return button;
 }
 
 function scrollToLabCard(labId) {
