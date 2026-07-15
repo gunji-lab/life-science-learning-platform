@@ -204,7 +204,7 @@ function renderTagPanels() {
   panel.innerHTML = '';
   const intro = document.createElement('div');
   intro.className = 'keyword-panel-head';
-  intro.innerHTML = '<strong>トピックで選ぶ</strong><p>研究室データのキーワードや研究方法から自動で判定しています。</p>';
+  intro.innerHTML = '<strong>高校生のことばで選ぶ</strong><p>研究室データのキーワードや研究方法から、入口タグを自動で判定しています。</p>';
   panel.appendChild(intro);
 
   const routeGrid = document.createElement('div');
@@ -590,13 +590,19 @@ function moreCards(lab) {
       desc: '研究室独自の発信を見る。'
     }
   ];
-  return candidates
+  const linkCards = candidates
     .filter((item) => lab.links[item.key])
     .map((item) => `<a class="more-card" href="${lab.links[item.key]}" target="_blank" rel="noopener">
       <span class="more-icon">${item.icon}</span>
       <div><span class="more-label">${item.label}</span><strong>${escapeHtml(item.title)}</strong><p>${escapeHtml(item.desc)}</p></div>
       <span class="more-arrow">→</span>
-    </a>`).join('');
+    </a>`);
+  const mediaCards = (lab.media_links || []).map((item) => `<a class="more-card media-link" href="${item.url}" target="_blank" rel="noopener">
+      <span class="more-icon">${item.type === 'official_video' ? '🎥' : '📰'}</span>
+      <div><span class="more-label">${escapeHtml(item.label || '公式記事')}</span><strong>${escapeHtml(item.title)}</strong><p>東洋大学公式サイトの記事で、先生の研究や専門分野を読む。</p></div>
+      <span class="more-arrow">→</span>
+    </a>`);
+  return [...linkCards, ...mediaCards].join('');
 }
 
 function openModal(lab) {

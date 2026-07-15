@@ -153,12 +153,25 @@
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
+      },
+      {
+        "type": "official_media",
+        "url": "https://www.toyo.ac.jp/link-toyo/life/health_hormone",
+        "checked_at": "2026-07-15"
       }
     ],
     "needs_review": true,
     "review_notes": [
       "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。",
       "担当授業は2026年度東洋大学公式シラバスの教員名検索から抽出。原則として座学2件＋実験1件を選び、生命科学序論など全員担当に近い共通科目は避けています。主担当・共同担当や年度変更は公開前に再確認してください。"
+    ],
+    "media_links": [
+      {
+        "type": "official_interview",
+        "label": "公式インタビュー",
+        "title": "神経生物学の専門家に聞く、私たちの健康に欠かせない「ホルモン」の秘密",
+        "url": "https://www.toyo.ac.jp/link-toyo/life/health_hormone"
+      }
     ]
   },
   {
@@ -238,12 +251,25 @@
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
+      },
+      {
+        "type": "official_media",
+        "url": "https://www.toyo.ac.jp/link-toyo/social/2020_toyo_vascular_protection",
+        "checked_at": "2026-07-15"
       }
     ],
     "needs_review": true,
     "review_notes": [
       "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。",
       "担当授業は2026年度東洋大学公式シラバスの教員名検索から抽出。原則として座学2件＋実験1件を選び、生命科学序論など全員担当に近い共通科目は避けています。主担当・共同担当や年度変更は公開前に再確認してください。"
+    ],
+    "media_links": [
+      {
+        "type": "official_interview",
+        "label": "公式インタビュー",
+        "title": "【2020×TOYO】キーワードは「血管保護」。アスリートを“暑さ”から守る科学の力は、未来の健康も変える",
+        "url": "https://www.toyo.ac.jp/link-toyo/social/2020_toyo_vascular_protection"
+      }
     ]
   },
   {
@@ -900,12 +926,36 @@
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
+      },
+      {
+        "type": "official_media",
+        "url": "https://www.toyo.ac.jp/link-toyo/life/giraffe_bone",
+        "checked_at": "2026-07-15"
+      },
+      {
+        "type": "official_media",
+        "url": "https://www.toyo.ac.jp/link-toyo/life/giraffe",
+        "checked_at": "2026-07-15"
       }
     ],
     "needs_review": true,
     "review_notes": [
       "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。",
       "担当授業は2026年度東洋大学公式シラバスの教員名検索から抽出。原則として座学2件＋実験1件を選び、生命科学序論など全員担当に近い共通科目は避けています。主担当・共同担当や年度変更は公開前に再確認してください。"
+    ],
+    "media_links": [
+      {
+        "type": "official_interview",
+        "label": "公式インタビュー",
+        "title": "【動画】キリン博士が徹底解説！骨格標本をつくる舞台裏に潜入してみた",
+        "url": "https://www.toyo.ac.jp/link-toyo/life/giraffe_bone"
+      },
+      {
+        "type": "official_interview",
+        "label": "公式インタビュー",
+        "title": "キリン博士に聞く！キリンの魅力とユニークすぎる身体の構造",
+        "url": "https://www.toyo.ac.jp/link-toyo/life/giraffe"
+      }
     ]
   },
   {
@@ -1885,12 +1935,36 @@
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
+      },
+      {
+        "type": "official_media",
+        "url": "https://www.toyo.ac.jp/link-toyo/social/phytic_acid",
+        "checked_at": "2026-07-15"
+      },
+      {
+        "type": "official_media",
+        "url": "https://www.toyo.ac.jp/link-toyo/social/rice",
+        "checked_at": "2026-07-15"
       }
     ],
     "needs_review": true,
     "review_notes": [
       "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。",
       "担当授業は2026年度東洋大学公式シラバスの教員名検索から抽出。原則として座学2件＋実験1件を選び、生命科学序論など全員担当に近い共通科目は避けています。主担当・共同担当や年度変更は公開前に再確認してください。"
+    ],
+    "media_links": [
+      {
+        "type": "official_interview",
+        "label": "公式インタビュー",
+        "title": "「隠れた飢餓」の解決に挑む。 トップジャーナル『Nature Food』に掲載！ 世界初！「かけるだけ」でコメの栄養を吸収しやすくなる薬剤を開発",
+        "url": "https://www.toyo.ac.jp/link-toyo/social/phytic_acid"
+      },
+      {
+        "type": "official_interview",
+        "label": "公式インタビュー",
+        "title": "日本の食卓に欠かせない「お米」。米不足で注目を集める今、「良い米」を安定供給するための品種改良研究を大学教授が解説！",
+        "url": "https://www.toyo.ac.jp/link-toyo/social/rice"
+      }
     ]
   },
   {
@@ -2053,12 +2127,25 @@
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
+      },
+      {
+        "type": "official_media",
+        "url": "https://www.toyo.ac.jp/link-toyo/life/lactic_acid_bacteria",
+        "checked_at": "2026-07-15"
       }
     ],
     "needs_review": true,
     "review_notes": [
       "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。",
       "担当授業は2026年度東洋大学公式シラバスの教員名検索から抽出。原則として座学2件＋実験1件を選び、生命科学序論など全員担当に近い共通科目は避けています。主担当・共同担当や年度変更は公開前に再確認してください。"
+    ],
+    "media_links": [
+      {
+        "type": "official_interview",
+        "label": "公式インタビュー",
+        "title": "カギは「乳酸菌」。微生物がもたらす豊かな食生活と健康とは",
+        "url": "https://www.toyo.ac.jp/link-toyo/life/lactic_acid_bacteria"
+      }
     ]
   },
   {
