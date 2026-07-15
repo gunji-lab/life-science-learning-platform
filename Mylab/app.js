@@ -1,10 +1,13 @@
 let labs = [];
 let eventData = null;
+let departments = [];
 let selected = new Set();
 let selectedDetailTerms = new Set();
 let selectedEventFilters = new Set();
 let selectedEventDate = '';
-let selectedLabJumpDepartment = '生命科学科';
+let selectedLabJumpDepartment = '';
+let selectedRecommendationDepartment = '';
+let selectedQuestionDepartment = '';
 let favorites = new Set(safeStoredFavorites());
 
 const interestRoutes = [
@@ -207,17 +210,13 @@ const tagParents = {
 const syllabusUrl = 'https://g-sys.toyo.ac.jp/syllabus/';
 const qs = (selector) => document.querySelector(selector);
 const qsa = (selector) => [...document.querySelectorAll(selector)];
-const deptClass = (department) => department === '生命科学科' ? 'life' : 'resource';
 const displayLabName = (lab) => lab.lab_name.endsWith('研究室') ? lab.lab_name : `${lab.lab_name}研究室`;
-const departmentMeta = {
-  '生命科学科': {
-    className: 'life',
-    description: '動物・人体・細胞などから、生命のしくみと健康・進化の問いを探る研究室。'
-  },
-  '生物資源学科': {
-    className: 'resource',
-    description: '植物や微生物の力を、食料・環境・社会へ生かす研究室。'
-  }
+const fallbackDepartmentMeta = {
+  className: 'department-extra',
+  description: '生命科学部の多様な問いに向き合う研究室。',
+  color: '#4d6f91',
+  soft: '#eef5fb',
+  line: '#c8d9e8'
 };
 
 init();
@@ -228,15 +227,23 @@ async function init() {
   updateFavoriteCount();
 
   try {
-    const [labResponse, eventResponse] = await Promise.all([
+    const [labResponse, eventResponse, departmentResponse] = await Promise.all([
       fetch('data/labs.json'),
-      fetch('data/events.json')
+      fetch('data/events.json'),
+      fetch('data/departments.json')
     ]);
     if (!labResponse.ok) throw new Error(`labs.json: ${labResponse.status}`);
     if (!eventResponse.ok) throw new Error(`events.json: ${eventResponse.status}`);
+    if (!departmentResponse.ok) throw new Error(`departments.json: ${departmentResponse.status}`);
     labs = await labResponse.json();
     eventData = await eventResponse.json();
+    departments = await departmentResponse.json();
+    selectedLabJumpDepartment = '';
+    selectedRecommendationDepartment = '';
+    selectedQuestionDepartment = '';
     selectedEventDate = eventData.dates?.[0]?.date || '';
+    renderDepartmentFilter();
+    renderDirectoryLead();
     renderHomeTags();
     renderInterest();
     renderLabList();
@@ -316,6 +323,57 @@ function saveFavorites() {
 function updateFavoriteCount() {
   const count = qs('#favorite-count');
   if (count) count.textContent = favorites.size;
+}
+
+function getDepartmentMeta(department) {
+  const configured = departments.find((item) => item.name === department) || {};
+  return { ...fallbackDepartmentMeta, ...configured };
+}
+
+function deptClass(department) {
+  return getDepartmentMeta(department).className || fallbackDepartmentMeta.className;
+}
+
+function departmentNames(items = labs) {
+  const present = new Set(items.map((lab) => lab.department).filter(Boolean));
+  const configured = departments.map((department) => department.name).filter((name) => present.has(name));
+  const unknown = [...present].filter((name) => !configured.includes(name)).sort((a, b) => a.localeCompare(b, 'ja'));
+  return [...configured, ...unknown];
+}
+
+function departmentCount(department, items = labs) {
+  return items.filter((lab) => lab.department === department).length;
+}
+
+function applyDepartmentTheme(element, department) {
+  if (!element || !department) return;
+  const meta = getDepartmentMeta(department);
+  element.classList.add('department-themed');
+  element.style.setProperty('--dept-color', meta.color);
+  element.style.setProperty('--dept-soft', meta.soft);
+  element.style.setProperty('--dept-line', meta.line);
+}
+
+function renderDepartmentFilter() {
+  const select = qs('#department-filter');
+  if (!select) return;
+  const current = select.value || 'all';
+  select.innerHTML = '<option value="all">すべての学科</option>';
+  departmentNames().forEach((department) => {
+    const option = document.createElement('option');
+    option.value = department;
+    option.textContent = department;
+    select.appendChild(option);
+  });
+  select.value = current === 'all' || departmentNames().includes(current) ? current : 'all';
+}
+
+function renderDirectoryLead() {
+  const lead = qs('#lab-directory-lead');
+  if (!lead) return;
+  const names = departmentNames();
+  const departmentText = names.length ? names.join('・') : '各学科';
+  lead.textContent = `東洋大学生命科学部の${departmentText}、計${labs.length}研究室を掲載しています。`;
 }
 
 function toggleFavorite(id) {
@@ -545,6 +603,7 @@ function card(lab, match = '') {
   const matchHtml = match ? `<span class="match">${escapeHtml(match)}</span>` : '';
   article.className = `lab-card card ${deptClass(lab.department)}`;
   article.dataset.labId = lab.id;
+  applyDepartmentTheme(article, lab.department);
   article.innerHTML = `
     <div class="lab-card-topline">
       <span class="lab-dept">${escapeHtml(lab.department)}</span>
@@ -593,10 +652,10 @@ function renderGroupedLabs(container, items, matchLabel) {
     container.innerHTML = '<div class="empty-result card">条件に合う研究室がありません。</div>';
     return;
   }
-  ['生命科学科', '生物資源学科'].forEach((department) => {
+  departmentNames(items).forEach((department) => {
     const groupItems = items.filter((lab) => lab.department === department);
     if (!groupItems.length) return;
-    const meta = departmentMeta[department];
+    const meta = getDepartmentMeta(department);
     const section = document.createElement('section');
     section.className = 'department-group';
     section.dataset.department = department;
@@ -606,6 +665,7 @@ function renderGroupedLabs(container, items, matchLabel) {
         <span class="department-count">${groupItems.length} LABS</span>
       </div>
       <div class="department-cards"></div>`;
+    applyDepartmentTheme(section.querySelector('.department-heading'), department);
     const cards = section.querySelector('.department-cards');
     groupItems.forEach((lab) => cards.appendChild(card(lab, matchLabel ? matchLabel(lab) : '')));
     container.appendChild(section);
@@ -684,8 +744,12 @@ function renderLabList() {
     return departmentMatch && (!query || searchableText(lab).includes(query));
   });
   renderLabJumpList(filtered);
+  renderLabRecommendationList(filtered);
   renderLabCardNav(filtered);
-  renderGroupedLabs(qs('#lab-list'), filtered);
+  const list = qs('#lab-list');
+  list.innerHTML = '';
+  list.classList.remove('grouped');
+  list.hidden = true;
 }
 
 function renderLabJumpList(items) {
@@ -696,23 +760,21 @@ function renderLabJumpList(items) {
     container.hidden = true;
     return;
   }
-  const departments = ['生命科学科', '生物資源学科'];
+  const departments = departmentNames(items);
   const available = departments.filter((department) => items.some((lab) => lab.department === department));
-  if (!available.includes(selectedLabJumpDepartment)) {
-    selectedLabJumpDepartment = available[0] || '生命科学科';
-  }
+  if (!available.includes(selectedLabJumpDepartment)) selectedLabJumpDepartment = '';
   const visibleItems = items.filter((lab) => lab.department === selectedLabJumpDepartment);
   const activeClass = deptClass(selectedLabJumpDepartment);
   container.hidden = false;
-  container.classList.toggle('life', selectedLabJumpDepartment === '生命科学科');
-  container.classList.toggle('resource', selectedLabJumpDepartment === '生物資源学科');
+  container.className = `lab-jump-list card ${activeClass}`;
+  applyDepartmentTheme(container, selectedLabJumpDepartment);
   container.innerHTML = `
     <div class="lab-jump-head">
       <div>
         <span class="eyebrow">LAB QUICK INDEX</span>
         <h3>研究室名から見る</h3>
       </div>
-      <span>${visibleItems.length} labs</span>
+      <span>${selectedLabJumpDepartment ? `${visibleItems.length} labs` : 'Select department'}</span>
     </div>
     <div class="lab-jump-tabs" aria-label="学科を切り替える"></div>
     <div class="lab-jump-grid"></div>`;
@@ -724,6 +786,7 @@ function renderLabJumpList(items) {
     button.className = `lab-jump-tab ${deptClass(department)}${department === selectedLabJumpDepartment ? ' active' : ''}`;
     button.disabled = !count;
     button.innerHTML = `<span>${escapeHtml(department)}</span><small>${count}</small>`;
+    applyDepartmentTheme(button, department);
     button.onclick = () => {
       selectedLabJumpDepartment = department;
       renderLabList();
@@ -731,18 +794,71 @@ function renderLabJumpList(items) {
     tabs.appendChild(button);
   });
   const grid = container.querySelector('.lab-jump-grid');
+  if (!selectedLabJumpDepartment) {
+    grid.innerHTML = '<p class="index-empty">学科を選ぶと、研究室名・先生名・キーワードを一覧で見られます。</p>';
+    return;
+  }
   visibleItems.forEach((lab) => grid.appendChild(miniLabButton(lab, {
     keywords: (lab.keywords || []).slice(0, 3),
     showDepartment: false,
     extraClass: activeClass,
-    onClick: () => scrollToLabCard(lab.id)
+    onClick: () => openModal(lab)
   })));
+}
+
+function renderLabRecommendationList(items) {
+  const container = qs('#lab-recommend-list');
+  if (!container) return;
+  if (!items.length) {
+    container.innerHTML = '';
+    container.hidden = true;
+    return;
+  }
+  const departments = departmentNames(items);
+  const available = departments.filter((department) => items.some((lab) => lab.department === department));
+  if (!available.includes(selectedRecommendationDepartment)) selectedRecommendationDepartment = '';
+  const visibleItems = items.filter((lab) => lab.department === selectedRecommendationDepartment);
+  const activeClass = deptClass(selectedRecommendationDepartment);
+  container.hidden = false;
+  container.className = `lab-recommend-list card ${activeClass}`;
+  applyDepartmentTheme(container, selectedRecommendationDepartment);
+  container.innerHTML = `
+    <div class="lab-jump-head">
+      <div>
+        <span class="eyebrow">RECOMMEND INDEX</span>
+        <h3>おすすめから見る</h3>
+      </div>
+      <span>${selectedRecommendationDepartment ? `${visibleItems.length} labs` : 'Select department'}</span>
+    </div>
+    <div class="lab-jump-tabs" aria-label="学科を切り替える"></div>
+    <div class="recommend-index-grid"></div>`;
+  const tabs = container.querySelector('.lab-jump-tabs');
+  departments.forEach((department) => {
+    const count = departmentCount(department, items);
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `lab-jump-tab ${deptClass(department)}${department === selectedRecommendationDepartment ? ' active' : ''}`;
+    button.disabled = !count;
+    button.innerHTML = `<span>${escapeHtml(department)}</span><small>${count}</small>`;
+    applyDepartmentTheme(button, department);
+    button.onclick = () => {
+      selectedRecommendationDepartment = department;
+      renderLabList();
+    };
+    tabs.appendChild(button);
+  });
+  const grid = container.querySelector('.recommend-index-grid');
+  if (!selectedRecommendationDepartment) {
+    grid.innerHTML = '<p class="index-empty">学科を選ぶと、「こんな人におすすめ」から研究室を探せます。</p>';
+    return;
+  }
+  visibleItems.forEach((lab) => grid.appendChild(recommendationIndexButton(lab)));
 }
 
 function renderLabCardNav(items) {
   const container = qs('#lab-card-nav');
   if (!container) return;
-  const departments = ['生命科学科', '生物資源学科']
+  const departments = departmentNames(items)
     .map((department) => ({
       department,
       count: items.filter((lab) => lab.department === department).length
@@ -753,25 +869,41 @@ function renderLabCardNav(items) {
     container.hidden = true;
     return;
   }
+  if (!departments.some((item) => item.department === selectedQuestionDepartment)) selectedQuestionDepartment = '';
+  const visibleItems = items.filter((lab) => lab.department === selectedQuestionDepartment);
+  const activeClass = deptClass(selectedQuestionDepartment);
   container.hidden = false;
+  container.className = `lab-card-nav card ${activeClass}`;
+  applyDepartmentTheme(container, selectedQuestionDepartment);
   container.innerHTML = `
     <div class="lab-card-nav-head">
       <div>
         <span class="eyebrow">LAB CARDS</span>
         <h3>研究の問いから見る</h3>
       </div>
-      <span>${items.length} labs</span>
+      <span>${selectedQuestionDepartment ? `${visibleItems.length} labs` : 'Select department'}</span>
     </div>
-    <div class="lab-card-nav-buttons"></div>`;
+    <div class="lab-card-nav-buttons"></div>
+    <div class="question-index-grid"></div>`;
   const buttons = container.querySelector('.lab-card-nav-buttons');
   departments.forEach(({ department, count }) => {
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = `lab-card-nav-button ${deptClass(department)}`;
+    button.className = `lab-card-nav-button ${deptClass(department)}${department === selectedQuestionDepartment ? ' active' : ''}`;
     button.innerHTML = `<span>${escapeHtml(department)}</span><small>${count} labs</small>`;
-    button.onclick = () => scrollToDepartmentGroup(department);
+    applyDepartmentTheme(button, department);
+    button.onclick = () => {
+      selectedQuestionDepartment = department;
+      renderLabList();
+    };
     buttons.appendChild(button);
   });
+  const grid = container.querySelector('.question-index-grid');
+  if (!selectedQuestionDepartment) {
+    grid.innerHTML = '<p class="index-empty">学科を選ぶと、研究室ごとのQuestionを一覧で見比べられます。</p>';
+    return;
+  }
+  visibleItems.forEach((lab) => grid.appendChild(questionIndexButton(lab)));
 }
 
 function miniLabButton(lab, options = {}) {
@@ -779,6 +911,7 @@ function miniLabButton(lab, options = {}) {
   const className = options.extraClass || deptClass(lab.department);
   button.className = `lab-jump-item ${className}`;
   button.type = 'button';
+  applyDepartmentTheme(button, lab.department);
   const dept = options.showDepartment ? `<span class="lab-jump-dept">${escapeHtml(lab.department)}</span>` : '';
   const keywords = (options.keywords || []).slice(0, 3);
   button.innerHTML = `
@@ -787,6 +920,35 @@ function miniLabButton(lab, options = {}) {
     <span class="lab-jump-pi">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</span>
     <span class="lab-jump-keywords">${keywords.map((keyword) => `<em>${escapeHtml(keyword)}</em>`).join('')}</span>`;
   button.onclick = options.onClick || (() => openModal(lab));
+  return button;
+}
+
+function recommendationIndexButton(lab) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = `recommend-index-item ${deptClass(lab.department)}`;
+  applyDepartmentTheme(button, lab.department);
+  const recommendations = (lab.recommended_for || []).slice(0, 2);
+  button.innerHTML = `
+    <strong>${escapeHtml(displayLabName(lab))}</strong>
+    <span class="recommend-index-pi">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</span>
+    <ul>${recommendations.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+  button.onclick = () => openModal(lab);
+  return button;
+}
+
+function questionIndexButton(lab) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = `question-index-item ${deptClass(lab.department)}`;
+  applyDepartmentTheme(button, lab.department);
+  const keywords = (lab.keywords || []).slice(0, 3);
+  button.innerHTML = `
+    <strong>${escapeHtml(displayLabName(lab))}</strong>
+    <span class="question-index-pi">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</span>
+    <p>${escapeHtml(lab.question)}</p>
+    <span class="lab-jump-keywords">${keywords.map((keyword) => `<em>${escapeHtml(keyword)}</em>`).join('')}</span>`;
+  button.onclick = () => openModal(lab);
   return button;
 }
 
@@ -868,7 +1030,7 @@ function renderEventDates() {
 }
 
 function renderEventFilters() {
-  const filters = ['実験プログラム', '学科紹介', '学科相談', 'お気に入り', '生命科学科', '生物資源学科'];
+  const filters = ['実験プログラム', '学科紹介', '学科相談', 'お気に入り', ...departmentNames()];
   const container = qs('#event-filters');
   container.innerHTML = `
     <div class="keyword-panel-head">
@@ -881,6 +1043,7 @@ function renderEventFilters() {
     const button = document.createElement('button');
     button.className = `event-filter${selectedEventFilters.has(filter) ? ' selected' : ''}`;
     button.textContent = filter;
+    if (departmentNames().includes(filter)) applyDepartmentTheme(button, filter);
     button.onclick = () => {
       selectedEventFilters.has(filter) ? selectedEventFilters.delete(filter) : selectedEventFilters.add(filter);
       renderVisitors();
@@ -930,6 +1093,7 @@ function eventIndexButton(program) {
   const time = program.times?.[0] || '時間は当日案内';
   button.type = 'button';
   button.className = `event-index-item ${primaryLab ? deptClass(primaryLab.department) : ''}`;
+  if (primaryLab) applyDepartmentTheme(button, primaryLab.department);
   button.innerHTML = `
     <span class="event-index-type">${escapeHtml(program.type)}</span>
     <strong>${escapeHtml(displayProgramTitle(program.title))}</strong>
@@ -995,6 +1159,7 @@ function eventCard(program) {
   const primaryLab = programLabs[0];
   const isSingle = programLabs.length === 1;
   article.className = `event-card card ${primaryLab ? deptClass(primaryLab.department) : ''}`;
+  if (primaryLab) applyDepartmentTheme(article, primaryLab.department);
   article.dataset.programId = program.id;
   article.tabIndex = 0;
   article.innerHTML = `
@@ -1023,6 +1188,7 @@ function eventCard(program) {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = `event-lab-button ${deptClass(lab.department)}`;
+    applyDepartmentTheme(button, lab.department);
     button.textContent = `${lab.pi_name.replace(/\s+/g, ' ')}先生`;
     button.onclick = () => openModal(lab);
     actions.appendChild(button);
@@ -1141,6 +1307,7 @@ function openModal(lab) {
     toggleFavorite(lab.id);
     openModal(lab);
   };
+  applyDepartmentTheme(qs('#modal-content .modal-title'), lab.department);
   qs('#modal').classList.add('open');
   qs('#modal').setAttribute('aria-hidden', 'false');
 }
