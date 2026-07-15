@@ -338,6 +338,7 @@ function tagButton(route) {
     selected = new Set([route.id]);
     selectedDetailTerms.clear();
     switchView('interest');
+    scrollToDetailTerms();
   };
   return button;
 }
@@ -362,6 +363,7 @@ function renderTagPanels() {
       selected.has(route.id) ? selected.delete(route.id) : selected.add(route.id);
       pruneSelectedDetailTerms();
       renderInterest();
+      scrollToDetailTerms();
     };
     routeGrid.appendChild(button);
   });
@@ -407,7 +409,7 @@ function renderDetailTermPanel(panel) {
   detail.className = 'detail-term-panel';
   detail.innerHTML = `
     <div class="keyword-panel-head">
-      <strong>この入口に含まれるキーワード</strong>
+      <strong>このトピックに含まれるキーワード</strong>
       <p>気になる言葉を選ぶと、より近い研究室にしぼれます。</p>
     </div>
     <div class="detail-term-grid"></div>`;
@@ -440,6 +442,13 @@ function renderDetailTermPanel(panel) {
     grid.appendChild(clear);
   }
   panel.appendChild(detail);
+}
+
+function scrollToDetailTerms() {
+  window.setTimeout(() => {
+    const target = qs('.detail-term-panel');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
 }
 
 function labMatchesTerm(lab, term) {
