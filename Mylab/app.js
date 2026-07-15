@@ -531,21 +531,36 @@ function displayMatchedTerms(lab, terms) {
 function card(lab, match = '') {
   const article = document.createElement('article');
   const isFav = favorites.has(lab.id);
+  const recommended = (lab.recommended_for || []).slice(0, 2);
+  const keywords = (lab.keywords || []).slice(0, 4);
+  const recommendedHtml = recommended.length ? `
+    <section class="lab-recommended-preview" aria-label="こんな人におすすめ">
+      <span class="lab-mini-label">こんな人におすすめ</span>
+      <ul>${recommended.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+    </section>` : '';
+  const keywordsHtml = keywords.length ? `
+    <div class="keywords">${keywords.map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join('')}</div>` : '';
+  const matchHtml = match ? `<span class="match">${escapeHtml(match)}</span>` : '';
   article.className = `lab-card card ${deptClass(lab.department)}`;
   article.innerHTML = `
-    <span class="lab-dept">${escapeHtml(lab.department)}</span>
-    <div class="lab-card-head">
-      <div>
-        <h3>${escapeHtml(lab.lab_name)}</h3>
-        <p class="pi-name">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</p>
-      </div>
-    </div>
-    <p class="catch">${escapeHtml(lab.summary)}</p>
-    <div class="keywords">${lab.keywords.slice(0, 5).map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join('')}</div>
-    <div class="lab-actions">
+    <div class="lab-card-topline">
+      <span class="lab-dept">${escapeHtml(lab.department)}</span>
       <button class="favorite-button ${isFav ? 'active' : ''}" aria-label="${isFav ? 'お気に入りから外す' : 'お気に入りに追加'}">${isFav ? '♥' : '♡'}</button>
-      <span class="match">${escapeHtml(match)}</span>
-      <button class="open-lab">研究室をのぞく →</button>
+    </div>
+    <header class="lab-card-head">
+      <h3>${escapeHtml(lab.lab_name)}</h3>
+      <p class="pi-name">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</p>
+    </header>
+    <section class="lab-question">
+      <span class="lab-question-label">QUESTION</span>
+      <p>${escapeHtml(lab.question)}</p>
+    </section>
+    <p class="catch">${escapeHtml(lab.summary)}</p>
+    ${recommendedHtml}
+    ${keywordsHtml}
+    <div class="lab-actions">
+      ${matchHtml}
+      <button class="open-lab">次の扉をひらく →</button>
     </div>`;
   article.querySelector('.favorite-button').onclick = (event) => {
     event.stopPropagation();
