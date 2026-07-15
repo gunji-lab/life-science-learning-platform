@@ -16,43 +16,43 @@ const interestRoutes = [
     label: '動物やからだが気になる',
     description: '動物の形、動き、発生、神経などから生命を見たい人へ。',
     required: ['動物', '野生動物', '哺乳類', '鳥類', '魚類', 'キリン', '骨格', '筋肉', '心臓', '神経', '脳', '比較解剖学', '機能形態学', 'バイオメカニクス'],
-    terms: ['動物', '野生動物', '哺乳類', '鳥類', '魚類', 'キリン', '骨格', '筋肉', '形態', '発生', '胚', '心臓', '神経', '脳', '行動', '運動', '比較解剖学', '機能形態学', 'バイオメカニクス']
+    terms: ['動物', '野生動物', '哺乳類', '鳥類', '魚類', 'キリン', '小型哺乳類', 'コウモリ', '海鳥', '脊椎動物', '骨格', '筋肉', '形態', '発生', '胚', '心臓', '神経', '脳', '行動', '動物行動', '運動', '比較解剖学', '機能形態学', 'バイオメカニクス', '動物福祉']
   },
   {
     id: 'health',
     label: '病気・健康・医療に興味がある',
     description: '健康、毒性、医療、リスク、こころと体の状態を考えたい人へ。',
-    terms: ['健康', '医療', '毒性', '環境健康', '環境保健', 'メンタルヘルス', 'リスク', '曝露', '公衆衛生', '細胞外小胞', 'ダイオキシン', '受容体']
+    terms: ['健康', '医療', '毒性', '環境健康', '環境保健', 'メンタルヘルス', 'リスク', '曝露', '公衆衛生', '細胞外小胞', 'ダイオキシン', '受容体', 'がん', '炎症', '免疫', '生殖', '不妊', '再生医療']
   },
   {
     id: 'plants_food',
     label: '植物や食べものに関わりたい',
     description: '植物、作物、食料、栄養、植物が作る成分に興味がある人へ。',
-    terms: ['植物', 'イネ', '作物', '光合成', '植物生理', '植物ホルモン', '成長制御', '植物バイオーム', '食料', '栄養', '収量', '植物化学', '天然物', '植物生化学']
+    terms: ['植物', 'イネ', 'イネ科植物', '作物', '光合成', '植物生理', '植物ホルモン', '成長制御', 'ストリゴラクトン', '植物栄養', '鉄吸収', 'ムギネ酸類', '植物バイオーム', '水草', '水陸両生植物', '品種育成', '食料', '栄養', '収量', '植物化学', '天然物', '植物生化学', '特化代謝産物', '二次代謝産物']
   },
   {
     id: 'environment',
     label: '環境問題を考えたい',
     description: '水、地球環境、生態系、生物多様性、環境リスクを考えたい人へ。',
-    terms: ['水環境', '水質', '地球環境', '気候変動', '環境変動', '環境保全', '環境修復', '生態系', '生態学', '生態リスク', '生物多様性', '保全', '海洋生態系', '持続可能性', '物質循環', '環境問題']
+    terms: ['環境', '水環境', '水質', '地球環境', '気候変動', '環境変動', '環境保全', '環境修復', '環境浄化', '生態系', '生態学', '生態リスク', '生物多様性', '保全', '海洋生態系', '持続可能性', '物質循環', '環境問題', '重金属', '環境低負荷農業']
   },
   {
     id: 'micro_world',
     label: '微生物や見えない世界が気になる',
     description: '微生物、極限環境、酵素、放射線、宇宙につながる生命を見たい人へ。',
-    terms: ['微生物', 'バクテリア', '極限環境', '超好熱菌', '極域', '南極', '低温適応', '放射線', '宇宙', '酵素', '生体触媒', '発酵', '微生物学', '電気微生物']
+    terms: ['微生物', 'バクテリア', '糸状菌', '極限環境', '極限環境微生物', '超好熱菌', '極域', '南極', '北極', '低温適応', '放射線', '放射線抵抗性細菌', '宇宙', '酵素', '生体触媒', '発酵', '微生物学', '電気微生物', '電気活性微生物', '発電菌', '有機溶媒耐性微生物', '有用微生物', 'プラスチック分解菌', '重金属耐性菌', '微生物多様性']
   },
   {
     id: 'dna_cells',
     label: 'DNA・細胞・遺伝子を知りたい',
     description: 'DNA、細胞、遺伝子、タンパク質など、生命の小さなしくみへ。',
-    terms: ['DNA', 'DNA修復', '遺伝子', '遺伝子解析', 'ゲノム', '突然変異', '細胞', '細胞培養', '細胞工学', 'iPS細胞', '分子生物学', 'タンパク質', '分子遺伝学', '分子']
+    terms: ['DNA', 'DNA修復', '遺伝子', '遺伝子解析', 'ゲノム', '突然変異', '細胞', '細胞培養', '細胞工学', 'iPS細胞', '分子生物学', 'タンパク質', '分子遺伝学', '分子', '神経回路', '細胞接着', '糖鎖間相互作用']
   },
   {
     id: 'experiments',
     label: '実験や分析が好き',
     description: '実験、観察、培養、化学分析、測定を通して確かめたい人へ。',
-    terms: ['顕微鏡', '細胞培養', '培養', '化学分析', '成分分析', '測定', '生理測定', '生化学', '有機化学', '糖質', '糖鎖', '材料', '酵素活性', '分子生物学実験', '物理実験', '標本', '解剖', 'CT']
+    terms: ['顕微鏡', '顕微鏡観察', '電子顕微鏡', '細胞培養', '培養', '化学', '化学分析', '分析化学', '成分分析', '測定', '生理測定', '生化学', '有機化学', '糖質', '糖鎖', '材料', '酵素活性', '分子生物学実験', '物理実験', '標本', '解剖', 'CT']
   },
   {
     id: 'fieldwork',
@@ -65,7 +65,7 @@ const interestRoutes = [
     id: 'data',
     label: 'データで生命を読み解きたい',
     description: 'データ解析、統計、情報、ゲノム、計測から生命を理解したい人へ。',
-    terms: ['データ解析', '統計', '生物統計', '情報', 'ゲノム', 'バイオインフォマティクス', '計測', 'リスク評価', '疫学', '分布データ', '環境データ']
+    terms: ['データ解析', '統計', '統計モデリング', '生物統計', '情報', 'ゲノム', 'バイオインフォマティクス', '生物情報学', '計測', 'リスク評価', '疫学', '分布データ', '環境データ', 'モーションキャプチャ', 'バイオロギング']
   }
 ];
 const tagParents = {
@@ -74,8 +74,15 @@ const tagParents = {
   '鳥類': ['動物'],
   '魚類': ['動物'],
   '野生動物': ['動物'],
+  '海鳥': ['鳥類', '動物', '海洋生態系'],
+  '小型哺乳類': ['哺乳類', '動物'],
+  'コウモリ': ['小型哺乳類', '哺乳類', '動物'],
+  '脊椎動物': ['動物'],
   '骨格筋': ['筋肉', '動物'],
+  '動物行動': ['行動', '動物'],
+  '動物福祉': ['動物', '健康'],
   '神経細胞': ['神経', '細胞'],
+  '神経回路': ['神経', '脳'],
   '器官形成': ['発生', '形態'],
   '形態形成': ['発生', '形態'],
   '行動観察': ['行動'],
@@ -107,9 +114,11 @@ const tagParents = {
   '地球環境': ['環境', '環境問題'],
   '地球環境調査': ['地球環境', '環境'],
   '気候変動': ['環境問題', '環境変動'],
+  '重金属': ['環境', '化学物質'],
   '環境保全': ['環境', '保全'],
   '環境修復': ['環境保全', '環境'],
   '環境浄化': ['環境保全', '環境'],
+  '環境低負荷農業': ['環境保全', '環境', '植物'],
   '環境科学': ['環境'],
   '環境影響': ['環境'],
   '環境データ解析': ['環境データ', 'データ解析', '環境'],
@@ -119,7 +128,16 @@ const tagParents = {
   '曝露': ['環境保健', '健康'],
   '公衆衛生': ['健康'],
   'メンタルヘルス': ['健康'],
+  '生殖': ['健康'],
+  '不妊': ['生殖', '健康'],
+  '炎症': ['健康'],
+  'がん': ['健康'],
+  'がん転移': ['がん', '健康'],
+  '免疫': ['健康'],
+  '再生医療': ['医療', '健康', '細胞'],
   '細胞外小胞': ['細胞', '健康'],
+  '細胞接着': ['細胞'],
+  '糖鎖間相互作用': ['糖鎖', '細胞接着', '細胞'],
   '毒性': ['健康'],
   '毒性評価': ['毒性', '測定'],
   'ダイオキシン': ['毒性', '環境化学物質'],
@@ -143,9 +161,21 @@ const tagParents = {
   '分子生物学': ['分子', '遺伝子'],
   '分子生物学実験': ['分子生物学', '遺伝子', '実験'],
   'タンパク質解析': ['タンパク質', '分子生物学'],
+  '生物情報学': ['情報', 'データ解析'],
   'バクテリア': ['微生物'],
+  '糸状菌': ['微生物'],
+  'アカパンカビ': ['糸状菌', '微生物'],
   '超好熱菌': ['微生物', '極限環境'],
   '電気微生物': ['微生物'],
+  '電気活性微生物': ['電気微生物', '微生物'],
+  '発電菌': ['電気活性微生物', '電気微生物', '微生物'],
+  '放射線抵抗性細菌': ['細菌', '微生物', '放射線'],
+  '有機溶媒耐性微生物': ['極限環境微生物', '微生物'],
+  '極限環境微生物': ['微生物', '極限環境'],
+  '有用微生物': ['微生物', '生物資源'],
+  'プラスチック分解菌': ['微生物', '環境浄化'],
+  '重金属耐性菌': ['微生物', '環境浄化', '重金属'],
+  '微生物多様性': ['微生物', '生物多様性'],
   '応用微生物': ['微生物'],
   '微生物培養': ['微生物', '培養'],
   '微生物分離・培養': ['微生物', '培養'],
@@ -153,6 +183,7 @@ const tagParents = {
   '発酵': ['微生物'],
   '極域': ['極限環境'],
   '南極': ['極域', '極限環境'],
+  '北極': ['極域', '極限環境'],
   '低温適応': ['極域', '極限環境'],
   '低温環境実験': ['低温適応', '極限環境'],
   '生命の限界': ['極限環境'],
@@ -163,11 +194,27 @@ const tagParents = {
   '酵素・代謝解析': ['酵素', '代謝', '測定'],
   '生体触媒': ['酵素', '微生物'],
   '植物ホルモン': ['植物'],
+  'ストリゴラクトン': ['植物ホルモン', '植物'],
+  'オーキシン': ['植物ホルモン', '植物'],
+  'サイトカイニン': ['植物ホルモン', '植物'],
+  '植物栄養': ['植物'],
+  '鉄吸収': ['植物栄養', '植物'],
+  'ムギネ酸類': ['鉄吸収', '植物栄養', '植物'],
+  'イネ科植物': ['イネ', '植物', '作物'],
+  '水草': ['植物'],
+  '水陸両生植物': ['水草', '植物'],
   '植物生理学': ['植物', '植物生理'],
   '植物生理': ['植物'],
-  '植物バイオーム': ['植物', '微生物'],
+  '植物バイオーム': ['植物', '環境'],
   '植物化学': ['植物', '化学'],
   '植物生化学': ['植物', '生化学'],
+  '特化代謝産物': ['二次代謝産物', '植物化学', '植物'],
+  '二次代謝産物': ['植物化学', '植物', '化学'],
+  'テルペノイド': ['二次代謝産物', '植物化学'],
+  'フラボノイド': ['二次代謝産物', '植物化学'],
+  'モミラクトン': ['特化代謝産物', '植物化学', 'イネ'],
+  'クマリン': ['二次代謝産物', '植物化学'],
+  '色素': ['植物化学', '化学成分'],
   '植物成分分析': ['植物', '成分分析', '化学分析'],
   '植物栽培': ['植物'],
   '植物の栽培実験': ['植物', '栽培実験'],
@@ -175,12 +222,14 @@ const tagParents = {
   'イネ': ['植物', '作物', '食料'],
   '作物': ['植物', '食料'],
   '作物学': ['作物', '植物'],
+  '品種育成': ['作物', '植物', '食料'],
   '光合成': ['植物'],
   '収量': ['作物', '食料'],
   '食料問題': ['食料'],
   '栄養': ['食料', '健康'],
   '天然物': ['化学', '植物化学'],
   '有機化学': ['化学'],
+  '分析化学': ['化学分析', '化学'],
   '有機化学実験': ['有機化学', '化学分析'],
   '化学成分': ['化学分析'],
   '化学物質': ['化学'],
@@ -194,6 +243,8 @@ const tagParents = {
   '電気化学測定': ['電気化学', '測定'],
   '成分分析と品種評価': ['成分分析', '測定'],
   '糖質合成・分析': ['糖質', '糖鎖', '化学分析'],
+  'オリゴ糖': ['糖鎖', '糖質'],
+  '糖クラスター': ['糖鎖', '材料'],
   '多糖': ['糖質'],
   '材料評価': ['材料', '測定'],
   '構造解析': ['測定'],
@@ -204,6 +255,9 @@ const tagParents = {
   '疫学調査': ['疫学', 'データ解析'],
   '生物統計': ['統計', 'データ解析'],
   '生物統計解析': ['生物統計', '統計', 'データ解析'],
+  '統計モデリング': ['統計', 'データ解析'],
+  'モーションキャプチャ': ['行動計測', '計測'],
+  'バイオロギング': ['フィールド調査', '計測'],
   '情報学': ['情報', 'データ解析'],
   '資料解析': ['データ解析']
 };
@@ -211,6 +265,7 @@ const syllabusUrl = 'https://g-sys.toyo.ac.jp/syllabus/';
 const qs = (selector) => document.querySelector(selector);
 const qsa = (selector) => [...document.querySelectorAll(selector)];
 const displayLabName = (lab) => lab.lab_name.endsWith('研究室') ? lab.lab_name : `${lab.lab_name}研究室`;
+const displayKeywords = (lab) => uniqueTerms([...(lab.major_categories || []), ...(lab.keywords || [])]);
 const fallbackDepartmentMeta = {
   className: 'department-extra',
   description: '生命科学部の多様な問いに向き合う研究室。',
@@ -339,6 +394,15 @@ function departmentNames(items = labs) {
   const configured = departments.map((department) => department.name).filter((name) => present.has(name));
   const unknown = [...present].filter((name) => !configured.includes(name)).sort((a, b) => a.localeCompare(b, 'ja'));
   return [...configured, ...unknown];
+}
+
+function uniqueTerms(terms = []) {
+  const seen = new Set();
+  return terms.filter((term) => {
+    if (!term || seen.has(term)) return false;
+    seen.add(term);
+    return true;
+  });
 }
 
 function departmentCount(department, items = labs) {
@@ -538,6 +602,7 @@ function searchableText(lab) {
     lab.summary,
     lab.question,
     lab.description,
+    ...(lab.major_categories || []),
     ...(lab.keywords || []),
     ...(lab.methods || []),
     ...(lab.courses || []).map((course) => course.title)
@@ -550,6 +615,7 @@ function routeText(lab) {
     lab.summary,
     lab.question,
     lab.description,
+    ...(lab.major_categories || []),
     ...(lab.keywords || []),
     ...(lab.methods || [])
   ].join(' ').toLowerCase();
@@ -561,6 +627,7 @@ function labTagText(lab) {
 
 function labRawTags(lab) {
   return [
+    ...(lab.major_categories || []),
     ...(lab.keywords || []),
     ...(lab.methods || [])
   ];
@@ -592,7 +659,7 @@ function card(lab, match = '') {
   const article = document.createElement('article');
   const isFav = favorites.has(lab.id);
   const recommended = (lab.recommended_for || []).slice(0, 2);
-  const keywords = (lab.keywords || []).slice(0, 4);
+  const keywords = displayKeywords(lab).slice(0, 4);
   const recommendedHtml = recommended.length ? `
     <section class="lab-recommended-preview" aria-label="こんな人におすすめ">
       <span class="lab-mini-label">こんな人におすすめ</span>
@@ -728,7 +795,7 @@ function renderInterestIndex(container, items) {
   items.forEach((item) => {
     const matched = displayMatchedTerms(item.lab, item.matched).slice(0, 3);
     grid.appendChild(miniLabButton(item.lab, {
-      keywords: matched.length ? matched : (item.lab.keywords || []).slice(0, 3),
+      keywords: matched.length ? matched : displayKeywords(item.lab).slice(0, 3),
       showDepartment: true,
       onClick: () => openModal(item.lab)
     }));
@@ -799,7 +866,7 @@ function renderLabJumpList(items) {
     return;
   }
   visibleItems.forEach((lab) => grid.appendChild(miniLabButton(lab, {
-    keywords: (lab.keywords || []).slice(0, 3),
+    keywords: displayKeywords(lab).slice(0, 3),
     showDepartment: false,
     extraClass: activeClass,
     onClick: () => openModal(lab)
@@ -942,7 +1009,7 @@ function questionIndexButton(lab) {
   button.type = 'button';
   button.className = `question-index-item ${deptClass(lab.department)}`;
   applyDepartmentTheme(button, lab.department);
-  const keywords = (lab.keywords || []).slice(0, 3);
+  const keywords = displayKeywords(lab).slice(0, 3);
   button.innerHTML = `
     <strong>${escapeHtml(displayLabName(lab))}</strong>
     <span class="question-index-pi">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</span>
@@ -1282,7 +1349,7 @@ function openModal(lab) {
       <section class="detail-box full"><h3>この研究室では</h3><p>${escapeHtml(lab.description)}</p></section>
       <section class="detail-box"><h3>主な研究方法</h3><ul>${lab.methods.map((method) => `<li>${escapeHtml(method)}</li>`).join('')}</ul></section>
       <section class="detail-box"><h3>こんな人におすすめ</h3><ul>${lab.recommended_for.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>
-      <section class="detail-box full"><h3>キーワード</h3><div class="keywords">${lab.keywords.map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join('')}</div></section>
+      <section class="detail-box full"><h3>大区分・キーワード</h3><div class="keywords">${displayKeywords(lab).map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join('')}</div></section>
     </div>
     <section class="detail-section">
       <div class="detail-section-head">

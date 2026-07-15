@@ -39,6 +39,7 @@
 - `summary`
 - `description`
 - `methods`
+- `major_categories`
 - `keywords`
 - `recommended_for`
 - `courses`
@@ -75,6 +76,8 @@ python3 -m http.server 8123
 
 - `department` の表記ゆれがあると、学科設定と研究室が結びつきません。
 - `id` は既存研究室と重複しないようにします。
-- `keywords` と `methods` が少ないと、興味検索で見つかりにくくなります。
+- `major_categories` の表記ゆれがあると、植物・微生物・動物などの大区分検索が弱くなります。
+- `keywords` は研究内容本文から5〜10個程度に絞り、他研究室とも比較しやすい語を優先します。
+- タグ設計の詳しい運用ルールは `docs/tagging-policy.md` を確認します。
 - `courses` は共通導入科目に偏らないよう、座学2件＋実験1件を基本にします。
 - 外部リンクはURLだけでなく、リンク先の種類がわかる `label` と `title` を付けると詳細ページで読みやすくなります。
