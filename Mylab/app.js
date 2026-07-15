@@ -818,6 +818,7 @@ function renderVisitors() {
   renderEventFilters();
 
   const programs = filteredPrograms();
+  renderEventQuickIndex(programs);
   const list = qs('#event-list');
   list.innerHTML = '';
   if (!programs.length) {
@@ -898,6 +899,55 @@ function renderEventFilters() {
   }
 }
 
+function renderEventQuickIndex(programs) {
+  const container = qs('#event-quick-index');
+  if (!container) return;
+  if (!programs.length) {
+    container.innerHTML = '';
+    container.hidden = true;
+    return;
+  }
+  const currentDate = currentEventDateBlock();
+  container.hidden = false;
+  container.innerHTML = `
+    <div class="event-index-head">
+      <div>
+        <span class="eyebrow">EVENT QUICK INDEX</span>
+        <h3>${escapeHtml(currentDate?.label || '当日')}のプログラム早見表</h3>
+      </div>
+      <span>${programs.length} programs</span>
+    </div>
+    <div class="event-index-grid"></div>`;
+  const grid = container.querySelector('.event-index-grid');
+  programs.forEach((program) => grid.appendChild(eventIndexButton(program)));
+}
+
+function eventIndexButton(program) {
+  const button = document.createElement('button');
+  const programLabs = labsForProgram(program);
+  const primaryLab = programLabs[0];
+  const teacherNames = programLabs.map((lab) => `${lab.pi_name.replace(/\s+/g, ' ')}先生`).join('・');
+  const time = program.times?.[0] || '時間は当日案内';
+  button.type = 'button';
+  button.className = `event-index-item ${primaryLab ? deptClass(primaryLab.department) : ''}`;
+  button.innerHTML = `
+    <span class="event-index-type">${escapeHtml(program.type)}</span>
+    <strong>${escapeHtml(displayProgramTitle(program.title))}</strong>
+    <span class="event-index-meta">${escapeHtml(time)} / ${escapeHtml(program.place || '場所は当日案内')}</span>
+    ${teacherNames ? `<span class="event-index-teacher">${escapeHtml(teacherNames)}</span>` : ''}`;
+  button.onclick = () => scrollToEventCard(program.id);
+  return button;
+}
+
+function scrollToEventCard(programId) {
+  const target = [...document.querySelectorAll('#event-list .event-card')]
+    .find((item) => item.dataset.programId === programId);
+  if (!target) return;
+  const top = target.getBoundingClientRect().top + window.scrollY - 74;
+  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+  target.focus({ preventScroll: true });
+}
+
 function flattenPrograms() {
   return (eventData?.dates || []).flatMap((dateBlock) => {
     return (dateBlock.programs || []).map((program) => ({
@@ -945,12 +995,17 @@ function eventCard(program) {
   const primaryLab = programLabs[0];
   const isSingle = programLabs.length === 1;
   article.className = `event-card card ${primaryLab ? deptClass(primaryLab.department) : ''}`;
+  article.dataset.programId = program.id;
+  article.tabIndex = 0;
   article.innerHTML = `
-    <div class="event-card-top">
+    <div class="event-card-topline">
       <span class="event-date">${escapeHtml(program.dateLabel)}</span>
       <span class="event-type">${escapeHtml(program.type)}</span>
     </div>
-    <h3>${escapeHtml(displayProgramTitle(program.title))}</h3>
+    <header class="event-card-head">
+      <span class="event-card-label">PROGRAM</span>
+      <h3>${escapeHtml(displayProgramTitle(program.title))}</h3>
+    </header>
     <p class="event-program">${escapeHtml(program.program)}</p>
     <dl class="event-meta">
       <div><dt>時間</dt><dd>${program.times?.length ? program.times.map((time) => `<span>${escapeHtml(time)}</span>`).join('') : '当日案内を確認'}</dd></div>
@@ -958,18 +1013,16 @@ function eventCard(program) {
       <div><dt>対象</dt><dd>${escapeHtml(program.audience || '受験生・保護者')}</dd></div>
     </dl>
     ${program.notes?.length ? `<div class="event-notes">${program.notes.map((note) => `<span>${escapeHtml(note)}</span>`).join('')}</div>` : ''}
-    <div class="event-actions"></div>`;
+    <section class="event-teachers" aria-label="担当する先生">
+      <span class="event-action-label">担当する先生は？</span>
+      <div class="event-actions"></div>
+    </section>`;
 
   const actions = article.querySelector('.event-actions');
-  if (primaryLab) {
-    const label = document.createElement('span');
-    label.className = 'event-action-label';
-    label.textContent = '担当する先生は？';
-    actions.appendChild(label);
-  }
   programLabs.forEach((lab) => {
     const button = document.createElement('button');
-    button.className = 'event-lab-button';
+    button.type = 'button';
+    button.className = `event-lab-button ${deptClass(lab.department)}`;
     button.textContent = `${lab.pi_name.replace(/\s+/g, ' ')}先生`;
     button.onclick = () => openModal(lab);
     actions.appendChild(button);
@@ -977,6 +1030,7 @@ function eventCard(program) {
   if (isSingle && primaryLab) {
     const favorite = document.createElement('button');
     const isFav = favorites.has(primaryLab.id);
+    favorite.type = 'button';
     favorite.className = `favorite-button ${isFav ? 'active' : ''}`;
     favorite.setAttribute('aria-label', isFav ? 'お気に入りから外す' : 'お気に入りに追加');
     favorite.textContent = isFav ? '♥' : '♡';
