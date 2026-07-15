@@ -204,7 +204,7 @@ function renderTagPanels() {
   panel.innerHTML = '';
   const intro = document.createElement('div');
   intro.className = 'keyword-panel-head';
-  intro.innerHTML = '<strong>高校生のことばで選ぶ</strong><p>研究室データのキーワードや研究方法から、入口タグを自動で判定しています。</p>';
+  intro.innerHTML = '<strong>トピックで選ぶ</strong><p>研究室データのキーワードや研究方法から自動で判定しています。</p>';
   panel.appendChild(intro);
 
   const routeGrid = document.createElement('div');
