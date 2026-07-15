@@ -64,11 +64,6 @@
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       }
     ],
     "needs_review": true,
@@ -130,24 +125,13 @@
       }
     ],
     "links": {
-      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/kaneko/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032704/"
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/kaneko/"
     },
     "sources": [
       {
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/kaneko/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032704/",
-        "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
@@ -229,23 +213,14 @@
     ],
     "links": {
       "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/kawaguchi/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032705/"
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20181107_03/",
+      "mock_lecture_title": "筆跡情報を用いたメンタルヘルス不調のリスク評価"
     },
     "sources": [
       {
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/kawaguchi/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032705/",
-        "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
@@ -255,6 +230,11 @@
       {
         "type": "official_media",
         "url": "https://www.toyo.ac.jp/link-toyo/social/2020_toyo_vascular_protection",
+        "checked_at": "2026-07-15"
+      },
+      {
+        "type": "official_mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20181107_03/",
         "checked_at": "2026-07-15"
       }
     ],
@@ -326,7 +306,8 @@
     ],
     "links": {
       "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/koshiba/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032702/"
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20190123_02/",
+      "mock_lecture_title": "心臓の形を科学する – 心臓の環境適応戦略 –"
     },
     "sources": [
       {
@@ -335,18 +316,13 @@
         "checked_at": "2026-07-14"
       },
       {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032702/",
-        "checked_at": "2026-07-14"
-      },
-      {
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
       },
       {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
+        "type": "official_mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20190123_02/",
         "checked_at": "2026-07-15"
       }
     ],
@@ -409,24 +385,13 @@
       }
     ],
     "links": {
-      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/shiizaki/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032707/"
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/shiizaki/"
     },
     "sources": [
       {
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/shiizaki/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032707/",
-        "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
@@ -505,11 +470,6 @@
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       }
     ],
     "needs_review": true,
@@ -571,24 +531,13 @@
       }
     ],
     "links": {
-      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/narumi/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032708/"
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/narumi/"
     },
     "sources": [
       {
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/narumi/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032708/",
-        "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
@@ -657,7 +606,8 @@
     "links": {
       "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/nedachi/",
       "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032703/",
-      "researchmap": "https://researchmap.jp/read0141066"
+      "researchmap": "https://researchmap.jp/read0141066",
+      "mock_lecture_title": "細胞をとりあげ、そのストレス適応を学ぶ"
     },
     "sources": [
       {
@@ -666,18 +616,13 @@
         "checked_at": "2026-07-14"
       },
       {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032703/",
-        "checked_at": "2026-07-14"
-      },
-      {
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
       },
       {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
+        "type": "official_mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032703/",
         "checked_at": "2026-07-15"
       }
     ],
@@ -741,7 +686,8 @@
     ],
     "links": {
       "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/yoshinaga/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032701/"
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20200729_01/",
+      "mock_lecture_title": "生物統計学"
     },
     "sources": [
       {
@@ -750,18 +696,13 @@
         "checked_at": "2026-07-14"
       },
       {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032701/",
-        "checked_at": "2026-07-14"
-      },
-      {
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
       },
       {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
+        "type": "official_mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20200729_01/",
         "checked_at": "2026-07-15"
       }
     ],
@@ -825,7 +766,8 @@
     ],
     "links": {
       "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/ito_m/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032709/"
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20190306_01/",
+      "mock_lecture_title": "野生動物の生き様から探る環境変動が海洋生態系に与える影響"
     },
     "sources": [
       {
@@ -834,18 +776,13 @@
         "checked_at": "2026-07-14"
       },
       {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032709/",
-        "checked_at": "2026-07-14"
-      },
-      {
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
       },
       {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
+        "type": "official_mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20190306_01/",
         "checked_at": "2026-07-15"
       }
     ],
@@ -916,11 +853,6 @@
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/gunji/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
@@ -1023,11 +955,6 @@
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       }
     ],
     "needs_review": true,
@@ -1101,11 +1028,6 @@
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       }
     ],
     "needs_review": true,
@@ -1168,7 +1090,8 @@
     ],
     "links": {
       "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/ichiishi/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032712/"
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20181226_01/",
+      "mock_lecture_title": "突然変異とDNA修復 – DNAの完全性 –"
     },
     "sources": [
       {
@@ -1177,18 +1100,13 @@
         "checked_at": "2026-07-14"
       },
       {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032712/",
-        "checked_at": "2026-07-14"
-      },
-      {
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
       },
       {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
+        "type": "official_mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20181226_01/",
         "checked_at": "2026-07-15"
       }
     ],
@@ -1252,7 +1170,8 @@
     ],
     "links": {
       "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/ito/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032713/"
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20180328_03/",
+      "mock_lecture_title": "世界最小のハイブリッドモーターを持つバクテリアに迫る！ – 生体分子ナノマシンの世界 –"
     },
     "sources": [
       {
@@ -1261,18 +1180,13 @@
         "checked_at": "2026-07-14"
       },
       {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032713/",
-        "checked_at": "2026-07-14"
-      },
-      {
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
       },
       {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
+        "type": "official_mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20180328_03/",
         "checked_at": "2026-07-15"
       }
     ],
@@ -1335,24 +1249,13 @@
       }
     ],
     "links": {
-      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/umehara/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032716/"
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/umehara/"
     },
     "sources": [
       {
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/umehara/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032716/",
-        "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
@@ -1431,11 +1334,6 @@
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       }
     ],
     "needs_review": true,
@@ -1498,7 +1396,8 @@
     ],
     "links": {
       "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/kouzuma/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032710/"
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20260225_03/",
+      "mock_lecture_title": "電気微生物学への招待"
     },
     "sources": [
       {
@@ -1507,18 +1406,13 @@
         "checked_at": "2026-07-14"
       },
       {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032710/",
-        "checked_at": "2026-07-14"
-      },
-      {
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
       },
       {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
+        "type": "official_mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20260225_03/",
         "checked_at": "2026-07-15"
       }
     ],
@@ -1582,7 +1476,8 @@
     ],
     "links": {
       "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/shimizu/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032711/"
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20190123_03/",
+      "mock_lecture_title": "植物をカガクする – 植物の作る成分と、植物の生き方の研究 –"
     },
     "sources": [
       {
@@ -1591,18 +1486,13 @@
         "checked_at": "2026-07-14"
       },
       {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032711/",
-        "checked_at": "2026-07-14"
-      },
-      {
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
       },
       {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
+        "type": "official_mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/20190123_03/",
         "checked_at": "2026-07-15"
       }
     ],
@@ -1665,24 +1555,13 @@
       }
     ],
     "links": {
-      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/doukyu/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032718/"
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/doukyu/"
     },
     "sources": [
       {
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/doukyu/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032718/",
-        "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
@@ -1761,11 +1640,6 @@
         "type": "official_syllabus_search",
         "url": "https://g-sys.toyo.ac.jp/syllabus/",
         "checked_at": "2026-07-15"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       }
     ],
     "needs_review": true,
@@ -1827,24 +1701,13 @@
       }
     ],
     "links": {
-      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/hasegawa/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032715/"
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/hasegawa/"
     },
     "sources": [
       {
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/hasegawa/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032715/",
-        "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
@@ -1912,7 +1775,6 @@
     ],
     "links": {
       "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/hirotsu/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032719/",
       "researchmap": "https://researchmap.jp/hirotsunaoki"
     },
     "sources": [
@@ -1920,16 +1782,6 @@
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/hirotsu/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032719/",
-        "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
@@ -2020,24 +1872,13 @@
       }
     ],
     "links": {
-      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/higashibata/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032717/"
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/higashibata/"
     },
     "sources": [
       {
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/higashibata/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032717/",
-        "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
@@ -2104,24 +1945,13 @@
       }
     ],
     "links": {
-      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/miura/",
-      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032714/"
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/miura/"
     },
     "sources": [
       {
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/miura/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "mock_lecture",
-        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032714/",
-        "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
@@ -2208,11 +2038,6 @@
         "type": "official_lab",
         "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/tsuji/",
         "checked_at": "2026-07-14"
-      },
-      {
-        "type": "official_syllabus_search",
-        "url": "https://g-sys.toyo.ac.jp/syllabus/",
-        "checked_at": "2026-07-15"
       },
       {
         "type": "official_syllabus_search",
