@@ -49,7 +49,6 @@
   <div id="result"></div>
 
   <script>
-    // ★ 個人アカウントで発行した GAS の URL をここに貼る
     const GAS_URL = "https://script.google.com/macros/s/AKfycbzHK9uxmBCs9ayGCwqeXWEhdWUCQW4AkXQziCG1Mh-0wrJLiPuA2MxcI54VL4-9grbS/exec";
 
     document.getElementById("reserveBtn").addEventListener("click", addReservation);
@@ -59,4 +58,30 @@
         date: document.getElementById("date").value,
         lab: document.getElementById("lab").value,
         mode: document.getElementById("mode").value,
-        equipment: document
+        equipment: document.getElementById("equipment").value || "全室",
+        time: document.getElementById("customTime").value || "時間未設定"
+      };
+
+      fetch(GAS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        document.getElementById("result").innerHTML = `
+          <strong>予約を送信しました</strong><br><br>
+          日付：${payload.date}<br>
+          ラボ：${payload.lab}<br>
+          モード：${payload.mode}<br>
+          設備：${payload.equipment}<br>
+          時間：${payload.time}<br>
+        `;
+      })
+      .catch(err => {
+        document.getElementById("result").innerHTML =
+          "<strong>送信に失敗しました</strong><br>" + err;
+      });
+    }
+  </script>
+</body>
+</html>
