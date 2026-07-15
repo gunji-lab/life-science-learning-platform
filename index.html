@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ラボ予約</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; }
+    label { display: block; margin-top: 10px; }
+    input, select, button { margin-top: 5px; }
+    #result { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>ラボ予約</h1>
+
+  <label>
+    日付：
+    <input type="date" id="date">
+  </label>
+
+  <label>
+    ラボ：
+    <select id="lab">
+      <option value="ラボA">ラボA</option>
+      <option value="ラボB">ラボB</option>
+    </select>
+  </label>
+
+  <label>
+    モード：
+    <select id="mode">
+      <option value="全室">全室</option>
+      <option value="設備ごと">設備ごと</option>
+    </select>
+  </label>
+
+  <label>
+    設備：
+    <input type="text" id="equipment" placeholder="設備名（設備ごとのとき）">
+  </label>
+
+  <label>
+    時間：
+    <input type="text" id="customTime" placeholder="例：10:00-12:00">
+  </label>
+
+  <button id="reserveBtn">予約する</button>
+
+  <div id="result"></div>
+
+  <script>
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbzHK9uxmBCs9ayGCwqeXWEhdWUCQW4AkXQziCG1Mh-0wrJLiPuA2MxcI54VL4-9grbS/exec";
+
+    document.getElementById("reserveBtn").addEventListener("click", addReservation);
+
+    function addReservation() {
+      const payload = {
+        date: document.getElementById("date").value,
+        lab: document.getElementById("lab").value,
+        mode: document.getElementById("mode").value,
+        equipment: document.getElementById("equipment").value || "全室",
+        time: document.getElementById("customTime").value || "時間未設定"
+      };
+
+      fetch(GAS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        document.getElementById("result").innerHTML = `
+          <strong>予約を送信しました</strong><br><br>
+          日付：${payload.date}<br>
+          ラボ：${payload.lab}<br>
+          モード：${payload.mode}<br>
+          設備：${payload.equipment}<br>
+          時間：${payload.time}<br>
+        `;
+      })
+      .catch(err => {
+        document.getElementById("result").innerHTML =
+          "<strong>送信に失敗しました</strong><br>" + err;
+      });
+    }
+  </script>
+</body>
+</html>
