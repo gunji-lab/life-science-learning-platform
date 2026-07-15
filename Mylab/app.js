@@ -1,6 +1,7 @@
 let labs = [];
 let eventData = null;
 let selected = new Set();
+let selectedDetailTerms = new Set();
 let selectedEventFilters = new Set();
 let selectedEventDate = '';
 let favorites = new Set(safeStoredFavorites());
@@ -121,6 +122,7 @@ function bindNavigation() {
   });
   qs('#clear-filters').onclick = () => {
     selected.clear();
+    selectedDetailTerms.clear();
     renderInterest();
   };
   qs('#lab-search').oninput = renderLabList;
@@ -194,6 +196,7 @@ function tagButton(route) {
   button.textContent = route.label;
   button.onclick = () => {
     selected = new Set([route.id]);
+    selectedDetailTerms.clear();
     switchView('interest');
   };
   return button;
@@ -217,11 +220,13 @@ function renderTagPanels() {
     button.innerHTML = `<span>${escapeHtml(route.label)}</span><small>${count} LABS</small><p>${escapeHtml(route.description)}</p>`;
     button.onclick = () => {
       selected.has(route.id) ? selected.delete(route.id) : selected.add(route.id);
+      pruneSelectedDetailTerms();
       renderInterest();
     };
     routeGrid.appendChild(button);
   });
   panel.appendChild(routeGrid);
+  renderDetailTermPanel(panel);
 }
 
 function routeById(id) {
@@ -240,6 +245,77 @@ function matchesRoute(lab, route) {
     return false;
   }
   return route.terms.some((term) => text.includes(String(term).toLowerCase()));
+}
+
+function availableDetailTerms() {
+  return [...selected]
+    .map(routeById)
+    .filter(Boolean)
+    .flatMap((route) => route.terms);
+}
+
+function pruneSelectedDetailTerms() {
+  const available = new Set(availableDetailTerms());
+  selectedDetailTerms = new Set([...selectedDetailTerms].filter((term) => available.has(term)));
+}
+
+function renderDetailTermPanel(panel) {
+  const selectedRoutes = [...selected].map(routeById).filter(Boolean);
+  if (!selectedRoutes.length) return;
+
+  const detail = document.createElement('div');
+  detail.className = 'detail-term-panel';
+  detail.innerHTML = `
+    <div class="keyword-panel-head">
+      <strong>この入口に含まれるキーワード</strong>
+      <p>気になる言葉を選ぶと、より近い研究室にしぼれます。</p>
+    </div>
+    <div class="detail-term-grid"></div>`;
+  const grid = detail.querySelector('.detail-term-grid');
+  const seen = new Set();
+  selectedRoutes.forEach((route) => {
+    route.terms.forEach((term) => {
+      if (seen.has(term)) return;
+      seen.add(term);
+      const count = labs.filter((lab) => matchesRoute(lab, route) && labMatchesTerm(lab, term)).length;
+      if (!count) return;
+      const button = document.createElement('button');
+      button.className = `detail-term${selectedDetailTerms.has(term) ? ' selected' : ''}`;
+      button.innerHTML = `<span>${escapeHtml(term)}</span><small>${count}</small>`;
+      button.onclick = () => {
+        selectedDetailTerms.has(term) ? selectedDetailTerms.delete(term) : selectedDetailTerms.add(term);
+        renderInterest();
+      };
+      grid.appendChild(button);
+    });
+  });
+  if (selectedDetailTerms.size) {
+    const clear = document.createElement('button');
+    clear.className = 'detail-term clear';
+    clear.innerHTML = '<span>詳細キーワードをクリア</span>';
+    clear.onclick = () => {
+      selectedDetailTerms.clear();
+      renderInterest();
+    };
+    grid.appendChild(clear);
+  }
+  panel.appendChild(detail);
+}
+
+function labMatchesTerm(lab, term) {
+  return labTagText(lab).includes(String(term).toLowerCase());
+}
+
+function labRouteScore(lab, selectedRoutes) {
+  const routeTerms = selectedRoutes.flatMap((route) => route.terms);
+  const targetTerms = selectedDetailTerms.size ? [...selectedDetailTerms] : routeTerms;
+  const matched = [...new Set(targetTerms)].filter((term) => labMatchesTerm(lab, term));
+  const routeLabels = selectedRoutes.filter((route) => matchesRoute(lab, route)).map((route) => route.label);
+  return {
+    score: matched.length + routeLabels.length + (selectedDetailTerms.size ? matched.length * 2 : 0),
+    matched,
+    routeLabels
+  };
 }
 
 function searchableText(lab) {
@@ -263,6 +339,13 @@ function routeText(lab) {
     lab.summary,
     lab.question,
     lab.description,
+    ...(lab.keywords || []),
+    ...(lab.methods || [])
+  ].join(' ').toLowerCase();
+}
+
+function labTagText(lab) {
+  return [
     ...(lab.keywords || []),
     ...(lab.methods || [])
   ].join(' ').toLowerCase();
@@ -337,18 +420,48 @@ function renderGroupedLabs(container, items, matchLabel) {
 function renderInterest() {
   renderTagPanels();
   const selectedRoutes = [...selected].map(routeById).filter(Boolean);
-  const filtered = labs.filter((lab) => {
-    return !selectedRoutes.length || selectedRoutes.some((route) => matchesRoute(lab, route));
-  });
-  renderGroupedLabs(qs('#interest-results'), filtered, (lab) => {
-    const routeLabels = selectedRoutes.filter((route) => matchesRoute(lab, route)).map((route) => route.label);
-    return routeLabels.length ? `${routeLabels.length}入口に一致` : '';
-  });
+  const filtered = rankedInterestLabs(selectedRoutes);
+  if (selectedRoutes.length) {
+    renderRankedLabs(qs('#interest-results'), filtered);
+  } else {
+    renderGroupedLabs(qs('#interest-results'), filtered.map((item) => item.lab));
+  }
   qs('#result-count').textContent = `${filtered.length} labs`;
   const selectedLabels = selectedRoutes.map((route) => route.label);
+  const detailText = selectedDetailTerms.size ? `、詳細キーワード「${[...selectedDetailTerms].join('・')}」` : '';
   qs('#result-message').textContent = selected.size
-    ? `「${selectedLabels.join('・')}」に関連する研究室です。`
+    ? `「${selectedLabels.join('・')}」${detailText}に近い順で表示しています。`
     : `${labs.length}研究室を表示しています。`;
+}
+
+function rankedInterestLabs(selectedRoutes) {
+  if (!selectedRoutes.length) return labs.map((lab) => ({ lab, score: 0, matched: [], routeLabels: [] }));
+  return labs
+    .map((lab) => ({ lab, ...labRouteScore(lab, selectedRoutes) }))
+    .filter((item) => {
+      const routeHit = selectedRoutes.some((route) => matchesRoute(item.lab, route));
+      const detailHit = !selectedDetailTerms.size || item.matched.some((term) => selectedDetailTerms.has(term));
+      return routeHit && detailHit;
+    })
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      if (b.matched.length !== a.matched.length) return b.matched.length - a.matched.length;
+      return a.lab.lab_name.localeCompare(b.lab.lab_name, 'ja');
+    });
+}
+
+function renderRankedLabs(container, items) {
+  container.innerHTML = '';
+  container.classList.remove('grouped');
+  if (!items.length) {
+    container.innerHTML = '<div class="empty-result card">条件に合う研究室がありません。</div>';
+    return;
+  }
+  items.forEach((item) => {
+    const matchedText = item.matched.slice(0, 4).join('・');
+    const label = matchedText ? `一致: ${matchedText}${item.matched.length > 4 ? ` ほか${item.matched.length - 4}件` : ''}` : '';
+    container.appendChild(card(item.lab, label));
+  });
 }
 
 function renderLabList() {

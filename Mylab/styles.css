@@ -653,6 +653,60 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
 .interest-route.selected small{
   color:var(--navy);
 }
+.detail-term-panel{
+  border-top:1px solid var(--line);
+  padding-top:15px;
+}
+.detail-term-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.detail-term{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#fff;
+  color:#4e5551;
+  padding:8px 10px;
+  font-weight:900;
+  transition:.18s;
+}
+.detail-term small{
+  display:inline-grid;
+  place-items:center;
+  min-width:22px;
+  height:22px;
+  padding:0 6px;
+  border-radius:999px;
+  background:#f2f4f1;
+  color:var(--muted);
+  font-size:.68rem;
+  font-weight:900;
+}
+.detail-term:hover,
+.detail-term.selected{
+  transform:translateY(-1px);
+  background:var(--navy);
+  border-color:var(--navy);
+  color:#fff;
+}
+.detail-term:hover small,
+.detail-term.selected small{
+  background:rgba(255,255,255,.18);
+  color:#fff;
+}
+.detail-term.clear{
+  background:#f5f6f3;
+  color:var(--muted);
+}
+.detail-term.clear:hover{
+  background:#e8ebe5;
+  border-color:#d5dbd1;
+  color:var(--navy);
+}
 .category-tabs{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
