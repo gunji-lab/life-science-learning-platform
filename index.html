@@ -15,154 +15,101 @@
 <p class="p1">&lt;!DOCTYPE html&gt;</p>
 <p class="p1">&lt;html lang="ja"&gt;</p>
 <p class="p1">&lt;head&gt;</p>
-<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1">&lt;title&gt;実験室予約管理&lt;/title&gt;</p>
-<p class="p1">&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>font-family: sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>margin: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background: #f5f5f5;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>h2 {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>margin-top: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>box-shadow: 0 2px 5px rgba(0,0,0,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>button {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 10px 15px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>margin: 5px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background: #4a90e2;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>button.selected {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background: #2c6bb2;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.equipment-btn {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background: #7b8d93;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.equipment-btn.selected {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background: #4f5f61;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.mode-btn {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background: #9c6ade;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.mode-btn.selected {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background: #6b3fb0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>input[type="text"] {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>width: 200px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>margin-left: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>#result {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>margin-top: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background: #fff3cd;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1">&lt;/style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;ラボ予約&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body { font-family: system-ui, sans-serif; padding: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>label { display: block; margin-top: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input, select, button { margin-top: 5px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#result { margin-top: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
 <p class="p1">&lt;/head&gt;</p>
 <p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;ラボ予約&lt;/h1&gt;</p>
 <p class="p2"><br></p>
-<p class="p1">&lt;h1&gt;実験室予約管理アプリ（郡司研・伊藤研）&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>日付：</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="date" id="date"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</p>
 <p class="p2"><br></p>
-<p class="p1">&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;① ラボ選択&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="lab-btn" onclick="selectLab('郡司研')"&gt;郡司研&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="lab-btn" onclick="selectLab('伊藤研')"&gt;伊藤研&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ラボ：</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;select id="lab"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option value="ラボA"&gt;ラボA&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option value="ラボB"&gt;ラボB&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</p>
 <p class="p2"><br></p>
-<p class="p1">&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;② 予約モード&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="mode-btn" onclick="selectMode('設備ごと')"&gt;設備ごと予約&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="mode-btn" onclick="selectMode('全室予約')"&gt;全室予約&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>モード：</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;select id="mode"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option value="全室"&gt;全室&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;option value="設備ごと"&gt;設備ごと&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</p>
 <p class="p2"><br></p>
-<p class="p1">&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;③ 設備選択（設備ごと予約モード時のみ）&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="equipment-btn" onclick="selectEquipment('机1')"&gt;机1&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="equipment-btn" onclick="selectEquipment('机2')"&gt;机2&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="equipment-btn" onclick="selectEquipment('解剖台')"&gt;解剖台&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>設備：</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="equipment" placeholder="設備名（設備ごとのとき）"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</p>
 <p class="p2"><br></p>
-<p class="p1">&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;④ 予約時間&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="time-btn" onclick="selectTime('午前')"&gt;午前&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="time-btn" onclick="selectTime('午後')"&gt;午後&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="time-btn" onclick="selectTime('全日')"&gt;全日&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>時間：</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="customTime" placeholder="例：10:00-12:00"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/label&gt;</p>
 <p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;br&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>任意時間入力（例：10:00〜12:00）</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="customTime" placeholder="時間を入力"&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button id="reserveBtn"&gt;予約する&lt;/button&gt;</p>
 <p class="p2"><br></p>
-<p class="p1">&lt;div class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;⑤ 予約内容確認&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="showResult()"&gt;予約内容を表示&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="result"&gt;&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="result"&gt;&lt;/div&gt;</p>
 <p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1">let selectedLab = "";</p>
-<p class="p1">let selectedMode = "";</p>
-<p class="p1">let selectedEquipment = "";</p>
-<p class="p1">let selectedTime = "";</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const GAS_URL = "https://script.google.com/a/macros/toyo.jp/s/AKfycby525PtNrE1l-wXd8Eq6LZTusnFj1HJ-zXOPXClX0xRnNYr450MZJt9o48nvCQeQy6T/exec"; // ← ここをあなたのGAS URLに</p>
 <p class="p2"><br></p>
-<p class="p1">function clearSelection(className) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.querySelectorAll("." + className).forEach(btn =&gt; btn.classList.remove("selected"));</p>
-<p class="p1">}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("reserveBtn").addEventListener("click", addReservation);</p>
 <p class="p2"><br></p>
-<p class="p1">function selectLab(lab) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>selectedLab = lab;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>clearSelection("lab-btn");</p>
-<p class="p1"><span class="Apple-converted-space">    </span>event.target.classList.add("selected");</p>
-<p class="p1">}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addReservation() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const selectedDate = document.getElementById("date").value;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const selectedLab = document.getElementById("lab").value;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const selectedMode = document.getElementById("mode").value;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const selectedEquipment = document.getElementById("equipment").value || "全室";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const custom = document.getElementById("customTime").value;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const timeDisplay = custom || "時間未設定";</p>
 <p class="p2"><br></p>
-<p class="p1">function selectMode(mode) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>selectedMode = mode;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>clearSelection("mode-btn");</p>
-<p class="p1"><span class="Apple-converted-space">    </span>event.target.classList.add("selected");</p>
-<p class="p1">}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!selectedDate) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>alert("日付を選択してください");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
 <p class="p2"><br></p>
-<p class="p1">function selectEquipment(eq) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>selectedEquipment = eq;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>clearSelection("equipment-btn");</p>
-<p class="p1"><span class="Apple-converted-space">    </span>event.target.classList.add("selected");</p>
-<p class="p1">}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const payload = {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>date: selectedDate,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>lab: selectedLab,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>mode: selectedMode,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>equipment: selectedMode === "設備ごと" ? selectedEquipment : "全室",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>time: timeDisplay</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
 <p class="p2"><br></p>
-<p class="p1">function selectTime(time) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>selectedTime = time;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>clearSelection("time-btn");</p>
-<p class="p1"><span class="Apple-converted-space">    </span>event.target.classList.add("selected");</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">function showResult() {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const custom = document.getElementById("customTime").value;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const timeDisplay = custom ? custom : selectedTime;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>let text = `</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;strong&gt;ラボ：&lt;/strong&gt; ${selectedLab}&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;strong&gt;予約モード：&lt;/strong&gt; ${selectedMode}&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>`;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (selectedMode === "設備ごと") {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>text += `&lt;strong&gt;設備：&lt;/strong&gt; ${selectedEquipment}&lt;br&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// スプシへ送信</p>
+<p class="p1"><span class="Apple-converted-space">      </span>fetch(GAS_URL, {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>method: "POST",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>headers: { "Content-Type": "application/json" },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body: JSON.stringify(payload)</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}).then(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("result").innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;strong&gt;予約を送信しました（GASにPOST済み）&lt;/strong&gt;&lt;br&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;strong&gt;日付：&lt;/strong&gt; ${payload.date}&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;strong&gt;ラボ：&lt;/strong&gt; ${payload.lab}&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;strong&gt;モード：&lt;/strong&gt; ${payload.mode}&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;strong&gt;設備：&lt;/strong&gt; ${payload.equipment}&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;strong&gt;時間：&lt;/strong&gt; ${payload.time}&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}).catch(err =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("result").innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;strong&gt;送信に失敗しました&lt;/strong&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>${err}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
 <p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>text += `&lt;strong&gt;時間：&lt;/strong&gt; ${timeDisplay}&lt;br&gt;`;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("result").innerHTML = text;</p>
-<p class="p1">}</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
 <p class="p1">&lt;/body&gt;</p>
 <p class="p1">&lt;/html&gt;</p>
 </body>
