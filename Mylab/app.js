@@ -208,6 +208,7 @@ const syllabusUrl = 'https://g-sys.toyo.ac.jp/syllabus/';
 const qs = (selector) => document.querySelector(selector);
 const qsa = (selector) => [...document.querySelectorAll(selector)];
 const deptClass = (department) => department === '生命科学科' ? 'life' : 'resource';
+const displayLabName = (lab) => lab.lab_name.endsWith('研究室') ? lab.lab_name : `${lab.lab_name}研究室`;
 const departmentMeta = {
   '生命科学科': {
     className: 'life',
@@ -550,7 +551,7 @@ function card(lab, match = '') {
       <button class="favorite-button ${isFav ? 'active' : ''}" aria-label="${isFav ? 'お気に入りから外す' : 'お気に入りに追加'}">${isFav ? '♥' : '♡'}</button>
     </div>
     <header class="lab-card-head">
-      <h3>${escapeHtml(lab.lab_name)}</h3>
+      <h3>${escapeHtml(displayLabName(lab))}</h3>
       <p class="pi-name">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</p>
     </header>
     <section class="lab-question">
@@ -575,7 +576,7 @@ function card(lab, match = '') {
   article.onclick = () => openModal(lab);
   article.tabIndex = 0;
   article.setAttribute('role', 'button');
-  article.setAttribute('aria-label', `${lab.lab_name}の詳細を見る`);
+  article.setAttribute('aria-label', `${displayLabName(lab)}の詳細を見る`);
   article.onkeydown = (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -598,6 +599,7 @@ function renderGroupedLabs(container, items, matchLabel) {
     const meta = departmentMeta[department];
     const section = document.createElement('section');
     section.className = 'department-group';
+    section.dataset.department = department;
     section.innerHTML = `
       <div class="department-heading ${meta.className}">
         <div><span class="department-label">DEPARTMENT</span><h3>${department}</h3><p>${meta.description}</p></div>
@@ -682,6 +684,7 @@ function renderLabList() {
     return departmentMatch && (!query || searchableText(lab).includes(query));
   });
   renderLabJumpList(filtered);
+  renderLabCardNav(filtered);
   renderGroupedLabs(qs('#lab-list'), filtered);
 }
 
@@ -736,6 +739,41 @@ function renderLabJumpList(items) {
   })));
 }
 
+function renderLabCardNav(items) {
+  const container = qs('#lab-card-nav');
+  if (!container) return;
+  const departments = ['生命科学科', '生物資源学科']
+    .map((department) => ({
+      department,
+      count: items.filter((lab) => lab.department === department).length
+    }))
+    .filter((item) => item.count);
+  if (!departments.length) {
+    container.innerHTML = '';
+    container.hidden = true;
+    return;
+  }
+  container.hidden = false;
+  container.innerHTML = `
+    <div class="lab-card-nav-head">
+      <div>
+        <span class="eyebrow">LAB CARDS</span>
+        <h3>研究の問いから見る</h3>
+      </div>
+      <span>${items.length} labs</span>
+    </div>
+    <div class="lab-card-nav-buttons"></div>`;
+  const buttons = container.querySelector('.lab-card-nav-buttons');
+  departments.forEach(({ department, count }) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `lab-card-nav-button ${deptClass(department)}`;
+    button.innerHTML = `<span>${escapeHtml(department)}</span><small>${count} labs</small>`;
+    button.onclick = () => scrollToDepartmentGroup(department);
+    buttons.appendChild(button);
+  });
+}
+
 function miniLabButton(lab, options = {}) {
   const button = document.createElement('button');
   const className = options.extraClass || deptClass(lab.department);
@@ -745,10 +783,19 @@ function miniLabButton(lab, options = {}) {
   const keywords = (options.keywords || []).slice(0, 3);
   button.innerHTML = `
     ${dept}
-    <strong>${escapeHtml(lab.lab_name)}</strong>
+    <strong>${escapeHtml(displayLabName(lab))}</strong>
+    <span class="lab-jump-pi">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</span>
     <span class="lab-jump-keywords">${keywords.map((keyword) => `<em>${escapeHtml(keyword)}</em>`).join('')}</span>`;
   button.onclick = options.onClick || (() => openModal(lab));
   return button;
+}
+
+function scrollToDepartmentGroup(department) {
+  const target = [...document.querySelectorAll('#lab-list .department-group')]
+    .find((item) => item.dataset.department === department);
+  if (!target) return;
+  const top = target.getBoundingClientRect().top + window.scrollY - 74;
+  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
 }
 
 function scrollToLabCard(labId) {
@@ -1005,7 +1052,7 @@ function openModal(lab) {
     <div class="modal-title ${deptClass(lab.department)}">
       <span class="eyebrow">OPEN THE LAB DOOR</span>
       <span class="modal-dept">${escapeHtml(lab.department)}</span>
-      <h2>${escapeHtml(lab.lab_name)}</h2>
+      <h2>${escapeHtml(displayLabName(lab))}</h2>
       <p class="pi">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</p>
     </div>
     <p class="modal-catch">${escapeHtml(lab.summary)}</p>
