@@ -805,6 +805,19 @@ function eventCard(program) {
     <div class="event-actions"></div>`;
 
   const actions = article.querySelector('.event-actions');
+  if (primaryLab) {
+    const label = document.createElement('span');
+    label.className = 'event-action-label';
+    label.textContent = '担当する先生は？';
+    actions.appendChild(label);
+  }
+  programLabs.forEach((lab) => {
+    const button = document.createElement('button');
+    button.className = 'event-lab-button';
+    button.textContent = `${lab.pi_name.replace(/\s+/g, ' ')}先生`;
+    button.onclick = () => openModal(lab);
+    actions.appendChild(button);
+  });
   if (isSingle && primaryLab) {
     const favorite = document.createElement('button');
     const isFav = favorites.has(primaryLab.id);
@@ -813,24 +826,6 @@ function eventCard(program) {
     favorite.textContent = isFav ? '♥' : '♡';
     favorite.onclick = () => toggleFavorite(primaryLab.id);
     actions.appendChild(favorite);
-
-    const detail = document.createElement('button');
-    detail.className = 'open-lab';
-    detail.textContent = '担当する先生は？ →';
-    detail.onclick = () => openModal(primaryLab);
-    actions.appendChild(detail);
-  } else {
-    const label = document.createElement('span');
-    label.className = 'event-action-label';
-    label.textContent = '担当する先生は？';
-    actions.appendChild(label);
-    programLabs.forEach((lab) => {
-      const button = document.createElement('button');
-      button.className = 'event-lab-button';
-      button.textContent = `${lab.pi_name.replace(/\s+/g, ' ')}先生`;
-      button.onclick = () => openModal(lab);
-      actions.appendChild(button);
-    });
   }
   return article;
 }
