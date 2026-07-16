@@ -68,6 +68,7 @@ const interestRoutes = [
     terms: ['データ解析', '統計', '統計モデリング', '生物統計', '情報', 'ゲノム', 'バイオインフォマティクス', '生物情報学', '計測', 'リスク評価', '疫学', '分布データ', '環境データ', 'モーションキャプチャ', 'バイオロギング']
   }
 ];
+const homeRouteIds = ['animals', 'plants_food', 'micro_world', 'environment', 'health'];
 const tagParents = {
   'キリン': ['哺乳類', '動物'],
   '哺乳類': ['動物'],
@@ -265,7 +266,12 @@ const syllabusUrl = 'https://g-sys.toyo.ac.jp/syllabus/';
 const qs = (selector) => document.querySelector(selector);
 const qsa = (selector) => [...document.querySelectorAll(selector)];
 const displayLabName = (lab) => lab.lab_name.endsWith('研究室') ? lab.lab_name : `${lab.lab_name}研究室`;
-const displayKeywords = (lab) => uniqueTerms([...(lab.major_categories || []), ...(lab.keywords || [])]);
+const structuredTags = (lab) => [
+  ...(lab.tags?.targets || []),
+  ...(lab.tags?.fields || []),
+  ...(lab.tags?.methods || [])
+];
+const displayKeywords = (lab) => uniqueTerms([...(lab.keywords || []), ...structuredTags(lab)]);
 const fallbackDepartmentMeta = {
   className: 'department-extra',
   description: '生命科学部の多様な問いに向き合う研究室。',
@@ -449,7 +455,7 @@ function toggleFavorite(id) {
 function renderHomeTags() {
   const container = qs('#home-tags');
   container.innerHTML = '';
-  interestRoutes.forEach((route) => {
+  homeRouteIds.map(routeById).filter(Boolean).forEach((route) => {
     if (routeMatchCount(route)) container.appendChild(tagButton(route));
   });
 }
@@ -603,6 +609,7 @@ function searchableText(lab) {
     lab.question,
     lab.description,
     ...(lab.major_categories || []),
+    ...structuredTags(lab),
     ...(lab.keywords || []),
     ...(lab.methods || []),
     ...(lab.courses || []).map((course) => course.title)
@@ -616,6 +623,7 @@ function routeText(lab) {
     lab.question,
     lab.description,
     ...(lab.major_categories || []),
+    ...structuredTags(lab),
     ...(lab.keywords || []),
     ...(lab.methods || [])
   ].join(' ').toLowerCase();
@@ -628,6 +636,7 @@ function labTagText(lab) {
 function labRawTags(lab) {
   return [
     ...(lab.major_categories || []),
+    ...structuredTags(lab),
     ...(lab.keywords || []),
     ...(lab.methods || [])
   ];
@@ -811,8 +820,8 @@ function renderLabList() {
     return departmentMatch && (!query || searchableText(lab).includes(query));
   });
   renderLabJumpList(filtered);
-  renderLabRecommendationList(filtered);
   renderLabCardNav(filtered);
+  renderLabRecommendationList(filtered);
   const list = qs('#lab-list');
   list.innerHTML = '';
   list.classList.remove('grouped');
@@ -943,21 +952,21 @@ function renderLabCardNav(items) {
   container.className = `lab-card-nav card ${activeClass}`;
   applyDepartmentTheme(container, selectedQuestionDepartment);
   container.innerHTML = `
-    <div class="lab-card-nav-head">
+    <div class="lab-jump-head">
       <div>
         <span class="eyebrow">LAB CARDS</span>
         <h3>研究の問いから見る</h3>
       </div>
       <span>${selectedQuestionDepartment ? `${visibleItems.length} labs` : 'Select department'}</span>
     </div>
-    <div class="lab-card-nav-buttons"></div>
+    <div class="lab-jump-tabs" aria-label="学科を切り替える"></div>
     <div class="question-index-grid"></div>`;
-  const buttons = container.querySelector('.lab-card-nav-buttons');
+  const buttons = container.querySelector('.lab-jump-tabs');
   departments.forEach(({ department, count }) => {
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = `lab-card-nav-button ${deptClass(department)}${department === selectedQuestionDepartment ? ' active' : ''}`;
-    button.innerHTML = `<span>${escapeHtml(department)}</span><small>${count} labs</small>`;
+    button.className = `lab-jump-tab ${deptClass(department)}${department === selectedQuestionDepartment ? ' active' : ''}`;
+    button.innerHTML = `<span>${escapeHtml(department)}</span><small>${count}</small>`;
     applyDepartmentTheme(button, department);
     button.onclick = () => {
       selectedQuestionDepartment = department;
