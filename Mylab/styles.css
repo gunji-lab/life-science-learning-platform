@@ -2612,11 +2612,37 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
 .compass-hero-simple{
   grid-template-columns:1fr;
 }
+.compass-hero > *,
+.compass-intro-card,
+.compass-transition,
+.compass-question,
+.compass-results,
+.compass-lab-card,
+.compass-keyword-card{
+  min-width:0;
+}
 .compass-hero h2{
   margin:0 0 10px;
   color:var(--navy);
   font-size:clamp(2.1rem,4vw,3.4rem);
   line-height:1.15;
+}
+.compass-hero h2,
+.compass-hero p,
+.compass-intro-card h3,
+.compass-intro-card p,
+.compass-transition h3,
+.compass-transition p,
+.compass-question-head h3,
+.compass-question-head p,
+.compass-question-text,
+.compass-interest-map h3,
+.compass-result-head h3,
+.compass-result-head p,
+.compass-message{
+  max-width:100%;
+  overflow-wrap:anywhere;
+  word-break:auto-phrase;
 }
 .compass-hero p{
   color:var(--muted);
@@ -2978,7 +3004,7 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   }
   .compass-hero h2{
     margin-bottom:8px;
-    font-size:1.42rem;
+    font-size:1.24rem;
     line-height:1.38;
   }
   .compass-hero p{
@@ -3064,7 +3090,7 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   .compass-intro-card h3,
   .compass-transition h3,
   .compass-interest-map h3{
-    font-size:1.08rem;
+    font-size:1rem;
     line-height:1.45;
   }
   .compass-intro-card p,
@@ -3117,7 +3143,10 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   }
   .compass-result-actions .primary,
   .compass-result-actions .secondary,
+  .compass-intro-card .primary,
   .compass-transition-actions .primary{
+    box-sizing:border-box;
+    max-width:100%;
     width:100%;
     justify-content:center;
   }
