@@ -826,6 +826,9 @@ function renderInterestIndex(container, items) {
 
 function renderCompass() {
   if (!compassData) return;
+  const compassView = qs('#view-compass');
+  compassView?.classList.remove('compass-stage-intro', 'compass-stage-question', 'compass-stage-transition', 'compass-stage-results');
+  compassView?.classList.add(`compass-stage-${compassStage}`);
   renderCompassHero();
   if (compassStage === 'question') {
     renderCompassProgress();

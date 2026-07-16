@@ -2972,45 +2972,153 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   }
   .compass-hero{
     grid-template-columns:1fr;
-    padding:18px;
+    gap:10px;
+    margin-bottom:10px;
+    padding:15px;
+  }
+  .compass-hero h2{
+    margin-bottom:8px;
+    font-size:1.42rem;
+    line-height:1.38;
+  }
+  .compass-hero p{
+    margin:0;
+    font-size:.92rem;
+    line-height:1.7;
+  }
+  .compass-hero .eyebrow{
+    margin-bottom:6px;
+  }
+  .compass-stage-question .compass-hero,
+  .compass-stage-transition .compass-hero,
+  .compass-stage-results .compass-hero{
+    display:none;
   }
   .compass-progress{
-    grid-template-columns:1fr auto;
+    grid-template-columns:auto auto;
+    justify-content:space-between;
+    gap:7px 10px;
+    margin:0 0 10px;
+    padding:0 2px;
+    font-size:.78rem;
   }
   .compass-progress-bar{
     grid-column:1/-1;
     order:3;
+    height:5px;
   }
   .compass-options,
   .compass-keyword-map,
   .compass-match-grid{
     grid-template-columns:1fr;
+    gap:8px;
   }
   .compass-question-head{
     flex-direction:column;
-    gap:9px;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .compass-question-head span{
+    padding:5px 8px;
+    font-size:.66rem;
+  }
+  .compass-question-head h3{
+    margin-bottom:3px;
+    font-size:1.05rem;
+  }
+  .compass-question-head p{
+    font-size:.88rem;
+    line-height:1.6;
   }
   .compass-question-text{
-    font-size:1.12rem;
+    margin-bottom:11px;
+    font-size:1.08rem;
+    line-height:1.5;
   }
   .compass-option{
     min-height:0;
-    padding:14px 40px 14px 14px;
+    border-radius:10px;
+    padding:12px 38px 12px 12px;
+  }
+  .compass-option span{
+    font-size:.95rem;
+  }
+  .compass-option small{
+    margin-top:4px;
+    font-size:.8rem;
+    line-height:1.48;
+  }
+  .compass-option::after{
+    top:12px;
+    right:12px;
+    width:17px;
+    height:17px;
   }
   .compass-question,
   .compass-results,
   .compass-intro-card,
   .compass-transition{
-    padding:14px;
+    border-radius:12px;
+    padding:13px;
+  }
+  .compass-intro-card h3,
+  .compass-transition h3,
+  .compass-interest-map h3{
+    font-size:1.08rem;
+    line-height:1.45;
+  }
+  .compass-intro-card p,
+  .compass-transition p{
+    margin:0 0 12px;
+    font-size:.88rem;
+    line-height:1.65;
   }
   .compass-result-head{
     flex-direction:column;
     gap:8px;
+  }
+  .compass-result-head h3{
+    font-size:1.08rem;
+  }
+  .compass-result-head p,
+  .compass-message{
+    font-size:.88rem;
+    line-height:1.65;
+  }
+  .compass-keyword-card,
+  .compass-lab-card{
+    border-radius:12px;
+    padding:12px;
+  }
+  .compass-keyword-card h4{
+    font-size:1.04rem;
+  }
+  .compass-keyword-card p,
+  .compass-lab-card > p:not(.compass-pi){
+    font-size:.84rem;
+    line-height:1.6;
+  }
+  .compass-lab-card h3{
+    font-size:1.02rem;
+  }
+  .compass-message{
+    margin-top:12px;
+    padding:12px;
   }
   .compass-nav,
   .compass-transition-actions,
   .compass-result-actions{
     align-items:flex-start;
     flex-direction:column;
+    gap:8px;
+  }
+  .compass-nav{
+    margin-top:13px;
+  }
+  .compass-result-actions .primary,
+  .compass-result-actions .secondary,
+  .compass-transition-actions .primary{
+    width:100%;
+    justify-content:center;
   }
 }
