@@ -2161,8 +2161,8 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
 .interest-index-grid .lab-jump-item.department-themed{
   border-color:var(--dept-line);
   border-left:5px solid var(--dept-color);
-  background:linear-gradient(90deg,var(--dept-soft) 0%,#fff 34%,#fff 100%);
-  padding-left:32px;
+  background:linear-gradient(90deg,var(--dept-soft) 0,#fff 72px,#fff 100%);
+  padding-left:64px;
 }
 .interest-index-grid .lab-jump-item.department-themed .lab-jump-dept{
   width:max-content;
@@ -2188,6 +2188,10 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   .interest-index-grid{
     grid-template-columns:1fr;
     gap:7px;
+  }
+  .interest-index-grid .lab-jump-item.department-themed{
+    background:linear-gradient(90deg,var(--dept-soft) 0,#fff 56px,#fff 100%);
+    padding-left:46px;
   }
 }
 
