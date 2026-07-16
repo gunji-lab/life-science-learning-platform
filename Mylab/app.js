@@ -960,29 +960,13 @@ function renderCompassProgress() {
 function renderCompassHero() {
   const hero = qs('.compass-hero');
   if (!hero) return;
-  const actionLabel = compassStage === 'intro' ? compassData.primary_action || 'はじめる →' : '最初からたどる';
+  hero.classList.add('compass-hero-simple');
   hero.innerHTML = `
     <div>
       <span class="eyebrow">RESEARCH COMPASS</span>
-      <h2>${escapeHtml(compassData.title)}</h2>
-      <p class="compass-lead">${escapeHtml(compassData.lead)}</p>
+      <h2>${escapeHtml(compassData.lead)}</h2>
       <p>${escapeHtml(compassData.description)}</p>
-      <button class="primary compass-start" type="button">${escapeHtml(actionLabel)}</button>
-    </div>
-    <div class="compass-note">
-      <strong>${escapeHtml(compassData.intro_note || 'これは適性を決める診断ではありません。')}</strong>
-      <p>今の興味を言葉にしながら、研究室との新しい出会いを探していきます。</p>
     </div>`;
-  hero.querySelector('.compass-start').onclick = () => {
-    if (compassStage !== 'intro') {
-      compassAnswers = {};
-      compassStepIndex = 0;
-    }
-    compassStage = 'question';
-    compassStarted = true;
-    compassStepIndex = firstUnansweredCompassIndex();
-    renderCompass();
-  };
 }
 
 function renderCompassIntro() {

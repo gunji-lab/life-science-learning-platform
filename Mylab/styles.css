@@ -2168,7 +2168,7 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   border-left:5px solid var(--dept-color);
   background:#fff;
   box-shadow:inset 18px 0 0 var(--dept-soft);
-  padding-left:44px;
+  padding-left:40px;
 }
 .interest-index-grid .lab-jump-item.department-themed .lab-jump-dept{
   grid-column:1;
@@ -2213,7 +2213,7 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
     grid-template-columns:repeat(2,minmax(0,1fr));
   }
   .interest-index-grid .lab-jump-item.department-themed{
-    padding-left:40px;
+    padding-left:36px;
   }
 }
 
@@ -2224,7 +2224,7 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   }
   .interest-index-grid .lab-jump-item.department-themed{
     box-shadow:inset 14px 0 0 var(--dept-soft);
-    padding-left:34px;
+    padding-left:32px;
   }
   .interest-index-grid .lab-jump-item strong{
     font-size:1.02rem;
@@ -2608,6 +2608,9 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   align-items:stretch;
   padding:26px;
   margin-bottom:18px;
+}
+.compass-hero-simple{
+  grid-template-columns:1fr;
 }
 .compass-hero h2{
   margin:0 0 10px;
