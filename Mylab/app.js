@@ -539,10 +539,18 @@ function renderDetailTermPanel(panel) {
   detail.className = 'detail-term-panel';
   detail.innerHTML = `
     <div class="keyword-panel-head">
-      <strong>このトピックに含まれるキーワード</strong>
-      <p>気になる言葉を選ぶと、より近い研究室にしぼれます。</p>
+      <div>
+        <strong>このトピックに含まれるキーワード</strong>
+        <p>気になる言葉を選ぶと、より近い研究室にしぼれます。</p>
+      </div>
+      <button class="detail-term-clear" type="button"${selectedDetailTerms.size ? '' : ' disabled'}>クリア</button>
     </div>
     <div class="detail-term-grid"></div>`;
+  const clearButton = detail.querySelector('.detail-term-clear');
+  clearButton.onclick = () => {
+    selectedDetailTerms.clear();
+    renderInterest();
+  };
   const grid = detail.querySelector('.detail-term-grid');
   const seen = new Set();
   selectedRoutes.forEach((route) => {
@@ -561,16 +569,6 @@ function renderDetailTermPanel(panel) {
       grid.appendChild(button);
     });
   });
-  if (selectedDetailTerms.size) {
-    const clear = document.createElement('button');
-    clear.className = 'detail-term clear';
-    clear.innerHTML = '<span>詳細キーワードをクリア</span>';
-    clear.onclick = () => {
-      selectedDetailTerms.clear();
-      renderInterest();
-    };
-    grid.appendChild(clear);
-  }
   panel.appendChild(detail);
 }
 
