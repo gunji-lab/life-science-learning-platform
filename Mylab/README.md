@@ -22,7 +22,6 @@ assets/
 オープンキャンパスなどの受験生向けイベント情報は `data/events.json` で管理しています。イベント名、日程、プログラム、時間、場所、対象、担当研究室を研究室データとは分けて保持しています。
 
 学科追加の手順は `docs/adding-a-department.md`、JSON項目の整理は `docs/data-schema.md` にまとめています。
-Research Compass のマッチング方針と出現率メモは `docs/research-compass-matching.md` にまとめています。
 
 ## 確認方法
 

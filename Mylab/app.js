@@ -110,11 +110,6 @@ const tagParents = {
   '神経生理学': ['神経'],
   '神経生理学的解析': ['神経'],
   'フィールド調査': ['フィールド', '野外'],
-  '行動生態学': ['生態学', '動物行動', 'フィールド調査'],
-  '海洋生態学': ['生態学', '海洋生態系', 'フィールド調査'],
-  '保全生物学': ['生態学', '保全', '生物多様性'],
-  '生態リスク学': ['生態学', '環境科学', 'リスク評価'],
-  '水圏生態学': ['生態学', '水環境'],
   '生態データ解析': ['生態系', 'データ解析'],
   '生態系評価': ['生態系', '測定'],
   '生態影響評価': ['生態系', '測定'],
@@ -170,12 +165,9 @@ const tagParents = {
   '突然変異': ['DNA', '遺伝子'],
   '突然変異解析': ['突然変異', 'DNA', '遺伝子'],
   '分子遺伝学': ['遺伝子', '分子生物学'],
-  '遺伝学': ['遺伝子', '分子生物学'],
   '分子生物学': ['分子', '遺伝子'],
-  '分子実験': ['分子生物学実験', '分子生物学', '実験'],
   '分子生物学実験': ['分子生物学', '遺伝子', '実験'],
   'タンパク質解析': ['タンパク質', '分子生物学'],
-  '構造生物学': ['タンパク質', '分子生物学'],
   '生物情報学': ['情報', 'データ解析'],
   'バクテリア': ['微生物'],
   '糸状菌': ['微生物'],
@@ -191,8 +183,6 @@ const tagParents = {
   'プラスチック分解菌': ['微生物', '環境浄化'],
   '重金属耐性菌': ['微生物', '環境浄化', '重金属'],
   '微生物多様性': ['微生物', '生物多様性'],
-  '発電菌': ['電気活性微生物', '微生物'],
-  'バイオフィルム': ['微生物'],
   '応用微生物': ['微生物'],
   '微生物培養': ['微生物', '培養'],
   '微生物分離・培養': ['微生物', '培養'],
@@ -201,12 +191,7 @@ const tagParents = {
   '極域': ['極限環境'],
   '南極': ['極域', '極限環境'],
   '北極': ['極域', '極限環境'],
-  '温泉': ['極限環境'],
   '低温適応': ['極域', '極限環境'],
-  '微生物生態学': ['微生物学', '生態学', '環境微生物学'],
-  '微生物生理学': ['微生物学', '生理学'],
-  '環境微生物学': ['微生物学', '環境科学'],
-  '極域科学': ['極域', '環境科学'],
   '低温環境実験': ['低温適応', '極限環境'],
   '生命の限界': ['極限環境'],
   '放射線': ['極限環境'],
@@ -220,24 +205,15 @@ const tagParents = {
   'オーキシン': ['植物ホルモン', '植物'],
   'サイトカイニン': ['植物ホルモン', '植物'],
   '植物栄養': ['植物'],
-  '植物栄養学': ['植物栄養', '植物'],
   '鉄吸収': ['植物栄養', '植物'],
-  '鉄': ['鉄吸収', '植物栄養'],
   'ムギネ酸類': ['鉄吸収', '植物栄養', '植物'],
   'イネ科植物': ['イネ', '植物', '作物'],
   '水草': ['植物'],
   '水陸両生植物': ['水草', '植物'],
   '植物生理学': ['植物', '植物生理'],
-  '作物学': ['作物科学', '作物'],
-  '作物科学': ['作物', '植物'],
-  '環境応答学': ['植物生理学', '環境'],
   '植物生理': ['植物'],
   '植物バイオーム': ['植物', '環境'],
   '植物化学': ['植物', '化学'],
-  '天然物化学': ['植物化学', '有機化学', '化学'],
-  '有機化学': ['化学'],
-  '植物分子生物学': ['植物', '分子生物学'],
-  '農芸化学': ['植物化学', '化学'],
   '植物生化学': ['植物', '生化学'],
   '特化代謝産物': ['二次代謝産物', '植物化学', '植物'],
   '二次代謝産物': ['植物化学', '植物', '化学'],
@@ -250,8 +226,6 @@ const tagParents = {
   '植物栽培': ['植物'],
   '植物の栽培実験': ['植物', '栽培実験'],
   '植物栽培実験': ['植物', '栽培実験'],
-  '光合成測定': ['光合成', '生理測定', '測定'],
-  '品種評価': ['品種育成', '作物', '測定'],
   'イネ': ['植物', '作物', '食料'],
   '作物': ['植物', '食料'],
   '作物学': ['作物', '植物'],
@@ -269,25 +243,20 @@ const tagParents = {
   '化学構造解析': ['化学分析', '構造解析'],
   '生化学実験': ['生化学', '実験'],
   '生理測定': ['測定'],
-  '生理解析': ['生理測定', '測定'],
   '生理応答の測定': ['生理測定', '測定'],
   '光合成・生理測定': ['光合成', '生理測定', '測定'],
   '計測': ['測定'],
   '光計測': ['計測', '測定'],
   '電気化学測定': ['電気化学', '測定'],
-  '遺伝子改変': ['遺伝子解析', '分子生物学実験'],
   '成分分析と品種評価': ['成分分析', '測定'],
   '糖質合成・分析': ['糖質', '糖鎖', '化学分析'],
-  '糖質合成': ['糖質', '糖鎖', '化学分析'],
   'オリゴ糖': ['糖鎖', '糖質'],
   '糖クラスター': ['糖鎖', '材料'],
   '多糖': ['糖質'],
-  '材料化学': ['材料', '有機化学', '化学'],
   '材料評価': ['材料', '測定'],
   '構造解析': ['測定'],
   '機能評価': ['測定'],
   '生理活性評価': ['生理活性', '測定'],
-  '代謝物解析': ['化学分析', '測定'],
   'リスク評価': ['リスク', 'データ解析'],
   '疫学': ['健康', 'データ解析'],
   '疫学調査': ['疫学', 'データ解析'],
@@ -296,40 +265,8 @@ const tagParents = {
   '統計モデリング': ['統計', 'データ解析'],
   'モーションキャプチャ': ['行動計測', '計測'],
   'バイオロギング': ['フィールド調査', '計測'],
-  'モニタリング': ['フィールド調査', '計測'],
   '情報学': ['情報', 'データ解析'],
   '資料解析': ['データ解析']
-};
-const compassPerspectiveTerms = {
-  shape: [
-    '形態学', '比較解剖学', '機能形態学', 'バイオメカニクス', '発生生物学', '分類学',
-    '形態', '構造', '骨格', '筋肉', '胚', '器官形成', '形態形成', '解剖', '標本',
-    'CT', '3D形態解析', '形態観察', '組織観察', '分類・同定'
-  ],
-  mechanism: [
-    '神経科学', '行動神経科学', '生理学', '内分泌学', '分子生物学', '分子遺伝学',
-    '細胞生物学', '細胞工学', '糖鎖生物学', '植物生理学', '微生物生理学',
-    '生化学', '発生生物学', 'DNA', '遺伝子', 'ゲノム', 'タンパク質', '神経',
-    '脳', '細胞', '酵素', '生体触媒', '遺伝子解析', '細胞培養', '顕微鏡'
-  ],
-  ecology: [
-    '生態学', '行動生態学', '海洋生態学', '保全生物学', '生態リスク学',
-    '環境科学', '環境微生物学', '微生物生態学', '極域科学', '環境保健学',
-    '人間生態学', 'フィールド調査', '野外', '水環境', '水質調査', '海洋生態系',
-    '生態系', '生物多様性', '保全', '環境', '極域', '自然環境', '野生動物'
-  ],
-  application: [
-    '応用微生物学', '環境バイオテクノロジー', '酵素工学', '作物科学',
-    '作物学', '植物栄養学', '天然物化学', '有機化学', '材料化学',
-    '糖鎖生物学', '再生生物学', '環境保健学', '植物化学', '食料',
-    '作物', 'イネ', '環境浄化', '発電菌', '有用微生物', '化学分析',
-    '酵素解析', '植物栽培', '材料評価'
-  ]
-};
-const compassGroupTerms = {
-  animal: ['動物', '人', '細胞', '健康', '脳', '神経', '筋肉', '骨格', '魚類', '哺乳類', '鳥類', 'iPS細胞'],
-  plant: ['植物', 'イネ', '作物', '水草', '植物ホルモン', '植物栄養', '植物化学'],
-  microbe: ['微生物', '細菌', '糸状菌', '酵素', '極限環境微生物', '電気活性微生物', '放射線抵抗性細菌']
 };
 const syllabusUrl = 'https://g-sys.toyo.ac.jp/syllabus/';
 const qs = (selector) => document.querySelector(selector);
@@ -923,8 +860,8 @@ function selectedCompassOptions() {
 }
 
 function compassTagProfile() {
-  const profile = { perspectives: new Map(), targets: new Map(), methods: new Map(), fields: new Map() };
-  const weights = { perspectives: 0.45, targets: 0.35, methods: 0.2, fields: 0.08 };
+  const profile = { targets: new Map(), fields: new Map(), methods: new Map() };
+  const weights = { targets: 0.4, fields: 0.35, methods: 0.25 };
   selectedCompassOptions().forEach((option) => {
     const answerWeight = Number(option.weight || 1);
     Object.entries(option.tags || {}).forEach(([type, terms]) => {
@@ -943,106 +880,34 @@ function flattenCompassProfile(profile) {
   );
 }
 
-function labPerspectiveSet(lab) {
-  const expanded = expandedLabTerms(lab);
-  const perspectives = new Set();
-  Object.entries(compassPerspectiveTerms).forEach(([perspective, terms]) => {
-    if (terms.some((term) => expanded.has(String(term).toLowerCase()))) perspectives.add(perspective);
-  });
-  if (!perspectives.size) {
-    const broadTargets = new Set((lab.major_categories || []).map((term) => String(term).toLowerCase()));
-    if (broadTargets.has('動物') || broadTargets.has('細胞')) perspectives.add('mechanism');
-    if (broadTargets.has('植物') || broadTargets.has('微生物')) perspectives.add('application');
-    if (broadTargets.has('環境')) perspectives.add('ecology');
-  }
-  return perspectives;
-}
-
-function compassPrimaryGroup(lab) {
-  const expanded = expandedLabTerms(lab);
-  const scores = Object.entries(compassGroupTerms).map(([group, terms]) => ({
-    group,
-    score: terms.reduce((count, term) => count + (expanded.has(String(term).toLowerCase()) ? 1 : 0), 0)
-  }));
-  const departmentTargets = new Set([...(lab.major_categories || []), ...(lab.tags?.targets || [])]);
-  if (departmentTargets.has('動物')) return 'animal';
-  if (departmentTargets.has('植物')) return 'plant';
-  if (departmentTargets.has('微生物')) return 'microbe';
-  scores.sort((a, b) => b.score - a.score || a.group.localeCompare(b.group));
-  return scores[0]?.score > 0 ? scores[0].group : 'animal';
-}
-
 function labTagSetByType(lab, type) {
-  if (type === 'perspectives') return labPerspectiveSet(lab);
   return new Set([...(lab.tags?.[type] || []), ...(type === 'targets' ? lab.major_categories || [] : [])]);
-}
-
-function labExpandedTagSetByType(lab, type) {
-  if (type === 'perspectives') return labPerspectiveSet(lab);
-  return expandTerms([...(lab.tags?.[type] || []), ...(type === 'targets' ? lab.major_categories || [] : [])]);
 }
 
 function compassScoreLab(lab, profile) {
   let score = 0;
   let matchedTypes = 0;
   const matched = [];
-  const scoreCaps = { perspectives: 1.35, targets: 1.05, methods: 0.8, fields: 0.35 };
   Object.entries(profile).forEach(([type, terms]) => {
     const labTerms = labTagSetByType(lab, type);
-    const expandedTypeTerms = labExpandedTagSetByType(lab, type);
     let typeHit = false;
-    const typeMatches = [];
+    let typeScore = 0;
     terms.forEach((weight, term) => {
-      if (labTerms.has(term)) {
-        typeMatches.push(weight);
-      } else if (expandedTypeTerms.has(String(term).toLowerCase())) {
-        typeMatches.push(weight * 0.72);
-      } else {
-        return;
-      }
+      if (!labTerms.has(term)) return;
+      typeScore += weight;
       typeHit = true;
       matched.push(term);
     });
-    const typeScore = typeMatches
-      .sort((a, b) => b - a)
-      .reduce((sum, value, index) => sum + (index === 0 ? value : value * 0.18), 0);
-    score += Math.min(typeScore, scoreCaps[type] || 0.4);
-    if (typeHit && type !== 'fields') matchedTypes += 1;
+    score += Math.min(typeScore, 1.6);
+    if (typeHit) matchedTypes += 1;
   });
   const allCompassTerms = flattenCompassProfile(profile).map((item) => item.term);
   const expanded = expandedLabTerms(lab);
   const related = allCompassTerms.filter((term) => expanded.has(String(term).toLowerCase()) && !matched.includes(term));
-  score += Math.min(related.length * 0.06, 0.24);
-  score += matchedTypes > 1 ? matchedTypes * 0.22 : 0;
-  score += (lab.recommended_for || []).some((item) => allCompassTerms.some((term) => item.includes(term))) ? 0.08 : 0;
+  score += related.length * 0.12;
+  score += matchedTypes > 1 ? matchedTypes * 0.35 : 0;
+  score += (lab.recommended_for || []).some((item) => allCompassTerms.some((term) => item.includes(term))) ? 0.2 : 0;
   return { lab, score, matched: uniqueTerms([...matched, ...related]).slice(0, 5), matchedTypes };
-}
-
-function compassDiversityValues(item) {
-  return {
-    perspectives: [...labPerspectiveSet(item.lab)],
-    targets: [...labTagSetByType(item.lab, 'targets')].slice(0, 5),
-    methods: [...labTagSetByType(item.lab, 'methods')].slice(0, 5),
-    fields: [...labTagSetByType(item.lab, 'fields')].slice(0, 5)
-  };
-}
-
-function hasCompassOverlap(a, b, type) {
-  const left = new Set(compassDiversityValues(a)[type]);
-  return compassDiversityValues(b)[type].some((term) => left.has(term));
-}
-
-function compassDiversityPenalty(item, chosen) {
-  return chosen.reduce((penalty, chosenItem) => {
-    let next = penalty;
-    if (compassPrimaryGroup(item.lab) === compassPrimaryGroup(chosenItem.lab)) next += 0.42;
-    if (item.lab.department === chosenItem.lab.department) next += 0.08;
-    if (hasCompassOverlap(item, chosenItem, 'perspectives')) next += 0.18;
-    if (hasCompassOverlap(item, chosenItem, 'targets')) next += 0.16;
-    if (hasCompassOverlap(item, chosenItem, 'methods')) next += 0.1;
-    if (hasCompassOverlap(item, chosenItem, 'fields')) next += 0.06;
-    return next;
-  }, 0);
 }
 
 function compassMatches() {
@@ -1057,24 +922,20 @@ function compassMatches() {
       return a.lab.lab_name.localeCompare(b.lab.lab_name, 'ja');
     });
   const chosen = [];
-  while (chosen.length < 3 && chosen.length < ranked.length) {
-    const next = ranked
-      .filter((item) => !chosen.some((chosenItem) => chosenItem.lab.id === item.lab.id))
-      .map((item) => ({ item, adjusted: item.score - compassDiversityPenalty(item, chosen) }))
-      .sort((a, b) => {
-        if (b.adjusted !== a.adjusted) return b.adjusted - a.adjusted;
-        if (b.item.score !== a.item.score) return b.item.score - a.item.score;
-        return a.item.lab.lab_name.localeCompare(b.item.lab.lab_name, 'ja');
-      })[0];
-    if (!next) break;
-    chosen.push(next.item);
-  }
+  ranked.forEach((item) => {
+    if (chosen.length >= 3) return;
+    const sameDepartmentCount = chosen.filter((chosenItem) => chosenItem.lab.department === item.lab.department).length;
+    if (sameDepartmentCount < 2 || ranked.length <= 3) chosen.push(item);
+  });
+  ranked.forEach((item) => {
+    if (chosen.length < 3 && !chosen.some((chosenItem) => chosenItem.lab.id === item.lab.id)) chosen.push(item);
+  });
   return chosen.slice(0, 3);
 }
 
 function compassKeywords() {
   const profile = compassTagProfile();
-  const picked = ['perspectives', 'targets', 'methods'].map((type) => {
+  const picked = ['targets', 'fields', 'methods'].map((type) => {
     const terms = [...(profile[type]?.entries() || [])]
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
       .map(([term, weight]) => ({ type, term, weight }));
