@@ -20,47 +20,51 @@
       "step_label": "STEP 1",
       "title": "興味の入り口",
       "guide": "まずは、普段のあなたに近いものを選んでみましょう。",
-      "question": "気になる記事や展示が並んでいたら、最初に見てみたいのは？",
+      "question": "生命科学の記事や展示を見るとしたら、どんな問いに惹かれますか？",
       "choices": [
         {
-          "id": "living_things",
-          "label": "動物や植物のくらし",
-          "description": "生き物の姿、行動、成長をもっと見てみたい。",
+          "id": "shape_structure",
+          "label": "形やつくりの違い",
+          "description": "生き物の形、構造、成長の違いから生命を考えたい。",
           "next_branch": "life",
           "tags": {
+            "perspectives": ["shape"],
             "targets": ["動物", "植物"],
-            "fields": ["生態学"],
+            "fields": ["形態学"],
             "methods": ["観察"]
           }
         },
         {
-          "id": "body_cells",
-          "label": "体や細胞のしくみ",
-          "description": "体の中で何が起きているのか知りたい。",
+          "id": "mechanism_function",
+          "label": "しくみや働き",
+          "description": "体、細胞、遺伝子、分子がどう働くのか知りたい。",
           "next_branch": "body",
           "tags": {
+            "perspectives": ["mechanism"],
             "targets": ["細胞", "神経"],
             "fields": ["分子生物学"],
             "methods": ["顕微鏡"]
           }
         },
         {
-          "id": "ecosystem",
-          "label": "自然環境と生態系",
-          "description": "生き物と環境のつながりを考えてみたい。",
+          "id": "ecology_interaction",
+          "label": "環境とのつながり",
+          "description": "生き物どうし、または生き物と環境の関係を考えたい。",
           "next_branch": "ecosystem",
           "tags": {
+            "perspectives": ["ecology"],
             "targets": ["生物多様性", "水環境"],
             "fields": ["生態学"],
             "methods": ["フィールド調査"]
           }
         },
         {
-          "id": "biotech",
-          "label": "生命を活かす技術",
-          "description": "生物の力を医療・食品・環境・ものづくりに役立てたい。",
+          "id": "application_technology",
+          "label": "生命を活かす方法",
+          "description": "生命科学の知識を医療・食品・環境・ものづくりに役立てたい。",
           "next_branch": "technology",
           "tags": {
+            "perspectives": ["application"],
             "targets": ["微生物", "酵素"],
             "fields": ["応用微生物学"],
             "methods": ["化学分析"]
@@ -82,6 +86,7 @@
               "label": "体の形やつくり",
               "description": "骨格、筋肉、器官の形の違いを比べてみたい。",
               "tags": {
+                "perspectives": ["shape"],
                 "targets": ["骨格", "筋肉"],
                 "fields": ["形態学", "比較解剖学"],
                 "methods": ["解剖", "CT"]
@@ -92,6 +97,7 @@
               "label": "行動や感じ方",
               "description": "動物がなぜ動き、どう感じているのかを知りたい。",
               "tags": {
+                "perspectives": ["mechanism"],
                 "targets": ["動物", "神経"],
                 "fields": ["行動神経科学", "神経科学"],
                 "methods": ["行動観察"]
@@ -102,6 +108,7 @@
               "label": "成長や体ができる過程",
               "description": "体や器官がどのように作られるのかを見てみたい。",
               "tags": {
+                "perspectives": ["shape", "mechanism"],
                 "targets": ["心臓", "胚"],
                 "fields": ["発生生物学"],
                 "methods": ["顕微鏡", "組織観察"]
@@ -112,6 +119,7 @@
               "label": "暮らし方や環境との関係",
               "description": "生き物がどんな場所で、どう生きているのかを調べたい。",
               "tags": {
+                "perspectives": ["ecology"],
                 "targets": ["野生動物", "生物多様性"],
                 "fields": ["生態学", "保全生物学"],
                 "methods": ["フィールド調査"]
@@ -127,6 +135,7 @@
               "label": "脳や神経の働き",
               "description": "行動や感覚を生み出す神経のしくみを知りたい。",
               "tags": {
+                "perspectives": ["mechanism"],
                 "targets": ["脳", "神経"],
                 "fields": ["神経科学"],
                 "methods": ["顕微鏡"]
@@ -137,6 +146,7 @@
               "label": "細胞どうしの情報交換",
               "description": "細胞が互いに合図を出し合うしくみを見てみたい。",
               "tags": {
+                "perspectives": ["mechanism"],
                 "targets": ["細胞", "糖鎖"],
                 "fields": ["細胞生物学", "糖鎖生物学"],
                 "methods": ["細胞培養"]
@@ -147,9 +157,10 @@
               "label": "遺伝子やDNA",
               "description": "生命の情報がどう保たれ、変化するのかを知りたい。",
               "tags": {
-                "targets": ["DNA", "遺伝子"],
-                "fields": ["分子生物学", "遺伝学"],
-                "methods": ["遺伝子解析"]
+                "perspectives": ["mechanism"],
+                "targets": ["DNA", "遺伝子", "糸状菌"],
+                "fields": ["分子生物学", "分子遺伝学", "微生物学"],
+                "methods": ["遺伝子解析", "突然変異解析", "分子実験"]
               }
             },
             {
@@ -157,6 +168,7 @@
               "label": "化学物質と体の反応",
               "description": "体が化学物質や環境の影響をどう受けるのかを考えたい。",
               "tags": {
+                "perspectives": ["ecology", "mechanism"],
                 "targets": ["環境化学物質"],
                 "fields": ["毒性学", "環境保健学"],
                 "methods": ["化学分析"]
@@ -172,6 +184,7 @@
               "label": "野生動物の暮らし",
               "description": "野外で動物の行動や移動を調べてみたい。",
               "tags": {
+                "perspectives": ["ecology"],
                 "targets": ["野生動物", "鳥類"],
                 "fields": ["行動生態学"],
                 "methods": ["フィールド調査", "バイオロギング"]
@@ -182,6 +195,7 @@
               "label": "生物多様性",
               "description": "いろいろな生き物が共にいる意味を考えたい。",
               "tags": {
+                "perspectives": ["ecology"],
                 "targets": ["生物多様性"],
                 "fields": ["保全生物学", "生態学"],
                 "methods": ["モニタリング"]
@@ -192,6 +206,7 @@
               "label": "水や土の環境",
               "description": "水質や土壌が生き物に与える影響を調べたい。",
               "tags": {
+                "perspectives": ["ecology"],
                 "targets": ["水環境", "底生無脊椎動物"],
                 "fields": ["環境科学", "生態リスク学"],
                 "methods": ["水質調査"]
@@ -202,6 +217,7 @@
               "label": "人間活動が生態系へ与える影響",
               "description": "化学物質や開発が自然へ与える影響を考えたい。",
               "tags": {
+                "perspectives": ["ecology", "application"],
                 "targets": ["環境化学物質", "生物多様性"],
                 "fields": ["生態リスク学", "毒性学"],
                 "methods": ["化学分析"]
@@ -217,6 +233,7 @@
               "label": "健康や医療",
               "description": "細胞や分子の知識を健康につなげたい。",
               "tags": {
+                "perspectives": ["application", "mechanism"],
                 "targets": ["iPS細胞", "糖鎖"],
                 "fields": ["再生生物学", "糖鎖生物学"],
                 "methods": ["細胞培養"]
@@ -227,9 +244,10 @@
               "label": "食料や作物",
               "description": "植物の力を食料生産や作物づくりに活かしたい。",
               "tags": {
+                "perspectives": ["application"],
                 "targets": ["植物", "イネ"],
                 "fields": ["植物栄養学", "作物科学"],
-                "methods": ["植物栽培"]
+                "methods": ["植物栽培", "遺伝子解析"]
               }
             },
             {
@@ -237,9 +255,10 @@
               "label": "環境浄化やエネルギー",
               "description": "微生物の力で環境や資源の課題に向き合いたい。",
               "tags": {
-                "targets": ["微生物", "電気活性微生物"],
-                "fields": ["環境バイオテクノロジー"],
-                "methods": ["微生物培養"]
+                "perspectives": ["application", "ecology"],
+                "targets": ["微生物", "電気活性微生物", "発電菌"],
+                "fields": ["環境バイオテクノロジー", "環境微生物学", "微生物生理学"],
+                "methods": ["微生物培養", "電気化学測定"]
               }
             },
             {
@@ -247,9 +266,10 @@
               "label": "微生物・酵素を使ったものづくり",
               "description": "酵素や微生物の働きを新しい材料や技術に活かしたい。",
               "tags": {
-                "targets": ["酵素", "タンパク質"],
-                "fields": ["酵素工学", "生物化学"],
-                "methods": ["酵素解析"]
+                "perspectives": ["application"],
+                "targets": ["酵素", "糖鎖"],
+                "fields": ["酵素工学", "材料化学"],
+                "methods": ["酵素解析", "化学分析"]
               }
             }
           ]
@@ -268,6 +288,7 @@
           "label": "形や違いには、どんな意味がある？",
           "description": "生き物や細胞の形、種類ごとの違いに注目したい。",
           "tags": {
+            "perspectives": ["shape"],
             "targets": ["動物"],
             "fields": ["形態学", "比較解剖学"],
             "methods": ["観察"]
@@ -278,9 +299,10 @@
           "label": "どんなしくみで働いている？",
           "description": "体・細胞・遺伝子の中で起こる仕組みを知りたい。",
           "tags": {
-            "targets": ["細胞", "遺伝子"],
-            "fields": ["分子生物学", "生理学"],
-            "methods": ["分子実験"]
+            "perspectives": ["mechanism"],
+            "targets": ["細胞", "遺伝子", "DNA"],
+            "fields": ["分子生物学", "分子遺伝学"],
+            "methods": ["分子実験", "突然変異解析"]
           }
         },
         {
@@ -288,9 +310,10 @@
           "label": "環境にどう応答している？",
           "description": "生き物が周囲の変化を感じ、適応する仕組みを知りたい。",
           "tags": {
-            "targets": ["植物", "微生物"],
-            "fields": ["環境応答学", "植物生理学"],
-            "methods": ["測定"]
+            "perspectives": ["ecology", "mechanism"],
+            "targets": ["植物", "極限環境微生物", "微生物"],
+            "fields": ["植物生理学", "環境応答学", "微生物学"],
+            "methods": ["測定", "光合成測定", "生理解析"]
           }
         },
         {
@@ -298,8 +321,9 @@
           "label": "社会にどう活かせる？",
           "description": "生命科学の知識を課題解決や技術へつなげたい。",
           "tags": {
-            "targets": ["酵素", "作物"],
-            "fields": ["環境バイオテクノロジー", "作物科学"],
+            "perspectives": ["application"],
+            "targets": ["二次代謝産物", "糖鎖"],
+            "fields": ["天然物化学", "材料化学"],
             "methods": ["化学分析"]
           }
         }
@@ -317,6 +341,7 @@
           "label": "生き物や標本をじっくり観察する",
           "description": "形や変化を見比べ、記録したい。",
           "tags": {
+            "perspectives": ["shape"],
             "targets": [],
             "fields": ["形態学"],
             "methods": ["観察", "顕微鏡"]
@@ -327,6 +352,7 @@
           "label": "実験室で細胞や分子を調べる",
           "description": "条件を変えながら、反応や仕組みを確かめたい。",
           "tags": {
+            "perspectives": ["mechanism"],
             "targets": ["細胞", "DNA"],
             "fields": ["分子生物学"],
             "methods": ["細胞培養", "分子実験"]
@@ -337,6 +363,7 @@
           "label": "野外へ出てデータを集める",
           "description": "生き物や環境を、その場所で調べたい。",
           "tags": {
+            "perspectives": ["ecology"],
             "targets": ["野生動物", "水環境"],
             "fields": ["生態学"],
             "methods": ["フィールド調査"]
@@ -347,8 +374,9 @@
           "label": "パソコンでデータを読み解く",
           "description": "数値・画像・記録から見えない傾向を探したい。",
           "tags": {
-            "targets": [],
-            "fields": ["生物統計学"],
+            "perspectives": ["ecology"],
+            "targets": ["人", "環境化学物質"],
+            "fields": ["生物統計学", "環境保健学"],
             "methods": ["データ解析", "統計解析"]
           }
         }
@@ -366,6 +394,7 @@
           "label": "小さな変化をコツコツ確かめる",
           "description": "少しずつ条件を変えながら、結果の違いを見てみたい。",
           "tags": {
+            "perspectives": ["mechanism"],
             "targets": ["植物"],
             "fields": ["植物生理学"],
             "methods": ["測定", "植物栽培"]
@@ -376,6 +405,7 @@
           "label": "現場へ出て、その場で発見する",
           "description": "研究対象がいる場所へ行き、直接観察したい。",
           "tags": {
+            "perspectives": ["ecology"],
             "targets": ["野生動物", "生物多様性"],
             "fields": ["生態学"],
             "methods": ["フィールド調査"]
@@ -386,9 +416,10 @@
           "label": "試行錯誤しながら実験条件を工夫する",
           "description": "反応がうまく見える条件を探しながら確かめたい。",
           "tags": {
-            "targets": ["微生物", "酵素"],
-            "fields": ["生物化学"],
-            "methods": ["微生物培養", "酵素解析"]
+            "perspectives": ["mechanism", "application"],
+            "targets": ["微生物", "酵素", "電気活性微生物"],
+            "fields": ["微生物学", "微生物生理学", "生物化学"],
+            "methods": ["微生物培養", "遺伝子改変", "生理解析"]
           }
         },
         {
@@ -396,9 +427,10 @@
           "label": "多くのデータを比べ、筋道を立てて考える",
           "description": "複数の結果を整理し、共通点や違いを見つけたい。",
           "tags": {
+            "perspectives": ["ecology"],
             "targets": [],
-            "fields": ["生物統計学"],
-            "methods": ["データ解析", "統計解析"]
+            "fields": ["生物統計学", "環境保健学"],
+            "methods": ["統計解析", "質問票調査"]
           }
         }
       ]
@@ -415,6 +447,7 @@
           "label": "生き物の多様さや進化",
           "description": "いろいろな生き物の違いから、生命の広がりを考えたい。",
           "tags": {
+            "perspectives": ["shape", "ecology"],
             "targets": ["動物", "生物多様性"],
             "fields": ["進化生物学", "形態学"],
             "methods": ["観察"]
@@ -426,9 +459,10 @@
           "label": "体・脳・細胞のしくみ",
           "description": "生命の内側で起きている仕組みを理解したい。",
           "tags": {
-            "targets": ["細胞", "神経"],
-            "fields": ["神経科学", "分子生物学"],
-            "methods": ["顕微鏡"]
+            "perspectives": ["mechanism"],
+            "targets": ["細胞", "DNA"],
+            "fields": ["分子生物学", "分子遺伝学"],
+            "methods": ["顕微鏡", "遺伝子解析"]
           },
           "weight": 0.75
         },
@@ -437,6 +471,7 @@
           "label": "環境と生き物のつながり",
           "description": "自然環境の中で生命がどう成り立つのかを知りたい。",
           "tags": {
+            "perspectives": ["ecology"],
             "targets": ["水環境", "生物多様性"],
             "fields": ["生態学", "環境科学"],
             "methods": ["フィールド調査"]
@@ -448,8 +483,9 @@
           "label": "生命科学を活かす新しい方法",
           "description": "研究で得た知識を、社会の課題解決や技術につなげたい。",
           "tags": {
-            "targets": ["微生物", "酵素"],
-            "fields": ["環境バイオテクノロジー", "酵素工学"],
+            "perspectives": ["application"],
+            "targets": ["微生物", "二次代謝産物"],
+            "fields": ["環境バイオテクノロジー", "天然物化学"],
             "methods": ["化学分析"]
           },
           "weight": 0.75
