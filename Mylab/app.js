@@ -1,10 +1,12 @@
 let labs = [];
 let eventData = null;
+let compassData = null;
 let departments = [];
 let selected = new Set();
 let selectedDetailTerms = new Set();
 let selectedEventFilters = new Set();
 let selectedEventDate = '';
+let compassAnswers = {};
 let selectedLabJumpDepartment = '';
 let selectedRecommendationDepartment = '';
 let selectedQuestionDepartment = '';
@@ -288,17 +290,20 @@ async function init() {
   updateFavoriteCount();
 
   try {
-    const [labResponse, eventResponse, departmentResponse] = await Promise.all([
+    const [labResponse, eventResponse, departmentResponse, compassResponse] = await Promise.all([
       fetch('data/labs.json'),
       fetch('data/events.json'),
-      fetch('data/departments.json')
+      fetch('data/departments.json'),
+      fetch('data/research-compass.json')
     ]);
     if (!labResponse.ok) throw new Error(`labs.json: ${labResponse.status}`);
     if (!eventResponse.ok) throw new Error(`events.json: ${eventResponse.status}`);
     if (!departmentResponse.ok) throw new Error(`departments.json: ${departmentResponse.status}`);
+    if (!compassResponse.ok) throw new Error(`research-compass.json: ${compassResponse.status}`);
     labs = await labResponse.json();
     eventData = await eventResponse.json();
     departments = await departmentResponse.json();
+    compassData = await compassResponse.json();
     selectedLabJumpDepartment = '';
     selectedRecommendationDepartment = '';
     selectedQuestionDepartment = '';
@@ -307,6 +312,7 @@ async function init() {
     renderDirectoryLead();
     renderHomeTags();
     renderInterest();
+    renderCompass();
     renderLabList();
     renderVisitors();
   } catch (error) {
@@ -371,6 +377,7 @@ function switchView(name) {
 function renderCurrentView() {
   const active = qs('.view.active')?.id.replace('view-', '');
   if (active === 'interest') renderInterest();
+  if (active === 'compass') renderCompass();
   if (active === 'labs') renderLabList();
   if (active === 'visitors') renderVisitors();
   if (active === 'favorites') renderFavorites();
@@ -808,6 +815,179 @@ function renderInterestIndex(container, items) {
     }));
   });
   container.appendChild(grid);
+}
+
+function renderCompass() {
+  if (!compassData) return;
+  renderCompassProgress();
+  renderCompassQuestions();
+  renderCompassResults();
+}
+
+function selectedCompassOptions() {
+  return (compassData?.questions || [])
+    .map((question) => question.options.find((option) => option.id === compassAnswers[question.id]))
+    .filter(Boolean);
+}
+
+function compassTagProfile() {
+  const profile = { targets: new Map(), fields: new Map(), methods: new Map() };
+  const weights = { targets: 3, fields: 2, methods: 2 };
+  selectedCompassOptions().forEach((option) => {
+    Object.entries(option.tags || {}).forEach(([type, terms]) => {
+      (terms || []).forEach((term) => {
+        profile[type].set(term, (profile[type].get(term) || 0) + weights[type]);
+      });
+    });
+  });
+  return profile;
+}
+
+function flattenCompassProfile(profile) {
+  return Object.entries(profile).flatMap(([type, terms]) =>
+    [...terms.entries()].map(([term, weight]) => ({ type, term, weight }))
+  );
+}
+
+function labTagSetByType(lab, type) {
+  return new Set([...(lab.tags?.[type] || []), ...(type === 'targets' ? lab.major_categories || [] : [])]);
+}
+
+function compassScoreLab(lab, profile) {
+  const typeWeights = { targets: 1.25, fields: 1, methods: 1 };
+  let score = 0;
+  let matchedTypes = 0;
+  const matched = [];
+  Object.entries(profile).forEach(([type, terms]) => {
+    const labTerms = labTagSetByType(lab, type);
+    let typeHit = false;
+    terms.forEach((weight, term) => {
+      if (!labTerms.has(term)) return;
+      score += weight * typeWeights[type];
+      typeHit = true;
+      matched.push(term);
+    });
+    if (typeHit) matchedTypes += 1;
+  });
+  const allCompassTerms = flattenCompassProfile(profile).map((item) => item.term);
+  const expanded = expandedLabTerms(lab);
+  const related = allCompassTerms.filter((term) => expanded.has(String(term).toLowerCase()) && !matched.includes(term));
+  score += related.length * 0.35;
+  score += matchedTypes > 1 ? matchedTypes * 1.4 : 0;
+  score += (lab.recommended_for || []).some((item) => allCompassTerms.some((term) => item.includes(term))) ? 0.8 : 0;
+  return { lab, score, matched: uniqueTerms([...matched, ...related]).slice(0, 5), matchedTypes };
+}
+
+function compassMatches() {
+  const answered = selectedCompassOptions();
+  if (!answered.length) return [];
+  const profile = compassTagProfile();
+  return labs
+    .map((lab) => compassScoreLab(lab, profile))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => {
+      if (b.matchedTypes !== a.matchedTypes) return b.matchedTypes - a.matchedTypes;
+      if (b.score !== a.score) return b.score - a.score;
+      return a.lab.lab_name.localeCompare(b.lab.lab_name, 'ja');
+    })
+    .slice(0, 3);
+}
+
+function compassKeywords() {
+  return flattenCompassProfile(compassTagProfile())
+    .sort((a, b) => b.weight - a.weight || a.term.localeCompare(b.term, 'ja'))
+    .map((item) => item.term)
+    .filter((term) => !['生命科学', '生物', '研究'].includes(term))
+    .slice(0, 3);
+}
+
+function renderCompassProgress() {
+  const total = compassData.questions.length;
+  const answered = selectedCompassOptions().length;
+  const progress = qs('#compass-progress');
+  progress.innerHTML = `
+    <span>${answered} / ${total} answered</span>
+    <div class="compass-progress-bar"><i style="width:${Math.round((answered / total) * 100)}%"></i></div>
+    <button class="text-button compass-reset" type="button">回答をクリア</button>`;
+  progress.querySelector('.compass-reset').onclick = () => {
+    compassAnswers = {};
+    renderCompass();
+  };
+}
+
+function renderCompassQuestions() {
+  const container = qs('#compass-questions');
+  container.innerHTML = '';
+  compassData.questions.forEach((question, index) => {
+    const block = document.createElement('section');
+    block.className = 'compass-question card';
+    block.innerHTML = `
+      <div class="compass-question-head">
+        <span>${String(index + 1).padStart(2, '0')}</span>
+        <h3>${escapeHtml(question.text)}</h3>
+      </div>
+      <div class="compass-options"></div>`;
+    const options = block.querySelector('.compass-options');
+    question.options.forEach((option) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `compass-option${compassAnswers[question.id] === option.id ? ' selected' : ''}`;
+      button.textContent = option.label;
+      button.onclick = () => {
+        compassAnswers[question.id] = option.id;
+        renderCompass();
+      };
+      options.appendChild(button);
+    });
+    container.appendChild(block);
+  });
+}
+
+function renderCompassResults() {
+  const container = qs('#compass-results');
+  const answered = selectedCompassOptions().length;
+  if (!answered) {
+    container.innerHTML = `
+      <span class="eyebrow">YOUR COMPASS</span>
+      <h3>気になる選択肢を選んでみましょう</h3>
+      <p>回答が増えるほど、あなたの興味の方向性に近い研究室が見えてきます。</p>`;
+    return;
+  }
+  const matches = compassMatches();
+  const keywords = compassKeywords();
+  container.innerHTML = `
+    <div class="compass-result-head">
+      <div>
+        <span class="eyebrow">YOUR COMPASS</span>
+        <h3>あなたと相性がよさそうな研究室</h3>
+        <p>今の興味から見つけた、出会いの候補です。</p>
+      </div>
+      <span>${answered} answered</span>
+    </div>
+    <div class="compass-match-grid"></div>
+    <section class="compass-keyword-feedback">
+      <h3>あなたが興味を持ちそうなキーワード</h3>
+      <div class="keywords">${keywords.map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join('')}</div>
+    </section>
+    <p class="compass-message">${escapeHtml(compassData.result_message)}</p>`;
+  const grid = container.querySelector('.compass-match-grid');
+  matches.forEach((item) => grid.appendChild(compassLabCard(item.lab, item.matched)));
+}
+
+function compassLabCard(lab, matched) {
+  const article = document.createElement('article');
+  article.className = `compass-lab-card ${deptClass(lab.department)}`;
+  applyDepartmentTheme(article, lab.department);
+  article.innerHTML = `
+    <span class="compass-dept">${escapeHtml(lab.department)}</span>
+    <h3>${escapeHtml(displayLabName(lab))}</h3>
+    <p class="compass-pi">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</p>
+    <p>${escapeHtml(lab.summary)}</p>
+    <section class="compass-question-mini"><span>QUESTION</span><strong>${escapeHtml(lab.question)}</strong></section>
+    <div class="lab-jump-keywords">${matched.slice(0, 3).map((keyword) => `<em>${escapeHtml(keyword)}</em>`).join('')}</div>
+    <button class="open-lab" type="button">この研究室をもっと知る</button>`;
+  article.querySelector('.open-lab').onclick = () => openModal(lab);
+  return article;
 }
 
 function renderLabList() {
