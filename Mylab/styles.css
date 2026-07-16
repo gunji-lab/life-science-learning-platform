@@ -2160,8 +2160,9 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
 }
 .interest-index-grid .lab-jump-item.department-themed{
   border-color:var(--dept-line);
-  border-right:5px solid var(--dept-color);
-  background:linear-gradient(90deg,#fff 0%,#fff 58%,var(--dept-soft) 100%);
+  border-left:5px solid var(--dept-color);
+  background:linear-gradient(90deg,var(--dept-soft) 0%,#fff 34%,#fff 100%);
+  padding-left:32px;
 }
 .interest-index-grid .lab-jump-item.department-themed .lab-jump-dept{
   width:max-content;
