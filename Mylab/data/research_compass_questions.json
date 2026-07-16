@@ -1,0 +1,460 @@
+{
+  "title": "Research Compass",
+  "lead": "あなたの興味と相性がいいのは、どの研究室でしょう？",
+  "description": "いくつかの質問に答えながら、自分の興味や研究スタイルを少しずつ整理してみましょう。",
+  "intro_note": "これは適性を決める診断ではありません。今の興味を広げるための、小さなコンパスです。",
+  "primary_action": "はじめる →",
+  "transition": {
+    "heading": "興味の輪郭が見えてきました。",
+    "description": "あなたが選んだ答えを、研究対象・研究分野・研究方法の3つの視点から整理しています。"
+  },
+  "result": {
+    "map_label": "INTEREST MAP",
+    "map_heading": "あなたの興味をたどると、こんな言葉が見えてきました。",
+    "labs_heading": "あなたと相性がよさそうな研究室",
+    "closing": "今回の結果は、今の興味をもとにした一つのヒントです。大学で学ぶ中で、興味は新しく広がったり、変化したりします。気になった研究室だけでなく、ぜひほかの研究室ものぞいてみてください。"
+  },
+  "steps": [
+    {
+      "id": "entry",
+      "step_label": "STEP 1",
+      "title": "興味の入り口",
+      "guide": "まずは、普段のあなたに近いものを選んでみましょう。",
+      "question": "気になる記事や展示が並んでいたら、最初に見てみたいのは？",
+      "choices": [
+        {
+          "id": "living_things",
+          "label": "動物や植物のくらし",
+          "description": "生き物の姿、行動、成長をもっと見てみたい。",
+          "next_branch": "life",
+          "tags": {
+            "targets": ["動物", "植物"],
+            "fields": ["生態学"],
+            "methods": ["観察"]
+          }
+        },
+        {
+          "id": "body_cells",
+          "label": "体や細胞のしくみ",
+          "description": "体の中で何が起きているのか知りたい。",
+          "next_branch": "body",
+          "tags": {
+            "targets": ["細胞", "神経"],
+            "fields": ["分子生物学"],
+            "methods": ["顕微鏡"]
+          }
+        },
+        {
+          "id": "ecosystem",
+          "label": "自然環境と生態系",
+          "description": "生き物と環境のつながりを考えてみたい。",
+          "next_branch": "ecosystem",
+          "tags": {
+            "targets": ["生物多様性", "水環境"],
+            "fields": ["生態学"],
+            "methods": ["フィールド調査"]
+          }
+        },
+        {
+          "id": "biotech",
+          "label": "生命を活かす技術",
+          "description": "生物の力を医療・食品・環境・ものづくりに役立てたい。",
+          "next_branch": "technology",
+          "tags": {
+            "targets": ["微生物", "酵素"],
+            "fields": ["応用微生物学"],
+            "methods": ["化学分析"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "step_label": "STEP 2",
+      "title": "もう少し詳しく",
+      "guide": "その中でも、特に気になるのはどんなところですか？",
+      "branches": {
+        "life": {
+          "question": "生き物を見るとき、どこに目が向きますか？",
+          "choices": [
+            {
+              "id": "shape",
+              "label": "体の形やつくり",
+              "description": "骨格、筋肉、器官の形の違いを比べてみたい。",
+              "tags": {
+                "targets": ["骨格", "筋肉"],
+                "fields": ["形態学", "比較解剖学"],
+                "methods": ["解剖", "CT"]
+              }
+            },
+            {
+              "id": "behavior",
+              "label": "行動や感じ方",
+              "description": "動物がなぜ動き、どう感じているのかを知りたい。",
+              "tags": {
+                "targets": ["動物", "神経"],
+                "fields": ["行動神経科学", "神経科学"],
+                "methods": ["行動観察"]
+              }
+            },
+            {
+              "id": "development",
+              "label": "成長や体ができる過程",
+              "description": "体や器官がどのように作られるのかを見てみたい。",
+              "tags": {
+                "targets": ["心臓", "胚"],
+                "fields": ["発生生物学"],
+                "methods": ["顕微鏡", "組織観察"]
+              }
+            },
+            {
+              "id": "habitat",
+              "label": "暮らし方や環境との関係",
+              "description": "生き物がどんな場所で、どう生きているのかを調べたい。",
+              "tags": {
+                "targets": ["野生動物", "生物多様性"],
+                "fields": ["生態学", "保全生物学"],
+                "methods": ["フィールド調査"]
+              }
+            }
+          ]
+        },
+        "body": {
+          "question": "体の中で、特に知りたいのは？",
+          "choices": [
+            {
+              "id": "brain",
+              "label": "脳や神経の働き",
+              "description": "行動や感覚を生み出す神経のしくみを知りたい。",
+              "tags": {
+                "targets": ["脳", "神経"],
+                "fields": ["神経科学"],
+                "methods": ["顕微鏡"]
+              }
+            },
+            {
+              "id": "cell_communication",
+              "label": "細胞どうしの情報交換",
+              "description": "細胞が互いに合図を出し合うしくみを見てみたい。",
+              "tags": {
+                "targets": ["細胞", "糖鎖"],
+                "fields": ["細胞生物学", "糖鎖生物学"],
+                "methods": ["細胞培養"]
+              }
+            },
+            {
+              "id": "genes",
+              "label": "遺伝子やDNA",
+              "description": "生命の情報がどう保たれ、変化するのかを知りたい。",
+              "tags": {
+                "targets": ["DNA", "遺伝子"],
+                "fields": ["分子生物学", "遺伝学"],
+                "methods": ["遺伝子解析"]
+              }
+            },
+            {
+              "id": "chemical_response",
+              "label": "化学物質と体の反応",
+              "description": "体が化学物質や環境の影響をどう受けるのかを考えたい。",
+              "tags": {
+                "targets": ["環境化学物質"],
+                "fields": ["毒性学", "環境保健学"],
+                "methods": ["化学分析"]
+              }
+            }
+          ]
+        },
+        "ecosystem": {
+          "question": "自然について、特に気になるのは？",
+          "choices": [
+            {
+              "id": "wildlife",
+              "label": "野生動物の暮らし",
+              "description": "野外で動物の行動や移動を調べてみたい。",
+              "tags": {
+                "targets": ["野生動物", "鳥類"],
+                "fields": ["行動生態学"],
+                "methods": ["フィールド調査", "バイオロギング"]
+              }
+            },
+            {
+              "id": "biodiversity",
+              "label": "生物多様性",
+              "description": "いろいろな生き物が共にいる意味を考えたい。",
+              "tags": {
+                "targets": ["生物多様性"],
+                "fields": ["保全生物学", "生態学"],
+                "methods": ["モニタリング"]
+              }
+            },
+            {
+              "id": "water_soil",
+              "label": "水や土の環境",
+              "description": "水質や土壌が生き物に与える影響を調べたい。",
+              "tags": {
+                "targets": ["水環境", "底生無脊椎動物"],
+                "fields": ["環境科学", "生態リスク学"],
+                "methods": ["水質調査"]
+              }
+            },
+            {
+              "id": "human_impact",
+              "label": "人間活動が生態系へ与える影響",
+              "description": "化学物質や開発が自然へ与える影響を考えたい。",
+              "tags": {
+                "targets": ["環境化学物質", "生物多様性"],
+                "fields": ["生態リスク学", "毒性学"],
+                "methods": ["化学分析"]
+              }
+            }
+          ]
+        },
+        "technology": {
+          "question": "生命の力を、どんなことへつなげたいですか？",
+          "choices": [
+            {
+              "id": "health_care",
+              "label": "健康や医療",
+              "description": "細胞や分子の知識を健康につなげたい。",
+              "tags": {
+                "targets": ["iPS細胞", "糖鎖"],
+                "fields": ["再生生物学", "糖鎖生物学"],
+                "methods": ["細胞培養"]
+              }
+            },
+            {
+              "id": "crops",
+              "label": "食料や作物",
+              "description": "植物の力を食料生産や作物づくりに活かしたい。",
+              "tags": {
+                "targets": ["植物", "イネ"],
+                "fields": ["植物栄養学", "作物科学"],
+                "methods": ["植物栽培"]
+              }
+            },
+            {
+              "id": "cleanup_energy",
+              "label": "環境浄化やエネルギー",
+              "description": "微生物の力で環境や資源の課題に向き合いたい。",
+              "tags": {
+                "targets": ["微生物", "電気活性微生物"],
+                "fields": ["環境バイオテクノロジー"],
+                "methods": ["微生物培養"]
+              }
+            },
+            {
+              "id": "enzymes",
+              "label": "微生物・酵素を使ったものづくり",
+              "description": "酵素や微生物の働きを新しい材料や技術に活かしたい。",
+              "tags": {
+                "targets": ["酵素", "タンパク質"],
+                "fields": ["酵素工学", "生物化学"],
+                "methods": ["酵素解析"]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "viewpoint",
+      "step_label": "STEP 3",
+      "title": "何に惹かれる？",
+      "guide": "研究の問いとして考えるなら、どんな「なぜ？」に惹かれますか？",
+      "question": "次のうち、特に考えてみたいのは？",
+      "choices": [
+        {
+          "id": "meaning_of_shape",
+          "label": "形や違いには、どんな意味がある？",
+          "description": "生き物や細胞の形、種類ごとの違いに注目したい。",
+          "tags": {
+            "targets": ["動物"],
+            "fields": ["形態学", "比較解剖学"],
+            "methods": ["観察"]
+          }
+        },
+        {
+          "id": "mechanism",
+          "label": "どんなしくみで働いている？",
+          "description": "体・細胞・遺伝子の中で起こる仕組みを知りたい。",
+          "tags": {
+            "targets": ["細胞", "遺伝子"],
+            "fields": ["分子生物学", "生理学"],
+            "methods": ["分子実験"]
+          }
+        },
+        {
+          "id": "response",
+          "label": "環境にどう応答している？",
+          "description": "生き物が周囲の変化を感じ、適応する仕組みを知りたい。",
+          "tags": {
+            "targets": ["植物", "微生物"],
+            "fields": ["環境応答学", "植物生理学"],
+            "methods": ["測定"]
+          }
+        },
+        {
+          "id": "application",
+          "label": "社会にどう活かせる？",
+          "description": "生命科学の知識を課題解決や技術へつなげたい。",
+          "tags": {
+            "targets": ["酵素", "作物"],
+            "fields": ["環境バイオテクノロジー", "作物科学"],
+            "methods": ["化学分析"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "method",
+      "step_label": "STEP 4",
+      "title": "研究するとしたら？",
+      "guide": "大学で研究するとしたら、どんな時間が楽しそうですか？",
+      "question": "一番やってみたいのは？",
+      "choices": [
+        {
+          "id": "observation",
+          "label": "生き物や標本をじっくり観察する",
+          "description": "形や変化を見比べ、記録したい。",
+          "tags": {
+            "targets": [],
+            "fields": ["形態学"],
+            "methods": ["観察", "顕微鏡"]
+          }
+        },
+        {
+          "id": "molecular_lab",
+          "label": "実験室で細胞や分子を調べる",
+          "description": "条件を変えながら、反応や仕組みを確かめたい。",
+          "tags": {
+            "targets": ["細胞", "DNA"],
+            "fields": ["分子生物学"],
+            "methods": ["細胞培養", "分子実験"]
+          }
+        },
+        {
+          "id": "field",
+          "label": "野外へ出てデータを集める",
+          "description": "生き物や環境を、その場所で調べたい。",
+          "tags": {
+            "targets": ["野生動物", "水環境"],
+            "fields": ["生態学"],
+            "methods": ["フィールド調査"]
+          }
+        },
+        {
+          "id": "data",
+          "label": "パソコンでデータを読み解く",
+          "description": "数値・画像・記録から見えない傾向を探したい。",
+          "tags": {
+            "targets": [],
+            "fields": ["生物統計学"],
+            "methods": ["データ解析", "統計解析"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "style",
+      "step_label": "STEP 5",
+      "title": "大学生活を想像してみよう",
+      "guide": "研究を進めるとき、どんな取り組み方が自分に近そうですか？",
+      "question": "楽しそうだと思う進め方は？",
+      "choices": [
+        {
+          "id": "small_changes",
+          "label": "小さな変化をコツコツ確かめる",
+          "description": "少しずつ条件を変えながら、結果の違いを見てみたい。",
+          "tags": {
+            "targets": ["植物"],
+            "fields": ["植物生理学"],
+            "methods": ["測定", "植物栽培"]
+          }
+        },
+        {
+          "id": "discover_on_site",
+          "label": "現場へ出て、その場で発見する",
+          "description": "研究対象がいる場所へ行き、直接観察したい。",
+          "tags": {
+            "targets": ["野生動物", "生物多様性"],
+            "fields": ["生態学"],
+            "methods": ["フィールド調査"]
+          }
+        },
+        {
+          "id": "trial_conditions",
+          "label": "試行錯誤しながら実験条件を工夫する",
+          "description": "反応がうまく見える条件を探しながら確かめたい。",
+          "tags": {
+            "targets": ["微生物", "酵素"],
+            "fields": ["生物化学"],
+            "methods": ["微生物培養", "酵素解析"]
+          }
+        },
+        {
+          "id": "compare_data",
+          "label": "多くのデータを比べ、筋道を立てて考える",
+          "description": "複数の結果を整理し、共通点や違いを見つけたい。",
+          "tags": {
+            "targets": [],
+            "fields": ["生物統計学"],
+            "methods": ["データ解析", "統計解析"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "final",
+      "step_label": "STEP 6",
+      "title": "最後の質問",
+      "guide": "最後に、今のあなたが一番気になる方向を選んでください。",
+      "question": "研究を通して、どんなことが見えてきたらうれしいですか？",
+      "choices": [
+        {
+          "id": "diversity_evolution",
+          "label": "生き物の多様さや進化",
+          "description": "いろいろな生き物の違いから、生命の広がりを考えたい。",
+          "tags": {
+            "targets": ["動物", "生物多様性"],
+            "fields": ["進化生物学", "形態学"],
+            "methods": ["観察"]
+          },
+          "weight": 0.75
+        },
+        {
+          "id": "body_mechanism",
+          "label": "体・脳・細胞のしくみ",
+          "description": "生命の内側で起きている仕組みを理解したい。",
+          "tags": {
+            "targets": ["細胞", "神経"],
+            "fields": ["神経科学", "分子生物学"],
+            "methods": ["顕微鏡"]
+          },
+          "weight": 0.75
+        },
+        {
+          "id": "environment_connection",
+          "label": "環境と生き物のつながり",
+          "description": "自然環境の中で生命がどう成り立つのかを知りたい。",
+          "tags": {
+            "targets": ["水環境", "生物多様性"],
+            "fields": ["生態学", "環境科学"],
+            "methods": ["フィールド調査"]
+          },
+          "weight": 0.75
+        },
+        {
+          "id": "new_application",
+          "label": "生命科学を活かす新しい方法",
+          "description": "研究で得た知識を、社会の課題解決や技術につなげたい。",
+          "tags": {
+            "targets": ["微生物", "酵素"],
+            "fields": ["環境バイオテクノロジー", "酵素工学"],
+            "methods": ["化学分析"]
+          },
+          "weight": 0.75
+        }
+      ]
+    }
+  ]
+}

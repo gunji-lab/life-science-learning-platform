@@ -1,12 +1,16 @@
 let labs = [];
 let eventData = null;
 let compassData = null;
+let compassGlossary = [];
 let departments = [];
 let selected = new Set();
 let selectedDetailTerms = new Set();
 let selectedEventFilters = new Set();
 let selectedEventDate = '';
 let compassAnswers = {};
+let compassStarted = false;
+let compassStepIndex = 0;
+let compassStage = 'intro';
 let selectedLabJumpDepartment = '';
 let selectedRecommendationDepartment = '';
 let selectedQuestionDepartment = '';
@@ -290,20 +294,23 @@ async function init() {
   updateFavoriteCount();
 
   try {
-    const [labResponse, eventResponse, departmentResponse, compassResponse] = await Promise.all([
+    const [labResponse, eventResponse, departmentResponse, compassResponse, compassGlossaryResponse] = await Promise.all([
       fetch('data/labs.json'),
       fetch('data/events.json'),
       fetch('data/departments.json'),
-      fetch('data/research-compass.json')
+      fetch('data/research_compass_questions.json'),
+      fetch('data/research_compass_glossary.json')
     ]);
     if (!labResponse.ok) throw new Error(`labs.json: ${labResponse.status}`);
     if (!eventResponse.ok) throw new Error(`events.json: ${eventResponse.status}`);
     if (!departmentResponse.ok) throw new Error(`departments.json: ${departmentResponse.status}`);
-    if (!compassResponse.ok) throw new Error(`research-compass.json: ${compassResponse.status}`);
+    if (!compassResponse.ok) throw new Error(`research_compass_questions.json: ${compassResponse.status}`);
+    if (!compassGlossaryResponse.ok) throw new Error(`research_compass_glossary.json: ${compassGlossaryResponse.status}`);
     labs = await labResponse.json();
     eventData = await eventResponse.json();
     departments = await departmentResponse.json();
     compassData = await compassResponse.json();
+    compassGlossary = await compassGlossaryResponse.json();
     selectedLabJumpDepartment = '';
     selectedRecommendationDepartment = '';
     selectedQuestionDepartment = '';
@@ -819,24 +826,45 @@ function renderInterestIndex(container, items) {
 
 function renderCompass() {
   if (!compassData) return;
-  renderCompassProgress();
-  renderCompassQuestions();
-  renderCompassResults();
+  renderCompassHero();
+  if (compassStage === 'question') {
+    renderCompassProgress();
+    renderCompassQuestion();
+    qs('#compass-results').innerHTML = '';
+    qs('#compass-results').hidden = true;
+    return;
+  }
+  qs('#compass-progress').innerHTML = '';
+  qs('#compass-results').hidden = false;
+  if (compassStage === 'transition') {
+    renderCompassTransition();
+    qs('#compass-results').innerHTML = '';
+    qs('#compass-results').hidden = true;
+  } else if (compassStage === 'results') {
+    qs('#compass-questions').innerHTML = '';
+    renderCompassResults();
+  } else {
+    renderCompassIntro();
+    qs('#compass-results').innerHTML = '';
+    qs('#compass-results').hidden = true;
+  }
 }
 
 function selectedCompassOptions() {
-  return (compassData?.questions || [])
-    .map((question) => question.options.find((option) => option.id === compassAnswers[question.id]))
+  return resolvedCompassSteps()
+    .map((step) => step.choices.find((option) => option.id === compassAnswers[step.id]))
     .filter(Boolean);
 }
 
 function compassTagProfile() {
   const profile = { targets: new Map(), fields: new Map(), methods: new Map() };
-  const weights = { targets: 3, fields: 2, methods: 2 };
+  const weights = { targets: 0.4, fields: 0.35, methods: 0.25 };
   selectedCompassOptions().forEach((option) => {
+    const answerWeight = Number(option.weight || 1);
     Object.entries(option.tags || {}).forEach(([type, terms]) => {
       (terms || []).forEach((term) => {
-        profile[type].set(term, (profile[type].get(term) || 0) + weights[type]);
+        if (!profile[type]) return;
+        profile[type].set(term, (profile[type].get(term) || 0) + (weights[type] || 0.2) * answerWeight);
       });
     });
   });
@@ -854,140 +882,336 @@ function labTagSetByType(lab, type) {
 }
 
 function compassScoreLab(lab, profile) {
-  const typeWeights = { targets: 1.25, fields: 1, methods: 1 };
   let score = 0;
   let matchedTypes = 0;
   const matched = [];
   Object.entries(profile).forEach(([type, terms]) => {
     const labTerms = labTagSetByType(lab, type);
     let typeHit = false;
+    let typeScore = 0;
     terms.forEach((weight, term) => {
       if (!labTerms.has(term)) return;
-      score += weight * typeWeights[type];
+      typeScore += weight;
       typeHit = true;
       matched.push(term);
     });
+    score += Math.min(typeScore, 1.6);
     if (typeHit) matchedTypes += 1;
   });
   const allCompassTerms = flattenCompassProfile(profile).map((item) => item.term);
   const expanded = expandedLabTerms(lab);
   const related = allCompassTerms.filter((term) => expanded.has(String(term).toLowerCase()) && !matched.includes(term));
-  score += related.length * 0.35;
-  score += matchedTypes > 1 ? matchedTypes * 1.4 : 0;
-  score += (lab.recommended_for || []).some((item) => allCompassTerms.some((term) => item.includes(term))) ? 0.8 : 0;
+  score += related.length * 0.12;
+  score += matchedTypes > 1 ? matchedTypes * 0.35 : 0;
+  score += (lab.recommended_for || []).some((item) => allCompassTerms.some((term) => item.includes(term))) ? 0.2 : 0;
   return { lab, score, matched: uniqueTerms([...matched, ...related]).slice(0, 5), matchedTypes };
 }
 
 function compassMatches() {
-  const answered = selectedCompassOptions();
-  if (!answered.length) return [];
+  if (!isCompassComplete()) return [];
   const profile = compassTagProfile();
-  return labs
+  const ranked = labs
     .map((lab) => compassScoreLab(lab, profile))
     .filter((item) => item.score > 0)
     .sort((a, b) => {
       if (b.matchedTypes !== a.matchedTypes) return b.matchedTypes - a.matchedTypes;
       if (b.score !== a.score) return b.score - a.score;
       return a.lab.lab_name.localeCompare(b.lab.lab_name, 'ja');
-    })
-    .slice(0, 3);
+    });
+  const chosen = [];
+  ranked.forEach((item) => {
+    if (chosen.length >= 3) return;
+    const sameDepartmentCount = chosen.filter((chosenItem) => chosenItem.lab.department === item.lab.department).length;
+    if (sameDepartmentCount < 2 || ranked.length <= 3) chosen.push(item);
+  });
+  ranked.forEach((item) => {
+    if (chosen.length < 3 && !chosen.some((chosenItem) => chosenItem.lab.id === item.lab.id)) chosen.push(item);
+  });
+  return chosen.slice(0, 3);
 }
 
 function compassKeywords() {
-  return flattenCompassProfile(compassTagProfile())
+  const profile = compassTagProfile();
+  const picked = ['targets', 'fields', 'methods'].map((type) => {
+    const terms = [...(profile[type]?.entries() || [])]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
+      .map(([term, weight]) => ({ type, term, weight }));
+    return terms.find((item) => glossaryEntry(item.term, item.type)) || terms[0];
+  }).filter(Boolean);
+  if (picked.length >= 3) return picked.slice(0, 3);
+  return picked.concat(flattenCompassProfile(profile)
+    .filter((item) => !picked.some((pickedItem) => pickedItem.term === item.term))
     .sort((a, b) => b.weight - a.weight || a.term.localeCompare(b.term, 'ja'))
-    .map((item) => item.term)
-    .filter((term) => !['生命科学', '生物', '研究'].includes(term))
-    .slice(0, 3);
+    .slice(0, 3 - picked.length));
 }
 
 function renderCompassProgress() {
-  const total = compassData.questions.length;
-  const answered = selectedCompassOptions().length;
+  const total = resolvedCompassSteps().length;
+  const current = Math.min(compassStepIndex + 1, total);
+  const remaining = Math.max(total - current, 0);
   const progress = qs('#compass-progress');
+  const width = Math.round(((current - 1) / total) * 100);
   progress.innerHTML = `
-    <span>${answered} / ${total} answered</span>
-    <div class="compass-progress-bar"><i style="width:${Math.round((answered / total) * 100)}%"></i></div>
-    <button class="text-button compass-reset" type="button">回答をクリア</button>`;
-  progress.querySelector('.compass-reset').onclick = () => {
-    compassAnswers = {};
+    <span>${current} / ${total}</span>
+    <div class="compass-progress-bar"><i style="width:${width}%"></i></div>
+    <span>あと${remaining}問</span>`;
+}
+
+function renderCompassHero() {
+  const hero = qs('.compass-hero');
+  if (!hero) return;
+  const actionLabel = compassStage === 'intro' ? compassData.primary_action || 'はじめる →' : '最初からたどる';
+  hero.innerHTML = `
+    <div>
+      <span class="eyebrow">RESEARCH COMPASS</span>
+      <h2>${escapeHtml(compassData.title)}</h2>
+      <p class="compass-lead">${escapeHtml(compassData.lead)}</p>
+      <p>${escapeHtml(compassData.description)}</p>
+      <button class="primary compass-start" type="button">${escapeHtml(actionLabel)}</button>
+    </div>
+    <div class="compass-note">
+      <strong>${escapeHtml(compassData.intro_note || 'これは適性を決める診断ではありません。')}</strong>
+      <p>今の興味を言葉にしながら、研究室との新しい出会いを探していきます。</p>
+    </div>`;
+  hero.querySelector('.compass-start').onclick = () => {
+    if (compassStage !== 'intro') {
+      compassAnswers = {};
+      compassStepIndex = 0;
+    }
+    compassStage = 'question';
+    compassStarted = true;
+    compassStepIndex = firstUnansweredCompassIndex();
     renderCompass();
   };
 }
 
-function renderCompassQuestions() {
+function renderCompassIntro() {
+  const container = qs('#compass-questions');
+  container.innerHTML = `
+    <section class="compass-intro-card card">
+      <span class="eyebrow">SHORT JOURNEY</span>
+      <h3>まずは6つの質問を、ひとつずつたどってみましょう。</h3>
+      <p>途中で前の質問に戻れます。結果はすべて答えたあとに表示されます。</p>
+      <button class="primary" type="button">${escapeHtml(compassData.primary_action || 'はじめる →')}</button>
+    </section>`;
+  container.querySelector('button').onclick = () => {
+    compassStage = 'question';
+    compassStarted = true;
+    compassStepIndex = firstUnansweredCompassIndex();
+    renderCompass();
+  };
+}
+
+function renderCompassQuestion() {
   const container = qs('#compass-questions');
   container.innerHTML = '';
-  compassData.questions.forEach((question, index) => {
-    const block = document.createElement('section');
-    block.className = 'compass-question card';
-    block.innerHTML = `
-      <div class="compass-question-head">
-        <span>${String(index + 1).padStart(2, '0')}</span>
-        <h3>${escapeHtml(question.text)}</h3>
+  const steps = resolvedCompassSteps();
+  const step = steps[compassStepIndex] || steps[0];
+  if (!step) return;
+  const block = document.createElement('section');
+  block.className = 'compass-question card';
+  block.innerHTML = `
+    <div class="compass-question-head">
+      <span>${escapeHtml(step.step_label)}</span>
+      <div>
+        <h3>${escapeHtml(step.title)}</h3>
+        <p>${escapeHtml(step.guide)}</p>
       </div>
-      <div class="compass-options"></div>`;
-    const options = block.querySelector('.compass-options');
-    question.options.forEach((option) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = `compass-option${compassAnswers[question.id] === option.id ? ' selected' : ''}`;
-      button.textContent = option.label;
-      button.onclick = () => {
-        compassAnswers[question.id] = option.id;
-        renderCompass();
-      };
-      options.appendChild(button);
-    });
-    container.appendChild(block);
+    </div>
+    <p class="compass-question-text">${escapeHtml(step.question)}</p>
+    <div class="compass-options"></div>
+    <div class="compass-nav"></div>`;
+  const options = block.querySelector('.compass-options');
+  step.choices.forEach((option) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `compass-option${compassAnswers[step.id] === option.id ? ' selected' : ''}`;
+    button.innerHTML = `<span>${escapeHtml(option.label)}</span><small>${escapeHtml(option.description || '')}</small>`;
+    button.onclick = () => selectCompassOption(step, option);
+    options.appendChild(button);
   });
+  const nav = block.querySelector('.compass-nav');
+  if (compassStepIndex > 0) {
+    const back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'text-button compass-back';
+    back.textContent = '← 前の質問へ';
+    back.onclick = () => {
+      compassStepIndex = Math.max(compassStepIndex - 1, 0);
+      compassStage = 'question';
+      renderCompass();
+    };
+    nav.appendChild(back);
+  }
+  const reset = document.createElement('button');
+  reset.type = 'button';
+  reset.className = 'text-button compass-reset';
+  reset.textContent = '回答をクリア';
+  reset.onclick = resetCompass;
+  nav.appendChild(reset);
+  container.appendChild(block);
+}
+
+function selectCompassOption(step, option) {
+  const steps = resolvedCompassSteps();
+  clearCompassAnswersAfter(compassStepIndex);
+  compassAnswers[step.id] = option.id;
+  if (compassStepIndex >= steps.length - 1) {
+    compassStarted = false;
+    compassStage = 'transition';
+  } else {
+    compassStepIndex += 1;
+    compassStage = 'question';
+  }
+  renderCompass();
+}
+
+function clearCompassAnswersAfter(index) {
+  (compassData.steps || []).forEach((step, stepIndex) => {
+    if (stepIndex > index) delete compassAnswers[step.id];
+  });
+}
+
+function renderCompassTransition() {
+  const transition = compassData.transition || {};
+  const container = qs('#compass-questions');
+  container.innerHTML = `
+    <section class="compass-transition card">
+      <span class="eyebrow">COMPASS READY</span>
+      <h3>${escapeHtml(transition.heading || '興味の輪郭が見えてきました。')}</h3>
+      <p>${escapeHtml(transition.description || '')}</p>
+      <div class="compass-transition-actions">
+        <button class="primary" type="button">結果を見る →</button>
+        <button class="text-button" type="button">← 最後の質問に戻る</button>
+      </div>
+    </section>`;
+  const buttons = container.querySelectorAll('button');
+  buttons[0].onclick = () => {
+    compassStage = 'results';
+    renderCompass();
+  };
+  buttons[1].onclick = () => {
+    compassStage = 'question';
+    compassStarted = true;
+    compassStepIndex = resolvedCompassSteps().length - 1;
+    renderCompass();
+  };
 }
 
 function renderCompassResults() {
   const container = qs('#compass-results');
-  const answered = selectedCompassOptions().length;
-  if (!answered) {
-    container.innerHTML = `
-      <span class="eyebrow">YOUR COMPASS</span>
-      <h3>気になる選択肢を選んでみましょう</h3>
-      <p>回答が増えるほど、あなたの興味の方向性に近い研究室が見えてきます。</p>`;
+  if (!isCompassComplete()) {
+    compassStage = 'intro';
+    renderCompass();
     return;
   }
   const matches = compassMatches();
   const keywords = compassKeywords();
   container.innerHTML = `
+    <section class="compass-interest-map">
+      <span class="eyebrow">${escapeHtml(compassData.result?.map_label || 'INTEREST MAP')}</span>
+      <h3>${escapeHtml(compassData.result?.map_heading || 'あなたの興味をたどると、こんな言葉が見えてきました。')}</h3>
+      <div class="compass-keyword-map"></div>
+    </section>
     <div class="compass-result-head">
-      <div>
-        <span class="eyebrow">YOUR COMPASS</span>
-        <h3>あなたと相性がよさそうな研究室</h3>
-        <p>今の興味から見つけた、出会いの候補です。</p>
-      </div>
-      <span>${answered} answered</span>
+      <h3>${escapeHtml(compassData.result?.labs_heading || 'あなたと相性がよさそうな研究室')}</h3>
+      <p>選んだ言葉と研究室データのつながりから、3つの候補を表示しています。</p>
     </div>
     <div class="compass-match-grid"></div>
-    <section class="compass-keyword-feedback">
-      <h3>あなたが興味を持ちそうなキーワード</h3>
-      <div class="keywords">${keywords.map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join('')}</div>
-    </section>
-    <p class="compass-message">${escapeHtml(compassData.result_message)}</p>`;
+    <p class="compass-message">${escapeHtml(compassData.result?.closing || '')}</p>
+    <div class="compass-result-actions">
+      <button class="secondary" type="button">もう一度たどる</button>
+      <button class="primary" type="button">研究室一覧を見る</button>
+    </div>`;
+  const map = container.querySelector('.compass-keyword-map');
+  keywords.forEach((item) => map.appendChild(compassKeywordCard(item)));
   const grid = container.querySelector('.compass-match-grid');
   matches.forEach((item) => grid.appendChild(compassLabCard(item.lab, item.matched)));
+  const buttons = container.querySelectorAll('.compass-result-actions button');
+  buttons[0].onclick = resetCompass;
+  buttons[1].onclick = () => switchView('labs');
 }
 
 function compassLabCard(lab, matched) {
   const article = document.createElement('article');
   article.className = `compass-lab-card ${deptClass(lab.department)}`;
   applyDepartmentTheme(article, lab.department);
+  const connection = matched.slice(0, 3);
   article.innerHTML = `
     <span class="compass-dept">${escapeHtml(lab.department)}</span>
     <h3>${escapeHtml(displayLabName(lab))}</h3>
     <p class="compass-pi">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</p>
     <p>${escapeHtml(lab.summary)}</p>
-    <section class="compass-question-mini"><span>QUESTION</span><strong>${escapeHtml(lab.question)}</strong></section>
-    <div class="lab-jump-keywords">${matched.slice(0, 3).map((keyword) => `<em>${escapeHtml(keyword)}</em>`).join('')}</div>
-    <button class="open-lab" type="button">この研究室をもっと知る</button>`;
+    <section class="compass-connection">
+      <span>あなたとの接点</span>
+      <div class="lab-jump-keywords">${connection.map((keyword) => `<em>${escapeHtml(keyword)}</em>`).join('')}</div>
+    </section>
+    <details class="compass-reason">
+      <summary>なぜこの研究室？</summary>
+      <p>「${escapeHtml(connection.join('」「'))}」という興味が、この研究室の研究対象や方法とつながっています。</p>
+    </details>
+    <button class="open-lab" type="button">研究室をのぞく →</button>`;
   article.querySelector('.open-lab').onclick = () => openModal(lab);
   return article;
+}
+
+function compassKeywordCard(item) {
+  const entry = glossaryEntry(item.term, item.type);
+  const article = document.createElement('article');
+  article.className = 'compass-keyword-card';
+  article.innerHTML = `
+    <span>${escapeHtml(entry?.label || compassTypeLabel(item.type))}</span>
+    <h4>${escapeHtml(item.term)}</h4>
+    <p>${escapeHtml(entry?.description || `${item.term}に関心が向いています。`)}</p>`;
+  return article;
+}
+
+function glossaryEntry(term, type = '') {
+  return compassGlossary.find((entry) => entry.term === term && (!type || entry.category === type))
+    || compassGlossary.find((entry) => entry.term === term);
+}
+
+function compassTypeLabel(type) {
+  return { targets: '研究対象', fields: '研究分野', methods: '研究方法' }[type] || 'キーワード';
+}
+
+function resetCompass() {
+  compassAnswers = {};
+  compassStage = 'intro';
+  compassStarted = false;
+  compassStepIndex = 0;
+  renderCompass();
+}
+
+function resolvedCompassSteps() {
+  const steps = compassData?.steps || [];
+  return steps.map((step) => {
+    if (!step.branches) return step;
+    const entryStep = steps[0];
+    const entryChoice = entryStep?.choices?.find((choice) => choice.id === compassAnswers[entryStep.id]);
+    const branchId = entryChoice?.next_branch || Object.keys(step.branches)[0];
+    const branch = step.branches[branchId] || Object.values(step.branches)[0];
+    return {
+      id: step.id,
+      step_label: step.step_label,
+      title: step.title,
+      guide: step.guide,
+      question: branch.question,
+      choices: branch.choices,
+      branch: branchId
+    };
+  });
+}
+
+function firstUnansweredCompassIndex() {
+  const steps = resolvedCompassSteps();
+  const index = steps.findIndex((step) => !compassAnswers[step.id]);
+  return index === -1 ? 0 : index;
+}
+
+function isCompassComplete() {
+  const steps = resolvedCompassSteps();
+  return steps.length > 0 && steps.every((step) => compassAnswers[step.id]);
 }
 
 function renderLabList() {
