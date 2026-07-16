@@ -2156,27 +2156,56 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   gap:8px;
 }
 .interest-index-grid .lab-jump-item{
+  grid-template-columns:max-content minmax(0,1fr);
   min-height:92px;
+  align-content:center;
+  column-gap:10px;
+  row-gap:5px;
+  align-items:start;
 }
 .interest-index-grid .lab-jump-item.department-themed{
   border-color:var(--dept-line);
   border-left:5px solid var(--dept-color);
   background:#fff;
   box-shadow:inset 14px 0 0 var(--dept-soft);
-  padding-left:84px;
+  padding-left:58px;
 }
 .interest-index-grid .lab-jump-item.department-themed .lab-jump-dept{
+  grid-column:1;
+  grid-row:1;
   width:max-content;
   max-width:100%;
   color:var(--dept-color);
   background:var(--dept-soft);
   border:1px solid var(--dept-line);
   border-radius:999px;
-  padding:3px 7px;
+  padding:4px 8px;
+  font-size:.72rem;
+  line-height:1.1;
+  align-self:start;
+  margin-top:2px;
+}
+.interest-index-grid .lab-jump-item strong{
+  grid-column:2;
+  grid-row:1;
+  font-size:1.1rem;
+  line-height:1.34;
+}
+.interest-index-grid .lab-jump-pi{
+  grid-column:2;
+  grid-row:2;
+  font-size:.9rem;
+}
+.interest-index-grid .lab-jump-keywords{
+  grid-column:2;
+  grid-row:3;
+  margin-top:2px;
 }
 .interest-index-grid .lab-jump-item.department-themed .lab-jump-keywords em{
   background:var(--dept-soft);
   color:var(--dept-color);
+  font-size:.78rem;
+  padding:4px 7px;
 }
 
 @media(max-width:850px){
@@ -2184,7 +2213,7 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
     grid-template-columns:repeat(2,minmax(0,1fr));
   }
   .interest-index-grid .lab-jump-item.department-themed{
-    padding-left:68px;
+    padding-left:48px;
   }
 }
 
@@ -2195,7 +2224,16 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   }
   .interest-index-grid .lab-jump-item.department-themed{
     box-shadow:inset 10px 0 0 var(--dept-soft);
-    padding-left:54px;
+    padding-left:36px;
+  }
+  .interest-index-grid .lab-jump-item strong{
+    font-size:1.02rem;
+  }
+  .interest-index-grid .lab-jump-pi{
+    font-size:.84rem;
+  }
+  .interest-index-grid .lab-jump-item.department-themed .lab-jump-keywords em{
+    font-size:.73rem;
   }
 }
 
