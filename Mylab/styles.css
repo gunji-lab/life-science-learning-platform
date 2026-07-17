@@ -2632,6 +2632,7 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
 .compass-transition,
 .compass-question,
 .compass-results,
+.compass-question-summary,
 .compass-lab-card,
 .compass-keyword-card{
   min-width:0;
@@ -2651,6 +2652,8 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
 .compass-question-head h3,
 .compass-question-head p,
 .compass-question-text,
+.compass-question-summary h3,
+.compass-question-summary p,
 .compass-interest-map h3,
 .compass-result-head h3,
 .compass-result-head p,
@@ -2851,6 +2854,27 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
 .compass-results{
   padding:22px;
   margin-top:18px;
+}
+.compass-question-summary{
+  margin-bottom:18px;
+  border:1px solid var(--line);
+  border-left:5px solid var(--navy);
+  border-radius:14px;
+  background:#fff;
+  padding:17px;
+}
+.compass-question-summary h3{
+  margin:0 0 8px;
+  color:var(--navy);
+  font-size:1.08rem;
+  line-height:1.45;
+}
+.compass-question-summary p{
+  margin:0;
+  color:var(--navy);
+  font-size:1.28rem;
+  font-weight:900;
+  line-height:1.55;
 }
 .compass-interest-map{
   margin-bottom:22px;
@@ -3120,6 +3144,18 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   }
   .compass-result-head h3{
     font-size:1.08rem;
+  }
+  .compass-question-summary{
+    margin-bottom:12px;
+    border-radius:12px;
+    padding:12px;
+  }
+  .compass-question-summary h3{
+    font-size:.96rem;
+  }
+  .compass-question-summary p{
+    font-size:1.04rem;
+    line-height:1.5;
   }
   .compass-result-head p,
   .compass-message{

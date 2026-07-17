@@ -884,17 +884,63 @@ function labTagSetByType(lab, type) {
   return new Set([...(lab.tags?.[type] || []), ...(type === 'targets' ? lab.major_categories || [] : [])]);
 }
 
+function labSpecificTagSetByType(lab, type) {
+  return new Set(lab.tags?.[type] || []);
+}
+
+function labExpandedTagSetByType(lab, type) {
+  return expandTerms(lab.tags?.[type] || []);
+}
+
+function allCompassChoiceTerms() {
+  if (!compassData?.steps) return [];
+  return compassData.steps.flatMap((step) => {
+    const choices = step.branches
+      ? Object.values(step.branches).flatMap((branch) => branch.choices || [])
+      : step.choices || [];
+    return choices.flatMap((choice) => Object.values(choice.tags || {}).flat());
+  });
+}
+
+function labCompassSpecificCoverage(lab) {
+  const labTerms = new Set([
+    ...(lab.tags?.targets || []),
+    ...(lab.tags?.fields || []),
+    ...(lab.tags?.methods || [])
+  ].map((term) => String(term).toLowerCase()));
+  return uniqueTerms(allCompassChoiceTerms())
+    .filter((term) => labTerms.has(String(term).toLowerCase()))
+    .length;
+}
+
+function broadTargetWeight(lab) {
+  const coverage = labCompassSpecificCoverage(lab);
+  if (coverage >= 8) return 0.28;
+  if (coverage >= 5) return 0.45;
+  if (coverage >= 3) return 0.62;
+  return 0.82;
+}
+
 function compassScoreLab(lab, profile) {
   let score = 0;
   let matchedTypes = 0;
   const matched = [];
   Object.entries(profile).forEach(([type, terms]) => {
-    const labTerms = labTagSetByType(lab, type);
+    const labTerms = labSpecificTagSetByType(lab, type);
+    const broadTargets = type === 'targets' ? new Set(lab.major_categories || []) : new Set();
+    const expandedTypeTerms = labExpandedTagSetByType(lab, type);
     let typeHit = false;
     let typeScore = 0;
     terms.forEach((weight, term) => {
-      if (!labTerms.has(term)) return;
-      typeScore += weight;
+      if (labTerms.has(term)) {
+        typeScore += weight;
+      } else if (broadTargets.has(term)) {
+        typeScore += weight * broadTargetWeight(lab);
+      } else if (expandedTypeTerms.has(String(term).toLowerCase())) {
+        typeScore += weight * 0.62;
+      } else {
+        return;
+      }
       typeHit = true;
       matched.push(term);
     });
@@ -977,8 +1023,8 @@ function renderCompassIntro() {
   container.innerHTML = `
     <section class="compass-intro-card card">
       <span class="eyebrow">SHORT JOURNEY</span>
-      <h3>まずは6つの質問を、ひとつずつたどってみましょう。</h3>
-      <p>途中で前の質問に戻れます。結果はすべて答えたあとに表示されます。</p>
+      <h3>まずは3つの問いを、ひとつずつたどってみましょう。</h3>
+      <p>これは適性を決める診断ではありません。生命科学の問いと研究室に出会うための小さな旅です。</p>
       <button class="primary" type="button">${escapeHtml(compassData.primary_action || 'はじめる →')}</button>
     </section>`;
   container.querySelector('button').onclick = () => {
@@ -1045,7 +1091,7 @@ function selectCompassOption(step, option) {
   compassAnswers[step.id] = option.id;
   if (compassStepIndex >= steps.length - 1) {
     compassStarted = false;
-    compassStage = 'transition';
+    compassStage = 'results';
   } else {
     compassStepIndex += 1;
     compassStage = 'question';
@@ -1094,7 +1140,13 @@ function renderCompassResults() {
   }
   const matches = compassMatches();
   const keywords = compassKeywords();
+  const question = compassQuestionSummary();
   container.innerHTML = `
+    <section class="compass-question-summary">
+      <span class="eyebrow">${escapeHtml(compassData.result?.question_label || 'TODAY\\'S QUESTION')}</span>
+      <h3>${escapeHtml(compassData.result?.question_heading || 'あなたが今日出会った問い')}</h3>
+      <p>${escapeHtml(question)}</p>
+    </section>
     <section class="compass-interest-map">
       <span class="eyebrow">${escapeHtml(compassData.result?.map_label || 'INTEREST MAP')}</span>
       <h3>${escapeHtml(compassData.result?.map_heading || 'あなたの興味をたどると、こんな言葉が見えてきました。')}</h3>
@@ -1102,7 +1154,7 @@ function renderCompassResults() {
     </section>
     <div class="compass-result-head">
       <h3>${escapeHtml(compassData.result?.labs_heading || 'あなたと相性がよさそうな研究室')}</h3>
-      <p>選んだ言葉と研究室データのつながりから、3つの候補を表示しています。</p>
+      <p>順位ではなく、選んだ問いやキーワードとつながりのある研究室を3つ紹介しています。</p>
     </div>
     <div class="compass-match-grid"></div>
     <p class="compass-message">${escapeHtml(compassData.result?.closing || '')}</p>
@@ -1117,6 +1169,12 @@ function renderCompassResults() {
   const buttons = container.querySelectorAll('.compass-result-actions button');
   buttons[0].onclick = resetCompass;
   buttons[1].onclick = () => switchView('labs');
+}
+
+function compassQuestionSummary() {
+  const options = selectedCompassOptions();
+  const reflections = options.map((option) => option.reflection || option.label).filter(Boolean);
+  return reflections[0] || 'あなたの「なぜ？」から、研究室との出会いを探してみましょう。';
 }
 
 function compassLabCard(lab, matched) {
