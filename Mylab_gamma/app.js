@@ -1032,6 +1032,7 @@ function normalizeCompassText(value = '') {
   return String(value)
     .normalize('NFKC')
     .toLowerCase()
+    .replace(/癌|ガン/g, 'がん')
     .replace(/[、。,.!?！？「」『』（）()［］\[\]【】・/／\\\s]/g, '');
 }
 
@@ -1055,6 +1056,7 @@ function scoreAICompassLabs(analysis, input = '') {
   const tagScores = analysis.tagScores || new Map();
   const normalizedInput = normalizeCompassText(input);
   if (!tagScores.size && !normalizedInput) return [];
+  const inputTerms = extractAICompassInputTerms(input);
   const normalizedTagScores = new Map([...tagScores.entries()].map(([tag, weight]) => [normalizeCompassText(tag), weight]));
   const labDictionaryById = aiLabDictionary.reduce((map, entry) => {
     if (!map.has(entry.lab_id)) map.set(entry.lab_id, []);
@@ -1071,9 +1073,10 @@ function scoreAICompassLabs(analysis, input = '') {
         const candidates = [entry.word, ...entry.synonym.split('|')]
           .map((item) => item.trim())
           .filter(Boolean);
-        const directHit = candidates.some((candidate) => normalizedInput.includes(normalizeCompassText(candidate)));
+        const exactUserTermHit = candidates.some((candidate) => inputTerms.has(normalizeCompassText(candidate)));
+        const directHit = exactUserTermHit || candidates.some((candidate) => normalizedInput.includes(normalizeCompassText(candidate)));
         if (directHit) {
-          const weight = entry.weight || 1;
+          const weight = (entry.weight || 1) * (exactUserTermHit ? 3 : 2);
           score += weight;
           matched.set(entry.word, (matched.get(entry.word) || 0) + weight);
           return;
@@ -1088,7 +1091,7 @@ function scoreAICompassLabs(analysis, input = '') {
       });
       tagScores.forEach((weight, tag) => {
         if (!labTerms.has(String(tag).toLowerCase())) return;
-        const fallbackWeight = Math.max(0.5, weight * 0.35);
+        const fallbackWeight = Math.max(0.25, weight * 0.2);
         score += fallbackWeight;
         matched.set(tag, (matched.get(tag) || 0) + fallbackWeight);
       });
@@ -1105,6 +1108,18 @@ function scoreAICompassLabs(analysis, input = '') {
       return a.lab.lab_name.localeCompare(b.lab.lab_name, 'ja');
     })
     .slice(0, 8);
+}
+
+function extractAICompassInputTerms(input = '') {
+  const normalizedWhole = normalizeCompassText(input);
+  const roughTerms = String(input)
+    .normalize('NFKC')
+    .replace(/[、。,.!?！？「」『』（）()［］\[\]【】・/／\\]/g, ' ')
+    .split(/\s+/)
+    .flatMap((chunk) => chunk.split(/(?:が(?!ん)|を|に|へ|で|と|の|は|も|や|って|です|ます|した|したい|たい|好き|興味|気になる|面白い|面白そう|知りたい|ありますか|について|から|まで)/g))
+    .map((term) => normalizeCompassText(term))
+    .filter((term) => term.length >= 2);
+  return new Set([normalizedWhole, ...roughTerms]);
 }
 
 function renderAICompassResults(result) {

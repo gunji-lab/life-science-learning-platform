@@ -43,8 +43,22 @@ STOPWORDS = {
 
 def normalize(text: str) -> str:
     text = text.lower()
+    text = text.replace("癌", "がん").replace("ガン", "がん")
     text = text.replace("　", " ")
     return re.sub(r"\s+", " ", text).strip()
+
+
+def compact(text: str) -> str:
+    return re.sub(r"[、。,.!?！？「」『』（）()\[\]【】・/／\\\s]", "", normalize(text))
+
+
+def input_terms(text: str) -> set[str]:
+    normalized_whole = compact(text)
+    rough_terms = re.split(
+        r"(?:が(?!ん)|を|に|へ|で|と|の|は|も|や|って|です|ます|した|したい|たい|好き|興味|気になる|面白い|面白そう|知りたい|ありますか|について|から|まで|[\s、。,.!?！？「」『』（）()\[\]【】・/／\\]+)",
+        text,
+    )
+    return {normalized_whole, *(compact(term) for term in rough_terms if len(compact(term)) >= 2)}
 
 
 def read_dictionary(path: Path) -> list[dict[str, object]]:
@@ -56,7 +70,7 @@ def read_dictionary(path: Path) -> list[dict[str, object]]:
             rows.append(
                 {
                     "word": row["word"].strip(),
-                    "terms": [normalize(term) for term in terms if term.strip()],
+                    "terms": [compact(term) for term in terms if term.strip()],
                     "tag": row["tag"].strip(),
                     "weight": int(row["weight"] or 1),
                 }
@@ -75,7 +89,7 @@ def read_lab_dictionary(path: Path) -> dict[str, list[dict[str, object]]]:
             entry = {
                 "lab_id": row["lab_id"].strip(),
                 "word": row["word"].strip(),
-                "terms": [normalize(term) for term in terms if term.strip()],
+                "terms": [compact(term) for term in terms if term.strip()],
                 "field": row.get("field", "").strip(),
                 "weight": int(row.get("weight") or 1),
             }
@@ -99,7 +113,7 @@ def lab_terms(lab: dict[str, object]) -> set[str]:
 
 
 def analyze(text: str, dictionary: list[dict[str, object]]) -> tuple[Counter[str], list[str]]:
-    normalized = normalize(text)
+    normalized = compact(text)
     tags: Counter[str] = Counter()
     matched_terms: set[str] = set()
     for entry in dictionary:
@@ -112,7 +126,7 @@ def analyze(text: str, dictionary: list[dict[str, object]]) -> tuple[Counter[str
     tokens = re.findall(r"[a-z0-9]+|[ぁ-んァ-ン一-龥ー]{2,}", text)
     unknown = []
     for token in tokens:
-        clean = normalize(token)
+        clean = compact(token)
         if clean in STOPWORDS:
             continue
         if any(clean in term or term in clean for term in matched_terms):
@@ -128,15 +142,17 @@ def score_labs(
     labs: list[dict[str, object]],
     lab_dictionary: dict[str, list[dict[str, object]]],
 ) -> list[tuple[float, dict[str, object], list[str]]]:
-    normalized = normalize(text)
+    normalized = compact(text)
+    exact_terms = input_terms(text)
     scored = []
     for lab in labs:
         matched_scores: Counter[str] = Counter()
         score = 0.0
         for entry in lab_dictionary.get(str(lab.get("id")), []):
-            direct_hit = any(term and term in normalized for term in entry["terms"])
+            exact_hit = any(term and term in exact_terms for term in entry["terms"])
+            direct_hit = exact_hit or any(term and term in normalized for term in entry["terms"])
             if direct_hit:
-                weight = float(entry["weight"])
+                weight = float(entry["weight"]) * (3 if exact_hit else 2)
                 score += weight
                 matched_scores[str(entry["word"])] += weight
                 continue
@@ -150,7 +166,7 @@ def score_labs(
         for tag, weight in tags.items():
             if tag not in terms:
                 continue
-            fallback = max(0.5, float(weight) * 0.35)
+            fallback = max(0.25, float(weight) * 0.2)
             score += fallback
             matched_scores[tag] += fallback
 
