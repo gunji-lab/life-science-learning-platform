@@ -1,0 +1,1846 @@
+[
+  {
+    "id": "lit_philosophy",
+    "faculty": "文学部",
+    "department": "哲学科",
+    "summary": "哲学は驚きから始まる。ものごとの根本を問い、考え抜く力を磨く。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "哲学",
+      "思想",
+      "倫理",
+      "問い",
+      "人間",
+      "論理",
+      "宗教",
+      "価値観"
+    ],
+    "areas": [
+      "人文",
+      "思想",
+      "言語文化"
+    ],
+    "policy_keywords": [
+      "哲学",
+      "思想",
+      "倫理",
+      "問い",
+      "人文",
+      "思想",
+      "言語文化"
+    ],
+    "research_keywords": [
+      "哲学",
+      "思想",
+      "倫理",
+      "問い",
+      "人間",
+      "論理",
+      "宗教",
+      "価値観"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "lit_oriental",
+    "faculty": "文学部",
+    "department": "東洋思想文化学科",
+    "summary": "東洋を学び、世界の中に自分が見える視点を育てる。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "東洋思想",
+      "文化",
+      "歴史",
+      "宗教",
+      "アジア",
+      "言語",
+      "思想"
+    ],
+    "areas": [
+      "人文",
+      "思想",
+      "国際文化"
+    ],
+    "policy_keywords": [
+      "東洋思想",
+      "文化",
+      "歴史",
+      "宗教",
+      "人文",
+      "思想",
+      "国際文化"
+    ],
+    "research_keywords": [
+      "東洋思想",
+      "文化",
+      "歴史",
+      "宗教",
+      "アジア",
+      "言語",
+      "思想"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "lit_japanese",
+    "faculty": "文学部",
+    "department": "日本文学文化学科",
+    "summary": "日本を深く知り、世界を見渡す眼を磨く。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "日本文学",
+      "日本文化",
+      "言葉",
+      "古典",
+      "現代文学",
+      "表現",
+      "編集"
+    ],
+    "areas": [
+      "人文",
+      "言語文化",
+      "表現"
+    ],
+    "policy_keywords": [
+      "日本文学",
+      "日本文化",
+      "言葉",
+      "古典",
+      "人文",
+      "言語文化",
+      "表現"
+    ],
+    "research_keywords": [
+      "日本文学",
+      "日本文化",
+      "言葉",
+      "古典",
+      "現代文学",
+      "表現",
+      "編集"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "lit_english",
+    "faculty": "文学部",
+    "department": "英米文学科",
+    "summary": "英語の4技能を磨き、英語を通して異文化を理解する。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "英語",
+      "英米文学",
+      "異文化理解",
+      "翻訳",
+      "言語",
+      "コミュニケーション"
+    ],
+    "areas": [
+      "語学",
+      "国際文化",
+      "表現"
+    ],
+    "policy_keywords": [
+      "英語",
+      "英米文学",
+      "異文化理解",
+      "翻訳",
+      "語学",
+      "国際文化",
+      "表現"
+    ],
+    "research_keywords": [
+      "英語",
+      "英米文学",
+      "異文化理解",
+      "翻訳",
+      "言語",
+      "コミュニケーション"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "lit_history",
+    "faculty": "文学部",
+    "department": "史学科",
+    "summary": "史料と向き合い、今と未来を築く。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "歴史",
+      "史料",
+      "日本史",
+      "東洋史",
+      "西洋史",
+      "文化財",
+      "地域"
+    ],
+    "areas": [
+      "人文",
+      "歴史",
+      "社会理解"
+    ],
+    "policy_keywords": [
+      "歴史",
+      "史料",
+      "日本史",
+      "東洋史",
+      "人文",
+      "歴史",
+      "社会理解"
+    ],
+    "research_keywords": [
+      "歴史",
+      "史料",
+      "日本史",
+      "東洋史",
+      "西洋史",
+      "文化財",
+      "地域"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "lit_education_human",
+    "faculty": "文学部",
+    "department": "教育学科 人間発達専攻",
+    "summary": "成長し続ける人と、ともにあるための学び。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "教育",
+      "人間発達",
+      "子ども",
+      "学び",
+      "心理",
+      "学校",
+      "生涯学習"
+    ],
+    "areas": [
+      "教育",
+      "心理",
+      "福祉"
+    ],
+    "policy_keywords": [
+      "教育",
+      "人間発達",
+      "子ども",
+      "学び",
+      "教育",
+      "心理",
+      "福祉"
+    ],
+    "research_keywords": [
+      "教育",
+      "人間発達",
+      "子ども",
+      "学び",
+      "心理",
+      "学校",
+      "生涯学習"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "lit_education_primary",
+    "faculty": "文学部",
+    "department": "教育学科 初等教育専攻",
+    "summary": "理論と実践をつなぎ、確かな指導力を磨く。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "小学校教員",
+      "教育",
+      "授業",
+      "子ども",
+      "学校",
+      "実践",
+      "教職"
+    ],
+    "areas": [
+      "教育",
+      "資格",
+      "子ども"
+    ],
+    "policy_keywords": [
+      "小学校教員",
+      "教育",
+      "授業",
+      "子ども",
+      "教育",
+      "資格",
+      "子ども"
+    ],
+    "research_keywords": [
+      "小学校教員",
+      "教育",
+      "授業",
+      "子ども",
+      "学校",
+      "実践",
+      "教職"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "lit_intercultural",
+    "faculty": "文学部",
+    "department": "国際文化コミュニケーション学科",
+    "summary": "自らと他者を結び、文化と言葉を通して世界を考える。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "国際文化",
+      "コミュニケーション",
+      "英語",
+      "多文化",
+      "翻訳",
+      "表現",
+      "異文化"
+    ],
+    "areas": [
+      "国際文化",
+      "語学",
+      "表現"
+    ],
+    "policy_keywords": [
+      "国際文化",
+      "コミュニケーション",
+      "英語",
+      "多文化",
+      "国際文化",
+      "語学",
+      "表現"
+    ],
+    "research_keywords": [
+      "国際文化",
+      "コミュニケーション",
+      "英語",
+      "多文化",
+      "翻訳",
+      "表現",
+      "異文化"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "econ_economics",
+    "faculty": "経済学部",
+    "department": "経済学科",
+    "summary": "経済の理論を学び、現実の経済を知る。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "経済",
+      "金融",
+      "財政",
+      "市場",
+      "統計",
+      "データ",
+      "政策"
+    ],
+    "areas": [
+      "経済",
+      "社会科学",
+      "データ"
+    ],
+    "policy_keywords": [
+      "経済",
+      "金融",
+      "財政",
+      "市場",
+      "経済",
+      "社会科学",
+      "データ"
+    ],
+    "research_keywords": [
+      "経済",
+      "金融",
+      "財政",
+      "市場",
+      "統計",
+      "データ",
+      "政策"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "econ_international",
+    "faculty": "経済学部",
+    "department": "国際経済学科",
+    "summary": "グローバル経済の課題を捉え、解決へ導く。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "国際経済",
+      "貿易",
+      "開発",
+      "グローバル",
+      "金融",
+      "英語",
+      "政策"
+    ],
+    "areas": [
+      "経済",
+      "国際",
+      "社会課題"
+    ],
+    "policy_keywords": [
+      "国際経済",
+      "貿易",
+      "開発",
+      "グローバル",
+      "経済",
+      "国際",
+      "社会課題"
+    ],
+    "research_keywords": [
+      "国際経済",
+      "貿易",
+      "開発",
+      "グローバル",
+      "金融",
+      "英語",
+      "政策"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "econ_policy",
+    "faculty": "経済学部",
+    "department": "総合政策学科",
+    "summary": "社会の課題に向き合い、協働と共創で社会を導く。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "政策",
+      "地域",
+      "公共",
+      "行政",
+      "社会課題",
+      "データ",
+      "まちづくり"
+    ],
+    "areas": [
+      "政策",
+      "社会科学",
+      "地域"
+    ],
+    "policy_keywords": [
+      "政策",
+      "地域",
+      "公共",
+      "行政",
+      "政策",
+      "社会科学",
+      "地域"
+    ],
+    "research_keywords": [
+      "政策",
+      "地域",
+      "公共",
+      "行政",
+      "社会課題",
+      "データ",
+      "まちづくり"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "biz_management",
+    "faculty": "経営学部",
+    "department": "経営学科",
+    "summary": "企業の課題を読み解き、解決策を導く。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "経営",
+      "企業",
+      "組織",
+      "起業",
+      "戦略",
+      "リーダーシップ",
+      "ビジネス"
+    ],
+    "areas": [
+      "ビジネス",
+      "社会科学",
+      "実践"
+    ],
+    "policy_keywords": [
+      "経営",
+      "企業",
+      "組織",
+      "起業",
+      "ビジネス",
+      "社会科学",
+      "実践"
+    ],
+    "research_keywords": [
+      "経営",
+      "企業",
+      "組織",
+      "起業",
+      "戦略",
+      "リーダーシップ",
+      "ビジネス"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "biz_marketing",
+    "faculty": "経営学部",
+    "department": "マーケティング学科",
+    "summary": "消費者心理の探索とデータ分析の力で、新たな価値を創造する。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "マーケティング",
+      "消費者心理",
+      "広告",
+      "ブランド",
+      "商品企画",
+      "データ分析",
+      "SNS"
+    ],
+    "areas": [
+      "ビジネス",
+      "心理",
+      "データ"
+    ],
+    "policy_keywords": [
+      "マーケティング",
+      "消費者心理",
+      "広告",
+      "ブランド",
+      "ビジネス",
+      "心理",
+      "データ"
+    ],
+    "research_keywords": [
+      "マーケティング",
+      "消費者心理",
+      "広告",
+      "ブランド",
+      "商品企画",
+      "データ分析",
+      "SNS"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "biz_accounting",
+    "faculty": "経営学部",
+    "department": "会計ファイナンス学科",
+    "summary": "ビジネスの成長を支えるお金の専門性を磨く。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "会計",
+      "ファイナンス",
+      "簿記",
+      "金融",
+      "投資",
+      "企業分析",
+      "税務"
+    ],
+    "areas": [
+      "ビジネス",
+      "金融",
+      "資格"
+    ],
+    "policy_keywords": [
+      "会計",
+      "ファイナンス",
+      "簿記",
+      "金融",
+      "ビジネス",
+      "金融",
+      "資格"
+    ],
+    "research_keywords": [
+      "会計",
+      "ファイナンス",
+      "簿記",
+      "金融",
+      "投資",
+      "企業分析",
+      "税務"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "law_law",
+    "faculty": "法学部",
+    "department": "法律学科",
+    "summary": "論理的思考力と法的視点から問題解決能力を身につける。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "法律",
+      "裁判",
+      "憲法",
+      "民法",
+      "刑法",
+      "行政",
+      "公務員"
+    ],
+    "areas": [
+      "法律",
+      "公共",
+      "資格"
+    ],
+    "policy_keywords": [
+      "法律",
+      "裁判",
+      "憲法",
+      "民法",
+      "法律",
+      "公共",
+      "資格"
+    ],
+    "research_keywords": [
+      "法律",
+      "裁判",
+      "憲法",
+      "民法",
+      "刑法",
+      "行政",
+      "公務員"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "law_business",
+    "faculty": "法学部",
+    "department": "企業法学科",
+    "summary": "国際的素養と実践的な法的能力を有する企業人を目指す。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "企業法",
+      "ビジネス法",
+      "知的財産",
+      "国際取引",
+      "コンプライアンス",
+      "法律"
+    ],
+    "areas": [
+      "法律",
+      "ビジネス",
+      "国際"
+    ],
+    "policy_keywords": [
+      "企業法",
+      "ビジネス法",
+      "知的財産",
+      "国際取引",
+      "法律",
+      "ビジネス",
+      "国際"
+    ],
+    "research_keywords": [
+      "企業法",
+      "ビジネス法",
+      "知的財産",
+      "国際取引",
+      "コンプライアンス",
+      "法律"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "soc_sociology",
+    "faculty": "社会学部",
+    "department": "社会学科",
+    "summary": "社会課題に挑む、社会学的想像力をもつ。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "社会学",
+      "社会課題",
+      "地域",
+      "格差",
+      "家族",
+      "ジェンダー",
+      "調査"
+    ],
+    "areas": [
+      "社会科学",
+      "地域",
+      "調査"
+    ],
+    "policy_keywords": [
+      "社会学",
+      "社会課題",
+      "地域",
+      "格差",
+      "社会科学",
+      "地域",
+      "調査"
+    ],
+    "research_keywords": [
+      "社会学",
+      "社会課題",
+      "地域",
+      "格差",
+      "家族",
+      "ジェンダー",
+      "調査"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "soc_global",
+    "faculty": "社会学部",
+    "department": "国際社会学科",
+    "summary": "多様性に学び、グローバルな共生社会を創造する。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "国際社会",
+      "多文化",
+      "移民",
+      "共生",
+      "グローバル",
+      "社会課題",
+      "英語"
+    ],
+    "areas": [
+      "国際",
+      "社会科学",
+      "多文化"
+    ],
+    "policy_keywords": [
+      "国際社会",
+      "多文化",
+      "移民",
+      "共生",
+      "国際",
+      "社会科学",
+      "多文化"
+    ],
+    "research_keywords": [
+      "国際社会",
+      "多文化",
+      "移民",
+      "共生",
+      "グローバル",
+      "社会課題",
+      "英語"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "soc_media",
+    "faculty": "社会学部",
+    "department": "メディアコミュニケーション学科",
+    "summary": "多様なメディアの次世代を築くスペシャリストへ。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "メディア",
+      "SNS",
+      "映像",
+      "広告",
+      "ジャーナリズム",
+      "情報発信",
+      "コミュニケーション"
+    ],
+    "areas": [
+      "メディア",
+      "表現",
+      "社会科学"
+    ],
+    "policy_keywords": [
+      "メディア",
+      "SNS",
+      "映像",
+      "広告",
+      "メディア",
+      "表現",
+      "社会科学"
+    ],
+    "research_keywords": [
+      "メディア",
+      "SNS",
+      "映像",
+      "広告",
+      "ジャーナリズム",
+      "情報発信",
+      "コミュニケーション"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "soc_psychology",
+    "faculty": "社会学部",
+    "department": "社会心理学科",
+    "summary": "心と社会のつながりを科学する。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "心理学",
+      "社会心理",
+      "人間関係",
+      "行動",
+      "感情",
+      "調査",
+      "データ"
+    ],
+    "areas": [
+      "心理",
+      "社会科学",
+      "データ"
+    ],
+    "policy_keywords": [
+      "心理学",
+      "社会心理",
+      "人間関係",
+      "行動",
+      "心理",
+      "社会科学",
+      "データ"
+    ],
+    "research_keywords": [
+      "心理学",
+      "社会心理",
+      "人間関係",
+      "行動",
+      "感情",
+      "調査",
+      "データ"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "global_ginno",
+    "faculty": "国際学部",
+    "department": "グローバル・イノベーション学科",
+    "summary": "世界を見据えて学び、イノベーションのはじまりに立つ。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "国際",
+      "イノベーション",
+      "英語",
+      "起業",
+      "課題解決",
+      "リーダーシップ",
+      "グローバル"
+    ],
+    "areas": [
+      "国際",
+      "ビジネス",
+      "実践"
+    ],
+    "policy_keywords": [
+      "国際",
+      "イノベーション",
+      "英語",
+      "起業",
+      "国際",
+      "ビジネス",
+      "実践"
+    ],
+    "research_keywords": [
+      "国際",
+      "イノベーション",
+      "英語",
+      "起業",
+      "課題解決",
+      "リーダーシップ",
+      "グローバル"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "global_regional",
+    "faculty": "国際学部",
+    "department": "国際地域学科 国際地域専攻",
+    "summary": "グローバルとローカルの視野から発展のための課題解決に貢献する。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "国際地域",
+      "開発",
+      "地域",
+      "国際協力",
+      "多文化",
+      "観光",
+      "政策"
+    ],
+    "areas": [
+      "国際",
+      "地域",
+      "社会課題"
+    ],
+    "policy_keywords": [
+      "国際地域",
+      "開発",
+      "地域",
+      "国際協力",
+      "国際",
+      "地域",
+      "社会課題"
+    ],
+    "research_keywords": [
+      "国際地域",
+      "開発",
+      "地域",
+      "国際協力",
+      "多文化",
+      "観光",
+      "政策"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "tourism",
+    "faculty": "国際観光学部",
+    "department": "国際観光学科",
+    "summary": "世界をつなぐ、観光のプロフェッショナルを目指す。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "観光",
+      "ホテル",
+      "旅行",
+      "地域振興",
+      "文化",
+      "ホスピタリティ",
+      "国際"
+    ],
+    "areas": [
+      "観光",
+      "国際",
+      "地域"
+    ],
+    "policy_keywords": [
+      "観光",
+      "ホテル",
+      "旅行",
+      "地域振興",
+      "観光",
+      "国際",
+      "地域"
+    ],
+    "research_keywords": [
+      "観光",
+      "ホテル",
+      "旅行",
+      "地域振興",
+      "文化",
+      "ホスピタリティ",
+      "国際"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "ini",
+    "faculty": "情報連携学部",
+    "department": "情報連携学科",
+    "summary": "人と技術を連携し、デジタルの力で未来をつくる。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "情報",
+      "プログラミング",
+      "AI",
+      "デザイン",
+      "データ",
+      "IoT",
+      "UX"
+    ],
+    "areas": [
+      "情報",
+      "デザイン",
+      "データ"
+    ],
+    "policy_keywords": [
+      "情報",
+      "プログラミング",
+      "AI",
+      "デザイン",
+      "情報",
+      "デザイン",
+      "データ"
+    ],
+    "research_keywords": [
+      "情報",
+      "プログラミング",
+      "AI",
+      "デザイン",
+      "データ",
+      "IoT",
+      "UX"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "welfare_social",
+    "faculty": "福祉社会デザイン学部",
+    "department": "社会福祉学科",
+    "summary": "多様な人びとの、共生する社会のために学ぶ。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "福祉",
+      "社会福祉士",
+      "相談支援",
+      "共生",
+      "高齢者",
+      "障害",
+      "地域"
+    ],
+    "areas": [
+      "福祉",
+      "資格",
+      "社会課題"
+    ],
+    "policy_keywords": [
+      "福祉",
+      "社会福祉士",
+      "相談支援",
+      "共生",
+      "福祉",
+      "資格",
+      "社会課題"
+    ],
+    "research_keywords": [
+      "福祉",
+      "社会福祉士",
+      "相談支援",
+      "共生",
+      "高齢者",
+      "障害",
+      "地域"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "welfare_child",
+    "faculty": "福祉社会デザイン学部",
+    "department": "子ども支援学科",
+    "summary": "すべての子どもと家庭、支える人々のために学ぶ。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "子ども",
+      "保育",
+      "家庭",
+      "教育",
+      "支援",
+      "発達",
+      "福祉"
+    ],
+    "areas": [
+      "子ども",
+      "福祉",
+      "教育"
+    ],
+    "policy_keywords": [
+      "子ども",
+      "保育",
+      "家庭",
+      "教育",
+      "子ども",
+      "福祉",
+      "教育"
+    ],
+    "research_keywords": [
+      "子ども",
+      "保育",
+      "家庭",
+      "教育",
+      "支援",
+      "発達",
+      "福祉"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "welfare_design",
+    "faculty": "福祉社会デザイン学部",
+    "department": "人間環境デザイン学科",
+    "summary": "人びとに向き合い、寄り添い、支えるデザインへ挑戦する。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "デザイン",
+      "住環境",
+      "福祉",
+      "建築",
+      "ユニバーサルデザイン",
+      "まちづくり"
+    ],
+    "areas": [
+      "デザイン",
+      "福祉",
+      "建築"
+    ],
+    "policy_keywords": [
+      "デザイン",
+      "住環境",
+      "福祉",
+      "建築",
+      "デザイン",
+      "福祉",
+      "建築"
+    ],
+    "research_keywords": [
+      "デザイン",
+      "住環境",
+      "福祉",
+      "建築",
+      "ユニバーサルデザイン",
+      "まちづくり"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "sports_health",
+    "faculty": "健康スポーツ科学部",
+    "department": "健康スポーツ科学科",
+    "summary": "スポーツを通じて健康を支え、社会に貢献する。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "スポーツ",
+      "健康",
+      "運動",
+      "トレーニング",
+      "体育",
+      "コーチング",
+      "科学"
+    ],
+    "areas": [
+      "スポーツ",
+      "健康",
+      "教育"
+    ],
+    "policy_keywords": [
+      "スポーツ",
+      "健康",
+      "運動",
+      "トレーニング",
+      "スポーツ",
+      "健康",
+      "教育"
+    ],
+    "research_keywords": [
+      "スポーツ",
+      "健康",
+      "運動",
+      "トレーニング",
+      "体育",
+      "コーチング",
+      "科学"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "sports_nutrition",
+    "faculty": "健康スポーツ科学部",
+    "department": "栄養科学科",
+    "summary": "健康に生きることを支える栄養を科学する。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "栄養",
+      "食",
+      "健康",
+      "管理栄養士",
+      "スポーツ栄養",
+      "食品",
+      "医療"
+    ],
+    "areas": [
+      "食",
+      "健康",
+      "資格"
+    ],
+    "policy_keywords": [
+      "栄養",
+      "食",
+      "健康",
+      "管理栄養士",
+      "食",
+      "健康",
+      "資格"
+    ],
+    "research_keywords": [
+      "栄養",
+      "食",
+      "健康",
+      "管理栄養士",
+      "スポーツ栄養",
+      "食品",
+      "医療"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "sci_mechanical",
+    "faculty": "理工学部",
+    "department": "機械工学科",
+    "summary": "暮らしを支えるものづくりの理論と実践を学ぶ。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "機械",
+      "ロボット",
+      "ものづくり",
+      "設計",
+      "自動車",
+      "エネルギー",
+      "材料"
+    ],
+    "areas": [
+      "工学",
+      "ものづくり",
+      "物理"
+    ],
+    "policy_keywords": [
+      "機械",
+      "ロボット",
+      "ものづくり",
+      "設計",
+      "工学",
+      "ものづくり",
+      "物理"
+    ],
+    "research_keywords": [
+      "機械",
+      "ロボット",
+      "ものづくり",
+      "設計",
+      "自動車",
+      "エネルギー",
+      "材料"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "sci_electrical",
+    "faculty": "理工学部",
+    "department": "電気電子情報工学科",
+    "summary": "指先から地球、宇宙につながる最新技術と創造力を学ぶ。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "電気",
+      "電子",
+      "情報",
+      "通信",
+      "半導体",
+      "宇宙",
+      "エネルギー"
+    ],
+    "areas": [
+      "工学",
+      "情報",
+      "物理"
+    ],
+    "policy_keywords": [
+      "電気",
+      "電子",
+      "情報",
+      "通信",
+      "工学",
+      "情報",
+      "物理"
+    ],
+    "research_keywords": [
+      "電気",
+      "電子",
+      "情報",
+      "通信",
+      "半導体",
+      "宇宙",
+      "エネルギー"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "sci_chemistry",
+    "faculty": "理工学部",
+    "department": "応用化学科",
+    "summary": "化学を創造力と社会のニーズに応える力にする。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "化学",
+      "材料",
+      "環境",
+      "薬品",
+      "実験",
+      "分子",
+      "エネルギー"
+    ],
+    "areas": [
+      "化学",
+      "工学",
+      "環境"
+    ],
+    "policy_keywords": [
+      "化学",
+      "材料",
+      "環境",
+      "薬品",
+      "化学",
+      "工学",
+      "環境"
+    ],
+    "research_keywords": [
+      "化学",
+      "材料",
+      "環境",
+      "薬品",
+      "実験",
+      "分子",
+      "エネルギー"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "sci_civil",
+    "faculty": "理工学部",
+    "department": "都市環境デザイン学科",
+    "summary": "自然と調和した都市システムを創る。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "都市",
+      "土木",
+      "環境",
+      "インフラ",
+      "防災",
+      "交通",
+      "まちづくり"
+    ],
+    "areas": [
+      "工学",
+      "都市",
+      "環境"
+    ],
+    "policy_keywords": [
+      "都市",
+      "土木",
+      "環境",
+      "インフラ",
+      "工学",
+      "都市",
+      "環境"
+    ],
+    "research_keywords": [
+      "都市",
+      "土木",
+      "環境",
+      "インフラ",
+      "防災",
+      "交通",
+      "まちづくり"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "sci_architecture",
+    "faculty": "理工学部",
+    "department": "建築学科",
+    "summary": "快適で安全な建築、まち、生活をデザインする。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "建築",
+      "設計",
+      "住宅",
+      "都市",
+      "デザイン",
+      "構造",
+      "環境"
+    ],
+    "areas": [
+      "建築",
+      "デザイン",
+      "工学"
+    ],
+    "policy_keywords": [
+      "建築",
+      "設計",
+      "住宅",
+      "都市",
+      "建築",
+      "デザイン",
+      "工学"
+    ],
+    "research_keywords": [
+      "建築",
+      "設計",
+      "住宅",
+      "都市",
+      "デザイン",
+      "構造",
+      "環境"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "info_media",
+    "faculty": "総合情報学部",
+    "department": "総合情報学科 メディア情報専攻",
+    "summary": "文理をつないで、創る、伝える、表現する。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "メディア",
+      "映像",
+      "デザイン",
+      "情報",
+      "表現",
+      "コンテンツ",
+      "データ"
+    ],
+    "areas": [
+      "情報",
+      "メディア",
+      "表現"
+    ],
+    "policy_keywords": [
+      "メディア",
+      "映像",
+      "デザイン",
+      "情報",
+      "情報",
+      "メディア",
+      "表現"
+    ],
+    "research_keywords": [
+      "メディア",
+      "映像",
+      "デザイン",
+      "情報",
+      "表現",
+      "コンテンツ",
+      "データ"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "info_psych_sports",
+    "faculty": "総合情報学部",
+    "department": "総合情報学科 心理・スポーツ情報専攻",
+    "summary": "AIとデータサイエンスで心理学とスポーツ科学を拓く。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "心理",
+      "スポーツ",
+      "AI",
+      "データサイエンス",
+      "分析",
+      "健康",
+      "情報"
+    ],
+    "areas": [
+      "情報",
+      "心理",
+      "スポーツ"
+    ],
+    "policy_keywords": [
+      "心理",
+      "スポーツ",
+      "AI",
+      "データサイエンス",
+      "情報",
+      "心理",
+      "スポーツ"
+    ],
+    "research_keywords": [
+      "心理",
+      "スポーツ",
+      "AI",
+      "データサイエンス",
+      "分析",
+      "健康",
+      "情報"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "info_system",
+    "faculty": "総合情報学部",
+    "department": "総合情報学科 システム情報専攻",
+    "summary": "安らぎあふれる社会をデジタルでつくる。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "システム",
+      "プログラミング",
+      "AI",
+      "データ",
+      "ネットワーク",
+      "セキュリティ",
+      "情報"
+    ],
+    "areas": [
+      "情報",
+      "データ",
+      "工学"
+    ],
+    "policy_keywords": [
+      "システム",
+      "プログラミング",
+      "AI",
+      "データ",
+      "情報",
+      "データ",
+      "工学"
+    ],
+    "research_keywords": [
+      "システム",
+      "プログラミング",
+      "AI",
+      "データ",
+      "ネットワーク",
+      "セキュリティ",
+      "情報"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "env_innovation",
+    "faculty": "環境イノベーション学部",
+    "department": "環境イノベーション学科",
+    "summary": "この地球が、キミのフィールド。環境課題に挑む。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "環境",
+      "地球",
+      "フィールド",
+      "サステナビリティ",
+      "気候変動",
+      "資源",
+      "政策"
+    ],
+    "areas": [
+      "環境",
+      "国際",
+      "社会課題"
+    ],
+    "policy_keywords": [
+      "環境",
+      "地球",
+      "フィールド",
+      "サステナビリティ",
+      "環境",
+      "国際",
+      "社会課題"
+    ],
+    "research_keywords": [
+      "環境",
+      "地球",
+      "フィールド",
+      "サステナビリティ",
+      "気候変動",
+      "資源",
+      "政策"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "life_science",
+    "faculty": "生命科学部",
+    "department": "生命科学科",
+    "summary": "いのちのしくみと、いのちを育む環境を科学する。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "生命科学",
+      "動物",
+      "細胞",
+      "遺伝子",
+      "環境",
+      "生態",
+      "微生物"
+    ],
+    "areas": [
+      "生命科学",
+      "環境",
+      "実験"
+    ],
+    "policy_keywords": [
+      "生命科学",
+      "動物",
+      "細胞",
+      "遺伝子",
+      "生命科学",
+      "環境",
+      "実験"
+    ],
+    "research_keywords": [
+      "生命科学",
+      "動物",
+      "細胞",
+      "遺伝子",
+      "環境",
+      "生態",
+      "微生物"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "life_biomedical",
+    "faculty": "生命科学部",
+    "department": "生体医工学科",
+    "summary": "人々の生きるを支える、科学と工学。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dben/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "医療",
+      "工学",
+      "健康",
+      "リハビリ",
+      "医療機器",
+      "データ",
+      "生命科学"
+    ],
+    "areas": [
+      "生命科学",
+      "医療",
+      "工学"
+    ],
+    "policy_keywords": [
+      "医療",
+      "工学",
+      "健康",
+      "リハビリ",
+      "生命科学",
+      "医療",
+      "工学"
+    ],
+    "research_keywords": [
+      "医療",
+      "工学",
+      "健康",
+      "リハビリ",
+      "医療機器",
+      "データ",
+      "生命科学"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "life_bioresource",
+    "faculty": "生命科学部",
+    "department": "生物資源学科",
+    "summary": "生物資源のしくみを学び、持続可能社会をめざす。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "生物資源",
+      "植物",
+      "微生物",
+      "農業",
+      "環境",
+      "食品",
+      "発酵"
+    ],
+    "areas": [
+      "生命科学",
+      "食",
+      "環境"
+    ],
+    "policy_keywords": [
+      "生物資源",
+      "植物",
+      "微生物",
+      "農業",
+      "生命科学",
+      "食",
+      "環境"
+    ],
+    "research_keywords": [
+      "生物資源",
+      "植物",
+      "微生物",
+      "農業",
+      "環境",
+      "食品",
+      "発酵"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "food_science",
+    "faculty": "食環境科学部",
+    "department": "食環境科学科",
+    "summary": "次世代の食のあり方を、科学の視点で考える。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "食",
+      "食品",
+      "環境",
+      "栄養",
+      "安全",
+      "科学",
+      "フードシステム"
+    ],
+    "areas": [
+      "食",
+      "環境",
+      "科学"
+    ],
+    "policy_keywords": [
+      "食",
+      "食品",
+      "環境",
+      "栄養",
+      "食",
+      "環境",
+      "科学"
+    ],
+    "research_keywords": [
+      "食",
+      "食品",
+      "環境",
+      "栄養",
+      "安全",
+      "科学",
+      "フードシステム"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "food_data",
+    "faculty": "食環境科学部",
+    "department": "フードデータサイエンス学科",
+    "summary": "データで新たな食の可能性を拓く。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "食",
+      "データサイエンス",
+      "AI",
+      "食品",
+      "マーケティング",
+      "統計",
+      "健康"
+    ],
+    "areas": [
+      "食",
+      "データ",
+      "ビジネス"
+    ],
+    "policy_keywords": [
+      "食",
+      "データサイエンス",
+      "AI",
+      "食品",
+      "食",
+      "データ",
+      "ビジネス"
+    ],
+    "research_keywords": [
+      "食",
+      "データサイエンス",
+      "AI",
+      "食品",
+      "マーケティング",
+      "統計",
+      "健康"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  },
+  {
+    "id": "food_nutrition",
+    "faculty": "食環境科学部",
+    "department": "健康栄養学科",
+    "summary": "人と社会の健康を担う管理栄養士の力を育てる。",
+    "official_url": "https://www.toyo.ac.jp/nyushi/undergraduate/",
+    "source_basis": "official_undergraduate_list",
+    "tags": [
+      "栄養",
+      "管理栄養士",
+      "健康",
+      "食事",
+      "医療",
+      "食品",
+      "予防"
+    ],
+    "areas": [
+      "食",
+      "健康",
+      "資格"
+    ],
+    "policy_keywords": [
+      "栄養",
+      "管理栄養士",
+      "健康",
+      "食事",
+      "食",
+      "健康",
+      "資格"
+    ],
+    "research_keywords": [
+      "栄養",
+      "管理栄養士",
+      "健康",
+      "食事",
+      "医療",
+      "食品",
+      "予防"
+    ],
+    "needs_review": true,
+    "review_note": "初期版は東洋大学入試情報サイトの学部・学科一覧の見出しと紹介文を起点に、ポリシー・研究内容確認用の辞書語を設計したドラフトです。正式運用前に各学部・学科の3ポリシー、教員紹介、研究室情報で確認してください。"
+  }
+]
