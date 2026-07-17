@@ -676,20 +676,41 @@ function displayMatchedTerms(lab, terms) {
   return terms;
 }
 
-function card(lab, match = '') {
+function createLabCard(lab, variant = 'directory', options = {}) {
   const article = document.createElement('article');
   const isFav = favorites.has(lab.id);
-  const recommended = (lab.recommended_for || []).slice(0, 2);
-  const keywords = displayKeywords(lab).slice(0, 4);
-  const recommendedHtml = recommended.length ? `
+  const keywords = (options.keywords || displayKeywords(lab)).slice(0, variant === 'compass' ? 3 : 4);
+  const recommended = (lab.recommended_for || []).slice(0, variant === 'directory' ? 2 : 3);
+  const sections = [];
+  if (variant === 'directory') {
+    sections.push(`
+      <section class="lab-question">
+        <span class="lab-question-label">QUESTION</span>
+        <p>${escapeHtml(lab.question)}</p>
+      </section>`);
+    sections.push(`<p class="catch">${escapeHtml(lab.summary)}</p>`);
+  }
+  if (keywords.length) {
+    const keywordLabel = variant === 'compass' ? 'KEYWORDS' : 'キーワード';
+    sections.push(`
+      <section class="lab-card-keywords" aria-label="${keywordLabel}">
+        <span class="lab-mini-label">${keywordLabel}</span>
+        <div class="keywords">${keywords.map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join('')}</div>
+      </section>`);
+  }
+  if (recommended.length) {
+    sections.push(`
     <section class="lab-recommended-preview" aria-label="こんな人におすすめ">
       <span class="lab-mini-label">こんな人におすすめ</span>
       <ul>${recommended.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
-    </section>` : '';
-  const keywordsHtml = keywords.length ? `
-    <div class="keywords">${keywords.map((keyword) => `<span class="keyword">${escapeHtml(keyword)}</span>`).join('')}</div>` : '';
-  const matchHtml = match ? `<span class="match">${escapeHtml(match)}</span>` : '';
-  article.className = `lab-card card ${deptClass(lab.department)}`;
+    </section>`);
+  }
+  if (variant === 'interest' && lab.summary) {
+    sections.push(`<p class="catch lab-card-summary">${escapeHtml(lab.summary)}</p>`);
+  }
+  const matchHtml = options.match ? `<span class="match">${escapeHtml(options.match)}</span>` : '';
+  const actionLabel = options.actionLabel || (variant === 'directory' ? '次の扉をひらく →' : '研究室をのぞく →');
+  article.className = `lab-card lab-card-${variant} card ${deptClass(lab.department)}`;
   article.dataset.labId = lab.id;
   applyDepartmentTheme(article, lab.department);
   article.innerHTML = `
@@ -701,16 +722,10 @@ function card(lab, match = '') {
       <h3>${escapeHtml(displayLabName(lab))}</h3>
       <p class="pi-name">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</p>
     </header>
-    <section class="lab-question">
-      <span class="lab-question-label">QUESTION</span>
-      <p>${escapeHtml(lab.question)}</p>
-    </section>
-    <p class="catch">${escapeHtml(lab.summary)}</p>
-    ${recommendedHtml}
-    ${keywordsHtml}
+    ${sections.join('')}
     <div class="lab-actions">
       ${matchHtml}
-      <button class="open-lab">次の扉をひらく →</button>
+      <button class="open-lab" type="button">${escapeHtml(actionLabel)}</button>
     </div>`;
   article.querySelector('.favorite-button').onclick = (event) => {
     event.stopPropagation();
@@ -731,6 +746,10 @@ function card(lab, match = '') {
     }
   };
   return article;
+}
+
+function card(lab, match = '') {
+  return createLabCard(lab, 'directory', { match });
 }
 
 function renderGroupedLabs(container, items, matchLabel) {
@@ -805,23 +824,21 @@ function renderRankedLabs(container, items) {
 
 function renderInterestIndex(container, items) {
   container.innerHTML = '';
-  container.classList.remove('lab-grid', 'grouped');
-  container.classList.add('interest-index-list');
+  container.classList.remove('grouped');
+  container.classList.add('interest-index-list', 'lab-grid');
   if (!items.length) {
     container.innerHTML = '<div class="empty-result card">条件に合う研究室がありません。</div>';
     return;
   }
-  const grid = document.createElement('div');
-  grid.className = 'interest-index-grid';
   items.forEach((item) => {
     const matched = displayMatchedTerms(item.lab, item.matched).slice(0, 3);
-    grid.appendChild(miniLabButton(item.lab, {
+    const label = matched.length ? `一致: ${matched.join('・')}` : '';
+    container.appendChild(createLabCard(item.lab, 'interest', {
       keywords: matched.length ? matched : displayKeywords(item.lab).slice(0, 3),
-      showDepartment: true,
-      onClick: () => openModal(item.lab)
+      match: label,
+      actionLabel: '研究室をのぞく →'
     }));
   });
-  container.appendChild(grid);
 }
 
 function renderCompass() {
@@ -1211,28 +1228,21 @@ function renderCompassResults() {
       <h3>${escapeHtml(compassData.result?.question_heading || 'あなたが今日出会った問い')}</h3>
       <p>${escapeHtml(question)}</p>
     </section>
-    <section class="compass-type-section">
-      <span class="eyebrow">${escapeHtml(compassData.result?.types_label || 'RESEARCH TYPE')}</span>
-      <h3>${escapeHtml(compassData.result?.types_heading || 'あなたが楽しめそうな研究タイプ')}</h3>
-      <div class="compass-type-grid"></div>
-    </section>
-    <div class="compass-result-head">
-      <h3>${escapeHtml(compassData.result?.labs_heading || 'この研究タイプからのぞける研究室')}</h3>
-      <p>研究タイプの中にある研究室を、少しずつのぞいてみましょう。</p>
-    </div>
-    <div class="compass-match-grid"></div>
     <section class="compass-interest-map">
       <span class="eyebrow">${escapeHtml(compassData.result?.map_label || 'KEYWORDS')}</span>
       <h3>${escapeHtml(compassData.result?.map_heading || 'あなたが興味を持ちそうなキーワード')}</h3>
       <div class="compass-keyword-map"></div>
     </section>
+    <div class="compass-result-head">
+      <h3>${escapeHtml(compassData.result?.labs_heading || 'この研究タイプからのぞける研究室')}</h3>
+      <p>今日選んだ興味とつながる研究室を、少しずつのぞいてみましょう。</p>
+    </div>
+    <div class="compass-match-grid"></div>
     <p class="compass-message">${escapeHtml(compassData.result?.closing || '')}</p>
     <div class="compass-result-actions">
       <button class="secondary" type="button">もう一度たどる</button>
       <button class="primary" type="button">研究室一覧を見る</button>
     </div>`;
-  const typeGrid = container.querySelector('.compass-type-grid');
-  researchTypes.forEach((type) => typeGrid.appendChild(compassResearchTypeCard(type)));
   const map = container.querySelector('.compass-keyword-map');
   keywords.forEach((item) => map.appendChild(compassKeywordCard(item)));
   const grid = container.querySelector('.compass-match-grid');
@@ -1265,26 +1275,10 @@ function compassQuestionSummary() {
 }
 
 function compassLabCard(lab, matched) {
-  const article = document.createElement('article');
-  article.className = `compass-lab-card ${deptClass(lab.department)}`;
-  applyDepartmentTheme(article, lab.department);
-  const connection = matched.slice(0, 3);
-  article.innerHTML = `
-    <span class="compass-dept">${escapeHtml(lab.department)}</span>
-    <h3>${escapeHtml(displayLabName(lab))}</h3>
-    <p class="compass-pi">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</p>
-    <p>${escapeHtml(lab.summary)}</p>
-    <section class="compass-connection">
-      <span>あなたとの接点</span>
-      <div class="lab-jump-keywords">${connection.map((keyword) => `<em>${escapeHtml(keyword)}</em>`).join('')}</div>
-    </section>
-    <details class="compass-reason">
-      <summary>なぜこの研究室？</summary>
-      <p>「${escapeHtml(connection.join('」「'))}」という興味が、この研究室の研究対象や方法とつながっています。</p>
-    </details>
-    <button class="open-lab" type="button">研究室をのぞく →</button>`;
-  article.querySelector('.open-lab').onclick = () => openModal(lab);
-  return article;
+  return createLabCard(lab, 'compass', {
+    keywords: matched.length ? matched : displayKeywords(lab).slice(0, 3),
+    actionLabel: '研究室をのぞく →'
+  });
 }
 
 function compassKeywordCard(item) {
