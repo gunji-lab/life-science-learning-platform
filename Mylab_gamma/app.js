@@ -1,6 +1,9 @@
 let labs = [];
 let eventData = null;
 let departments = [];
+let aiDictionary = [];
+let aiLastResult = null;
+let aiLastLogId = '';
 let selected = new Set();
 let selectedDetailTerms = new Set();
 let selectedEventFilters = new Set();
@@ -331,10 +334,11 @@ async function init() {
   updateFavoriteCount();
 
   try {
-    const [labResponse, eventResponse, departmentResponse] = await Promise.all([
+    const [labResponse, eventResponse, departmentResponse, dictionaryResponse] = await Promise.all([
       fetch('data/labs.json'),
       fetch('data/events.json'),
-      fetch('data/departments.json')
+      fetch('data/departments.json'),
+      fetch('data/ai_research_dictionary.csv')
     ]);
     if (!labResponse.ok) throw new Error(`labs.json: ${labResponse.status}`);
     if (!eventResponse.ok) throw new Error(`events.json: ${eventResponse.status}`);
@@ -342,6 +346,7 @@ async function init() {
     labs = await labResponse.json();
     eventData = await eventResponse.json();
     departments = await departmentResponse.json();
+    aiDictionary = dictionaryResponse.ok ? parseDictionaryCsv(await dictionaryResponse.text()) : [];
     selectedLabJumpDepartment = '';
     selectedRecommendationDepartment = '';
     selectedQuestionDepartment = '';
@@ -350,6 +355,7 @@ async function init() {
     renderDirectoryLead();
     renderHomeTags();
     renderInterest();
+    renderAICompass();
     renderLabList();
     renderVisitors();
   } catch (error) {
@@ -378,6 +384,21 @@ function bindNavigation() {
     selectedDetailTerms.clear();
     renderInterest();
   };
+  const aiForm = qs('#ai-compass-form');
+  if (aiForm) {
+    aiForm.onsubmit = (event) => {
+      event.preventDefault();
+      runAICompassSearch(qs('#ai-compass-input')?.value || '');
+    };
+  }
+  qsa('[data-ai-example]').forEach((button) => {
+    button.onclick = () => {
+      const input = qs('#ai-compass-input');
+      if (!input) return;
+      input.value = button.dataset.aiExample || '';
+      input.focus();
+    };
+  });
   qs('#lab-search').oninput = renderLabList;
   qs('#department-filter').onchange = renderLabList;
   qs('#clear-favorites').onclick = () => {
@@ -414,6 +435,7 @@ function switchView(name) {
 function renderCurrentView() {
   const active = qs('.view.active')?.id.replace('view-', '');
   if (active === 'interest') renderInterest();
+  if (active === 'ai-compass') renderAICompass();
   if (active === 'labs') renderLabList();
   if (active === 'visitors') renderVisitors();
   if (active === 'favorites') renderFavorites();
@@ -851,6 +873,358 @@ function renderInterestIndex(container, items) {
     }));
   });
   container.appendChild(grid);
+}
+
+function parseDictionaryCsv(text = '') {
+  const rows = parseCsv(text);
+  const header = rows.shift() || [];
+  const indexes = Object.fromEntries(header.map((name, index) => [name.trim(), index]));
+  return rows
+    .map((row) => ({
+      word: (row[indexes.word] || '').trim(),
+      synonym: (row[indexes.synonym] || '').trim(),
+      tag: (row[indexes.tag] || '').trim(),
+      weight: Number(row[indexes.weight] || 1)
+    }))
+    .filter((entry) => entry.word && entry.tag);
+}
+
+function parseCsv(text = '') {
+  const rows = [];
+  let row = [];
+  let cell = '';
+  let quoted = false;
+  for (let index = 0; index < text.length; index += 1) {
+    const char = text[index];
+    const next = text[index + 1];
+    if (char === '"' && quoted && next === '"') {
+      cell += '"';
+      index += 1;
+    } else if (char === '"') {
+      quoted = !quoted;
+    } else if (char === ',' && !quoted) {
+      row.push(cell);
+      cell = '';
+    } else if ((char === '\n' || char === '\r') && !quoted) {
+      if (char === '\r' && next === '\n') index += 1;
+      row.push(cell);
+      if (row.some((value) => value.trim())) rows.push(row);
+      row = [];
+      cell = '';
+    } else {
+      cell += char;
+    }
+  }
+  row.push(cell);
+  if (row.some((value) => value.trim())) rows.push(row);
+  return rows;
+}
+
+function renderAICompass() {
+  renderAICompassAdmin();
+  if (!aiLastResult) {
+    const results = qs('#ai-compass-results');
+    if (results) results.innerHTML = '';
+  }
+}
+
+function runAICompassSearch(rawInput) {
+  const input = rawInput.trim();
+  const resultArea = qs('#ai-compass-results');
+  if (!input) {
+    resultArea.innerHTML = '<div class="empty-result card">気になることを一言でいいので書いてみてください。</div>';
+    return;
+  }
+  const analysis = analyzeAICompassInput(input);
+  const matches = scoreAICompassLabs(analysis.tagScores);
+  const log = saveAICompassLog(input, analysis, matches);
+  aiLastLogId = log.id;
+  aiLastResult = { input, analysis, matches };
+  renderAICompassResults(aiLastResult);
+  renderAICompassAdmin();
+}
+
+function analyzeAICompassInput(input) {
+  const normalized = normalizeCompassText(input);
+  const matchedEntries = [];
+  const tagScores = new Map();
+  aiDictionary.forEach((entry) => {
+    const candidates = [entry.word, ...entry.synonym.split('|')].map((item) => item.trim()).filter(Boolean);
+    const hit = candidates.some((candidate) => normalized.includes(normalizeCompassText(candidate)));
+    if (!hit) return;
+    matchedEntries.push(entry);
+    tagScores.set(entry.tag, (tagScores.get(entry.tag) || 0) + entry.weight);
+    (tagParents[entry.tag] || []).forEach((parent) => {
+      tagScores.set(parent, (tagScores.get(parent) || 0) + Math.max(1, entry.weight * 0.45));
+    });
+  });
+  return {
+    matchedEntries,
+    tagScores,
+    tags: [...tagScores.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
+      .map(([tag, score]) => ({ tag, score })),
+    unknownTerms: extractUnknownTerms(input, matchedEntries)
+  };
+}
+
+function normalizeCompassText(value = '') {
+  return String(value)
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/[、。,.!?！？「」『』（）()［］\[\]【】・/／\\\s]/g, '');
+}
+
+function extractUnknownTerms(input, matchedEntries) {
+  const matchedWords = new Set(matchedEntries.flatMap((entry) => [entry.word, ...entry.synonym.split('|')])
+    .map((term) => normalizeCompassText(term))
+    .filter(Boolean));
+  const rough = String(input)
+    .normalize('NFKC')
+    .replace(/[、。,.!?！？「」『』（）()［］\[\]【】・/／\\]/g, ' ')
+    .split(/\s+/)
+    .flatMap((chunk) => chunk.split(/(?:が|を|に|へ|で|と|の|は|も|や|って|です|ます|した|たい|好き|興味|気になる|面白い|面白そう|知りたい|ありますか)/g))
+    .map((term) => term.trim())
+    .filter((term) => term.length >= 2);
+  return uniqueTerms(rough)
+    .filter((term) => !matchedWords.has(normalizeCompassText(term)))
+    .slice(0, 8);
+}
+
+function scoreAICompassLabs(tagScores) {
+  if (!tagScores.size) return [];
+  return labs
+    .map((lab) => {
+      const labTerms = expandedLabTerms(lab);
+      const matched = [];
+      let score = 0;
+      tagScores.forEach((weight, tag) => {
+        if (!labTerms.has(String(tag).toLowerCase())) return;
+        matched.push(tag);
+        score += weight;
+      });
+      const questionBonus = matched.some((tag) => lab.question?.includes(tag)) ? 1.5 : 0;
+      return { lab, score: score + questionBonus, matched: uniqueTerms(matched) };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      if (b.matched.length !== a.matched.length) return b.matched.length - a.matched.length;
+      return a.lab.lab_name.localeCompare(b.lab.lab_name, 'ja');
+    })
+    .slice(0, 8);
+}
+
+function renderAICompassResults(result) {
+  const container = qs('#ai-compass-results');
+  const tags = result.analysis.tags.slice(0, 8);
+  const unknown = result.analysis.unknownTerms;
+  const matches = result.matches;
+  const topQuestion = matches[0]?.lab?.question || 'あなたの興味は、どんな研究の問いにつながるだろう？';
+  container.innerHTML = `
+    <section class="ai-result-block card">
+      <span class="eyebrow">INTEREST MAP</span>
+      <h3>あなたの興味を整理しました</h3>
+      ${tags.length ? `<div class="ai-tag-list">${tags.map((item) => `<span>✓ ${escapeHtml(item.tag)}</span>`).join('')}</div>` : '<p class="ai-learning">この言葉はまだ学習中です。検索結果は参考程度にご利用ください。</p>'}
+      ${unknown.length ? `<p class="ai-learning">まだ辞書で拾いきれていない言葉: ${unknown.map(escapeHtml).join('、')}</p>` : ''}
+    </section>
+    <section class="hero-question ai-today-question"><span>TODAY'S QUESTION</span><h3>${escapeHtml(topQuestion)}</h3></section>
+    <section class="ai-result-block card">
+      <div class="ai-result-head">
+        <div><span class="eyebrow">LABORATORY</span><h3>おすすめ研究室</h3></div>
+        <span>${matches.length} labs</span>
+      </div>
+      <div class="ai-match-grid"></div>
+      <div class="ai-feedback">
+        <span>この結果は参考になりましたか？</span>
+        <button type="button" data-ai-feedback="up">👍 参考になった</button>
+        <button type="button" data-ai-feedback="down">👎 ちがうかも</button>
+      </div>
+    </section>
+    <section class="ai-result-block card">
+      <span class="eyebrow">NEXT</span>
+      <h3>興味から探す</h3>
+      <p>辞書で見つかったキーワードを手がかりに、既存のトピック検索でも研究室を見比べられます。</p>
+      <button class="secondary" type="button" id="ai-go-interest">興味から探すへ →</button>
+    </section>`;
+  const grid = container.querySelector('.ai-match-grid');
+  if (!matches.length) {
+    grid.innerHTML = '<div class="empty-result">一致する研究室がまだ少ないようです。辞書育成支援ページに未登録語として保存しました。</div>';
+  } else {
+    matches.slice(0, 4).forEach((item) => grid.appendChild(aiMatchCard(item)));
+  }
+  container.querySelectorAll('[data-ai-feedback]').forEach((button) => {
+    button.onclick = () => recordAICompassFeedback(button.dataset.aiFeedback);
+  });
+  qs('#ai-go-interest').onclick = () => switchView('interest');
+}
+
+function aiMatchCard(item) {
+  const article = document.createElement('article');
+  const lab = item.lab;
+  const reason = item.matched.slice(0, 4);
+  article.className = `ai-match-card ${deptClass(lab.department)}`;
+  applyDepartmentTheme(article, lab.department);
+  article.innerHTML = `
+    <span class="lab-jump-dept">${escapeHtml(lab.department)}</span>
+    <strong>${escapeHtml(displayLabName(lab))}</strong>
+    <span class="lab-jump-pi">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</span>
+    <p>${escapeHtml(lab.summary)}</p>
+    <div class="lab-jump-keywords">${reason.map((tag) => `<em>${escapeHtml(tag)}</em>`).join('')}</div>
+    <p class="ai-reason">「${escapeHtml(reason.join('」「'))}」が一致したためおすすめしています。</p>
+    <button class="open-lab" type="button">研究室をのぞく →</button>`;
+  article.querySelector('.open-lab').onclick = () => {
+    recordAICompassClick(lab.id);
+    openModal(lab);
+  };
+  return article;
+}
+
+function aiCompassLogs() {
+  try {
+    const logs = JSON.parse(localStorage.getItem('mylab-ai-compass-logs') || '[]');
+    return Array.isArray(logs) ? logs : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveAICompassLogs(logs) {
+  localStorage.setItem('mylab-ai-compass-logs', JSON.stringify(logs.slice(-250)));
+}
+
+function saveAICompassLog(input, analysis, matches) {
+  const log = {
+    id: `ai-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    createdAt: new Date().toISOString(),
+    input,
+    extractedTags: analysis.tags.slice(0, 12).map((item) => item.tag),
+    unknownTerms: analysis.unknownTerms,
+    displayedLabs: matches.slice(0, 8).map((item) => item.lab.id),
+    clickedLabs: [],
+    feedback: ''
+  };
+  const logs = aiCompassLogs();
+  logs.push(log);
+  saveAICompassLogs(logs);
+  return log;
+}
+
+function updateAICompassLog(updater) {
+  const logs = aiCompassLogs();
+  const index = logs.findIndex((log) => log.id === aiLastLogId);
+  if (index === -1) return;
+  logs[index] = updater(logs[index]);
+  saveAICompassLogs(logs);
+  renderAICompassAdmin();
+}
+
+function recordAICompassClick(labId) {
+  updateAICompassLog((log) => ({
+    ...log,
+    clickedLabs: uniqueTerms([...(log.clickedLabs || []), labId])
+  }));
+}
+
+function recordAICompassFeedback(value) {
+  updateAICompassLog((log) => ({ ...log, feedback: value }));
+  const target = qs('.ai-feedback');
+  if (target) target.classList.add('answered');
+}
+
+function renderAICompassAdmin() {
+  const container = qs('#ai-compass-admin');
+  if (!container) return;
+  const logs = aiCompassLogs();
+  const unknownRanking = rankAIItems(logs.flatMap((log) => log.unknownTerms || []));
+  const clickRanking = rankAIItems(logs.flatMap((log) => log.clickedLabs || []));
+  const up = logs.filter((log) => log.feedback === 'up').length;
+  const down = logs.filter((log) => log.feedback === 'down').length;
+  const success = logs.filter((log) => (log.displayedLabs || []).length).length;
+  container.innerHTML = `
+    <div class="ai-admin-head">
+      <div>
+        <span class="eyebrow">DICTIONARY GARDEN</span>
+        <h3>辞書育成支援ページ</h3>
+        <p>入力ログはこのブラウザ内に保存されます。個人情報は入力しない前提で、辞書改善の手がかりだけを見ます。</p>
+      </div>
+      <button class="text-button" type="button" id="ai-clear-logs"${logs.length ? '' : ' disabled'}>ログを消す</button>
+    </div>
+    <div class="ai-admin-stats">
+      <span><strong>${logs.length}</strong>検索</span>
+      <span><strong>${logs.length ? Math.round((success / logs.length) * 100) : 0}%</strong>成功率</span>
+      <span><strong>${up}</strong>👍</span>
+      <span><strong>${down}</strong>👎</span>
+    </div>
+    <div class="ai-admin-grid">
+      <section>
+        <h4>未登録語ランキング</h4>
+        ${aiRankingList(unknownRanking, 'まだ未登録語はありません。')}
+      </section>
+      <section>
+        <h4>クリック数ランキング</h4>
+        ${aiRankingList(clickRanking.map((item) => ({ ...item, label: labLabelById(item.label) })), 'クリックログはまだありません。')}
+      </section>
+    </div>
+    <section class="ai-dictionary-editor">
+      <h4>辞書登録メモを作る</h4>
+      <p>未登録語を見ながら、CSVに追記する候補行を作れます。実際の辞書更新は <code>data/ai_research_dictionary.csv</code> に追記します。</p>
+      <div class="ai-editor-grid">
+        <input id="ai-dict-word" type="text" placeholder="word 例: クラゲ">
+        <input id="ai-dict-synonym" type="text" placeholder="synonym 例: 水族館|海の生き物">
+        <input id="ai-dict-tag" type="text" placeholder="tag 例: 動物">
+        <input id="ai-dict-weight" type="number" min="1" max="5" value="4" placeholder="weight">
+      </div>
+      <output id="ai-dict-preview">word,synonym,tag,weight</output>
+    </section>
+    <details class="ai-log-detail">
+      <summary>最近の入力を見る</summary>
+      <ul>${logs.slice(-8).reverse().map((log) => `<li><strong>${escapeHtml(log.input)}</strong><span>${escapeHtml((log.extractedTags || []).slice(0, 5).join('・') || 'タグなし')}</span></li>`).join('')}</ul>
+    </details>`;
+  const clear = qs('#ai-clear-logs');
+  if (clear) {
+    clear.onclick = () => {
+      if (!confirm('AI Research Compass βのローカルログを削除しますか？')) return;
+      saveAICompassLogs([]);
+      renderAICompassAdmin();
+    };
+  }
+  qsa('#ai-dict-word,#ai-dict-synonym,#ai-dict-tag,#ai-dict-weight').forEach((input) => {
+    input.oninput = renderDictionaryPreview;
+  });
+  renderDictionaryPreview();
+}
+
+function renderDictionaryPreview() {
+  const preview = qs('#ai-dict-preview');
+  if (!preview) return;
+  const values = ['#ai-dict-word', '#ai-dict-synonym', '#ai-dict-tag', '#ai-dict-weight']
+    .map((selector) => csvCell(qs(selector)?.value || ''));
+  preview.textContent = values.join(',');
+}
+
+function csvCell(value) {
+  const text = String(value).trim();
+  return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+function rankAIItems(items) {
+  const counts = new Map();
+  items.filter(Boolean).forEach((item) => counts.set(item, (counts.get(item) || 0) + 1));
+  return [...counts.entries()]
+    .map(([label, count]) => ({ label, count }))
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label, 'ja'))
+    .slice(0, 10);
+}
+
+function aiRankingList(items, emptyText) {
+  if (!items.length) return `<p class="ai-empty">${escapeHtml(emptyText)}</p>`;
+  return `<ol>${items.map((item) => `<li><span>${escapeHtml(item.label)}</span><strong>${item.count}</strong></li>`).join('')}</ol>`;
+}
+
+function labLabelById(id) {
+  const lab = labs.find((item) => item.id === id);
+  return lab ? displayLabName(lab) : id;
 }
 
 function renderLabList() {

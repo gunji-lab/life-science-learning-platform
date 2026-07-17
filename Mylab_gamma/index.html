@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>My Lab β1｜あなたの「好き」から、未来の研究室を見つけよう。</title>
 <meta name="description" content="東洋大学生命科学部の研究室を、興味や問いから探せるWebアプリです。">
-<link rel="stylesheet" href="styles.css?v=20260717-no-analysis">
+<link rel="stylesheet" href="styles.css?v=20260717-ai-compass-beta">
 </head>
 <body>
 <header class="topbar">
@@ -30,6 +30,7 @@
 <nav class="tabs" aria-label="メインメニュー">
   <button class="tab active" data-view="home">ホーム</button>
   <button class="tab" data-view="interest">興味から探す</button>
+  <button class="tab" data-view="ai-compass">AI Compass β</button>
   <button class="tab" data-view="labs">研究室一覧</button>
   <button class="tab" data-view="visitors">受験生のみなさんへ</button>
 </nav>
@@ -85,6 +86,28 @@
   <div id="interest-results" class="lab-grid"></div>
 </section>
 
+<section id="view-ai-compass" class="view">
+  <div class="ai-compass-hero card">
+    <span class="eyebrow">AI RESEARCH COMPASS β</span>
+    <h2>気になることを、研究の言葉へ。</h2>
+    <p>動物園が好き、DNAが面白そう、医療に興味がある。ふだんの言葉を、My Labの研究キーワードへ翻訳して研究室との出会いを探します。</p>
+  </div>
+  <form id="ai-compass-form" class="ai-compass-form card">
+    <label for="ai-compass-input">あなたが気になっていることを自由に書いてください。</label>
+    <textarea id="ai-compass-input" rows="5" placeholder="例：動物園が好きです。キリンの首や骨のしくみに興味があります。"></textarea>
+    <div class="ai-example-row" aria-label="入力例">
+      <button type="button" data-ai-example="動物園が好きです。キリンのからだのしくみが気になります。">動物園が好き</button>
+      <button type="button" data-ai-example="DNAや遺伝子って面白そうです。">DNAが面白そう</button>
+      <button type="button" data-ai-example="ゲームやAIが好きだけど生命科学でも役に立ちますか？">ゲーム・AIが好き</button>
+      <button type="button" data-ai-example="医療やリハビリに関わるものづくりをしてみたいです。">医療に興味</button>
+    </div>
+    <p class="ai-beta-note">β版です。みなさんの入力をもとに、研究との出会いをもっと良くしていきます。</p>
+    <button class="primary" type="submit">研究を探す →</button>
+  </form>
+  <section id="ai-compass-results" class="ai-compass-results" aria-live="polite"></section>
+  <section id="ai-compass-admin" class="ai-compass-admin card" aria-label="辞書育成支援ページ"></section>
+</section>
+
 <section id="view-labs" class="view">
   <div class="section-head">
     <div><span class="eyebrow">LAB DIRECTORY</span><h2>研究室一覧</h2><p id="lab-directory-lead">東洋大学生命科学部の研究室を掲載しています。</p></div>
@@ -136,6 +159,6 @@
   <p>My Lab β1 · 東洋大学生命科学部の公式研究室一覧と公開情報をもとに構成</p>
   <p>© Megu GUNJI [ Toyo University ]</p>
 </footer>
-<script src="app.js?v=20260717-no-analysis"></script>
+<script src="app.js?v=20260717-ai-compass-beta"></script>
 </body>
 </html>
