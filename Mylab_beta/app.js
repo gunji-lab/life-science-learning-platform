@@ -1052,13 +1052,11 @@ function compassKeywords() {
 function renderCompassProgress() {
   const total = resolvedCompassSteps().length;
   const current = Math.min(compassStepIndex + 1, total);
-  const remaining = Math.max(total - current, 0);
   const progress = qs('#compass-progress');
-  const width = Math.round(((current - 1) / total) * 100);
+  const width = Math.round((current / total) * 100);
   progress.innerHTML = `
-    <span>${current} / ${total}</span>
-    <div class="compass-progress-bar"><i style="width:${width}%"></i></div>
-    <span>あと${remaining}問</span>`;
+    <span>Question ${current} / ${total}</span>
+    <div class="compass-progress-bar"><i style="width:${width}%"></i></div>`;
 }
 
 function renderCompassHero() {
@@ -1078,8 +1076,8 @@ function renderCompassIntro() {
   container.innerHTML = `
     <section class="compass-intro-card card">
       <span class="eyebrow">SHORT JOURNEY</span>
-      <h3>まずは3つの問いを、ひとつずつたどってみましょう。</h3>
-      <p>これは適性を決める診断ではありません。生命科学の問いと研究室に出会うための小さな旅です。</p>
+      <h3>3つの問いから、研究の世界を少しだけのぞいてみましょう。</h3>
+      <p>正解を選ぶ必要はありません。今ちょっと気になる「なぜ？」から、大学の研究の入口をたどってみましょう。</p>
       <button class="primary" type="button">${escapeHtml(compassData.primary_action || 'はじめる →')}</button>
     </section>`;
   container.querySelector('button').onclick = () => {
@@ -1115,7 +1113,13 @@ function renderCompassQuestion() {
     button.type = 'button';
     button.className = `compass-option${compassAnswers[step.id] === option.id ? ' selected' : ''}`;
     button.innerHTML = `<span>${escapeHtml(option.label)}</span><small>${escapeHtml(option.description || '')}</small>`;
-    button.onclick = () => selectCompassOption(step, option);
+    button.onclick = () => {
+      compassAnswers[step.id] = option.id;
+      options.querySelectorAll('.compass-option').forEach((item) => item.classList.remove('selected'));
+      button.classList.add('selected');
+      const next = block.querySelector('.compass-next');
+      if (next) next.disabled = false;
+    };
     options.appendChild(button);
   });
   const nav = block.querySelector('.compass-nav');
@@ -1131,12 +1135,16 @@ function renderCompassQuestion() {
     };
     nav.appendChild(back);
   }
-  const reset = document.createElement('button');
-  reset.type = 'button';
-  reset.className = 'text-button compass-reset';
-  reset.textContent = '回答をクリア';
-  reset.onclick = resetCompass;
-  nav.appendChild(reset);
+  const next = document.createElement('button');
+  next.type = 'button';
+  next.className = 'primary compass-next';
+  next.textContent = compassStepIndex >= resolvedCompassSteps().length - 1 ? '結果を見る' : '次へ';
+  next.disabled = !compassAnswers[step.id];
+  next.onclick = () => {
+    const option = step.choices.find((choice) => choice.id === compassAnswers[step.id]);
+    if (option) selectCompassOption(step, option);
+  };
+  nav.appendChild(next);
   container.appendChild(block);
 }
 
@@ -1208,16 +1216,16 @@ function renderCompassResults() {
       <h3>${escapeHtml(compassData.result?.types_heading || 'あなたが楽しめそうな研究タイプ')}</h3>
       <div class="compass-type-grid"></div>
     </section>
-    <section class="compass-interest-map">
-      <span class="eyebrow">${escapeHtml(compassData.result?.map_label || 'KEYWORDS')}</span>
-      <h3>${escapeHtml(compassData.result?.map_heading || 'あなたが興味を持ちそうなキーワード')}</h3>
-      <div class="compass-keyword-map"></div>
-    </section>
     <div class="compass-result-head">
       <h3>${escapeHtml(compassData.result?.labs_heading || 'この研究タイプからのぞける研究室')}</h3>
       <p>研究タイプの中にある研究室を、少しずつのぞいてみましょう。</p>
     </div>
     <div class="compass-match-grid"></div>
+    <section class="compass-interest-map">
+      <span class="eyebrow">${escapeHtml(compassData.result?.map_label || 'KEYWORDS')}</span>
+      <h3>${escapeHtml(compassData.result?.map_heading || 'あなたが興味を持ちそうなキーワード')}</h3>
+      <div class="compass-keyword-map"></div>
+    </section>
     <p class="compass-message">${escapeHtml(compassData.result?.closing || '')}</p>
     <div class="compass-result-actions">
       <button class="secondary" type="button">もう一度たどる</button>
@@ -1240,24 +1248,13 @@ function renderCompassResults() {
 function compassResearchTypeCard(type) {
   const article = document.createElement('article');
   article.className = 'compass-type-card';
-  const labsForType = compassLabsForType(type).slice(0, 2);
   article.innerHTML = `
     <h4>${escapeHtml(type.title)}</h4>
     <p>${escapeHtml(type.description)}</p>
     <section class="compass-day">
       <span>研究者の一日</span>
       <ul>${(type.day || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
-    </section>
-    <section class="compass-type-labs">
-      <span>このタイプの研究室</span>
-      <div>${labsForType.map((item) => `<button type="button" data-lab-id="${escapeHtml(item.lab.id)}">${escapeHtml(displayLabName(item.lab))}</button>`).join('')}</div>
     </section>`;
-  article.querySelectorAll('button[data-lab-id]').forEach((button) => {
-    button.onclick = () => {
-      const lab = labs.find((item) => item.id === button.dataset.labId);
-      if (lab) openModal(lab);
-    };
-  });
   return article;
 }
 

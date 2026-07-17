@@ -1,8 +1,8 @@
 {
   "title": "Research Compass",
-  "lead": "あなたが今日出会う問いは、どんな研究室につながるでしょう？",
-  "description": "3つの問いをたどりながら、生命科学の見方と研究室との出会いを探してみましょう。",
-  "primary_action": "はじめる →",
+  "lead": "Research Compass",
+  "description": "生命科学には、いろいろな「問い」があります。あなたはどんな「なぜ？」にワクワクするでしょう。3つの問いから、大学の研究の世界を少しだけのぞいてみましょう。",
+  "primary_action": "はじめる",
   "transition": {
     "heading": "問いの輪郭が見えてきました。",
     "description": "選んだ答えをもとに、興味のキーワードと研究室とのつながりを整理しています。"
@@ -11,10 +11,10 @@
     "question_label": "TODAY'S QUESTION",
     "question_heading": "あなたが今日出会った問い",
     "types_label": "RESEARCH TYPE",
-    "types_heading": "あなたが楽しめそうな研究タイプ",
+    "types_heading": "あなたが楽しめそうな「こんな研究があります」",
     "map_label": "KEYWORDS",
     "map_heading": "あなたが興味を持ちそうなキーワード",
-    "labs_heading": "この研究タイプからのぞける研究室",
+    "labs_heading": "この研究をしている研究室",
     "closing": "今回の結果は、今の興味をもとにした一つの入口です。研究タイプから研究室をのぞき、気になった授業や研究紹介へ進んでみてください。"
   },
   "research_types": [
