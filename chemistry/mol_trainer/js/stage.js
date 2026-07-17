@@ -10,6 +10,8 @@ let index=0;
 let score=0;
 let answered=false;
 let stageStartedAt=Date.now();
+let activeStartedAt=document.hidden?null:Date.now();
+let activeElapsedMs=0;
 const $=id=>document.getElementById(id);
 $('stage-label').textContent=stage.label;
 $('stage-title').textContent=stage.title;
@@ -28,10 +30,28 @@ function start(){
   questions=shuffle(bank).slice(0,QUESTION_COUNT);
   index=0; score=0; answered=false;
   stageStartedAt=Date.now();
+  activeElapsedMs=0;
+  activeStartedAt=document.hidden?null:Date.now();
   $('question-area').classList.remove('hidden');
   $('result-area').classList.add('hidden');
   render();
 }
+
+function updateActiveElapsed(){
+  if(activeStartedAt!==null){
+    activeElapsedMs+=Date.now()-activeStartedAt;
+    activeStartedAt=Date.now();
+  }
+}
+
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){
+    updateActiveElapsed();
+    activeStartedAt=null;
+  }else{
+    activeStartedAt=Date.now();
+  }
+});
 
 function render(){
   answered=false;
@@ -194,6 +214,7 @@ $('next-button').addEventListener('click',()=>{
 });
 
 function showResult(){
+  updateActiveElapsed();
   $('progress-bar').style.width='100%';
   $('counter').textContent=`${QUESTION_COUNT} / ${QUESTION_COUNT}`;
   $('question-area').classList.add('hidden');
@@ -216,7 +237,8 @@ function showResult(){
       questionCount:QUESTION_COUNT,
       passCount:PASS_COUNT,
       passed,
-      elapsed:Math.round((Date.now()-stageStartedAt)/1000)
+      elapsed:Math.round(activeElapsedMs/1000),
+      wallElapsed:Math.round((Date.now()-stageStartedAt)/1000)
     });
   }
 }

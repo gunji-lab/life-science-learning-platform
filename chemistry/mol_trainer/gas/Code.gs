@@ -530,18 +530,185 @@ function buildTeacherDashboardHtml_() {
 function buildStudentDashboardHtml_(studentId) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const logSheet = ss.getSheetByName(LOG_SHEET_NAME);
-  const logs = logSheet ? readSheetObjects_(logSheet).filter(row => String(row["学籍番号"] || "") === studentId).reverse() : [];
-  const rows = logs.map(row => `<tr>
+  const allLogs = logSheet ? readSheetObjects_(logSheet) : [];
+  const analysis = buildStudentAnalysis_(allLogs, studentId);
+  const logs = analysis.myAttempts.slice().reverse();
+  const rows = logs.slice(0, 80).map(row => `<tr>
     <td>${escapeHtml_(row["日時"])}</td>
     <td>${escapeHtml_(row["Stage"])}</td>
     <td>${escapeHtml_(row["得点"])}/${escapeHtml_(row["問題数"])}</td>
     <td>${escapeHtml_(row["正答率"])}</td>
+    <td>${escapeHtml_(formatSeconds_(Number(row["所要時間[s]"] || 0)))}</td>
     <td>${escapeHtml_(row["クリア"])}</td>
   </tr>`).join("");
+
+  const stageRows = analysis.stageStats.map(item => `<tr>
+    <td>${escapeHtml_(item.stage)}</td>
+    <td>${escapeHtml_(item.attempts)}</td>
+    <td>${escapeHtml_(item.bestScore)}/${escapeHtml_(item.total)}</td>
+    <td>${escapeHtml_(item.cleared ? "クリア" : "未クリア")}</td>
+    <td>${escapeHtml_(formatSeconds_(item.activeSeconds))}</td>
+  </tr>`).join("");
+
+  const nextRankText = analysis.rank.next
+    ? `あと ${analysis.rank.remaining} 回クリアで ${escapeHtml_(analysis.rank.next.name)}`
+    : "最高ランクです";
+
   return `<!doctype html><html lang="ja"><head><meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1"><title>自分の学習状況</title>
-  <style>body{font-family:system-ui,sans-serif;margin:0;background:#f6f8fb;color:#162033}main{max-width:900px;margin:0 auto;padding:28px 16px}table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #d8e1ec}th,td{padding:10px 12px;border-bottom:1px solid #d8e1ec;text-align:left;font-size:13px}th{background:#eef7ff}</style></head>
-  <body><main><h1>自分の学習状況</h1><p>学籍番号 ${escapeHtml_(studentId)}</p><table><thead><tr><th>日時</th><th>Stage</th><th>得点</th><th>正答率</th><th>クリア</th></tr></thead><tbody>${rows}</tbody></table></main></body></html>`;
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic",sans-serif;margin:0;background:#f6f8fb;color:#162033}
+    main{max-width:1080px;margin:0 auto;padding:28px 16px 52px}
+    h1{margin:0 0 4px;font-size:clamp(26px,6vw,40px);letter-spacing:0}p{line-height:1.75}
+    .muted{color:#5e6b7f}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:22px 0}
+    .card{background:#fff;border:1px solid #d8e1ec;border-radius:8px;padding:16px;box-shadow:0 10px 26px rgba(22,32,51,.06)}
+    .card span{display:block;color:#5e6b7f;font-size:13px;font-weight:800}.card b{display:block;margin-top:4px;font-size:28px;line-height:1.15}
+    .rank-card{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;align-items:center;margin:18px 0}
+    .rank-name{font-size:30px;font-weight:900;color:#0b5e58}.meter{height:12px;background:#dfe8f1;border-radius:999px;overflow:hidden;margin-top:10px}.meter i{display:block;height:100%;background:#0f766e;width:${analysis.rank.progress}%}
+    h2{margin:28px 0 10px;font-size:22px}.table-wrap{overflow:auto;border-radius:8px;border:1px solid #d8e1ec;background:#fff}
+    table{width:100%;border-collapse:collapse}th,td{padding:10px 12px;border-bottom:1px solid #d8e1ec;text-align:left;font-size:13px;white-space:nowrap}th{background:#eef7ff}
+    .leaderboards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.big-rank{font-size:34px;font-weight:900}
+    @media(max-width:760px){main{padding:22px 12px 44px}.grid,.rank-card,.leaderboards{grid-template-columns:1fr}.card b{font-size:24px}}
+  </style></head>
+  <body><main>
+    <h1>自分の学習状況</h1>
+    <p class="muted">学籍番号 ${escapeHtml_(studentId)}</p>
+
+    <section class="rank-card card">
+      <div><span>現在のランク</span><div class="rank-name">${escapeHtml_(analysis.rank.current.name)}</div><div class="meter" aria-label="ランク進捗"><i></i></div></div>
+      <div><strong>${nextRankText}</strong><p class="muted">ランクはクリア回数で上がります。</p></div>
+    </section>
+
+    <section class="grid">
+      <div class="card"><span>挑戦回数</span><b>${escapeHtml_(analysis.totalAttempts)}</b></div>
+      <div class="card"><span>クリア回数</span><b>${escapeHtml_(analysis.clearCount)}</b></div>
+      <div class="card"><span>アクティブ挑戦時間</span><b>${escapeHtml_(formatSeconds_(analysis.activeSeconds))}</b></div>
+      <div class="card"><span>累計得点</span><b>${escapeHtml_(analysis.totalScore)}</b></div>
+    </section>
+
+    <section class="leaderboards">
+      <div class="card"><span>通算ランキング</span><div class="big-rank">${escapeHtml_(formatRank_(analysis.totalRank, analysis.totalPlayers))}</div><p class="muted">累計得点で集計</p></div>
+      <div class="card"><span>週のランキング</span><div class="big-rank">${escapeHtml_(formatRank_(analysis.weekRank, analysis.weekPlayers))}</div><p class="muted">直近7日間の得点で集計</p></div>
+    </section>
+
+    <h2>Stage別の状況</h2>
+    <div class="table-wrap"><table><thead><tr><th>Stage</th><th>挑戦</th><th>最高点</th><th>状態</th><th>時間</th></tr></thead><tbody>${stageRows}</tbody></table></div>
+
+    <h2>最近の挑戦</h2>
+    <div class="table-wrap"><table><thead><tr><th>日時</th><th>Stage</th><th>得点</th><th>正答率</th><th>時間</th><th>クリア</th></tr></thead><tbody>${rows}</tbody></table></div>
+  </main></body></html>`;
+}
+
+function buildStudentAnalysis_(logs, studentId) {
+  const weekStart = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+  const attempts = logs.filter(row => String(row["Event"] || "") === "stage_result");
+  const myAttempts = attempts.filter(row => String(row["学籍番号"] || "") === studentId);
+  const studentTotals = {};
+  const weekTotals = {};
+  const stageMap = {};
+
+  attempts.forEach(row => {
+    const id = String(row["学籍番号"] || "");
+    if (!id) return;
+    const score = Number(row["得点"] || 0);
+    studentTotals[id] = (studentTotals[id] || 0) + score;
+    if (isWithinWeek_(row["日時"], weekStart)) weekTotals[id] = (weekTotals[id] || 0) + score;
+  });
+
+  let totalScore = 0;
+  let clearCount = 0;
+  let activeSeconds = 0;
+
+  myAttempts.forEach(row => {
+    const score = Number(row["得点"] || 0);
+    const total = Number(row["問題数"] || 5);
+    const seconds = Number(row["所要時間[s]"] || 0);
+    const stage = String(row["Stage"] || "Stage");
+    const cleared = String(row["クリア"] || "") === "○";
+    totalScore += score;
+    activeSeconds += seconds;
+    if (cleared) clearCount += 1;
+
+    const current = stageMap[stage] || { stage, attempts: 0, bestScore: 0, total, cleared: false, activeSeconds: 0 };
+    current.attempts += 1;
+    current.bestScore = Math.max(current.bestScore, score);
+    current.total = total || current.total;
+    current.cleared = current.cleared || cleared;
+    current.activeSeconds += seconds;
+    stageMap[stage] = current;
+  });
+
+  const totalRank = calculateRank_(studentTotals, studentId);
+  const weekRank = calculateRank_(weekTotals, studentId);
+  return {
+    totalAttempts: myAttempts.length,
+    clearCount,
+    activeSeconds,
+    totalScore,
+    myAttempts,
+    stageStats: Object.values(stageMap).sort((a, b) => a.stage.localeCompare(b.stage, "ja")),
+    totalRank: totalRank.rank,
+    totalPlayers: totalRank.players,
+    weekRank: weekRank.rank,
+    weekPlayers: weekRank.players,
+    rank: getLearningRank_(clearCount)
+  };
+}
+
+function calculateRank_(scores, studentId) {
+  const entries = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  const index = entries.findIndex(entry => entry[0] === studentId);
+  return { rank: index >= 0 ? index + 1 : null, players: entries.length };
+}
+
+function getLearningRank_(clearCount) {
+  const ranks = [
+    { name: "Starter", clears: 0 },
+    { name: "Bronze", clears: 3 },
+    { name: "Silver", clears: 7 },
+    { name: "Gold", clears: 14 },
+    { name: "Platinum", clears: 25 },
+    { name: "Master", clears: 40 }
+  ];
+  let current = ranks[0];
+  let next = null;
+  for (let i = 0; i < ranks.length; i++) {
+    if (clearCount >= ranks[i].clears) current = ranks[i];
+    else {
+      next = ranks[i];
+      break;
+    }
+  }
+  const previousClears = current.clears;
+  const nextClears = next ? next.clears : current.clears;
+  const range = Math.max(1, nextClears - previousClears);
+  const progress = next ? Math.min(100, Math.round(((clearCount - previousClears) / range) * 100)) : 100;
+  return {
+    current,
+    next,
+    remaining: next ? Math.max(0, next.clears - clearCount) : 0,
+    progress
+  };
+}
+
+function isWithinWeek_(value, weekStart) {
+  const date = value instanceof Date ? value : new Date(value);
+  return !isNaN(date.getTime()) && date >= weekStart;
+}
+
+function formatRank_(rank, players) {
+  return rank ? rank + " / " + players + "位" : "- / " + players + "位";
+}
+
+function formatSeconds_(seconds) {
+  const value = Math.max(0, Math.round(Number(seconds || 0)));
+  const minutes = Math.floor(value / 60);
+  const rest = value % 60;
+  if (minutes >= 60) {
+    const hours = Math.floor(minutes / 60);
+    return hours + "時間" + (minutes % 60) + "分";
+  }
+  return minutes + "分" + rest + "秒";
 }
 
 function readSheetObjects_(sheet) {

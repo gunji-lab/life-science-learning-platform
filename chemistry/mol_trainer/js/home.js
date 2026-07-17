@@ -3,6 +3,7 @@ const authPanel = document.getElementById('auth-panel');
 const learningPanel = document.getElementById('learning-panel');
 const startLogin = document.getElementById('start-login');
 const chooseLogin = document.getElementById('choose-login');
+const dashboardLink = document.getElementById('dashboard-link');
 const groupLabels = { prep: '準備', basic: '基礎', practice: '実践' };
 let currentGroup = '';
 const stageCards = new Map();
@@ -79,6 +80,7 @@ function loadProgress(){
 if(window.MolTracker){
   if(startLogin) startLogin.href = window.MolTracker.addSessionUrl();
   if(chooseLogin) chooseLogin.href = window.MolTracker.accountChooserUrl();
+  if(dashboardLink) dashboardLink.href = window.MolTracker.dashboardUrl();
   if(window.MolTracker.isReady()){
     showLoggedInHome();
     loadProgress();
