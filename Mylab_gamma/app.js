@@ -2,6 +2,7 @@ let labs = [];
 let eventData = null;
 let departments = [];
 let aiDictionary = [];
+let aiLabDictionary = [];
 let aiLastResult = null;
 let aiLastLogId = '';
 let selected = new Set();
@@ -334,11 +335,12 @@ async function init() {
   updateFavoriteCount();
 
   try {
-    const [labResponse, eventResponse, departmentResponse, dictionaryResponse] = await Promise.all([
+    const [labResponse, eventResponse, departmentResponse, dictionaryResponse, labDictionaryResponse] = await Promise.all([
       fetch('data/labs.json'),
       fetch('data/events.json'),
       fetch('data/departments.json'),
-      fetch('data/ai_research_dictionary.csv')
+      fetch('data/ai_research_dictionary.csv'),
+      fetch('data/ai_lab_dictionary.csv')
     ]);
     if (!labResponse.ok) throw new Error(`labs.json: ${labResponse.status}`);
     if (!eventResponse.ok) throw new Error(`events.json: ${eventResponse.status}`);
@@ -347,6 +349,7 @@ async function init() {
     eventData = await eventResponse.json();
     departments = await departmentResponse.json();
     aiDictionary = dictionaryResponse.ok ? parseDictionaryCsv(await dictionaryResponse.text()) : [];
+    aiLabDictionary = labDictionaryResponse.ok ? parseLabDictionaryCsv(await labDictionaryResponse.text()) : [];
     selectedLabJumpDepartment = '';
     selectedRecommendationDepartment = '';
     selectedQuestionDepartment = '';
@@ -889,6 +892,23 @@ function parseDictionaryCsv(text = '') {
     .filter((entry) => entry.word && entry.tag);
 }
 
+function parseLabDictionaryCsv(text = '') {
+  const rows = parseCsv(text);
+  const header = rows.shift() || [];
+  const indexes = Object.fromEntries(header.map((name, index) => [name.trim(), index]));
+  return rows
+    .map((row) => ({
+      lab_id: (row[indexes.lab_id] || '').trim(),
+      word: (row[indexes.word] || '').trim(),
+      synonym: (row[indexes.synonym] || '').trim(),
+      field: (row[indexes.field] || '').trim(),
+      weight: Number(row[indexes.weight] || 1),
+      source: (row[indexes.source] || '').trim(),
+      needs_review: (row[indexes.needs_review] || '').trim()
+    }))
+    .filter((entry) => entry.lab_id && entry.word);
+}
+
 function parseCsv(text = '') {
   const rows = [];
   let row = [];
@@ -936,7 +956,7 @@ function runAICompassSearch(rawInput) {
     return;
   }
   const analysis = analyzeAICompassInput(input);
-  const matches = scoreAICompassLabs(analysis.tagScores);
+  const matches = scoreAICompassLabs(analysis, input);
   const log = saveAICompassLog(input, analysis, matches);
   aiLastLogId = log.id;
   aiLastResult = { input, analysis, matches };
@@ -991,20 +1011,52 @@ function extractUnknownTerms(input, matchedEntries) {
     .slice(0, 8);
 }
 
-function scoreAICompassLabs(tagScores) {
-  if (!tagScores.size) return [];
+function scoreAICompassLabs(analysis, input = '') {
+  const tagScores = analysis.tagScores || new Map();
+  const normalizedInput = normalizeCompassText(input);
+  if (!tagScores.size && !normalizedInput) return [];
+  const normalizedTagScores = new Map([...tagScores.entries()].map(([tag, weight]) => [normalizeCompassText(tag), weight]));
+  const labDictionaryById = aiLabDictionary.reduce((map, entry) => {
+    if (!map.has(entry.lab_id)) map.set(entry.lab_id, []);
+    map.get(entry.lab_id).push(entry);
+    return map;
+  }, new Map());
   return labs
     .map((lab) => {
+      const labEntries = labDictionaryById.get(lab.id) || [];
       const labTerms = expandedLabTerms(lab);
-      const matched = [];
+      const matched = new Map();
       let score = 0;
+      labEntries.forEach((entry) => {
+        const candidates = [entry.word, ...entry.synonym.split('|')]
+          .map((item) => item.trim())
+          .filter(Boolean);
+        const directHit = candidates.some((candidate) => normalizedInput.includes(normalizeCompassText(candidate)));
+        if (directHit) {
+          const weight = entry.weight || 1;
+          score += weight;
+          matched.set(entry.word, (matched.get(entry.word) || 0) + weight);
+          return;
+        }
+        const tagHit = candidates.find((candidate) => tagScores.has(candidate) || normalizedTagScores.has(normalizeCompassText(candidate)));
+        if (tagHit) {
+          const tagWeight = tagScores.get(tagHit) || normalizedTagScores.get(normalizeCompassText(tagHit)) || entry.weight || 1;
+          const weight = Math.max(1, Math.max(entry.weight || 1, tagWeight) * 0.75);
+          score += weight;
+          matched.set(entry.word, (matched.get(entry.word) || 0) + weight);
+        }
+      });
       tagScores.forEach((weight, tag) => {
         if (!labTerms.has(String(tag).toLowerCase())) return;
-        matched.push(tag);
-        score += weight;
+        const fallbackWeight = Math.max(0.5, weight * 0.35);
+        score += fallbackWeight;
+        matched.set(tag, (matched.get(tag) || 0) + fallbackWeight);
       });
-      const questionBonus = matched.some((tag) => lab.question?.includes(tag)) ? 1.5 : 0;
-      return { lab, score: score + questionBonus, matched: uniqueTerms(matched) };
+      const matchedTerms = [...matched.entries()]
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
+        .map(([term]) => term);
+      const questionBonus = matchedTerms.some((tag) => lab.question?.includes(tag)) ? 1.5 : 0;
+      return { lab, score: score + questionBonus, matched: uniqueTerms(matchedTerms) };
     })
     .filter((item) => item.score > 0)
     .sort((a, b) => {
@@ -1166,9 +1218,9 @@ function renderAICompassAdmin() {
         ${aiRankingList(clickRanking.map((item) => ({ ...item, label: labLabelById(item.label) })), 'クリックログはまだありません。')}
       </section>
     </div>
-    <section class="ai-dictionary-editor">
+      <section class="ai-dictionary-editor">
       <h4>辞書登録メモを作る</h4>
-      <p>未登録語を見ながら、CSVに追記する候補行を作れます。実際の辞書更新は <code>data/ai_research_dictionary.csv</code> に追記します。</p>
+      <p>未登録語を見ながら、共通辞書CSVに追記する候補行を作れます。研究室ごとの語は <code>data/ai_lab_dictionary.csv</code> に追記します。</p>
       <div class="ai-editor-grid">
         <input id="ai-dict-word" type="text" placeholder="word 例: クラゲ">
         <input id="ai-dict-synonym" type="text" placeholder="synonym 例: 水族館|海の生き物">
