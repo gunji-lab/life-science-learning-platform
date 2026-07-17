@@ -1,0 +1,440 @@
+[
+  {
+    "term": "動物",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "動物の体、行動、成長、環境との関係などを通して生命を考える対象。"
+  },
+  {
+    "term": "植物",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "成長、光合成、環境への応答、作物としての性質などを調べる対象。"
+  },
+  {
+    "term": "微生物",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "目には見えにくい小さな生き物の働きや、環境・技術への利用を考える対象。"
+  },
+  {
+    "term": "細胞",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "生き物の体をつくる基本単位。体のしくみや病気、再生を考える手がかりになる。"
+  },
+  {
+    "term": "神経",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "感覚、行動、体の調節に関わる細胞や組織。動物の反応を考える重要な対象。"
+  },
+  {
+    "term": "脳",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "行動や感覚、体の調節に関わる器官。生命の内側のしくみを知る入り口になる。"
+  },
+  {
+    "term": "DNA",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "生命の情報を担う分子。遺伝や細胞の働きを理解するための重要な手がかり。"
+  },
+  {
+    "term": "遺伝子",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "体の性質や細胞の働きに関わる情報。生命のしくみを分子のレベルで考える入り口。"
+  },
+  {
+    "term": "骨格",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "体を支え、動きを生み出す構造。動物の形や進化を考える材料になる。"
+  },
+  {
+    "term": "筋肉",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "動物の動きや体の働きに関わる組織。形と機能の関係を考える対象。"
+  },
+  {
+    "term": "心臓",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "血液を送り出す器官。体が作られる過程や器官の働きを調べる対象になる。"
+  },
+  {
+    "term": "胚",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "体ができはじめる時期の生き物。発生のしくみを知る重要な手がかり。"
+  },
+  {
+    "term": "野生動物",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "自然の中でくらす動物。行動や環境との関係を現場で調べる対象。"
+  },
+  {
+    "term": "鳥類",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "飛ぶ、渡る、繁殖するなどの特徴を持つ動物。行動や生態を考える対象。"
+  },
+  {
+    "term": "生物多様性",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "いろいろな生き物が存在し、互いに関わりながら成り立つ自然の豊かさ。"
+  },
+  {
+    "term": "水環境",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "川や湖などの水の環境。水質やそこにすむ生き物との関係を調べる対象。"
+  },
+  {
+    "term": "底生無脊椎動物",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "川や湖の底にすむ小さな動物。水環境の状態を知る手がかりになる。"
+  },
+  {
+    "term": "環境化学物質",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "環境中に存在する化学物質。生き物や健康への影響を調べる対象。"
+  },
+  {
+    "term": "iPS細胞",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "さまざまな細胞に変化できる性質をもつ細胞。再生や細胞の性質を考える対象。"
+  },
+  {
+    "term": "糖鎖",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "細胞の表面などにある糖のつながり。細胞どうしの認識や情報交換に関わる。"
+  },
+  {
+    "term": "イネ",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "食料として重要な作物。栄養、成長、環境への応答を調べる対象。"
+  },
+  {
+    "term": "酵素",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "生き物の中で化学反応を助けるタンパク質。ものづくりや環境技術にもつながる。"
+  },
+  {
+    "term": "タンパク質",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "体や細胞の働きを支える分子。生命のしくみを理解する重要な対象。"
+  },
+  {
+    "term": "電気活性微生物",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "電気のやり取りに関わる微生物。エネルギーや環境技術への応用が期待される。"
+  },
+  {
+    "term": "作物",
+    "category": "targets",
+    "label": "研究対象",
+    "description": "人の食料や暮らしを支える植物。栽培や改良、環境応答を調べる対象。"
+  },
+  {
+    "term": "生態学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "生き物どうし、そして生き物と環境との関係を調べる学問。"
+  },
+  {
+    "term": "形態学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "生き物の形や構造を観察し、その意味や働きを考える学問。"
+  },
+  {
+    "term": "比較解剖学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "さまざまな動物の体を比べ、形や機能、進化を考える学問。"
+  },
+  {
+    "term": "神経科学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "神経や脳の働きから、感覚や行動のしくみを考える学問。"
+  },
+  {
+    "term": "行動神経科学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "行動が脳や神経の働きとどうつながるのかを調べる学問。"
+  },
+  {
+    "term": "発生生物学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "受精卵から体や器官ができる過程を調べる学問。"
+  },
+  {
+    "term": "分子生物学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "DNA、RNA、タンパク質などの分子から生命のしくみを考える学問。"
+  },
+  {
+    "term": "遺伝学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "遺伝子やDNAの情報が、性質や生命現象にどう関わるかを調べる学問。"
+  },
+  {
+    "term": "細胞生物学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "細胞の形、働き、情報交換などを調べる学問。"
+  },
+  {
+    "term": "糖鎖生物学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "糖鎖が細胞の認識や生命現象にどう関わるかを調べる学問。"
+  },
+  {
+    "term": "毒性学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "化学物質などが生き物や体に与える影響を調べる学問。"
+  },
+  {
+    "term": "環境保健学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "環境中の要因が人や健康に与える影響を考える学問。"
+  },
+  {
+    "term": "保全生物学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "生物多様性や自然環境を守るために、生き物と環境を調べる学問。"
+  },
+  {
+    "term": "行動生態学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "動物の行動が、生き残りや繁殖、環境とどう関係するかを考える学問。"
+  },
+  {
+    "term": "環境科学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "水、土、大気、生き物などを通して環境の状態や変化を調べる学問。"
+  },
+  {
+    "term": "生態リスク学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "化学物質や環境変化が生態系に与えるリスクを考える学問。"
+  },
+  {
+    "term": "再生生物学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "細胞や組織が修復・再生するしくみを調べる学問。"
+  },
+  {
+    "term": "植物栄養学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "植物が必要な栄養をどう取り込み、成長に使うかを調べる学問。"
+  },
+  {
+    "term": "作物科学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "作物の成長、収量、環境への応答などを調べる学問。"
+  },
+  {
+    "term": "環境バイオテクノロジー",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "微生物や酵素などの生物の力を、環境や資源の課題解決に活かす分野。"
+  },
+  {
+    "term": "応用微生物学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "微生物の働きを食品、環境、ものづくりなどへ役立てる学問。"
+  },
+  {
+    "term": "酵素工学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "酵素の働きを調べ、ものづくりや分析に使いやすくする分野。"
+  },
+  {
+    "term": "生物化学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "生命現象を化学の視点から調べる学問。"
+  },
+  {
+    "term": "環境応答学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "生き物が光、温度、水、化学物質などの変化にどう反応するかを調べる分野。"
+  },
+  {
+    "term": "植物生理学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "植物の成長、光合成、ホルモン、環境応答などを調べる学問。"
+  },
+  {
+    "term": "生理学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "体や器官、細胞がどのように働くのかを調べる学問。"
+  },
+  {
+    "term": "進化生物学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "生き物の多様な形や性質がどのように生まれてきたかを考える学問。"
+  },
+  {
+    "term": "生物統計学",
+    "category": "fields",
+    "label": "研究分野",
+    "description": "生命科学のデータを統計の考え方で整理し、意味を読み解く学問。"
+  },
+  {
+    "term": "観察",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "対象をよく見て、形や行動、変化を記録する研究方法。"
+  },
+  {
+    "term": "顕微鏡",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "肉眼では見えない細胞や組織、小さな生き物を拡大して調べる方法。"
+  },
+  {
+    "term": "解剖",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "体の内部構造を調べ、器官や組織の形と働きを考える方法。"
+  },
+  {
+    "term": "CT",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "体や標本の内部構造を、壊さずに立体的に見るための画像技術。"
+  },
+  {
+    "term": "行動観察",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "動物などの行動を記録し、条件や環境との関係を考える方法。"
+  },
+  {
+    "term": "組織観察",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "体の組織を顕微鏡などで観察し、器官がどう作られ働くかを調べる方法。"
+  },
+  {
+    "term": "フィールド調査",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "実際の生息地や環境へ出て、生き物や環境の情報を集める方法。"
+  },
+  {
+    "term": "バイオロギング",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "動物に小型の記録装置をつけて、移動や行動を調べる方法。"
+  },
+  {
+    "term": "モニタリング",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "同じ対象や環境を継続して調べ、変化を追いかける方法。"
+  },
+  {
+    "term": "水質調査",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "水の成分や状態を調べ、生き物や環境との関係を考える方法。"
+  },
+  {
+    "term": "化学分析",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "物質の成分や量を調べ、生命現象や環境への影響を考える方法。"
+  },
+  {
+    "term": "細胞培養",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "細胞を実験室で育て、条件を変えながら性質や反応を調べる方法。"
+  },
+  {
+    "term": "遺伝子解析",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "DNAや遺伝子の情報を調べ、生命現象との関係を読み解く方法。"
+  },
+  {
+    "term": "植物栽培",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "条件を整えて植物を育て、成長や環境への応答を調べる方法。"
+  },
+  {
+    "term": "微生物培養",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "微生物を育て、性質や働き、環境への反応を調べる方法。"
+  },
+  {
+    "term": "酵素解析",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "酵素がどのように働くか、条件によって反応がどう変わるかを調べる方法。"
+  },
+  {
+    "term": "測定",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "数値や画像として生命現象を記録し、変化を比べる方法。"
+  },
+  {
+    "term": "分子実験",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "DNAやタンパク質など、分子の働きを実験で確かめる方法。"
+  },
+  {
+    "term": "データ解析",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "集めた数値や記録から、傾向や関係を読み解く方法。"
+  },
+  {
+    "term": "統計解析",
+    "category": "methods",
+    "label": "研究方法",
+    "description": "データのばらつきや関係を、統計の考え方で確かめる方法。"
+  }
+]
