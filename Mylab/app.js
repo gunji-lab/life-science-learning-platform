@@ -1143,7 +1143,7 @@ function renderCompassResults() {
   const question = compassQuestionSummary();
   container.innerHTML = `
     <section class="compass-question-summary">
-      <span class="eyebrow">${escapeHtml(compassData.result?.question_label || 'TODAY\\'S QUESTION')}</span>
+      <span class="eyebrow">${escapeHtml(compassData.result?.question_label || "TODAY'S QUESTION")}</span>
       <h3>${escapeHtml(compassData.result?.question_heading || 'あなたが今日出会った問い')}</h3>
       <p>${escapeHtml(question)}</p>
     </section>
