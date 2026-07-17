@@ -1,0 +1,1608 @@
+[
+  {
+    "id": "ozawa",
+    "lab_name": "行動神経生理学研究室",
+    "pi_name": "小澤 貴明",
+    "position": "教授",
+    "department": "生命科学科",
+    "summary": "動物の行動と神経の働きを結び、体が環境へ応答する仕組みを探る。",
+    "question": "動物は、環境の変化をどう感じて行動へつなげるのだろう？",
+    "description": "動物の行動を、神経や生理の働きから理解する研究室です。外から見える行動だけでなく、その背後で体内の情報処理がどう動いているかを調べます。観察と実験を組み合わせ、生命が環境に応答するしくみを読み解きます。",
+    "methods": [
+      "行動観察",
+      "神経生理学的解析",
+      "生理応答の測定",
+      "データ解析"
+    ],
+    "keywords": [
+      "動物",
+      "行動",
+      "神経",
+      "生理",
+      "環境応答",
+      "感覚",
+      "運動",
+      "データ解析",
+      "生命科学",
+      "健康"
+    ],
+    "recommended_for": [
+      "動物の行動の理由を知りたい人",
+      "神経と体のつながりに興味がある人",
+      "観察と実験を組み合わせて考えたい人"
+    ],
+    "courses": [
+      {
+        "title": "現代生物学",
+        "meta": "秋学期｜1年次から",
+        "description": "身近な生命現象や最新の生物学を手がかりに、生き物を科学的に考える入口を学びます。"
+      },
+      {
+        "title": "医生理学",
+        "meta": "秋学期｜3・4年次",
+        "description": "脳や神経を含む人体の働きを、生理学の視点から理解します。"
+      },
+      {
+        "title": "細胞生物学実験",
+        "meta": "秋学期｜3・4年次",
+        "description": "細胞や組織を対象に、観察・測定・解析を行い、生命科学の実験手法を学びます。"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/ozawa/",
+      "syllabus": "https://g-sys.toyo.ac.jp/syllabus/",
+      "researchmap": "https://researchmap.jp/takaaki_ozawa"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/ozawa/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [
+      "公開情報をもとに編集済み。正式公開前にPI確認を推奨します。"
+    ]
+  },
+  {
+    "id": "kaneko",
+    "lab_name": "神経機能制御研究室",
+    "pi_name": "金子 律子",
+    "position": "教授",
+    "department": "生命科学科",
+    "summary": "脳や神経の柔らかさに注目し、生き物の体が働くしくみを調べる。",
+    "question": "脳や神経は、経験や環境によってどこまで変われるのだろう？",
+    "description": "魚類や哺乳類などを手がかりに、神経系の働きと調節のしくみを研究します。脳や神経細胞が環境や成長に応じて変化する様子を調べ、体の不思議を生命科学の視点で考えます。医療や健康への関心にもつながる分野です。",
+    "methods": [
+      "組織観察",
+      "神経機能解析",
+      "比較生物学",
+      "顕微鏡観察"
+    ],
+    "keywords": [
+      "脳",
+      "神経",
+      "魚類",
+      "哺乳類",
+      "可塑性",
+      "発生",
+      "細胞",
+      "健康",
+      "比較生物学",
+      "医療"
+    ],
+    "recommended_for": [
+      "体の不思議を大切にしたい人",
+      "人の役に立つ生命科学を学びたい人",
+      "好奇心を持って主体的に学びたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/kaneko/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032704/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/kaneko/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032704/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "kawaguchi",
+    "lab_name": "脳神経科学研究室",
+    "pi_name": "川口 英夫",
+    "position": "教授",
+    "department": "生命科学科",
+    "summary": "脳・神経細胞・行動を計測し、こころと体の働きを科学する。",
+    "question": "脳や神経細胞の活動は、行動や心身の状態にどう現れるのだろう？",
+    "description": "脳神経系の謎を、個体の行動レベルと細胞レベルの両方から調べます。電子ペン、光、微小電極などを用いた計測技術を使い、神経細胞の電気的な性質や行動情報を解析します。iPS細胞から作った神経細胞の研究にも取り組みます。",
+    "methods": [
+      "行動計測",
+      "電気生理学",
+      "細胞培養",
+      "光計測",
+      "データ解析"
+    ],
+    "keywords": [
+      "脳",
+      "神経細胞",
+      "iPS細胞",
+      "電気生理",
+      "行動",
+      "計測",
+      "メンタルヘルス",
+      "細胞培養",
+      "データ解析",
+      "医療"
+    ],
+    "recommended_for": [
+      "脳や神経細胞の謎に挑戦したい人",
+      "計測技術やデータ解析に興味がある人",
+      "粘り強く実験に向き合いたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/kawaguchi/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032705/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/kawaguchi/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032705/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "koshiba",
+    "lab_name": "動物発生システム研究室",
+    "pi_name": "小柴 和子",
+    "position": "教授",
+    "department": "生命科学科",
+    "summary": "心臓などの器官が形づくられる過程から、発生と環境適応を考える。",
+    "question": "小さな胚の中で、心臓や体の形はどう作られていくのだろう？",
+    "description": "動物の発生過程に注目し、体や器官がどのように形づくられるかを研究します。特に心臓の形や働きが環境にどう適応するかを手がかりに、発生のしくみと生命の多様性を考えます。",
+    "methods": [
+      "胚の観察",
+      "組織・形態観察",
+      "顕微鏡解析",
+      "発生過程の比較"
+    ],
+    "keywords": [
+      "発生",
+      "胚",
+      "心臓",
+      "形態",
+      "器官形成",
+      "環境適応",
+      "動物",
+      "顕微鏡",
+      "生命科学",
+      "健康"
+    ],
+    "recommended_for": [
+      "動物の体ができる過程に興味がある人",
+      "心臓や器官の形に不思議を感じる人",
+      "観察から生命のしくみを考えたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/koshiba/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032702/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/koshiba/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032702/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "shiizaki",
+    "lab_name": "細胞分子毒性研究室",
+    "pi_name": "椎崎 一宏",
+    "position": "教授",
+    "department": "生命科学科",
+    "summary": "環境化学物質が細胞に与える影響を、分子のレベルから読み解く。",
+    "question": "化学物質は、細胞の中でどんなスイッチを押して毒性を生むのだろう？",
+    "description": "環境中の化学物質が生物に与える影響を、細胞や分子のレベルで調べます。受容体、遺伝子発現、細胞応答に注目し、毒性が現れるしくみを明らかにします。環境と健康をつなぐ研究です。",
+    "methods": [
+      "細胞培養",
+      "遺伝子発現解析",
+      "タンパク質解析",
+      "毒性評価"
+    ],
+    "keywords": [
+      "毒性",
+      "環境化学物質",
+      "ダイオキシン",
+      "受容体",
+      "細胞",
+      "遺伝子",
+      "タンパク質",
+      "健康",
+      "環境",
+      "分子生物学"
+    ],
+    "recommended_for": [
+      "環境問題と健康のつながりを知りたい人",
+      "細胞や分子の実験に興味がある人",
+      "化学物質の影響を科学的に考えたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/shiizaki/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032707/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/shiizaki/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032707/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "shimizu-kazuya",
+    "lab_name": "水環境生態工学研究室",
+    "pi_name": "清水 和哉",
+    "position": "教授",
+    "department": "生命科学科",
+    "summary": "水環境と生態系のしくみを調べ、環境保全につながる技術を考える。",
+    "question": "水の中の環境変化は、生き物と生態系にどう影響するのだろう？",
+    "description": "河川や湖沼などの水環境と、そこに暮らす生物や微生物の関係を研究します。水質、生態系、環境浄化を手がかりに、人の活動と自然環境のよりよい関係を考えます。",
+    "methods": [
+      "水質調査",
+      "微生物解析",
+      "生態系評価",
+      "環境データ解析"
+    ],
+    "keywords": [
+      "水環境",
+      "生態工学",
+      "水質",
+      "微生物",
+      "生態系",
+      "環境保全",
+      "浄化",
+      "フィールド調査",
+      "データ解析",
+      "持続可能性"
+    ],
+    "recommended_for": [
+      "水辺の環境や生き物に興味がある人",
+      "環境保全に役立つ研究をしたい人",
+      "フィールドと実験の両方に関心がある人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/shimizu/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/shimizu/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "narumi",
+    "lab_name": "放射線微生物学研究室",
+    "pi_name": "鳴海 一成",
+    "position": "教授",
+    "department": "生命科学科",
+    "summary": "極限環境に強い微生物から、生命の耐える力を探る。",
+    "question": "微生物は、なぜ放射線や極限環境に耐えられるのだろう？",
+    "description": "放射線や乾燥など、厳しい環境に耐える微生物を研究します。DNA修復やストレス応答のしくみに注目し、生命がどこまで環境に耐えられるのかを探ります。生命科学の基本原理と応用の両方につながる研究です。",
+    "methods": [
+      "微生物培養",
+      "放射線照射実験",
+      "DNA修復解析",
+      "遺伝子・タンパク質解析"
+    ],
+    "keywords": [
+      "微生物",
+      "放射線",
+      "極限環境",
+      "DNA修復",
+      "ストレス応答",
+      "耐性",
+      "遺伝子",
+      "タンパク質",
+      "宇宙",
+      "生命科学"
+    ],
+    "recommended_for": [
+      "微生物のすごさを知りたい人",
+      "宇宙や極限環境の生命に興味がある人",
+      "DNA修復やストレス応答を学びたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/narumi/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032708/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/narumi/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032708/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "nedachi",
+    "lab_name": "動物細胞工学研究室",
+    "pi_name": "根建 拓",
+    "position": "教授",
+    "department": "生命科学科",
+    "summary": "細胞が送り合うメッセージから、運動・ストレス・健康を考える。",
+    "question": "運動すると、細胞は全身へ何を伝える？",
+    "description": "筋肉や神経などの動物細胞が、運動やさまざまなストレスにどう応答するかを研究します。細胞から分泌されるタンパク質や小胞に注目し、細胞どうし・臓器どうしが情報を伝え合う仕組みを明らかにします。",
+    "methods": [
+      "動物細胞の培養",
+      "遺伝子・タンパク質解析",
+      "細胞外小胞の解析",
+      "運動を再現する細胞モデル"
+    ],
+    "keywords": [
+      "細胞工学",
+      "骨格筋",
+      "運動",
+      "ストレス応答",
+      "マイオカイン",
+      "細胞外小胞",
+      "代謝",
+      "神経細胞",
+      "健康",
+      "分子生物学"
+    ],
+    "recommended_for": [
+      "運動や健康を細胞レベルで考えたい人",
+      "多様な価値観を尊重して協力できる人",
+      "研究を学びたい意欲がある人"
+    ],
+    "courses": [
+      {
+        "title": "細胞生物学Ⅰ",
+        "meta": "春学期｜2年次から",
+        "description": "細胞の構造や働き、細胞内で起こる生命現象の基本を学びます。"
+      },
+      {
+        "title": "細胞工学",
+        "meta": "秋学期｜2年次から",
+        "description": "細胞の性質を調べ、生命科学や医療・産業へ活用する考え方を学びます。"
+      },
+      {
+        "title": "細胞生物学実験",
+        "meta": "秋学期｜3・4年次",
+        "description": "細胞培養や分子解析などを通して、細胞を扱う実験の基礎を身につけます。"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/nedachi/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032703/",
+      "researchmap": "https://researchmap.jp/read0141066",
+      "syllabus": "https://g-sys.toyo.ac.jp/syllabus/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/nedachi/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032703/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [
+      "公開情報をもとに編集済み。正式公開前にPI確認を推奨します。"
+    ]
+  },
+  {
+    "id": "yoshinaga",
+    "lab_name": "環境保健情報学",
+    "pi_name": "吉永 淳",
+    "position": "教授",
+    "department": "生命科学科",
+    "summary": "環境と健康に関わるデータを読み解き、リスクを社会に伝える。",
+    "question": "環境中のリスクを、データからどう見つけて健康を守るのだろう？",
+    "description": "環境要因と健康の関係を、疫学や統計の考え方で調べます。化学物質への曝露、生活環境、健康影響をデータから評価し、社会で使える知識へつなげます。",
+    "methods": [
+      "疫学調査",
+      "生物統計解析",
+      "曝露評価",
+      "リスク評価"
+    ],
+    "keywords": [
+      "環境保健",
+      "疫学",
+      "生物統計",
+      "リスク評価",
+      "曝露",
+      "健康",
+      "環境化学物質",
+      "データ解析",
+      "公衆衛生",
+      "情報学"
+    ],
+    "recommended_for": [
+      "環境と健康のつながりをデータで考えたい人",
+      "統計や情報整理に興味がある人",
+      "社会に役立つ生命科学を学びたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/yoshinaga/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032701/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/yoshinaga/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032701/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "ito-m",
+    "lab_name": "フィールド動物科学研究室",
+    "pi_name": "伊藤 元裕",
+    "position": "准教授",
+    "department": "生命科学科",
+    "summary": "野生動物の暮らしを追い、環境変動と生態系の関係を探る。",
+    "question": "野生動物の行動は、変わる地球環境をどう映し出しているのだろう？",
+    "description": "野生動物の行動や生態をフィールドで調べ、環境変動が生き物や生態系に与える影響を考えます。観察、記録、データ解析を通して、自然環境の変化を動物の側から読み解きます。",
+    "methods": [
+      "フィールド調査",
+      "行動観察",
+      "生態データ解析",
+      "環境情報の整理"
+    ],
+    "keywords": [
+      "野生動物",
+      "フィールド調査",
+      "行動",
+      "生態系",
+      "環境変動",
+      "海洋生態系",
+      "保全",
+      "データ解析",
+      "自然環境",
+      "生物多様性"
+    ],
+    "recommended_for": [
+      "野生動物や自然観察が好きな人",
+      "フィールドに出てデータを集めたい人",
+      "環境変動と生態系の関係に関心がある人"
+    ],
+    "courses": [
+      {
+        "title": "生態学",
+        "meta": "春学期｜1年次から",
+        "description": "生き物と環境、生き物どうしの関係を学び、生態系を理解する基礎を身につけます。"
+      },
+      {
+        "title": "環境資源学",
+        "meta": "秋学期｜1年次から",
+        "description": "生物や自然環境を資源として捉え、保全と利用のあり方を考えます。"
+      },
+      {
+        "title": "学外実習",
+        "meta": "通年｜集中",
+        "description": "大学の外に出て、現場での観察や調査を通して、フィールド研究の進め方を学びます。"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/ito_m/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032709/",
+      "syllabus": "https://g-sys.toyo.ac.jp/syllabus/",
+      "researchmap": "https://researchmap.jp/ito.motohiro"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/ito_m/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032709/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [
+      "公開情報をもとに編集済み。正式公開前にPI確認を推奨します。"
+    ]
+  },
+  {
+    "id": "gunji",
+    "lab_name": "動物機能形態学研究室",
+    "pi_name": "郡司 芽久",
+    "position": "准教授",
+    "department": "生命科学科",
+    "summary": "動物の「からだ」を比べ、進化と動きの秘密を読み解く。",
+    "question": "動物の体は、なぜこんな形なのだろう？",
+    "description": "キリンをはじめとする哺乳類や鳥類などを対象に、骨・筋肉・羽といった身体構造と運動の関係を調べます。種どうしを比較し、暮らす環境に適した進化の工夫や、その道筋を読み解く研究室です。",
+    "methods": [
+      "解剖と標本観察",
+      "CT・3D形態解析",
+      "力学特性の測定",
+      "行動・運動データ解析"
+    ],
+    "keywords": [
+      "動物",
+      "進化",
+      "比較解剖学",
+      "機能形態学",
+      "骨格",
+      "筋肉",
+      "鳥類",
+      "キリン",
+      "バイオメカニクス",
+      "データ解析"
+    ],
+    "recommended_for": [
+      "動物の形や動きに「なぜ？」を感じる人",
+      "解剖・骨格・博物館が好きな人",
+      "観察とデータ解析の両方をやってみたい人"
+    ],
+    "courses": [
+      {
+        "title": "基礎物理学",
+        "meta": "春学期｜1年次から",
+        "description": "力や運動、エネルギーなど、生命科学を物理の視点から理解するための基礎を学びます。"
+      },
+      {
+        "title": "研究室演習",
+        "meta": "秋学期｜3・4年次",
+        "description": "研究室で文献を読み、議論しながら、卒業研究へつながる考え方や進め方を学びます。"
+      },
+      {
+        "title": "物理実験",
+        "meta": "秋学期｜1年次から",
+        "description": "実際に測定し、データを整理して考察することで、実験科学の基本を身につけます。"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/gunji/",
+      "researchmap": "https://researchmap.jp/anatomy_giraffe",
+      "syllabus": "https://g-sys.toyo.ac.jp/syllabus/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/gunji/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": false,
+    "review_notes": [
+      "公開情報をもとに編集済み。正式公開前にPI確認を推奨します。"
+    ]
+  },
+  {
+    "id": "takeshita",
+    "lab_name": "生態リスク学研究室",
+    "pi_name": "竹下 和貴",
+    "position": "准教授",
+    "department": "生命科学科",
+    "summary": "生態系へのリスクを評価し、生き物と環境を守る方法を考える。",
+    "question": "人間活動による変化は、生態系にどんなリスクを生むのだろう？",
+    "description": "生態系に影響を与える環境要因や化学物質などを調べ、リスクを評価する研究室です。生き物の反応、環境データ、評価手法を組み合わせ、保全や管理に役立つ知識を目指します。",
+    "methods": [
+      "生態影響評価",
+      "環境データ解析",
+      "生物応答の測定",
+      "リスク評価"
+    ],
+    "keywords": [
+      "生態リスク",
+      "環境保全",
+      "生態系",
+      "化学物質",
+      "リスク評価",
+      "生物応答",
+      "データ解析",
+      "環境影響",
+      "保全",
+      "持続可能性"
+    ],
+    "recommended_for": [
+      "生態系や環境保全に関心がある人",
+      "データからリスクを考えたい人",
+      "社会に役立つ環境研究をしたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/takeshita/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/takeshita/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "ikeda",
+    "lab_name": "生物多様性研究室",
+    "pi_name": "池田 悠吾",
+    "position": "助教",
+    "department": "生命科学科",
+    "summary": "多様な生き物のつながりを調べ、生物多様性を守る視点を育てる。",
+    "question": "たくさんの生き物は、どのようにつながり合って生態系を支えているのだろう？",
+    "description": "生物多様性をテーマに、種の違い、分布、環境との関係を調べます。フィールドで得られる情報とデータ解析を組み合わせ、多様な生き物が成り立つしくみを理解し、保全につなげます。",
+    "methods": [
+      "フィールド調査",
+      "分類・同定",
+      "分布データ解析",
+      "生態系評価"
+    ],
+    "keywords": [
+      "生物多様性",
+      "分類",
+      "生態系",
+      "フィールド調査",
+      "保全",
+      "分布",
+      "環境",
+      "種多様性",
+      "データ解析",
+      "自然史"
+    ],
+    "recommended_for": [
+      "生き物の多様さに惹かれる人",
+      "野外調査や観察に取り組みたい人",
+      "保全や生態系に関心がある人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/ikeda/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dlsc/laboratory/ikeda/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "ichiishi",
+    "lab_name": "分子遺伝学研究室",
+    "pi_name": "一石 昭彦",
+    "position": "教授",
+    "department": "生物資源学科",
+    "summary": "DNAの傷と修復を手がかりに、遺伝情報を守るしくみを探る。",
+    "question": "DNAは傷ついても、どうやって生命の設計図を守るのだろう？",
+    "description": "遺伝情報を担うDNAが傷ついたとき、細胞がどのように修復し、突然変異を防ぐのかを研究します。分子遺伝学の視点から、生命の安定性と多様性の両方を考えます。",
+    "methods": [
+      "遺伝子解析",
+      "突然変異解析",
+      "DNA修復実験",
+      "分子生物学実験"
+    ],
+    "keywords": [
+      "DNA",
+      "遺伝子",
+      "突然変異",
+      "DNA修復",
+      "分子遺伝学",
+      "細胞",
+      "ゲノム",
+      "環境ストレス",
+      "生命科学",
+      "バイオテクノロジー"
+    ],
+    "recommended_for": [
+      "DNAや遺伝子のしくみを深く知りたい人",
+      "突然変異や修復に興味がある人",
+      "分子レベルの実験に取り組みたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/ichiishi/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032712/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/ichiishi/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032712/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "ito-masahiro",
+    "lab_name": "極限環境生命科学研究室",
+    "pi_name": "伊藤 政博",
+    "position": "教授",
+    "department": "生物資源学科",
+    "summary": "極限環境を生きる微生物から、生命のしくみと進化を考える。",
+    "question": "過酷な環境でも生きる微生物は、どんな工夫を持っているのだろう？",
+    "description": "高温、高塩、強アルカリなど、普通の生物には厳しい環境で生きる微生物を研究します。細胞の運動装置やエネルギー利用に注目し、生命の限界と可能性を探ります。",
+    "methods": [
+      "微生物培養",
+      "生理機能解析",
+      "分子生物学実験",
+      "顕微鏡観察"
+    ],
+    "keywords": [
+      "極限環境",
+      "微生物",
+      "バクテリア",
+      "モータータンパク質",
+      "生体分子",
+      "進化",
+      "エネルギー",
+      "細胞運動",
+      "生命科学",
+      "宇宙"
+    ],
+    "recommended_for": [
+      "微生物の能力に驚きたい人",
+      "地球外生命や極限環境に興味がある人",
+      "分子から生命の動きを考えたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/ito/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032713/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/ito/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032713/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "umehara",
+    "lab_name": "植物生長制御研究室",
+    "pi_name": "梅原 三貴久",
+    "position": "教授",
+    "department": "生物資源学科",
+    "summary": "植物ホルモンや成長のしくみを調べ、植物の一生を理解する。",
+    "question": "植物は、どんな合図で芽を出し、伸び、花を咲かせるのだろう？",
+    "description": "植物の生長や形づくりを制御するしくみに注目します。ホルモン、遺伝子、環境応答を調べ、植物が周囲の条件に合わせて成長を調節する方法を明らかにします。",
+    "methods": [
+      "植物栽培実験",
+      "ホルモン解析",
+      "遺伝子発現解析",
+      "形態観察"
+    ],
+    "keywords": [
+      "植物",
+      "成長制御",
+      "植物ホルモン",
+      "遺伝子",
+      "発芽",
+      "形態形成",
+      "環境応答",
+      "栽培実験",
+      "食料問題",
+      "バイオテクノロジー"
+    ],
+    "recommended_for": [
+      "植物の成長のしくみに興味がある人",
+      "栽培と分子実験の両方をやってみたい人",
+      "食料や環境問題に関心がある人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/umehara/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032716/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/umehara/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032716/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "okada",
+    "lab_name": "植物バイオーム分子化学研究室",
+    "pi_name": "岡田 憲典",
+    "position": "教授",
+    "department": "生物資源学科",
+    "summary": "植物と周囲の生物・化学物質の関係から、植物の生き方を探る。",
+    "question": "植物は、周りの微生物や化学物質とどう関わって生きているのだろう？",
+    "description": "植物を取り巻く生物群や化学物質に注目し、植物が環境の中で生きるしくみを分子レベルで調べます。植物、微生物、代謝物の関係を理解し、生物資源の利用にもつなげます。",
+    "methods": [
+      "植物栽培",
+      "化学分析",
+      "分子生物学実験",
+      "微生物解析"
+    ],
+    "keywords": [
+      "植物バイオーム",
+      "植物",
+      "微生物",
+      "分子化学",
+      "代謝物",
+      "環境応答",
+      "生物資源",
+      "化学分析",
+      "共生",
+      "持続可能性"
+    ],
+    "recommended_for": [
+      "植物と微生物の関係に興味がある人",
+      "化学と生物の両方を使いたい人",
+      "生物資源を新しい視点で見たい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/okada/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/okada/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "kouzuma",
+    "lab_name": "微生物生理工学研究室",
+    "pi_name": "高妻 篤史",
+    "position": "教授",
+    "department": "生物資源学科",
+    "summary": "電気を使う微生物の力を、環境・エネルギー技術へつなげる。",
+    "question": "微生物は、電気をどう使い、環境やエネルギーに役立てられるのだろう？",
+    "description": "微生物の代謝や電気的な性質に注目し、環境浄化やエネルギー変換への応用を考えます。微生物が持つ小さな働きを、社会課題に役立つ技術へ広げる研究です。",
+    "methods": [
+      "微生物培養",
+      "電気化学測定",
+      "代謝解析",
+      "環境工学実験"
+    ],
+    "keywords": [
+      "微生物",
+      "電気微生物",
+      "代謝",
+      "環境浄化",
+      "エネルギー",
+      "電気化学",
+      "生理工学",
+      "バイオテクノロジー",
+      "持続可能性",
+      "環境"
+    ],
+    "recommended_for": [
+      "微生物を社会に役立てたい人",
+      "エネルギーや環境技術に興味がある人",
+      "生物と工学をつなぐ研究をしたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/kouzuma/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032710/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/kouzuma/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032710/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "shimizu-fumikazu",
+    "lab_name": "生物機能調節化学研究室",
+    "pi_name": "清水 文一",
+    "position": "教授",
+    "department": "生物資源学科",
+    "summary": "植物が作る成分の働きを化学から読み解き、生命現象を考える。",
+    "question": "植物が作る成分は、植物自身や私たちにどんな意味を持つのだろう？",
+    "description": "植物が生み出す化学成分に注目し、その働きや生合成のしくみを研究します。化学の視点から植物の生き方を理解し、食料や環境に関わる生物資源の利用を考えます。",
+    "methods": [
+      "植物成分分析",
+      "有機化学実験",
+      "生理活性評価",
+      "植物栽培"
+    ],
+    "keywords": [
+      "植物",
+      "化学成分",
+      "天然物",
+      "生理活性",
+      "有機化学",
+      "生物資源",
+      "代謝",
+      "食料",
+      "環境",
+      "植物化学"
+    ],
+    "recommended_for": [
+      "植物と化学の両方が好きな人",
+      "天然成分の働きに興味がある人",
+      "食料や環境に役立つ研究をしたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/shimizu/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032711/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/shimizu/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032711/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "doukyu",
+    "lab_name": "応用生体触媒研究室",
+    "pi_name": "道久 則之",
+    "position": "教授",
+    "department": "生物資源学科",
+    "summary": "微生物や酵素の力を使い、ものづくりと環境技術を考える。",
+    "question": "微生物の酵素は、どんなものづくりに使えるのだろう？",
+    "description": "微生物が持つ酵素や生体触媒の働きを研究し、産業や環境に役立つ反応へ応用することを目指します。極限環境微生物の酵素など、特徴ある触媒の性質を調べます。",
+    "methods": [
+      "微生物培養",
+      "酵素活性測定",
+      "生化学実験",
+      "反応条件の検討"
+    ],
+    "keywords": [
+      "酵素",
+      "生体触媒",
+      "微生物",
+      "極限環境",
+      "生化学",
+      "ものづくり",
+      "商品開発",
+      "環境",
+      "発酵",
+      "バイオプロセス"
+    ],
+    "recommended_for": [
+      "酵素や発酵に興味がある人",
+      "微生物を使ったものづくりを学びたい人",
+      "実験条件を工夫して試すのが好きな人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/doukyu/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032718/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/doukyu/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032718/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "nagasaka",
+    "lab_name": "地球環境科学研究室",
+    "pi_name": "長坂 征治",
+    "position": "教授",
+    "department": "生物資源学科",
+    "summary": "地球環境の変化を読み解き、生物資源との関わりを考える。",
+    "question": "地球環境の変化は、生物資源や私たちの暮らしにどう響くのだろう？",
+    "description": "地球規模の環境変化と、生物資源・生態系・人間活動の関係を研究します。環境データを読み解き、持続可能な社会に向けて自然環境を理解する視点を育てます。",
+    "methods": [
+      "環境データ解析",
+      "地球環境調査",
+      "資料解析",
+      "生態系評価"
+    ],
+    "keywords": [
+      "地球環境",
+      "気候変動",
+      "環境科学",
+      "生態系",
+      "生物資源",
+      "データ解析",
+      "持続可能性",
+      "自然環境",
+      "保全",
+      "環境問題"
+    ],
+    "recommended_for": [
+      "地球環境や気候変動に関心がある人",
+      "広い視点で生命科学を見たい人",
+      "データから環境を考えたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/nagasaka/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/nagasaka/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "hasegawa",
+    "lab_name": "糖質材料創成学研究室",
+    "pi_name": "長谷川 輝明",
+    "position": "教授",
+    "department": "生物資源学科",
+    "summary": "糖の構造と働きを調べ、新しい材料や健康への応用を考える。",
+    "question": "甘いだけではない糖は、生命や材料の中でどんな役割を持つのだろう？",
+    "description": "糖質の構造や機能に注目し、新しい材料や生体機能との関係を研究します。糖鎖や多糖の性質を化学的に調べ、医療・健康・ものづくりへの応用を考えます。",
+    "methods": [
+      "糖質合成・分析",
+      "化学構造解析",
+      "材料評価",
+      "生化学実験"
+    ],
+    "keywords": [
+      "糖質",
+      "糖鎖",
+      "多糖",
+      "材料",
+      "化学",
+      "健康",
+      "医療",
+      "構造解析",
+      "生物資源",
+      "ものづくり"
+    ],
+    "recommended_for": [
+      "糖や食品成分の奥深さを知りたい人",
+      "化学を生命科学に使いたい人",
+      "新しい材料づくりに関心がある人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/hasegawa/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032715/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/hasegawa/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032715/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "hirotsu",
+    "lab_name": "植物生理学研究室",
+    "pi_name": "廣津 直樹",
+    "position": "教授",
+    "department": "生物資源学科",
+    "summary": "植物の環境適応を理解し、未来の食を支える作物へつなげる。",
+    "question": "植物は、変わる環境にどう適応して生きる？",
+    "description": "イネや水草を材料に、光合成や環境応答を支える遺伝子・生理機構を研究します。植物がもつ適応力を理解し、収量や栄養価を高めた作物づくり、食料問題の解決へつなげます。",
+    "methods": [
+      "植物の栽培実験",
+      "遺伝子・ゲノム解析",
+      "光合成・生理測定",
+      "成分分析と品種評価"
+    ],
+    "keywords": [
+      "植物",
+      "イネ",
+      "作物学",
+      "植物生理学",
+      "光合成",
+      "環境応答",
+      "遺伝子",
+      "収量",
+      "栄養",
+      "食料問題"
+    ],
+    "recommended_for": [
+      "植物や農作物の成長を詳しく知りたい人",
+      "食料・栄養・環境問題に関心がある人",
+      "遺伝子解析と栽培実験の両方をやってみたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/hirotsu/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032719/",
+      "researchmap": "https://researchmap.jp/hirotsunaoki"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/hirotsu/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032719/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "higashibata",
+    "lab_name": "環境ストレス応答分子微生物学研究室",
+    "pi_name": "東端 啓貴",
+    "position": "准教授",
+    "department": "生物資源学科",
+    "summary": "極限環境の微生物から、ストレスに耐える分子のしくみを探る。",
+    "question": "超高温などの過酷な環境で、微生物はどうやって生き続けるのだろう？",
+    "description": "高温などの環境ストレスに耐える微生物を材料に、分子レベルの応答や適応のしくみを研究します。地球外生命や生命の限界を考える入口にもなる分野です。",
+    "methods": [
+      "微生物培養",
+      "ストレス応答解析",
+      "遺伝子・タンパク質解析",
+      "生化学実験"
+    ],
+    "keywords": [
+      "超好熱菌",
+      "極限環境",
+      "微生物",
+      "ストレス応答",
+      "分子生物学",
+      "タンパク質",
+      "宇宙",
+      "生命の限界",
+      "環境",
+      "進化"
+    ],
+    "recommended_for": [
+      "極限環境や宇宙生命に興味がある人",
+      "微生物の分子メカニズムを知りたい人",
+      "生命の限界を科学したい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/higashibata/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032717/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/higashibata/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032717/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "miura",
+    "lab_name": "極限環境生物資源利用学研究室",
+    "pi_name": "三浦 健",
+    "position": "准教授",
+    "department": "生物資源学科",
+    "summary": "厳しい環境に生きる微生物の力を、生物資源として活かす。",
+    "question": "過酷な環境の微生物は、私たちの暮らしにどんな可能性をくれるのだろう？",
+    "description": "極限環境に生きる微生物を生物資源としてとらえ、その性質や利用可能性を研究します。微生物の「悪役」「ヒーロー」という単純な見方を越え、暮らしや産業に役立つ力を探ります。",
+    "methods": [
+      "微生物分離・培養",
+      "機能評価",
+      "酵素・代謝解析",
+      "応用実験"
+    ],
+    "keywords": [
+      "微生物",
+      "極限環境",
+      "生物資源",
+      "酵素",
+      "代謝",
+      "応用微生物",
+      "環境",
+      "健康",
+      "バイオテクノロジー",
+      "ものづくり"
+    ],
+    "recommended_for": [
+      "微生物の多様な働きを知りたい人",
+      "生物資源の利用に興味がある人",
+      "基礎研究を応用へつなげたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/miura/",
+      "mock_lecture": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032714/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/miura/",
+        "checked_at": "2026-07-14"
+      },
+      {
+        "type": "mock_lecture",
+        "url": "https://www.toyo.ac.jp/nyushi/column/video-lecture/2015032714/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  },
+  {
+    "id": "tsuji",
+    "lab_name": "極域微生物機能生態学研究室",
+    "pi_name": "辻 雅晴",
+    "position": "助教",
+    "department": "生物資源学科",
+    "summary": "南極など寒い地域の微生物から、環境適応と生態系のしくみを探る。",
+    "question": "寒さのきびしい極域で、微生物はどう生き、環境と関わるのだろう？",
+    "description": "極域に生きる微生物の機能と生態を研究します。低温環境への適応、微生物の多様性、物質循環への関わりを調べ、地球環境の中で微生物が果たす役割を考えます。",
+    "methods": [
+      "微生物分離・培養",
+      "低温環境実験",
+      "生態解析",
+      "遺伝子解析"
+    ],
+    "keywords": [
+      "極域",
+      "南極",
+      "微生物",
+      "低温適応",
+      "生態学",
+      "環境",
+      "多様性",
+      "物質循環",
+      "遺伝子解析",
+      "地球環境"
+    ],
+    "recommended_for": [
+      "南極や寒冷地の生命に興味がある人",
+      "微生物の生態を学びたい人",
+      "地球環境と生命の関係を考えたい人"
+    ],
+    "courses": [
+      {
+        "title": "専門科目・実験科目",
+        "meta": "年度により担当変更あり",
+        "description": "担当授業は年度で変わるため、先生名で公式シラバスを確認してください。",
+        "syllabus_url": "https://g-sys.toyo.ac.jp/syllabus/"
+      }
+    ],
+    "links": {
+      "official_lab": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/tsuji/"
+    },
+    "sources": [
+      {
+        "type": "official_lab",
+        "url": "https://www.toyo.ac.jp/nyushi/undergraduate/lsc/dbre/laboratory/tsuji/",
+        "checked_at": "2026-07-14"
+      }
+    ],
+    "needs_review": true,
+    "review_notes": [
+      "researchmap本人ページと担当授業は公開情報で追加確認してください。",
+      "「こんな人におすすめ」は公式研究室紹介の記述を高校生向けに要約したドラフトです。"
+    ]
+  }
+]

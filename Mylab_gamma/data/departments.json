@@ -1,0 +1,26 @@
+[
+  {
+    "name": "生命科学科",
+    "className": "life",
+    "description": "動物・人体・細胞などから、生命のしくみと健康・進化の問いを探る研究室。",
+    "color": "#b63b45",
+    "soft": "#fff1f2",
+    "line": "#efc5ca"
+  },
+  {
+    "name": "生物資源学科",
+    "className": "resource",
+    "description": "植物や微生物の力を、食料・環境・社会へ生かす研究室。",
+    "color": "#3f7f55",
+    "soft": "#eef8f0",
+    "line": "#c6dfcc"
+  },
+  {
+    "name": "生体医工学科",
+    "className": "biomed",
+    "description": "生命科学・医学・工学をつなぎ、医療・健康・福祉を支える技術を探る研究室。",
+    "color": "#2f6fb3",
+    "soft": "#eef5ff",
+    "line": "#c8dcf4"
+  }
+]
