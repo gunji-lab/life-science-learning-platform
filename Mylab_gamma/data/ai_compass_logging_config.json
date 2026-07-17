@@ -1,6 +1,6 @@
 {
   "enabled": true,
-  "endpoint": "https://script.google.com/a/macros/toyo.jp/s/AKfycbzlq-Qpet3AIiH3jYLON0kjoZmwV5nZ40AbtxeOQ1fV2GnftzLqb-QLXTJI3YNB0jOz7g/exec",
+  "endpoint": "https://script.google.com/macros/s/AKfycbzFOSeJ_dIYHF6Mg5f6z9ZkxnnU59Q_RVQLYKeEU9l-JA5SIt22qXGxdc4iibqLv1bj/exec",
   "site_id": "mylab-gamma",
   "send_user_agent": false
 }
