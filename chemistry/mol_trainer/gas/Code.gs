@@ -103,6 +103,10 @@ function doGet(e) {
     }
   }
 
+  if (params.view === "progress") {
+    return buildProgressResponse_(params);
+  }
+
   if (params.view === "teacher") {
     try {
       if (getAuthenticatedStudentId_() !== "ADMIN_GUNJI") throw new Error("教員アカウント専用です。");
@@ -311,6 +315,82 @@ function recordLogin_(studentId, returnUrl, entryView) {
   } finally {
     lock.releaseLock();
   }
+}
+
+function buildProgressResponse_(params) {
+  const callback = sanitizeCallbackName_(params.callback);
+  const verified = verifyAuthToken_(params.token);
+  const data = verified.ok ? getStudentProgress_(verified.studentId) : {
+    ok: false,
+    message: "ログインし直してください。",
+    stages: {}
+  };
+
+  if (callback) {
+    return ContentService
+      .createTextOutput(callback + "(" + JSON.stringify(data) + ");")
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+
+  return json_(data);
+}
+
+function getStudentProgress_(studentId) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const logSheet = ss.getSheetByName(LOG_SHEET_NAME);
+  const rows = logSheet ? readSheetObjects_(logSheet) : [];
+  const stages = {};
+  let studyComplete = false;
+
+  rows.forEach(row => {
+    if (String(row["学籍番号"] || "") !== studentId) return;
+
+    const event = String(row["Event"] || "");
+    if (event === "study_check_complete") {
+      studyComplete = true;
+      return;
+    }
+
+    let payload = {};
+    try {
+      payload = JSON.parse(String(row["Payload"] || "{}"));
+    } catch (err) {
+      payload = {};
+    }
+
+    const stageId = Number(payload.stageId);
+    if (!Number.isInteger(stageId)) return;
+
+    const score = Number(row["得点"] || payload.score || 0);
+    const total = Number(row["問題数"] || payload.questionCount || payload.total || 5);
+    const cleared = String(row["クリア"] || "") === "○" || payload.passed === true;
+    const current = stages[stageId] || {
+      attempts: 0,
+      bestScore: 0,
+      total: total || 5,
+      cleared: false,
+      lastAt: ""
+    };
+
+    current.attempts += 1;
+    current.bestScore = Math.max(current.bestScore, score);
+    current.total = total || current.total;
+    current.cleared = current.cleared || cleared;
+    current.lastAt = row["日時"] || current.lastAt;
+    stages[stageId] = current;
+  });
+
+  return {
+    ok: true,
+    studentId,
+    studyComplete,
+    stages
+  };
+}
+
+function sanitizeCallbackName_(name) {
+  const value = String(name || "");
+  return /^[A-Za-z_$][0-9A-Za-z_$]*$/.test(value) ? value : "";
 }
 
 function updateAttempts_(countSheet, studentId, stage, now) {

@@ -539,4 +539,16 @@ body {
 .stage-card.prep .stage-number { color:#15803d; }
 .stage-card.basic .stage-number { color:#2563eb; }
 .stage-card.practice .stage-number { color:#c2410c; }
+.landing-header .header-inner { min-height: 220px; }
+.auth-entry-card { display:flex; align-items:center; justify-content:space-between; gap:22px; padding:28px; margin-bottom:34px; }
+.auth-entry-card h2 { margin-bottom:8px; font-size:clamp(1.7rem,5vw,2.4rem); }
+.auth-entry-card p { color:var(--muted); margin-bottom:0; }
+.auth-entry-actions { display:grid; gap:10px; min-width:min(320px,100%); }
+.stage-card.cleared { border-color:#86efac; background:#f6fff8; }
+.stage-card.cleared .stage-meta span:first-child { color:#15803d; font-weight:900; }
+.stage-card.not-cleared .stage-meta span:first-child { color:#c2410c; font-weight:900; }
 @media(max-width:760px){.stage-grid{grid-template-columns:1fr}.module-group-heading{margin-top:10px}}
+@media(max-width:760px){
+  .landing-header .header-inner { min-height: 180px; }
+  .auth-entry-card { flex-direction:column; align-items:stretch; padding:22px; }
+}

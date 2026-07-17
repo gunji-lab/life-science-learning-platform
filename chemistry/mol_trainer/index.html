@@ -7,17 +7,31 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header class="site-header">
+  <script>window.MOL_AUTH_OPTIONAL = true;</script>
+  <header class="site-header landing-header">
     <div class="header-inner">
       <div>
         <p class="eyebrow">生命科学のための計算トレーニング</p>
-        <h1>mol Trainer</h1>
-        <p class="lead">5分ノートで要点を確認し、「はじめる前に」から「実践③」まで段階的に練習します。</p>
+        <h1>Mol Trainer</h1>
+        <p class="lead">大学Googleアカウントでログインして、Study Noteと段階別トレーニングを進めます。</p>
       </div>
     </div>
   </header>
 
   <main class="container">
+    <section id="auth-panel" class="card auth-entry-card">
+      <div>
+        <span class="pill">Toyo account</span>
+        <h2>大学Googleアカウントで始める</h2>
+        <p>@toyo.jp の大学アカウントを追加または選択してから、学習メニューへ進みます。</p>
+      </div>
+      <div class="auth-entry-actions">
+        <a id="start-login" class="primary-button" href="#">はじめる</a>
+        <a id="choose-login" class="secondary-button" href="#">追加済みの大学アカウントを選ぶ</a>
+      </div>
+    </section>
+
+    <section id="learning-panel" class="hidden">
     <section class="card hero-card">
       <div>
         <span class="pill">おすすめ</span>
@@ -37,9 +51,11 @@
       </div>
       <div id="stage-grid" class="stage-grid"></div>
     </section>
+    </section>
   </main>
 
-  <footer>mol Trainer v1.0.0</footer>
+  <footer>Mol Trainer trial</footer>
+  <script src="js/tracking.js"></script>
   <script src="js/stages.js"></script>
   <script src="js/home.js"></script>
 </body>
