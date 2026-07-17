@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>My Lab β1｜あなたの「好き」から、未来の研究室を見つけよう。</title>
 <meta name="description" content="東洋大学生命科学部の研究室を、興味や問いから探せるWebアプリです。">
-<link rel="stylesheet" href="styles.css?v=20260716-compass-mobile">
+<link rel="stylesheet" href="styles.css?v=20260717-no-analysis">
 </head>
 <body>
 <header class="topbar">
@@ -30,7 +30,6 @@
 <nav class="tabs" aria-label="メインメニュー">
   <button class="tab active" data-view="home">ホーム</button>
   <button class="tab" data-view="interest">興味から探す</button>
-  <button class="tab" data-view="compass">興味を分析してみる</button>
   <button class="tab" data-view="labs">研究室一覧</button>
   <button class="tab" data-view="visitors">受験生のみなさんへ</button>
 </nav>
@@ -86,24 +85,6 @@
   <div id="interest-results" class="lab-grid"></div>
 </section>
 
-<section id="view-compass" class="view">
-  <div class="compass-hero card">
-    <div>
-      <span class="eyebrow">RESEARCH COMPASS</span>
-      <h2>Research Compass</h2>
-      <p class="compass-lead">あなたの興味と相性がいいのは、どの研究室でしょう？</p>
-      <p>いくつかの質問に答えながら、自分の興味や研究スタイルを整理してみましょう。</p>
-    </div>
-    <div class="compass-note">
-      <strong>これは診断ではありません。</strong>
-      <p>正解・不正解はありません。今の興味を手がかりに、新しい研究室との出会いを見つけるためのガイドです。</p>
-    </div>
-  </div>
-  <div id="compass-progress" class="compass-progress" aria-label="回答状況"></div>
-  <div id="compass-questions" class="compass-questions"></div>
-  <section id="compass-results" class="compass-results card" aria-live="polite"></section>
-</section>
-
 <section id="view-labs" class="view">
   <div class="section-head">
     <div><span class="eyebrow">LAB DIRECTORY</span><h2>研究室一覧</h2><p id="lab-directory-lead">東洋大学生命科学部の研究室を掲載しています。</p></div>
@@ -155,6 +136,6 @@
   <p>My Lab β1 · 東洋大学生命科学部の公式研究室一覧と公開情報をもとに構成</p>
   <p>© Megu GUNJI [ Toyo University ]</p>
 </footer>
-<script src="app.js?v=20260716-compass-mobile"></script>
+<script src="app.js?v=20260717-no-analysis"></script>
 </body>
 </html>
