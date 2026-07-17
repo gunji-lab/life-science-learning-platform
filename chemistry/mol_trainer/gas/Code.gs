@@ -18,66 +18,18 @@ const STAFF_TEST_STUDENT_IDS = {
 const NEW_TRAINER_BASE_URL = "https://gunji-lab.github.io/life-science-learning-platform/chemistry/mol_trainer";
 
 function doPost(e) {
-  const lock = LockService.getScriptLock();
-  lock.waitLock(10000);
-
   try {
     if (!e || !e.postData || !e.postData.contents) {
       throw new Error("No postData. HTMLからPOSTしてください。");
     }
 
     const data = JSON.parse(e.postData.contents);
-    const verified = verifyAuthToken_(data.authToken);
-    if (!verified.ok) throw new Error("大学Googleアカウントでログインし直してください。");
-
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    const logSheet = getOrCreateSheet_(ss, LOG_SHEET_NAME);
-    const countSheet = getOrCreateSheet_(ss, COUNT_SHEET_NAME);
-    setupHeaders_(logSheet, countSheet);
-
-    const payload = data.payload || {};
-    const studentId = verified.studentId;
-    const event = String(data.event || "");
-    const stage = getStageName_(event, payload);
-    const score = Number(payload.score || 0);
-    const total = Number(payload.questionCount || payload.total || 0);
-    const elapsed = payload.elapsed !== undefined ? Number(payload.elapsed) : "";
-    const rate = total > 0 ? Math.round((score / total) * 100) + "%" : "";
-    const passed = payload.passed === true || (total > 0 && score / total >= 0.7) ? "○" : "";
-    const now = new Date();
-
-    const attempts = updateAttempts_(countSheet, studentId, stage, now);
-
-    logSheet.appendRow([
-      studentId,
-      stage,
-      event,
-      score,
-      total,
-      rate,
-      elapsed,
-      now,
-      passed,
-      String(data.page || ""),
-      String(data.userAgent || ""),
-      String(data.screen || ""),
-      JSON.stringify(payload)
-    ]);
-
-    return json_({
-      result: "success",
-      stageAttempt: attempts.stageAttempt,
-      totalAttempt: attempts.totalAttempt
-    });
-
+    return json_(recordEventFromData_(data));
   } catch (err) {
     return json_({
       result: "error",
       message: err.message
     });
-
-  } finally {
-    lock.releaseLock();
   }
 }
 
@@ -105,6 +57,10 @@ function doGet(e) {
 
   if (params.view === "progress") {
     return buildProgressResponse_(params);
+  }
+
+  if (params.view === "track") {
+    return buildTrackResponse_(params);
   }
 
   if (params.view === "teacher") {
@@ -312,6 +268,80 @@ function recordLogin_(studentId, returnUrl, entryView) {
       String(returnUrl || ""),
       String(entryView || "")
     ]);
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function buildTrackResponse_(params) {
+  const callback = sanitizeCallbackName_(params.callback);
+  let data;
+
+  try {
+    data = recordEventFromData_(JSON.parse(String(params.data || "{}")));
+  } catch (err) {
+    data = {
+      result: "error",
+      message: err.message
+    };
+  }
+
+  if (callback) {
+    return ContentService
+      .createTextOutput(callback + "(" + JSON.stringify(data) + ");")
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+
+  return json_(data);
+}
+
+function recordEventFromData_(data) {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+
+  try {
+    const verified = verifyAuthToken_(data.authToken);
+    if (!verified.ok) throw new Error("大学Googleアカウントでログインし直してください。");
+
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const logSheet = getOrCreateSheet_(ss, LOG_SHEET_NAME);
+    const countSheet = getOrCreateSheet_(ss, COUNT_SHEET_NAME);
+    setupHeaders_(logSheet, countSheet);
+
+    const payload = data.payload || {};
+    const studentId = verified.studentId;
+    const event = String(data.event || "");
+    const stage = getStageName_(event, payload);
+    const score = Number(payload.score || 0);
+    const total = Number(payload.questionCount || payload.total || 0);
+    const elapsed = payload.elapsed !== undefined ? Number(payload.elapsed) : "";
+    const rate = total > 0 ? Math.round((score / total) * 100) + "%" : "";
+    const passed = payload.passed === true || (total > 0 && score / total >= 0.7) ? "○" : "";
+    const now = new Date();
+
+    const attempts = updateAttempts_(countSheet, studentId, stage, now);
+
+    logSheet.appendRow([
+      studentId,
+      stage,
+      event,
+      score,
+      total,
+      rate,
+      elapsed,
+      now,
+      passed,
+      String(data.page || ""),
+      String(data.userAgent || ""),
+      String(data.screen || ""),
+      JSON.stringify(payload)
+    ]);
+
+    return {
+      result: "success",
+      stageAttempt: attempts.stageAttempt,
+      totalAttempt: attempts.totalAttempt
+    };
   } finally {
     lock.releaseLock();
   }

@@ -52,6 +52,38 @@ window.MOL_TRACKING = {
     return `${config.gasUrl}?${params.toString()}`;
   }
 
+  function trackUrl(eventName, payload, callbackName){
+    const body = {
+      authToken: getToken(),
+      event: eventName,
+      page: location.pathname.split("/").pop() || "index.html",
+      sentAt: new Date().toISOString(),
+      userAgent: navigator.userAgent,
+      screen: `${screen.width}x${screen.height}`,
+      payload
+    };
+    const params = new URLSearchParams({
+      view: "track",
+      data: JSON.stringify(body),
+      callback: callbackName
+    });
+    return `${config.gasUrl}?${params.toString()}`;
+  }
+
+  function sendByScript(url, callbackName){
+    window[callbackName] = () => {
+      delete window[callbackName];
+      script.remove();
+    };
+    const script = document.createElement("script");
+    script.src = url;
+    script.onerror = () => {
+      delete window[callbackName];
+      script.remove();
+    };
+    document.body.appendChild(script);
+  }
+
   function renderLoginGate(){
     if (!hasGasUrl() || getToken() || window.MOL_AUTH_OPTIONAL === true) return;
     document.body.className = "auth-required";
@@ -122,28 +154,8 @@ window.MOL_TRACKING = {
         return;
       }
 
-      const body = JSON.stringify({
-        authToken,
-        event: eventName,
-        page: location.pathname.split("/").pop() || "index.html",
-        sentAt: new Date().toISOString(),
-        userAgent: navigator.userAgent,
-        screen: `${screen.width}x${screen.height}`,
-        payload
-      });
-
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(config.gasUrl, new Blob([body], { type: "text/plain;charset=utf-8" }));
-        return;
-      }
-
-      fetch(config.gasUrl, {
-        method: "POST",
-        mode: "no-cors",
-        keepalive: true,
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body
-      }).catch(() => {});
+      const callbackName = `molTrack_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
+      sendByScript(trackUrl(eventName, payload, callbackName), callbackName);
     }
   };
 })();
