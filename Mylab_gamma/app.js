@@ -3,6 +3,12 @@ let eventData = null;
 let departments = [];
 let aiDictionary = [];
 let aiLabDictionary = [];
+let aiLoggingConfig = {
+  enabled: false,
+  endpoint: '',
+  site_id: 'mylab-gamma',
+  send_user_agent: false
+};
 let aiLastResult = null;
 let aiLastLogId = '';
 let selected = new Set();
@@ -13,6 +19,9 @@ let selectedLabJumpDepartment = '';
 let selectedRecommendationDepartment = '';
 let selectedQuestionDepartment = '';
 let favorites = new Set(safeStoredFavorites());
+
+const validViews = ['home', 'interest', 'ai-compass', 'labs', 'visitors', 'favorites'];
+const aiLogStorageKey = 'mylab-ai-compass-logs';
 
 const interestRoutes = [
   {
@@ -335,12 +344,13 @@ async function init() {
   updateFavoriteCount();
 
   try {
-    const [labResponse, eventResponse, departmentResponse, dictionaryResponse, labDictionaryResponse] = await Promise.all([
+    const [labResponse, eventResponse, departmentResponse, dictionaryResponse, labDictionaryResponse, loggingConfigResponse] = await Promise.all([
       fetch('data/labs.json'),
       fetch('data/events.json'),
       fetch('data/departments.json'),
       fetch('data/ai_research_dictionary.csv'),
-      fetch('data/ai_lab_dictionary.csv')
+      fetch('data/ai_lab_dictionary.csv'),
+      fetch('data/ai_compass_logging_config.json')
     ]);
     if (!labResponse.ok) throw new Error(`labs.json: ${labResponse.status}`);
     if (!eventResponse.ok) throw new Error(`events.json: ${eventResponse.status}`);
@@ -350,6 +360,9 @@ async function init() {
     departments = await departmentResponse.json();
     aiDictionary = dictionaryResponse.ok ? parseDictionaryCsv(await dictionaryResponse.text()) : [];
     aiLabDictionary = labDictionaryResponse.ok ? parseLabDictionaryCsv(await labDictionaryResponse.text()) : [];
+    aiLoggingConfig = loggingConfigResponse.ok
+      ? { ...aiLoggingConfig, ...(await loggingConfigResponse.json()) }
+      : aiLoggingConfig;
     selectedLabJumpDepartment = '';
     selectedRecommendationDepartment = '';
     selectedQuestionDepartment = '';
@@ -361,6 +374,7 @@ async function init() {
     renderAICompass();
     renderLabList();
     renderVisitors();
+    applyHashView({ scroll: false });
   } catch (error) {
     showLoadError(error);
   }
@@ -376,6 +390,8 @@ function safeStoredFavorites() {
 }
 
 function bindNavigation() {
+  window.addEventListener('popstate', () => applyHashView({ scroll: true }));
+  window.addEventListener('hashchange', () => applyHashView({ scroll: true }));
   qsa('.tab').forEach((button) => {
     button.onclick = () => switchView(button.dataset.view);
   });
@@ -427,11 +443,35 @@ function bindModalClose() {
   });
 }
 
-function switchView(name) {
+function normalizeViewName(name) {
+  return validViews.includes(name) ? name : 'home';
+}
+
+function hashViewName() {
+  try {
+    return normalizeViewName(decodeURIComponent(window.location.hash.replace(/^#/, '')) || 'home');
+  } catch {
+    return 'home';
+  }
+}
+
+function applyHashView(options = {}) {
+  switchView(hashViewName(), { updateHash: false, scroll: options.scroll ?? false });
+}
+
+function switchView(name, options = {}) {
+  const viewName = normalizeViewName(name);
+  const updateHash = options.updateHash ?? true;
+  const shouldScroll = options.scroll ?? true;
+  const target = qs(`#view-${viewName}`);
+  if (!target) return;
   qsa('.view').forEach((view) => view.classList.remove('active'));
-  qs(`#view-${name}`).classList.add('active');
-  qsa('.tab').forEach((tab) => tab.classList.toggle('active', tab.dataset.view === name));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  target.classList.add('active');
+  qsa('.tab').forEach((tab) => tab.classList.toggle('active', tab.dataset.view === viewName));
+  if (updateHash && window.location.hash !== `#${viewName}`) {
+    history.pushState({ view: viewName }, '', `#${viewName}`);
+  }
+  if (shouldScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
   renderCurrentView();
 }
 
@@ -1134,7 +1174,7 @@ function aiMatchCard(item) {
 
 function aiCompassLogs() {
   try {
-    const logs = JSON.parse(localStorage.getItem('mylab-ai-compass-logs') || '[]');
+    const logs = JSON.parse(localStorage.getItem(aiLogStorageKey) || '[]');
     return Array.isArray(logs) ? logs : [];
   } catch {
     return [];
@@ -1142,7 +1182,7 @@ function aiCompassLogs() {
 }
 
 function saveAICompassLogs(logs) {
-  localStorage.setItem('mylab-ai-compass-logs', JSON.stringify(logs.slice(-250)));
+  localStorage.setItem(aiLogStorageKey, JSON.stringify(logs.slice(-250)));
 }
 
 function saveAICompassLog(input, analysis, matches) {
@@ -1159,6 +1199,7 @@ function saveAICompassLog(input, analysis, matches) {
   const logs = aiCompassLogs();
   logs.push(log);
   saveAICompassLogs(logs);
+  sendAICompassLogEvent('search', log);
   return log;
 }
 
@@ -1176,12 +1217,58 @@ function recordAICompassClick(labId) {
     ...log,
     clickedLabs: uniqueTerms([...(log.clickedLabs || []), labId])
   }));
+  sendAICompassLogEvent('click', { id: aiLastLogId, clickedLab: labId });
 }
 
 function recordAICompassFeedback(value) {
   updateAICompassLog((log) => ({ ...log, feedback: value }));
+  sendAICompassLogEvent('feedback', { id: aiLastLogId, feedback: value });
   const target = qs('.ai-feedback');
   if (target) target.classList.add('answered');
+}
+
+function sendAICompassLogEvent(eventType, data = {}) {
+  if (!aiLoggingConfig.enabled || !aiLoggingConfig.endpoint) return;
+  const payload = {
+    event_type: eventType,
+    site_id: aiLoggingConfig.site_id || 'mylab-gamma',
+    log_id: data.id || aiLastLogId || '',
+    timestamp: data.createdAt || new Date().toISOString(),
+    page_url: location.href,
+    input_text: data.input || '',
+    extracted_tags: Array.isArray(data.extractedTags) ? data.extractedTags.join('|') : '',
+    unknown_terms: Array.isArray(data.unknownTerms) ? data.unknownTerms.join('|') : '',
+    displayed_labs: Array.isArray(data.displayedLabs) ? data.displayedLabs.join('|') : '',
+    clicked_lab: data.clickedLab || '',
+    feedback: data.feedback || '',
+    user_agent: aiLoggingConfig.send_user_agent ? navigator.userAgent : ''
+  };
+  const body = JSON.stringify(payload);
+  try {
+    if (navigator.sendBeacon) {
+      const sent = navigator.sendBeacon(aiLoggingConfig.endpoint, new Blob([body], { type: 'text/plain;charset=utf-8' }));
+      if (sent) return;
+    }
+    fetch(aiLoggingConfig.endpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body
+    }).catch(() => queueAICompassLog(payload));
+  } catch {
+    queueAICompassLog(payload);
+  }
+}
+
+function queueAICompassLog(payload) {
+  try {
+    const queued = JSON.parse(localStorage.getItem('mylab-ai-compass-log-queue') || '[]');
+    const safeQueue = Array.isArray(queued) ? queued : [];
+    safeQueue.push(payload);
+    localStorage.setItem('mylab-ai-compass-log-queue', JSON.stringify(safeQueue.slice(-100)));
+  } catch {
+    // Logging must never interrupt the user-facing search flow.
+  }
 }
 
 function renderAICompassAdmin() {
