@@ -73,7 +73,59 @@ def input_terms(text: str) -> set[str]:
     )
     terms = {whole}
     terms.update(normalize(term) for term in rough_terms if len(normalize(term)) >= 2)
-    return {term for term in terms if term}
+    return {term for term in terms if term and term not in {"あり", "ある", "する", "なる", "いる", "これ", "それ"}}
+
+
+def is_short_kana_term(value: str) -> bool:
+    return len(value) <= 2 and bool(re.fullmatch(r"[ぁ-んァ-ヶー]+", value))
+
+
+def matches_candidate(normalized: str, terms: set[str], candidate: str) -> bool:
+    normalized_candidate = normalize(candidate)
+    if not normalized_candidate:
+        return False
+    if normalized_candidate in terms:
+        return True
+    if is_short_kana_term(normalized_candidate) and normalized_candidate != "がん":
+        return False
+    return normalized_candidate in normalized
+
+
+def can_use_substring_match(normalized_term: str) -> bool:
+    return normalized_term == "がん" or len(normalized_term) > 2 or not is_short_kana_term(normalized_term)
+
+
+def is_specific_term(normalized_term: str) -> bool:
+    broad_terms = {
+        "動物",
+        "植物",
+        "微生物",
+        "細胞",
+        "健康",
+        "医療",
+        "環境",
+        "材料",
+        "実験",
+        "解析",
+        "観察",
+        "測定",
+        "研究",
+        "生物",
+        "生命科学",
+    }
+    if normalized_term in broad_terms:
+        return False
+    if normalized_term == "がん":
+        return True
+    if re.fullmatch(r"[a-z0-9]+", normalized_term, re.IGNORECASE):
+        return len(normalized_term) >= 3
+    return len(normalized_term) >= 4 or bool(re.search(r"[ァ-ヶー]{3,}", normalized_term))
+
+
+def direct_term_multiplier(normalized_term: str, exact_hit: bool) -> int:
+    if is_specific_term(normalized_term):
+        return 25 if exact_hit else 12
+    return 4 if exact_hit else 2
 
 
 def rough_input_terms(text: str) -> set[str]:
@@ -90,6 +142,7 @@ def read_json(path: Path) -> list[dict[str, object]]:
 
 def match_dictionary(text: str, dictionary: list[dict[str, object]]) -> tuple[Counter[str], list[dict[str, object]], list[str]]:
     normalized = normalize(text)
+    input_term_set = input_terms(text)
     matched_forms: set[str] = set()
     concept_scores: Counter[str] = Counter()
     detected: list[dict[str, object]] = []
@@ -97,11 +150,11 @@ def match_dictionary(text: str, dictionary: list[dict[str, object]]) -> tuple[Co
     for entry in dictionary:
         keyword = str(entry.get("keyword", ""))
         aliases = [str(alias) for alias in entry.get("aliases", [])]
-        terms = [keyword, *aliases]
-        normalized_terms = [normalize(term) for term in terms if normalize(term)]
-        if not any(term in normalized for term in normalized_terms):
+        candidates = [keyword, *aliases]
+        normalized_terms = [normalize(term) for term in candidates if normalize(term)]
+        if not any(matches_candidate(normalized, input_term_set, term) for term in normalized_terms):
             continue
-        weight = int(entry.get("weight", 1) or 1)
+        weight = int(entry.get("weight", 3) or 3)
         for term in normalized_terms:
             matched_forms.add(term)
         for concept in entry.get("concepts", []):
@@ -154,17 +207,19 @@ def score_labs(
 
         for keyword in record.get("keywords", []):
             normalized_keyword = normalize(str(keyword))
-            if normalized_keyword and (normalized_keyword in terms or normalized_keyword in normalized):
-                score += 5
-                matched[str(keyword)] += 5
+            if normalized_keyword and (normalized_keyword in terms or (can_use_substring_match(normalized_keyword) and normalized_keyword in normalized)):
+                value = 3 * direct_term_multiplier(normalized_keyword, normalized_keyword in terms)
+                score += value
+                matched[str(keyword)] += value
 
         for tag_item in record.get("research_tags", []):
             tag = str(tag_item.get("tag", ""))
             lab_weight = float(tag_item.get("weight", 1) or 1)
             normalized_tag = normalize(tag)
-            if normalized_tag and (normalized_tag in terms or normalized_tag in normalized):
-                score += 5 + lab_weight
-                matched[tag] += 5 + lab_weight
+            if normalized_tag and (normalized_tag in terms or (can_use_substring_match(normalized_tag) and normalized_tag in normalized)):
+                value = (5 + lab_weight) * direct_term_multiplier(normalized_tag, normalized_tag in terms)
+                score += value
+                matched[tag] += value
                 continue
             if research_scores.get(tag):
                 value = research_scores[tag] * lab_weight
@@ -193,6 +248,8 @@ def evaluate_examples(args: argparse.Namespace) -> None:
         "乳酸菌や発酵食品が好きです",
         "桜や植物の香りが好きです",
         "カピバラが好きです",
+        "癌について研究したいです",
+        "ガン転移に関わる研究が気になります",
     ]
 
     for text in examples:

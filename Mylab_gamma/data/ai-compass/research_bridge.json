@@ -550,6 +550,47 @@
     ]
   },
   {
+    "concept": "がん",
+    "research_tags": [
+      {
+        "tag": "がん",
+        "weight": 6
+      },
+      {
+        "tag": "がん細胞",
+        "weight": 6
+      },
+      {
+        "tag": "がん転移",
+        "weight": 6
+      },
+      {
+        "tag": "発がん",
+        "weight": 6
+      },
+      {
+        "tag": "発がん性物質",
+        "weight": 5
+      },
+      {
+        "tag": "遺伝毒性",
+        "weight": 5
+      },
+      {
+        "tag": "DNA損傷",
+        "weight": 4
+      },
+      {
+        "tag": "細胞接着",
+        "weight": 4
+      },
+      {
+        "tag": "糖鎖生物学",
+        "weight": 3
+      }
+    ]
+  },
+  {
     "concept": "リハビリテーション",
     "research_tags": [
       {
