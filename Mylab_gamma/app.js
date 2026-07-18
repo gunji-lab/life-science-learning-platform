@@ -3,6 +3,9 @@ let eventData = null;
 let departments = [];
 let aiDictionary = [];
 let aiLabDictionary = [];
+let aiGeneralDictionary = [];
+let aiResearchBridge = [];
+let aiLabResearchTags = [];
 let aiLoggingConfig = {
   enabled: false,
   endpoint: '',
@@ -20,7 +23,7 @@ let selectedRecommendationDepartment = '';
 let selectedQuestionDepartment = '';
 let favorites = new Set(safeStoredFavorites());
 
-const validViews = ['home', 'interest', 'ai-compass', 'labs', 'visitors', 'favorites'];
+const validViews = ['home', 'interest', 'ai-compass', 'ai-admin', 'labs', 'visitors', 'favorites'];
 const aiLogStorageKey = 'mylab-ai-compass-logs';
 
 const interestRoutes = [
@@ -344,13 +347,26 @@ async function init() {
   updateFavoriteCount();
 
   try {
-    const [labResponse, eventResponse, departmentResponse, dictionaryResponse, labDictionaryResponse, loggingConfigResponse] = await Promise.all([
+    const [
+      labResponse,
+      eventResponse,
+      departmentResponse,
+      dictionaryResponse,
+      labDictionaryResponse,
+      loggingConfigResponse,
+      generalDictionaryResponse,
+      researchBridgeResponse,
+      labResearchTagsResponse
+    ] = await Promise.all([
       fetch('data/labs.json'),
       fetch('data/events.json'),
       fetch('data/departments.json'),
       fetch('data/ai_research_dictionary.csv'),
       fetch('data/ai_lab_dictionary.csv'),
-      fetch('data/ai_compass_logging_config.json')
+      fetch('data/ai_compass_logging_config.json'),
+      fetch('data/ai-compass/general_dictionary.json'),
+      fetch('data/ai-compass/research_bridge.json'),
+      fetch('data/ai-compass/lab_research_tags.json')
     ]);
     if (!labResponse.ok) throw new Error(`labs.json: ${labResponse.status}`);
     if (!eventResponse.ok) throw new Error(`events.json: ${eventResponse.status}`);
@@ -360,6 +376,9 @@ async function init() {
     departments = await departmentResponse.json();
     aiDictionary = dictionaryResponse.ok ? parseDictionaryCsv(await dictionaryResponse.text()) : [];
     aiLabDictionary = labDictionaryResponse.ok ? parseLabDictionaryCsv(await labDictionaryResponse.text()) : [];
+    aiGeneralDictionary = generalDictionaryResponse.ok ? await generalDictionaryResponse.json() : [];
+    aiResearchBridge = researchBridgeResponse.ok ? await researchBridgeResponse.json() : [];
+    aiLabResearchTags = labResearchTagsResponse.ok ? await labResearchTagsResponse.json() : [];
     aiLoggingConfig = loggingConfigResponse.ok
       ? { ...aiLoggingConfig, ...(await loggingConfigResponse.json()) }
       : aiLoggingConfig;
@@ -479,6 +498,7 @@ function renderCurrentView() {
   const active = qs('.view.active')?.id.replace('view-', '');
   if (active === 'interest') renderInterest();
   if (active === 'ai-compass') renderAICompass();
+  if (active === 'ai-admin') renderAICompassAdmin();
   if (active === 'labs') renderLabList();
   if (active === 'visitors') renderVisitors();
   if (active === 'favorites') renderFavorites();
@@ -1005,6 +1025,24 @@ function runAICompassSearch(rawInput) {
 }
 
 function analyzeAICompassInput(input) {
+  if (window.MyLabAICompass && aiGeneralDictionary.length && aiResearchBridge.length) {
+    const dictionaryResult = window.MyLabAICompass.matchGeneralDictionary(input, aiGeneralDictionary);
+    const bridgeResult = window.MyLabAICompass.mapConceptsToResearchTags(dictionaryResult.conceptScores, aiResearchBridge);
+    const tagScores = new Map();
+    dictionaryResult.concepts.forEach((item) => tagScores.set(item.concept, item.score));
+    bridgeResult.researchTags.forEach((item) => tagScores.set(item.tag, (tagScores.get(item.tag) || 0) + item.score));
+    return {
+      engine: 'two-layer-json',
+      dictionaryResult,
+      bridgeResult,
+      matchedEntries: dictionaryResult.detectedTerms,
+      tagScores,
+      tags: [...tagScores.entries()]
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
+        .map(([tag, score]) => ({ tag, score })),
+      unknownTerms: dictionaryResult.unknownTerms
+    };
+  }
   const normalized = normalizeCompassText(input);
   const matchedEntries = [];
   const tagScores = new Map();
@@ -1053,6 +1091,15 @@ function extractUnknownTerms(input, matchedEntries) {
 }
 
 function scoreAICompassLabs(analysis, input = '') {
+  if (analysis.engine === 'two-layer-json' && window.MyLabAICompass && aiLabResearchTags.length) {
+    return window.MyLabAICompass.scoreLabs({
+      input,
+      dictionaryResult: analysis.dictionaryResult,
+      bridgeResult: analysis.bridgeResult,
+      labResearchTags: aiLabResearchTags,
+      labs
+    });
+  }
   const tagScores = analysis.tagScores || new Map();
   const normalizedInput = normalizeCompassText(input);
   if (!tagScores.size && !normalizedInput) return [];
@@ -1127,11 +1174,15 @@ function renderAICompassResults(result) {
   const tags = result.analysis.tags.slice(0, 8);
   const unknown = result.analysis.unknownTerms;
   const matches = result.matches;
+  const detectedTerms = result.analysis.dictionaryResult?.detectedTerms || [];
+  const concepts = result.analysis.dictionaryResult?.concepts || [];
+  const researchTags = result.analysis.bridgeResult?.researchTags || [];
   const topQuestion = matches[0]?.lab?.question || 'あなたの興味は、どんな研究の問いにつながるだろう？';
   container.innerHTML = `
     <section class="ai-result-block card">
       <span class="eyebrow">INTEREST MAP</span>
       <h3>あなたの興味を整理しました</h3>
+      ${detectedTerms.length ? `<div class="ai-reason-map"><div><strong>検出された入力語</strong><p>${detectedTerms.map((item) => `<span>${escapeHtml(item.matched || item.keyword)}</span>`).join('')}</p></div><div><strong>一般概念</strong><p>${concepts.slice(0, 8).map((item) => `<span>${escapeHtml(item.concept)}</span>`).join('')}</p></div><div><strong>研究タグ</strong><p>${researchTags.slice(0, 8).map((item) => `<span>${escapeHtml(item.tag)}</span>`).join('')}</p></div></div>` : ''}
       ${tags.length ? `<div class="ai-tag-list">${tags.map((item) => `<span>✓ ${escapeHtml(item.tag)}</span>`).join('')}</div>` : '<p class="ai-learning">この言葉はまだ学習中です。検索結果は参考程度にご利用ください。</p>'}
       ${unknown.length ? `<p class="ai-learning">まだ辞書で拾いきれていない言葉: ${unknown.map(escapeHtml).join('、')}</p>` : ''}
     </section>
@@ -1170,6 +1221,7 @@ function aiMatchCard(item) {
   const article = document.createElement('article');
   const lab = item.lab;
   const reason = item.matched.slice(0, 4);
+  const reasonText = reason.length ? `「${escapeHtml(reason.join('」「'))}」が研究室タグと一致しました。` : '関連する研究タグが見つかりました。';
   article.className = `ai-match-card ${deptClass(lab.department)}`;
   applyDepartmentTheme(article, lab.department);
   article.innerHTML = `
@@ -1178,7 +1230,7 @@ function aiMatchCard(item) {
     <span class="lab-jump-pi">${escapeHtml(lab.pi_name)} ${escapeHtml(lab.position)}</span>
     <p>${escapeHtml(lab.summary)}</p>
     <div class="lab-jump-keywords">${reason.map((tag) => `<em>${escapeHtml(tag)}</em>`).join('')}</div>
-    <p class="ai-reason">「${escapeHtml(reason.join('」「'))}」が一致したためおすすめしています。</p>
+    <p class="ai-reason">${reasonText}<br><small>推薦スコア: ${Math.round(item.score)}</small></p>
     <button class="open-lab" type="button">研究室をのぞく →</button>`;
   article.querySelector('.open-lab').onclick = () => {
     recordAICompassClick(lab.id);
@@ -1206,6 +1258,9 @@ function saveAICompassLog(input, analysis, matches) {
     createdAt: new Date().toISOString(),
     input,
     extractedTags: analysis.tags.slice(0, 12).map((item) => item.tag),
+    detectedTerms: (analysis.dictionaryResult?.detectedTerms || []).map((item) => item.matched || item.keyword),
+    concepts: (analysis.dictionaryResult?.concepts || []).slice(0, 12).map((item) => item.concept),
+    researchTags: (analysis.bridgeResult?.researchTags || []).slice(0, 12).map((item) => item.tag),
     unknownTerms: analysis.unknownTerms,
     displayedLabs: matches.slice(0, 8).map((item) => item.lab.id),
     clickedLabs: [],
@@ -1252,6 +1307,8 @@ function sendAICompassLogEvent(eventType, data = {}) {
     page_url: location.href,
     input_text: data.input || '',
     extracted_tags: Array.isArray(data.extractedTags) ? data.extractedTags.join('|') : '',
+    concepts: Array.isArray(data.concepts) ? data.concepts.join('|') : '',
+    research_tags: Array.isArray(data.researchTags) ? data.researchTags.join('|') : '',
     unknown_terms: Array.isArray(data.unknownTerms) ? data.unknownTerms.join('|') : '',
     displayed_labs: Array.isArray(data.displayedLabs) ? data.displayedLabs.join('|') : '',
     clicked_lab: data.clickedLab || '',

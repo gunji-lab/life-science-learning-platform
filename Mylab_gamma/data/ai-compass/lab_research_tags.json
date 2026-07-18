@@ -1,0 +1,4002 @@
+[
+  {
+    "lab_id": "ozawa",
+    "lab_name": "行動神経生理学研究室",
+    "faculty_name": "小澤 貴明",
+    "research_tags": [
+      {
+        "tag": "生理学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "神経科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "行動神経科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "カルシウムイメージング",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "データ解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "マウス",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "動物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "神経回路",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "脳",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "行動観察",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "動物",
+      "マウス",
+      "脳",
+      "神経回路",
+      "神経科学",
+      "行動神経科学",
+      "生理学",
+      "行動観察",
+      "カルシウムイメージング",
+      "データ解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "kaneko",
+    "lab_name": "神経機能制御研究室",
+    "faculty_name": "金子 律子",
+    "research_tags": [
+      {
+        "tag": "内分泌学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "発生生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "神経科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "分子実験",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "動物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "哺乳類",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "神経",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "顕微鏡",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "魚類",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "動物",
+      "魚類",
+      "哺乳類",
+      "神経",
+      "神経科学",
+      "内分泌学",
+      "発生生物学",
+      "細胞培養",
+      "顕微鏡",
+      "分子実験"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "kawaguchi",
+    "lab_name": "脳神経科学研究室",
+    "faculty_name": "川口 英夫",
+    "research_tags": [
+      {
+        "tag": "再生生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "神経科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "行動科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "iPS細胞",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "モーションキャプチャ",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "動物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "神経細胞",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "脳",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "電気生理",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "動物",
+      "脳",
+      "神経細胞",
+      "iPS細胞",
+      "神経科学",
+      "再生生物学",
+      "行動科学",
+      "電気生理",
+      "細胞培養",
+      "モーションキャプチャ"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "koshiba",
+    "lab_name": "動物発生システム研究室",
+    "faculty_name": "小柴 和子",
+    "research_tags": [
+      {
+        "tag": "形態学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "発生生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "進化生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "両生類",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "分子実験",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "動物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "心臓",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "組織観察",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "顕微鏡",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "魚類",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "動物",
+      "魚類",
+      "両生類",
+      "心臓",
+      "発生生物学",
+      "進化生物学",
+      "形態学",
+      "顕微鏡",
+      "組織観察",
+      "分子実験"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "shiizaki",
+    "lab_name": "細胞分子毒性研究室",
+    "faculty_name": "椎崎 一宏",
+    "research_tags": [
+      {
+        "tag": "分子生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "毒性学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "遺伝学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "DNA",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "分子実験",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "受容体",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "環境化学物質",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "遺伝毒性評価",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "細胞",
+      "DNA",
+      "環境化学物質",
+      "受容体",
+      "毒性学",
+      "分子生物学",
+      "遺伝学",
+      "細胞培養",
+      "遺伝毒性評価",
+      "分子実験"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "shimizu-kazuya",
+    "lab_name": "水環境生態工学研究室",
+    "faculty_name": "清水 和哉",
+    "research_tags": [
+      {
+        "tag": "微生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "水圏生態学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "環境工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "水環境",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "水質調査",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "環境モニタリング",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細菌",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "薬剤耐性菌",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "微生物",
+      "細菌",
+      "水環境",
+      "薬剤耐性菌",
+      "微生物学",
+      "環境工学",
+      "水圏生態学",
+      "水質調査",
+      "微生物解析",
+      "環境モニタリング"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "narumi",
+    "lab_name": "放射線微生物学研究室",
+    "faculty_name": "鳴海 一成",
+    "research_tags": [
+      {
+        "tag": "分子生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "構造生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "DNA",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "タンパク質",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "タンパク質解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "放射線抵抗性細菌",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生物情報学",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "遺伝子解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "微生物",
+      "放射線抵抗性細菌",
+      "DNA",
+      "タンパク質",
+      "微生物学",
+      "分子生物学",
+      "構造生物学",
+      "遺伝子解析",
+      "タンパク質解析",
+      "生物情報学"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "nedachi",
+    "lab_name": "動物細胞工学研究室",
+    "faculty_name": "根建 拓",
+    "research_tags": [
+      {
+        "tag": "分子生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生理学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "タンパク質",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "タンパク質解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "分子実験",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "動物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "骨格筋",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "動物",
+      "細胞",
+      "骨格筋",
+      "タンパク質",
+      "細胞工学",
+      "生理学",
+      "分子生物学",
+      "細胞培養",
+      "タンパク質解析",
+      "分子実験"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "yoshinaga",
+    "lab_name": "環境保健情報学研究室",
+    "faculty_name": "吉永 淳",
+    "research_tags": [
+      {
+        "tag": "人間生態学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "環境保健学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生物統計学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "人",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "栄養素",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "環境分析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "環境化学物質",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生殖",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "統計解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "質問票調査",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "人",
+      "環境化学物質",
+      "栄養素",
+      "生殖",
+      "環境保健学",
+      "人間生態学",
+      "生物統計学",
+      "質問票調査",
+      "環境分析",
+      "統計解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "ito-m",
+    "lab_name": "フィールド動物科学研究室",
+    "faculty_name": "伊藤 元裕",
+    "research_tags": [
+      {
+        "tag": "保全生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "海洋生態学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "行動生態学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "バイオロギング",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "フィールド調査",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "動物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "哺乳類",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "海鳥",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "行動観察",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "魚類",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "動物",
+      "海鳥",
+      "魚類",
+      "哺乳類",
+      "行動生態学",
+      "海洋生態学",
+      "保全生物学",
+      "フィールド調査",
+      "バイオロギング",
+      "行動観察"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "gunji",
+    "lab_name": "動物機能形態学研究室",
+    "faculty_name": "郡司 芽久",
+    "research_tags": [
+      {
+        "tag": "バイオメカニクス",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "形態学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "比較解剖学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "動作解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "動物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "標本観察",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "筋肉",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "脊椎動物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "解剖",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "骨格",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "動物",
+      "脊椎動物",
+      "骨格",
+      "筋肉",
+      "比較解剖学",
+      "形態学",
+      "バイオメカニクス",
+      "解剖",
+      "標本観察",
+      "動作解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "takeshita",
+    "lab_name": "生態リスク学研究室",
+    "faculty_name": "竹下 和貴",
+    "research_tags": [
+      {
+        "tag": "環境科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生態リスク学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生態学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "フィールド調査",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "動物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "化学分析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "哺乳類",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "底生無脊椎動物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "河川",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "統計モデリング",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "動物",
+      "底生無脊椎動物",
+      "哺乳類",
+      "河川",
+      "生態学",
+      "生態リスク学",
+      "環境科学",
+      "フィールド調査",
+      "統計モデリング",
+      "化学分析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "ikeda",
+    "lab_name": "生物多様性研究室",
+    "faculty_name": "池田 悠吾",
+    "research_tags": [
+      {
+        "tag": "保全生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "分類学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "進化生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "コウモリ",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "フィールド調査",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "モニタリング",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "動物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "小型哺乳類",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "島嶼",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "形態観察",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "動物",
+      "小型哺乳類",
+      "コウモリ",
+      "島嶼",
+      "分類学",
+      "進化生物学",
+      "保全生物学",
+      "フィールド調査",
+      "モニタリング",
+      "形態観察"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "ichiishi",
+    "lab_name": "分子遺伝学研究室",
+    "faculty_name": "一石 昭彦",
+    "research_tags": [
+      {
+        "tag": "分子遺伝学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "DNA",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "アカパンカビ",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "分子実験",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "突然変異解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "糸状菌",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "遺伝子解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "微生物",
+      "糸状菌",
+      "アカパンカビ",
+      "DNA",
+      "分子遺伝学",
+      "微生物学",
+      "細胞生物学",
+      "遺伝子解析",
+      "突然変異解析",
+      "分子実験"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "ito-masahiro",
+    "lab_name": "極限環境生命科学研究室",
+    "faculty_name": "伊藤 政博",
+    "research_tags": [
+      {
+        "tag": "微生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生物資源学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "進化生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "バクテリア",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "分子実験",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "極限環境微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "温泉",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生理解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "微生物",
+      "極限環境微生物",
+      "バクテリア",
+      "温泉",
+      "微生物学",
+      "進化生物学",
+      "生物資源学",
+      "微生物培養",
+      "分子実験",
+      "生理解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "umehara",
+    "lab_name": "植物生長制御研究室",
+    "faculty_name": "梅原 三貴久",
+    "research_tags": [
+      {
+        "tag": "植物分子生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物生理学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "発生生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "イネ",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "トマト",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "化学分析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物ホルモン",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物栽培",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "突然変異体解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "植物",
+      "イネ",
+      "トマト",
+      "植物ホルモン",
+      "植物生理学",
+      "発生生物学",
+      "植物分子生物学",
+      "植物栽培",
+      "突然変異体解析",
+      "化学分析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "okada",
+    "lab_name": "植物バイオーム分子化学研究室",
+    "faculty_name": "岡田 憲典",
+    "research_tags": [
+      {
+        "tag": "分子生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物化学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "農芸化学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "イネ",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "代謝物解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "化学分析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物バイオーム",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "特化代謝産物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "遺伝子解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "植物",
+      "イネ",
+      "特化代謝産物",
+      "植物バイオーム",
+      "植物化学",
+      "分子生物学",
+      "農芸化学",
+      "化学分析",
+      "遺伝子解析",
+      "代謝物解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "kouzuma",
+    "lab_name": "微生物生理工学研究室",
+    "faculty_name": "高妻 篤史",
+    "research_tags": [
+      {
+        "tag": "微生物生理学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "環境バイオテクノロジー",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "電気化学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "バイオフィルム",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "発電菌",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "遺伝子改変",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "電気化学測定",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "電気活性微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "微生物",
+      "電気活性微生物",
+      "発電菌",
+      "バイオフィルム",
+      "微生物生理学",
+      "環境バイオテクノロジー",
+      "電気化学",
+      "電気化学測定",
+      "遺伝子改変",
+      "微生物培養"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "shimizu-fumikazu",
+    "lab_name": "生物機能調節化学研究室",
+    "faculty_name": "清水 文一",
+    "research_tags": [
+      {
+        "tag": "天然物化学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "有機化学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物分子生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "クマリン",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "二次代謝産物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "化学分析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "有機化学実験",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "色素",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "遺伝子解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "植物",
+      "二次代謝産物",
+      "クマリン",
+      "色素",
+      "天然物化学",
+      "有機化学",
+      "植物分子生物学",
+      "化学分析",
+      "有機化学実験",
+      "遺伝子解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "doukyu",
+    "lab_name": "応用生体触媒研究室",
+    "faculty_name": "道久 則之",
+    "research_tags": [
+      {
+        "tag": "応用微生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生物化学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "酵素工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "タンパク質",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "タンパク質構造解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "有機溶媒耐性微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "酵素",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "酵素活性測定",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "微生物",
+      "有機溶媒耐性微生物",
+      "酵素",
+      "タンパク質",
+      "応用微生物学",
+      "酵素工学",
+      "生物化学",
+      "微生物培養",
+      "酵素活性測定",
+      "タンパク質構造解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "nagasaka",
+    "lab_name": "地球環境科学研究室",
+    "faculty_name": "長坂 征治",
+    "research_tags": [
+      {
+        "tag": "作物科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物分子生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物栄養学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "イネ",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "タンパク質解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "ムギネ酸類",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "遺伝子解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "鉄",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "顕微鏡",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "植物",
+      "イネ",
+      "鉄",
+      "ムギネ酸類",
+      "植物栄養学",
+      "植物分子生物学",
+      "作物科学",
+      "遺伝子解析",
+      "タンパク質解析",
+      "顕微鏡"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "hasegawa",
+    "lab_name": "糖質材料創成学研究室",
+    "faculty_name": "長谷川 輝明",
+    "research_tags": [
+      {
+        "tag": "有機化学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "材料化学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "糖鎖生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "オリゴ糖",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "構造解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "糖質合成",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "糖鎖",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞接着",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞評価",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "細胞",
+      "糖鎖",
+      "オリゴ糖",
+      "細胞接着",
+      "糖鎖生物学",
+      "有機化学",
+      "材料化学",
+      "糖質合成",
+      "構造解析",
+      "細胞評価"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "hirotsu",
+    "lab_name": "植物生理学研究室",
+    "faculty_name": "廣津 直樹",
+    "research_tags": [
+      {
+        "tag": "作物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物生理学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "環境応答学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "イネ",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "作物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "光合成測定",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "品種評価",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "植物栽培",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "水草",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "植物",
+      "イネ",
+      "水草",
+      "作物",
+      "植物生理学",
+      "作物学",
+      "環境応答学",
+      "光合成測定",
+      "植物栽培",
+      "品種評価"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "higashibata",
+    "lab_name": "環境ストレス応答分子微生物学研究室",
+    "faculty_name": "東端 啓貴",
+    "research_tags": [
+      {
+        "tag": "分子生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "環境バイオテクノロジー",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "プラスチック分解菌",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "超好熱菌",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "遺伝子解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "酵素解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "重金属耐性菌",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "微生物",
+      "超好熱菌",
+      "プラスチック分解菌",
+      "重金属耐性菌",
+      "微生物学",
+      "分子生物学",
+      "環境バイオテクノロジー",
+      "遺伝子解析",
+      "酵素解析",
+      "微生物培養"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "miura",
+    "lab_name": "極限環境生物資源利用学研究室",
+    "faculty_name": "三浦 健",
+    "research_tags": [
+      {
+        "tag": "バイオエネルギー学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "応用微生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生物資源学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "バイオマス",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物探索",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "極限環境微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "酵素",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "酵素活性測定",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "微生物",
+      "極限環境微生物",
+      "バイオマス",
+      "酵素",
+      "応用微生物学",
+      "生物資源学",
+      "バイオエネルギー学",
+      "微生物探索",
+      "酵素活性測定",
+      "微生物培養"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "tsuji",
+    "lab_name": "極域微生物機能生態学研究室",
+    "faculty_name": "辻 雅晴",
+    "research_tags": [
+      {
+        "tag": "微生物生態学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "極域科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "環境微生物学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "ゲノム解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "フィールド調査",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "北極",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "南極",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微生物培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "極域",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "微生物",
+      "極域",
+      "南極",
+      "北極",
+      "微生物生態学",
+      "極域科学",
+      "環境微生物学",
+      "フィールド調査",
+      "ゲノム解析",
+      "微生物培養"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_ogoh",
+    "lab_name": "運動生理学研究室",
+    "faculty_name": "小河 繁彦",
+    "research_tags": [
+      {
+        "tag": "健康科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生理学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "運動生理学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "データ解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "動作解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "呼吸機能",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "循環機能",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生理測定",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "脳血流",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "運動",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "運動",
+      "脳血流",
+      "循環機能",
+      "呼吸機能",
+      "運動生理学",
+      "生理学",
+      "健康科学",
+      "生理測定",
+      "動作解析",
+      "データ解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_kitamura",
+    "lab_name": "免疫システム制御学研究室",
+    "faculty_name": "北村 秀光",
+    "research_tags": [
+      {
+        "tag": "予防医学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "健康科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "免疫学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "がん",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "アレルギー",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "データ解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "免疫",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "免疫解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "感染症",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "免疫",
+      "感染症",
+      "がん",
+      "アレルギー",
+      "免疫学",
+      "健康科学",
+      "予防医学",
+      "免疫解析",
+      "細胞解析",
+      "データ解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_kimura_t",
+    "lab_name": "物質医工学研究室",
+    "faculty_name": "木村 剛",
+    "research_tags": [
+      {
+        "tag": "材料科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生体材料工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "高分子科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "バイオマテリアル",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "化学分析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "医療材料",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "材料評価",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞外マトリックス",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "脱細胞化組織",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "バイオマテリアル",
+      "脱細胞化組織",
+      "細胞外マトリックス",
+      "医療材料",
+      "材料科学",
+      "高分子科学",
+      "生体材料工学",
+      "材料評価",
+      "細胞培養",
+      "化学分析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_goda",
+    "lab_name": "バイオエンジニアリング研究室",
+    "faculty_name": "合田 達郎",
+    "research_tags": [
+      {
+        "tag": "バイオエンジニアリング",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "バイオミメティクス",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "材料科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "ウェアラブルセンサ",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "センサ開発",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "ナノ材料",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "バイオセンサー",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "バイオ界面",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "化学分析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "材料設計",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "バイオ界面",
+      "バイオセンサー",
+      "ナノ材料",
+      "ウェアラブルセンサ",
+      "バイオエンジニアリング",
+      "材料科学",
+      "バイオミメティクス",
+      "材料設計",
+      "センサ開発",
+      "化学分析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_suzuki",
+    "lab_name": "生体信号処理研究室",
+    "faculty_name": "鈴木 裕",
+    "research_tags": [
+      {
+        "tag": "医用工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "感性工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生体信号処理",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "信号処理",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "嚥下",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "心電図",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生体信号計測",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生体音",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "画像解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "脳波",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "脳波",
+      "心電図",
+      "嚥下",
+      "生体音",
+      "生体信号処理",
+      "感性工学",
+      "医用工学",
+      "生体信号計測",
+      "信号処理",
+      "画像解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_nishino",
+    "lab_name": "細胞ゲノム工学研究室",
+    "faculty_name": "西野 光一郎",
+    "research_tags": [
+      {
+        "tag": "ゲノム工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "再生医療",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "エピジェネティクス",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "ゲノム",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "ゲノム編集",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "データ解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "ヒトiPS細胞",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "疾患モデル",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "細胞培養",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "ヒトiPS細胞",
+      "ゲノム",
+      "エピジェネティクス",
+      "疾患モデル",
+      "再生医療",
+      "細胞工学",
+      "ゲノム工学",
+      "細胞培養",
+      "ゲノム編集",
+      "データ解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_horiuchi",
+    "lab_name": "ニューロサイエンス研究室",
+    "faculty_name": "堀内 城司",
+    "research_tags": [
+      {
+        "tag": "健康科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生理学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "神経科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "ストレス",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "データ解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "免疫",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生理測定",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "脳",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "脳機能測定",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "自律神経",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "ストレス",
+      "脳",
+      "自律神経",
+      "免疫",
+      "神経科学",
+      "生理学",
+      "健康科学",
+      "生理測定",
+      "脳機能測定",
+      "データ解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_motohashi",
+    "lab_name": "量子医工学研究室",
+    "faculty_name": "本橋 健次",
+    "research_tags": [
+      {
+        "tag": "放射線物理学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "材料科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "量子医工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "プラズマ",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "化学分析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "医療材料",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "放射線",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "材料改質",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "物理実験",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "量子ビーム",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "量子ビーム",
+      "放射線",
+      "プラズマ",
+      "医療材料",
+      "量子医工学",
+      "放射線物理学",
+      "材料科学",
+      "物理実験",
+      "材料改質",
+      "化学分析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_yamauchi",
+    "lab_name": "医療福祉支援工学研究室",
+    "faculty_name": "山内 康司",
+    "research_tags": [
+      {
+        "tag": "ヘルスケア工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "人間工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "医療福祉工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "IoT",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "VR",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "データ解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "ユーザ評価",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "医療機器",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "機器開発",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "福祉機器",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "医療機器",
+      "福祉機器",
+      "VR",
+      "IoT",
+      "医療福祉工学",
+      "人間工学",
+      "ヘルスケア工学",
+      "機器開発",
+      "ユーザ評価",
+      "データ解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_akimoto",
+    "lab_name": "メディカルロボティクス研究室",
+    "faculty_name": "秋元 俊成",
+    "research_tags": [
+      {
+        "tag": "メディカルロボティクス",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "医用工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "福祉工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "センサ",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "センサ開発",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "データ解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "バイタルサイン",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "介護ロボット",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "医療機器",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "機器開発",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "医療機器",
+      "センサ",
+      "介護ロボット",
+      "バイタルサイン",
+      "メディカルロボティクス",
+      "医用工学",
+      "福祉工学",
+      "センサ開発",
+      "機器開発",
+      "データ解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_osawa",
+    "lab_name": "生体高分子材料研究室",
+    "faculty_name": "大澤 重仁",
+    "research_tags": [
+      {
+        "tag": "医用材料",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "材料科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "高分子化学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "化学分析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "材料評価",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "核酸",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "薬物送達",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "金属錯体",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "高分子合成",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "高分子材料",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "高分子材料",
+      "核酸",
+      "金属錯体",
+      "薬物送達",
+      "高分子化学",
+      "材料科学",
+      "医用材料",
+      "高分子合成",
+      "材料評価",
+      "化学分析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_kai",
+    "lab_name": "マイクロ材料工学研究室",
+    "faculty_name": "甲斐 洋行",
+    "research_tags": [
+      {
+        "tag": "マイクロ材料工学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "材料化学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "流体力学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "マイクロニードル",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微細加工",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "微細構造",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "濡れ性",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生体センサ",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "画像解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "電気化学測定",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "微細構造",
+      "濡れ性",
+      "マイクロニードル",
+      "生体センサ",
+      "材料化学",
+      "マイクロ材料工学",
+      "流体力学",
+      "微細加工",
+      "電気化学測定",
+      "画像解析"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_kimura_y",
+    "lab_name": "ヘルスプロモーション研究室",
+    "faculty_name": "木村 鷹介",
+    "research_tags": [
+      {
+        "tag": "健康科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "公衆衛生",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "運動疫学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "リハビリテーション",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "介護予防",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "疫学調査",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "統計解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "腰痛",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "身体活動",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "身体活動測定",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "身体活動",
+      "介護予防",
+      "リハビリテーション",
+      "腰痛",
+      "運動疫学",
+      "健康科学",
+      "公衆衛生",
+      "疫学調査",
+      "統計解析",
+      "身体活動測定"
+    ],
+    "source_urls": []
+  },
+  {
+    "lab_id": "dben_yamazaki",
+    "lab_name": "生体情報学研究室",
+    "faculty_name": "山崎 享子",
+    "research_tags": [
+      {
+        "tag": "健康科学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "免疫学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生体情報学",
+        "weight": 5,
+        "sources": [
+          "labs.json:tags.fields",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "NK細胞",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "ストレス",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "データ解析",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "免疫",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "免疫測定",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "暑熱環境",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.targets",
+          "labs.json:keywords"
+        ]
+      },
+      {
+        "tag": "生理測定",
+        "weight": 4,
+        "sources": [
+          "labs.json:tags.methods",
+          "labs.json:keywords"
+        ]
+      }
+    ],
+    "keywords": [
+      "ストレス",
+      "免疫",
+      "NK細胞",
+      "暑熱環境",
+      "生体情報学",
+      "免疫学",
+      "健康科学",
+      "生理測定",
+      "免疫測定",
+      "データ解析"
+    ],
+    "source_urls": []
+  }
+]
