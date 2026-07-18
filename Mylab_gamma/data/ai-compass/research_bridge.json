@@ -2,503 +2,2324 @@
   {
     "concept": "哺乳類",
     "research_tags": [
-      { "tag": "比較解剖学", "weight": 3 },
-      { "tag": "形態学", "weight": 3 },
-      { "tag": "バイオメカニクス", "weight": 3 },
-      { "tag": "動物行動", "weight": 2 },
-      { "tag": "動物福祉", "weight": 2 }
+      {
+        "tag": "比較解剖学",
+        "weight": 3
+      },
+      {
+        "tag": "形態学",
+        "weight": 3
+      },
+      {
+        "tag": "バイオメカニクス",
+        "weight": 3
+      },
+      {
+        "tag": "動物行動",
+        "weight": 2
+      },
+      {
+        "tag": "動物福祉",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "鳥類",
     "research_tags": [
-      { "tag": "比較解剖学", "weight": 3 },
-      { "tag": "進化", "weight": 2 },
-      { "tag": "飛行", "weight": 2 },
-      { "tag": "バイオメカニクス", "weight": 2 },
-      { "tag": "生態学", "weight": 2 }
+      {
+        "tag": "比較解剖学",
+        "weight": 3
+      },
+      {
+        "tag": "進化",
+        "weight": 2
+      },
+      {
+        "tag": "飛行",
+        "weight": 2
+      },
+      {
+        "tag": "バイオメカニクス",
+        "weight": 2
+      },
+      {
+        "tag": "生態学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "魚類",
     "research_tags": [
-      { "tag": "内分泌学", "weight": 3 },
-      { "tag": "発生生物学", "weight": 3 },
-      { "tag": "神経科学", "weight": 2 },
-      { "tag": "形態学", "weight": 2 },
-      { "tag": "水圏生態学", "weight": 2 }
+      {
+        "tag": "内分泌学",
+        "weight": 3
+      },
+      {
+        "tag": "発生生物学",
+        "weight": 3
+      },
+      {
+        "tag": "神経科学",
+        "weight": 2
+      },
+      {
+        "tag": "形態学",
+        "weight": 2
+      },
+      {
+        "tag": "水圏生態学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "動物",
     "research_tags": [
-      { "tag": "動物行動", "weight": 3 },
-      { "tag": "生理学", "weight": 2 },
-      { "tag": "発生生物学", "weight": 2 },
-      { "tag": "生態学", "weight": 2 }
+      {
+        "tag": "動物行動",
+        "weight": 3
+      },
+      {
+        "tag": "生理学",
+        "weight": 2
+      },
+      {
+        "tag": "発生生物学",
+        "weight": 2
+      },
+      {
+        "tag": "生態学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "脊椎動物",
     "research_tags": [
-      { "tag": "比較解剖学", "weight": 3 },
-      { "tag": "形態学", "weight": 3 },
-      { "tag": "進化", "weight": 2 }
+      {
+        "tag": "比較解剖学",
+        "weight": 3
+      },
+      {
+        "tag": "形態学",
+        "weight": 3
+      },
+      {
+        "tag": "進化",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "骨格",
     "research_tags": [
-      { "tag": "比較解剖学", "weight": 4 },
-      { "tag": "形態学", "weight": 4 },
-      { "tag": "バイオメカニクス", "weight": 3 },
-      { "tag": "筋骨格", "weight": 3 }
+      {
+        "tag": "比較解剖学",
+        "weight": 4
+      },
+      {
+        "tag": "形態学",
+        "weight": 4
+      },
+      {
+        "tag": "バイオメカニクス",
+        "weight": 3
+      },
+      {
+        "tag": "筋骨格",
+        "weight": 3
+      }
     ]
   },
   {
     "concept": "筋肉",
     "research_tags": [
-      { "tag": "筋骨格", "weight": 4 },
-      { "tag": "運動生理学", "weight": 3 },
-      { "tag": "バイオメカニクス", "weight": 3 },
-      { "tag": "細胞工学", "weight": 2 }
+      {
+        "tag": "筋骨格",
+        "weight": 4
+      },
+      {
+        "tag": "運動生理学",
+        "weight": 3
+      },
+      {
+        "tag": "バイオメカニクス",
+        "weight": 3
+      },
+      {
+        "tag": "細胞工学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "運動",
     "research_tags": [
-      { "tag": "運動生理学", "weight": 4 },
-      { "tag": "バイオメカニクス", "weight": 4 },
-      { "tag": "生体力学", "weight": 3 },
-      { "tag": "生体信号処理", "weight": 2 }
+      {
+        "tag": "運動生理学",
+        "weight": 4
+      },
+      {
+        "tag": "バイオメカニクス",
+        "weight": 4
+      },
+      {
+        "tag": "生体力学",
+        "weight": 3
+      },
+      {
+        "tag": "生体信号処理",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "神経",
     "research_tags": [
-      { "tag": "神経科学", "weight": 4 },
-      { "tag": "脳神経科学", "weight": 4 },
-      { "tag": "行動神経科学", "weight": 3 },
-      { "tag": "電気生理学", "weight": 2 }
+      {
+        "tag": "神経科学",
+        "weight": 4
+      },
+      {
+        "tag": "脳神経科学",
+        "weight": 4
+      },
+      {
+        "tag": "行動神経科学",
+        "weight": 3
+      },
+      {
+        "tag": "電気生理学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "脳",
     "research_tags": [
-      { "tag": "脳神経科学", "weight": 4 },
-      { "tag": "神経科学", "weight": 4 },
-      { "tag": "行動科学", "weight": 2 },
-      { "tag": "生体信号処理", "weight": 2 }
+      {
+        "tag": "脳神経科学",
+        "weight": 4
+      },
+      {
+        "tag": "神経科学",
+        "weight": 4
+      },
+      {
+        "tag": "行動科学",
+        "weight": 2
+      },
+      {
+        "tag": "生体信号処理",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "ホルモン",
     "research_tags": [
-      { "tag": "内分泌学", "weight": 4 },
-      { "tag": "神経科学", "weight": 2 },
-      { "tag": "生殖", "weight": 2 }
+      {
+        "tag": "内分泌学",
+        "weight": 4
+      },
+      {
+        "tag": "神経科学",
+        "weight": 2
+      },
+      {
+        "tag": "生殖",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "遺伝",
     "research_tags": [
-      { "tag": "遺伝学", "weight": 4 },
-      { "tag": "分子生物学", "weight": 4 },
-      { "tag": "ゲノム", "weight": 3 },
-      { "tag": "生物情報学", "weight": 2 }
+      {
+        "tag": "遺伝学",
+        "weight": 4
+      },
+      {
+        "tag": "分子生物学",
+        "weight": 4
+      },
+      {
+        "tag": "ゲノム",
+        "weight": 3
+      },
+      {
+        "tag": "生物情報学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "細胞",
     "research_tags": [
-      { "tag": "細胞工学", "weight": 4 },
-      { "tag": "細胞培養", "weight": 3 },
-      { "tag": "分子生物学", "weight": 3 },
-      { "tag": "再生医療", "weight": 2 }
+      {
+        "tag": "細胞工学",
+        "weight": 4
+      },
+      {
+        "tag": "細胞培養",
+        "weight": 3
+      },
+      {
+        "tag": "分子生物学",
+        "weight": 3
+      },
+      {
+        "tag": "再生医療",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "微生物",
     "research_tags": [
-      { "tag": "微生物学", "weight": 4 },
-      { "tag": "発酵", "weight": 3 },
-      { "tag": "環境微生物学", "weight": 3 },
-      { "tag": "生物資源", "weight": 2 }
+      {
+        "tag": "微生物学",
+        "weight": 4
+      },
+      {
+        "tag": "発酵",
+        "weight": 3
+      },
+      {
+        "tag": "環境微生物学",
+        "weight": 3
+      },
+      {
+        "tag": "生物資源",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "細菌",
     "research_tags": [
-      { "tag": "微生物学", "weight": 4 },
-      { "tag": "分子生物学", "weight": 2 },
-      { "tag": "環境工学", "weight": 2 }
+      {
+        "tag": "微生物学",
+        "weight": 4
+      },
+      {
+        "tag": "分子生物学",
+        "weight": 2
+      },
+      {
+        "tag": "環境工学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "発酵",
     "research_tags": [
-      { "tag": "微生物学", "weight": 3 },
-      { "tag": "発酵", "weight": 4 },
-      { "tag": "食品", "weight": 3 },
-      { "tag": "酵素", "weight": 2 }
+      {
+        "tag": "微生物学",
+        "weight": 3
+      },
+      {
+        "tag": "発酵",
+        "weight": 4
+      },
+      {
+        "tag": "食品",
+        "weight": 3
+      },
+      {
+        "tag": "酵素",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "植物",
     "research_tags": [
-      { "tag": "植物生理学", "weight": 4 },
-      { "tag": "植物化学", "weight": 3 },
-      { "tag": "作物学", "weight": 3 },
-      { "tag": "生物資源", "weight": 2 }
+      {
+        "tag": "植物生理学",
+        "weight": 4
+      },
+      {
+        "tag": "植物化学",
+        "weight": 3
+      },
+      {
+        "tag": "作物学",
+        "weight": 3
+      },
+      {
+        "tag": "生物資源",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "作物",
     "research_tags": [
-      { "tag": "作物学", "weight": 4 },
-      { "tag": "植物生理学", "weight": 3 },
-      { "tag": "育種", "weight": 3 },
-      { "tag": "食料", "weight": 2 }
+      {
+        "tag": "作物学",
+        "weight": 4
+      },
+      {
+        "tag": "植物生理学",
+        "weight": 3
+      },
+      {
+        "tag": "育種",
+        "weight": 3
+      },
+      {
+        "tag": "食料",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "化学成分",
     "research_tags": [
-      { "tag": "植物化学", "weight": 4 },
-      { "tag": "天然物化学", "weight": 3 },
-      { "tag": "有機化学", "weight": 2 },
-      { "tag": "食品", "weight": 2 }
+      {
+        "tag": "植物化学",
+        "weight": 4
+      },
+      {
+        "tag": "天然物化学",
+        "weight": 3
+      },
+      {
+        "tag": "有機化学",
+        "weight": 2
+      },
+      {
+        "tag": "食品",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "環境",
     "research_tags": [
-      { "tag": "環境科学", "weight": 4 },
-      { "tag": "生態学", "weight": 3 },
-      { "tag": "環境工学", "weight": 3 },
-      { "tag": "環境保全", "weight": 2 }
+      {
+        "tag": "環境科学",
+        "weight": 4
+      },
+      {
+        "tag": "生態学",
+        "weight": 3
+      },
+      {
+        "tag": "環境工学",
+        "weight": 3
+      },
+      {
+        "tag": "環境保全",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "生態系",
     "research_tags": [
-      { "tag": "生態学", "weight": 4 },
-      { "tag": "水圏生態学", "weight": 3 },
-      { "tag": "海洋生態学", "weight": 3 },
-      { "tag": "微生物生態学", "weight": 3 },
-      { "tag": "環境科学", "weight": 2 }
+      {
+        "tag": "生態学",
+        "weight": 4
+      },
+      {
+        "tag": "水圏生態学",
+        "weight": 3
+      },
+      {
+        "tag": "海洋生態学",
+        "weight": 3
+      },
+      {
+        "tag": "微生物生態学",
+        "weight": 3
+      },
+      {
+        "tag": "環境科学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "環境保全",
     "research_tags": [
-      { "tag": "環境保全", "weight": 4 },
-      { "tag": "保全生物学", "weight": 4 },
-      { "tag": "生物多様性", "weight": 3 },
-      { "tag": "生態学", "weight": 3 },
-      { "tag": "フィールド調査", "weight": 2 }
+      {
+        "tag": "環境保全",
+        "weight": 4
+      },
+      {
+        "tag": "保全生物学",
+        "weight": 4
+      },
+      {
+        "tag": "生物多様性",
+        "weight": 3
+      },
+      {
+        "tag": "生態学",
+        "weight": 3
+      },
+      {
+        "tag": "フィールド調査",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "生物多様性",
     "research_tags": [
-      { "tag": "生物多様性", "weight": 4 },
-      { "tag": "保全生物学", "weight": 3 },
-      { "tag": "生態学", "weight": 3 },
-      { "tag": "フィールド調査", "weight": 2 }
+      {
+        "tag": "生物多様性",
+        "weight": 4
+      },
+      {
+        "tag": "保全生物学",
+        "weight": 3
+      },
+      {
+        "tag": "生態学",
+        "weight": 3
+      },
+      {
+        "tag": "フィールド調査",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "水環境",
     "research_tags": [
-      { "tag": "水圏生態学", "weight": 4 },
-      { "tag": "環境工学", "weight": 3 },
-      { "tag": "微生物学", "weight": 2 }
+      {
+        "tag": "水圏生態学",
+        "weight": 4
+      },
+      {
+        "tag": "環境工学",
+        "weight": 3
+      },
+      {
+        "tag": "微生物学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "野外調査",
     "research_tags": [
-      { "tag": "フィールド調査", "weight": 4 },
-      { "tag": "生態学", "weight": 3 },
-      { "tag": "生物多様性", "weight": 3 },
-      { "tag": "動物行動", "weight": 2 }
+      {
+        "tag": "フィールド調査",
+        "weight": 4
+      },
+      {
+        "tag": "生態学",
+        "weight": 3
+      },
+      {
+        "tag": "生物多様性",
+        "weight": 3
+      },
+      {
+        "tag": "動物行動",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "医療",
     "research_tags": [
-      { "tag": "医療機器", "weight": 4 },
-      { "tag": "再生医療", "weight": 3 },
-      { "tag": "医療材料", "weight": 3 },
-      { "tag": "生体医工学", "weight": 3 }
+      {
+        "tag": "医療機器",
+        "weight": 4
+      },
+      {
+        "tag": "再生医療",
+        "weight": 3
+      },
+      {
+        "tag": "医療材料",
+        "weight": 3
+      },
+      {
+        "tag": "生体医工学",
+        "weight": 3
+      }
     ]
   },
   {
     "concept": "リハビリテーション",
     "research_tags": [
-      { "tag": "リハビリテーション", "weight": 4 },
-      { "tag": "運動生理学", "weight": 3 },
-      { "tag": "福祉機器", "weight": 3 },
-      { "tag": "生体信号処理", "weight": 2 }
+      {
+        "tag": "リハビリテーション",
+        "weight": 4
+      },
+      {
+        "tag": "運動生理学",
+        "weight": 3
+      },
+      {
+        "tag": "福祉機器",
+        "weight": 3
+      },
+      {
+        "tag": "生体信号処理",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "ロボット",
     "research_tags": [
-      { "tag": "メディカルロボティクス", "weight": 4 },
-      { "tag": "医療機器", "weight": 3 },
-      { "tag": "福祉機器", "weight": 3 }
+      {
+        "tag": "メディカルロボティクス",
+        "weight": 4
+      },
+      {
+        "tag": "医療機器",
+        "weight": 3
+      },
+      {
+        "tag": "福祉機器",
+        "weight": 3
+      }
     ]
   },
   {
     "concept": "データ解析",
     "research_tags": [
-      { "tag": "データ解析", "weight": 4 },
-      { "tag": "生物統計", "weight": 3 },
-      { "tag": "生物情報学", "weight": 3 },
-      { "tag": "信号処理", "weight": 2 }
+      {
+        "tag": "データ解析",
+        "weight": 4
+      },
+      {
+        "tag": "生物統計",
+        "weight": 3
+      },
+      {
+        "tag": "生物情報学",
+        "weight": 3
+      },
+      {
+        "tag": "信号処理",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "情報",
     "research_tags": [
-      { "tag": "生物情報学", "weight": 3 },
-      { "tag": "データ解析", "weight": 3 },
-      { "tag": "生体情報学", "weight": 3 }
+      {
+        "tag": "生物情報学",
+        "weight": 3
+      },
+      {
+        "tag": "データ解析",
+        "weight": 3
+      },
+      {
+        "tag": "生体情報学",
+        "weight": 3
+      }
     ]
   },
   {
     "concept": "極限環境",
     "research_tags": [
-      { "tag": "極限環境生命科学", "weight": 4 },
-      { "tag": "微生物学", "weight": 3 },
-      { "tag": "放射線生物学", "weight": 2 }
+      {
+        "tag": "極限環境生命科学",
+        "weight": 4
+      },
+      {
+        "tag": "微生物学",
+        "weight": 3
+      },
+      {
+        "tag": "放射線生物学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "分子生物学",
     "research_tags": [
-      { "tag": "分子生物学", "weight": 4 },
-      { "tag": "遺伝子解析", "weight": 3 },
-      { "tag": "タンパク質解析", "weight": 3 },
-      { "tag": "細胞生物学", "weight": 2 }
+      {
+        "tag": "分子生物学",
+        "weight": 4
+      },
+      {
+        "tag": "遺伝子解析",
+        "weight": 3
+      },
+      {
+        "tag": "タンパク質解析",
+        "weight": 3
+      },
+      {
+        "tag": "細胞生物学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "遺伝子解析",
     "research_tags": [
-      { "tag": "遺伝子解析", "weight": 4 },
-      { "tag": "ゲノム", "weight": 3 },
-      { "tag": "分子遺伝学", "weight": 3 },
-      { "tag": "生物情報学", "weight": 2 }
+      {
+        "tag": "遺伝子解析",
+        "weight": 4
+      },
+      {
+        "tag": "ゲノム",
+        "weight": 3
+      },
+      {
+        "tag": "分子遺伝学",
+        "weight": 3
+      },
+      {
+        "tag": "生物情報学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "細胞培養",
     "research_tags": [
-      { "tag": "細胞培養", "weight": 4 },
-      { "tag": "細胞工学", "weight": 4 },
-      { "tag": "再生医療", "weight": 3 },
-      { "tag": "細胞評価", "weight": 2 }
+      {
+        "tag": "細胞培養",
+        "weight": 4
+      },
+      {
+        "tag": "細胞工学",
+        "weight": 4
+      },
+      {
+        "tag": "再生医療",
+        "weight": 3
+      },
+      {
+        "tag": "細胞評価",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "微生物培養",
     "research_tags": [
-      { "tag": "微生物培養", "weight": 4 },
-      { "tag": "微生物学", "weight": 4 },
-      { "tag": "応用微生物学", "weight": 3 },
-      { "tag": "環境微生物学", "weight": 2 }
+      {
+        "tag": "微生物培養",
+        "weight": 4
+      },
+      {
+        "tag": "微生物学",
+        "weight": 4
+      },
+      {
+        "tag": "応用微生物学",
+        "weight": 3
+      },
+      {
+        "tag": "環境微生物学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "化学分析",
     "research_tags": [
-      { "tag": "化学分析", "weight": 4 },
-      { "tag": "環境分析", "weight": 3 },
-      { "tag": "代謝物解析", "weight": 3 },
-      { "tag": "植物化学", "weight": 2 }
+      {
+        "tag": "化学分析",
+        "weight": 4
+      },
+      {
+        "tag": "環境分析",
+        "weight": 3
+      },
+      {
+        "tag": "代謝物解析",
+        "weight": 3
+      },
+      {
+        "tag": "植物化学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "タンパク質",
     "research_tags": [
-      { "tag": "タンパク質解析", "weight": 4 },
-      { "tag": "構造生物学", "weight": 3 },
-      { "tag": "酵素工学", "weight": 2 },
-      { "tag": "分子生物学", "weight": 2 }
+      {
+        "tag": "タンパク質解析",
+        "weight": 4
+      },
+      {
+        "tag": "構造生物学",
+        "weight": 3
+      },
+      {
+        "tag": "酵素工学",
+        "weight": 2
+      },
+      {
+        "tag": "分子生物学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "発生生物学",
     "research_tags": [
-      { "tag": "発生生物学", "weight": 4 },
-      { "tag": "再生生物学", "weight": 3 },
-      { "tag": "形態学", "weight": 3 },
-      { "tag": "細胞生物学", "weight": 2 }
+      {
+        "tag": "発生生物学",
+        "weight": 4
+      },
+      {
+        "tag": "再生生物学",
+        "weight": 3
+      },
+      {
+        "tag": "形態学",
+        "weight": 3
+      },
+      {
+        "tag": "細胞生物学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "進化生物学",
     "research_tags": [
-      { "tag": "進化生物学", "weight": 4 },
-      { "tag": "進化", "weight": 3 },
-      { "tag": "分類学", "weight": 2 },
-      { "tag": "生物多様性", "weight": 2 }
+      {
+        "tag": "進化生物学",
+        "weight": 4
+      },
+      {
+        "tag": "進化",
+        "weight": 3
+      },
+      {
+        "tag": "分類学",
+        "weight": 2
+      },
+      {
+        "tag": "生物多様性",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "健康科学",
     "research_tags": [
-      { "tag": "健康科学", "weight": 4 },
-      { "tag": "ヘルスプロモーション", "weight": 3 },
-      { "tag": "運動生理学", "weight": 2 },
-      { "tag": "免疫学", "weight": 2 }
+      {
+        "tag": "健康科学",
+        "weight": 4
+      },
+      {
+        "tag": "ヘルスプロモーション",
+        "weight": 3
+      },
+      {
+        "tag": "運動生理学",
+        "weight": 2
+      },
+      {
+        "tag": "免疫学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "免疫学",
     "research_tags": [
-      { "tag": "免疫学", "weight": 4 },
-      { "tag": "免疫", "weight": 3 },
-      { "tag": "細胞生物学", "weight": 2 },
-      { "tag": "健康科学", "weight": 2 }
+      {
+        "tag": "免疫学",
+        "weight": 4
+      },
+      {
+        "tag": "免疫",
+        "weight": 3
+      },
+      {
+        "tag": "細胞生物学",
+        "weight": 2
+      },
+      {
+        "tag": "健康科学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "ストレス",
     "research_tags": [
-      { "tag": "ストレス", "weight": 4 },
-      { "tag": "神経科学", "weight": 2 },
-      { "tag": "環境応答学", "weight": 2 },
-      { "tag": "健康科学", "weight": 2 }
+      {
+        "tag": "ストレス",
+        "weight": 4
+      },
+      {
+        "tag": "神経科学",
+        "weight": 2
+      },
+      {
+        "tag": "環境応答学",
+        "weight": 2
+      },
+      {
+        "tag": "健康科学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "生理測定",
     "research_tags": [
-      { "tag": "生理測定", "weight": 4 },
-      { "tag": "生体信号処理", "weight": 3 },
-      { "tag": "運動生理学", "weight": 3 },
-      { "tag": "生体情報学", "weight": 2 }
+      {
+        "tag": "生理測定",
+        "weight": 4
+      },
+      {
+        "tag": "生体信号処理",
+        "weight": 3
+      },
+      {
+        "tag": "運動生理学",
+        "weight": 3
+      },
+      {
+        "tag": "生体情報学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "動作解析",
     "research_tags": [
-      { "tag": "動作解析", "weight": 4 },
-      { "tag": "バイオメカニクス", "weight": 4 },
-      { "tag": "生体力学", "weight": 3 },
-      { "tag": "モーションキャプチャ", "weight": 2 }
+      {
+        "tag": "動作解析",
+        "weight": 4
+      },
+      {
+        "tag": "バイオメカニクス",
+        "weight": 4
+      },
+      {
+        "tag": "生体力学",
+        "weight": 3
+      },
+      {
+        "tag": "モーションキャプチャ",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "行動観察",
     "research_tags": [
-      { "tag": "行動観察", "weight": 4 },
-      { "tag": "動物行動", "weight": 3 },
-      { "tag": "行動生態学", "weight": 3 },
-      { "tag": "バイオロギング", "weight": 2 }
+      {
+        "tag": "行動観察",
+        "weight": 4
+      },
+      {
+        "tag": "動物行動",
+        "weight": 3
+      },
+      {
+        "tag": "行動生態学",
+        "weight": 3
+      },
+      {
+        "tag": "バイオロギング",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "材料科学",
     "research_tags": [
-      { "tag": "材料科学", "weight": 4 },
-      { "tag": "材料化学", "weight": 3 },
-      { "tag": "医療材料", "weight": 3 },
-      { "tag": "生体高分子材料", "weight": 2 }
+      {
+        "tag": "材料科学",
+        "weight": 4
+      },
+      {
+        "tag": "材料化学",
+        "weight": 3
+      },
+      {
+        "tag": "医療材料",
+        "weight": 3
+      },
+      {
+        "tag": "生体高分子材料",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "センサ開発",
     "research_tags": [
-      { "tag": "センサ開発", "weight": 4 },
-      { "tag": "機器開発", "weight": 3 },
-      { "tag": "医療機器", "weight": 3 },
-      { "tag": "生体計測", "weight": 2 }
+      {
+        "tag": "センサ開発",
+        "weight": 4
+      },
+      {
+        "tag": "機器開発",
+        "weight": 3
+      },
+      {
+        "tag": "医療機器",
+        "weight": 3
+      },
+      {
+        "tag": "生体計測",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "画像解析",
     "research_tags": [
-      { "tag": "画像解析", "weight": 4 },
-      { "tag": "画像処理", "weight": 3 },
-      { "tag": "データ解析", "weight": 2 },
-      { "tag": "生体信号処理", "weight": 2 }
+      {
+        "tag": "画像解析",
+        "weight": 4
+      },
+      {
+        "tag": "画像処理",
+        "weight": 3
+      },
+      {
+        "tag": "データ解析",
+        "weight": 2
+      },
+      {
+        "tag": "生体信号処理",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "統計解析",
     "research_tags": [
-      { "tag": "統計解析", "weight": 4 },
-      { "tag": "生物統計学", "weight": 3 },
-      { "tag": "統計モデリング", "weight": 3 },
-      { "tag": "データ解析", "weight": 2 }
+      {
+        "tag": "統計解析",
+        "weight": 4
+      },
+      {
+        "tag": "生物統計学",
+        "weight": 3
+      },
+      {
+        "tag": "統計モデリング",
+        "weight": 3
+      },
+      {
+        "tag": "データ解析",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "植物生理学",
     "research_tags": [
-      { "tag": "植物生理学", "weight": 4 },
-      { "tag": "植物栽培", "weight": 3 },
-      { "tag": "光合成測定", "weight": 3 },
-      { "tag": "環境応答学", "weight": 2 }
+      {
+        "tag": "植物生理学",
+        "weight": 4
+      },
+      {
+        "tag": "植物栽培",
+        "weight": 3
+      },
+      {
+        "tag": "光合成測定",
+        "weight": 3
+      },
+      {
+        "tag": "環境応答学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "応用微生物学",
     "research_tags": [
-      { "tag": "応用微生物学", "weight": 4 },
-      { "tag": "環境バイオテクノロジー", "weight": 3 },
-      { "tag": "微生物生理学", "weight": 3 },
-      { "tag": "生物資源学", "weight": 2 }
+      {
+        "tag": "応用微生物学",
+        "weight": 4
+      },
+      {
+        "tag": "環境バイオテクノロジー",
+        "weight": 3
+      },
+      {
+        "tag": "微生物生理学",
+        "weight": 3
+      },
+      {
+        "tag": "生物資源学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "糖鎖",
     "research_tags": [
-      { "tag": "糖鎖生物学", "weight": 4 },
-      { "tag": "糖質材料創成学", "weight": 3 },
-      { "tag": "材料化学", "weight": 2 },
-      { "tag": "細胞接着", "weight": 2 }
+      {
+        "tag": "糖鎖生物学",
+        "weight": 4
+      },
+      {
+        "tag": "糖質材料創成学",
+        "weight": 3
+      },
+      {
+        "tag": "材料化学",
+        "weight": 2
+      },
+      {
+        "tag": "細胞接着",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "極限環境微生物",
     "research_tags": [
-      { "tag": "極限環境微生物", "weight": 4 },
-      { "tag": "極限環境生命科学", "weight": 3 },
-      { "tag": "応用微生物学", "weight": 2 },
-      { "tag": "生物資源学", "weight": 2 }
+      {
+        "tag": "極限環境微生物",
+        "weight": 4
+      },
+      {
+        "tag": "極限環境生命科学",
+        "weight": 3
+      },
+      {
+        "tag": "応用微生物学",
+        "weight": 2
+      },
+      {
+        "tag": "生物資源学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "環境化学物質",
     "research_tags": [
-      { "tag": "環境化学物質", "weight": 4 },
-      { "tag": "毒性学", "weight": 3 },
-      { "tag": "環境保健学", "weight": 2 },
-      { "tag": "環境科学", "weight": 2 }
+      {
+        "tag": "環境化学物質",
+        "weight": 4
+      },
+      {
+        "tag": "毒性学",
+        "weight": 3
+      },
+      {
+        "tag": "環境保健学",
+        "weight": 2
+      },
+      {
+        "tag": "環境科学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "水質調査",
     "research_tags": [
-      { "tag": "水質調査", "weight": 4 },
-      { "tag": "水圏生態学", "weight": 3 },
-      { "tag": "環境モニタリング", "weight": 3 },
-      { "tag": "環境工学", "weight": 2 }
+      {
+        "tag": "水質調査",
+        "weight": 4
+      },
+      {
+        "tag": "水圏生態学",
+        "weight": 3
+      },
+      {
+        "tag": "環境モニタリング",
+        "weight": 3
+      },
+      {
+        "tag": "環境工学",
+        "weight": 2
+      }
     ]
   },
   {
     "concept": "医用工学",
     "research_tags": [
-      { "tag": "医用工学", "weight": 4 },
-      { "tag": "医療機器", "weight": 3 },
-      { "tag": "生体信号処理", "weight": 3 },
-      { "tag": "メディカルロボティクス", "weight": 2 }
+      {
+        "tag": "医用工学",
+        "weight": 4
+      },
+      {
+        "tag": "医療機器",
+        "weight": 3
+      },
+      {
+        "tag": "生体信号処理",
+        "weight": 3
+      },
+      {
+        "tag": "メディカルロボティクス",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "無脊椎動物",
+    "research_tags": [
+      {
+        "tag": "生態学",
+        "weight": 4
+      },
+      {
+        "tag": "分類学",
+        "weight": 3
+      },
+      {
+        "tag": "生物多様性",
+        "weight": 3
+      },
+      {
+        "tag": "水圏生態学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "昆虫",
+    "research_tags": [
+      {
+        "tag": "生態学",
+        "weight": 3
+      },
+      {
+        "tag": "生物多様性",
+        "weight": 3
+      },
+      {
+        "tag": "分類学",
+        "weight": 2
+      },
+      {
+        "tag": "動物行動",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "両生類",
+    "research_tags": [
+      {
+        "tag": "発生生物学",
+        "weight": 4
+      },
+      {
+        "tag": "再生生物学",
+        "weight": 3
+      },
+      {
+        "tag": "生態学",
+        "weight": 2
+      },
+      {
+        "tag": "形態学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "爬虫類",
+    "research_tags": [
+      {
+        "tag": "生態学",
+        "weight": 3
+      },
+      {
+        "tag": "生物多様性",
+        "weight": 2
+      },
+      {
+        "tag": "形態学",
+        "weight": 2
+      },
+      {
+        "tag": "動物行動",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "水生生物",
+    "research_tags": [
+      {
+        "tag": "水圏生態学",
+        "weight": 4
+      },
+      {
+        "tag": "海洋生態学",
+        "weight": 3
+      },
+      {
+        "tag": "生態学",
+        "weight": 2
+      },
+      {
+        "tag": "水環境",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "水生適応",
+    "research_tags": [
+      {
+        "tag": "バイオメカニクス",
+        "weight": 3
+      },
+      {
+        "tag": "形態学",
+        "weight": 3
+      },
+      {
+        "tag": "生態学",
+        "weight": 2
+      },
+      {
+        "tag": "運動生理学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "動物行動",
+    "research_tags": [
+      {
+        "tag": "動物行動",
+        "weight": 4
+      },
+      {
+        "tag": "行動生態学",
+        "weight": 3
+      },
+      {
+        "tag": "行動神経科学",
+        "weight": 2
+      },
+      {
+        "tag": "フィールド調査",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "動物福祉",
+    "research_tags": [
+      {
+        "tag": "動物福祉",
+        "weight": 4
+      },
+      {
+        "tag": "動物行動",
+        "weight": 3
+      },
+      {
+        "tag": "比較解剖学",
+        "weight": 2
+      },
+      {
+        "tag": "生態学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "比較解剖",
+    "research_tags": [
+      {
+        "tag": "比較解剖学",
+        "weight": 4
+      },
+      {
+        "tag": "形態学",
+        "weight": 4
+      },
+      {
+        "tag": "骨格",
+        "weight": 3
+      },
+      {
+        "tag": "バイオメカニクス",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "形態",
+    "research_tags": [
+      {
+        "tag": "形態学",
+        "weight": 4
+      },
+      {
+        "tag": "形態観察",
+        "weight": 3
+      },
+      {
+        "tag": "比較解剖学",
+        "weight": 3
+      },
+      {
+        "tag": "発生生物学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "形態観察",
+    "research_tags": [
+      {
+        "tag": "形態観察",
+        "weight": 4
+      },
+      {
+        "tag": "形態学",
+        "weight": 3
+      },
+      {
+        "tag": "標本観察",
+        "weight": 3
+      },
+      {
+        "tag": "分類学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "筋骨格",
+    "research_tags": [
+      {
+        "tag": "筋骨格",
+        "weight": 4
+      },
+      {
+        "tag": "バイオメカニクス",
+        "weight": 3
+      },
+      {
+        "tag": "運動生理学",
+        "weight": 3
+      },
+      {
+        "tag": "生体力学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "身体機能",
+    "research_tags": [
+      {
+        "tag": "運動生理学",
+        "weight": 4
+      },
+      {
+        "tag": "生理測定",
+        "weight": 3
+      },
+      {
+        "tag": "健康科学",
+        "weight": 2
+      },
+      {
+        "tag": "リハビリテーション",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "光合成",
+    "research_tags": [
+      {
+        "tag": "植物生理学",
+        "weight": 4
+      },
+      {
+        "tag": "光合成測定",
+        "weight": 3
+      },
+      {
+        "tag": "環境応答学",
+        "weight": 2
+      },
+      {
+        "tag": "作物学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "植物栽培",
+    "research_tags": [
+      {
+        "tag": "植物栽培",
+        "weight": 4
+      },
+      {
+        "tag": "植物生理学",
+        "weight": 3
+      },
+      {
+        "tag": "作物学",
+        "weight": 3
+      },
+      {
+        "tag": "環境制御",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "育種",
+    "research_tags": [
+      {
+        "tag": "育種",
+        "weight": 4
+      },
+      {
+        "tag": "遺伝学",
+        "weight": 3
+      },
+      {
+        "tag": "作物学",
+        "weight": 3
+      },
+      {
+        "tag": "植物分子生物学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "食品",
+    "research_tags": [
+      {
+        "tag": "食品",
+        "weight": 4
+      },
+      {
+        "tag": "発酵",
+        "weight": 3
+      },
+      {
+        "tag": "生物資源",
+        "weight": 3
+      },
+      {
+        "tag": "植物化学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "栄養",
+    "research_tags": [
+      {
+        "tag": "栄養素",
+        "weight": 3
+      },
+      {
+        "tag": "健康科学",
+        "weight": 3
+      },
+      {
+        "tag": "環境保健学",
+        "weight": 2
+      },
+      {
+        "tag": "食品",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "代謝",
+    "research_tags": [
+      {
+        "tag": "代謝物解析",
+        "weight": 4
+      },
+      {
+        "tag": "生理学",
+        "weight": 3
+      },
+      {
+        "tag": "健康科学",
+        "weight": 2
+      },
+      {
+        "tag": "植物化学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "乳酸菌",
+    "research_tags": [
+      {
+        "tag": "微生物学",
+        "weight": 4
+      },
+      {
+        "tag": "発酵",
+        "weight": 4
+      },
+      {
+        "tag": "食品",
+        "weight": 3
+      },
+      {
+        "tag": "健康科学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "感染症",
+    "research_tags": [
+      {
+        "tag": "免疫学",
+        "weight": 4
+      },
+      {
+        "tag": "微生物学",
+        "weight": 3
+      },
+      {
+        "tag": "医療",
+        "weight": 2
+      },
+      {
+        "tag": "健康科学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "アレルギー",
+    "research_tags": [
+      {
+        "tag": "免疫学",
+        "weight": 4
+      },
+      {
+        "tag": "健康科学",
+        "weight": 3
+      },
+      {
+        "tag": "環境保健学",
+        "weight": 2
+      },
+      {
+        "tag": "細胞生物学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "医療機器",
+    "research_tags": [
+      {
+        "tag": "医療機器",
+        "weight": 4
+      },
+      {
+        "tag": "医用工学",
+        "weight": 3
+      },
+      {
+        "tag": "メディカルロボティクス",
+        "weight": 2
+      },
+      {
+        "tag": "センサ開発",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "医療材料",
+    "research_tags": [
+      {
+        "tag": "医療材料",
+        "weight": 4
+      },
+      {
+        "tag": "材料科学",
+        "weight": 3
+      },
+      {
+        "tag": "生体高分子材料",
+        "weight": 2
+      },
+      {
+        "tag": "再生医療",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "福祉機器",
+    "research_tags": [
+      {
+        "tag": "福祉機器",
+        "weight": 4
+      },
+      {
+        "tag": "医療福祉支援工学",
+        "weight": 3
+      },
+      {
+        "tag": "リハビリテーション",
+        "weight": 2
+      },
+      {
+        "tag": "医用工学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "生体信号処理",
+    "research_tags": [
+      {
+        "tag": "生体信号処理",
+        "weight": 4
+      },
+      {
+        "tag": "生理測定",
+        "weight": 3
+      },
+      {
+        "tag": "生体情報学",
+        "weight": 3
+      },
+      {
+        "tag": "信号処理",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "生体計測",
+    "research_tags": [
+      {
+        "tag": "生体計測",
+        "weight": 4
+      },
+      {
+        "tag": "生理測定",
+        "weight": 3
+      },
+      {
+        "tag": "センサ開発",
+        "weight": 3
+      },
+      {
+        "tag": "医用工学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "環境問題",
+    "research_tags": [
+      {
+        "tag": "環境科学",
+        "weight": 4
+      },
+      {
+        "tag": "環境保全",
+        "weight": 3
+      },
+      {
+        "tag": "生態学",
+        "weight": 3
+      },
+      {
+        "tag": "環境工学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "環境科学",
+    "research_tags": [
+      {
+        "tag": "環境科学",
+        "weight": 4
+      },
+      {
+        "tag": "生態学",
+        "weight": 3
+      },
+      {
+        "tag": "環境工学",
+        "weight": 3
+      },
+      {
+        "tag": "環境保全",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "環境工学",
+    "research_tags": [
+      {
+        "tag": "環境工学",
+        "weight": 4
+      },
+      {
+        "tag": "水質調査",
+        "weight": 3
+      },
+      {
+        "tag": "環境モニタリング",
+        "weight": 3
+      },
+      {
+        "tag": "微生物学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "環境保健",
+    "research_tags": [
+      {
+        "tag": "環境保健学",
+        "weight": 4
+      },
+      {
+        "tag": "健康科学",
+        "weight": 3
+      },
+      {
+        "tag": "統計解析",
+        "weight": 2
+      },
+      {
+        "tag": "環境分析",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "環境モニタリング",
+    "research_tags": [
+      {
+        "tag": "環境モニタリング",
+        "weight": 4
+      },
+      {
+        "tag": "水質調査",
+        "weight": 3
+      },
+      {
+        "tag": "フィールド調査",
+        "weight": 3
+      },
+      {
+        "tag": "環境科学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "環境バイオテクノロジー",
+    "research_tags": [
+      {
+        "tag": "環境バイオテクノロジー",
+        "weight": 4
+      },
+      {
+        "tag": "応用微生物学",
+        "weight": 3
+      },
+      {
+        "tag": "微生物学",
+        "weight": 3
+      },
+      {
+        "tag": "環境工学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "持続可能性",
+    "research_tags": [
+      {
+        "tag": "生物資源",
+        "weight": 3
+      },
+      {
+        "tag": "環境保全",
+        "weight": 3
+      },
+      {
+        "tag": "環境科学",
+        "weight": 2
+      },
+      {
+        "tag": "作物学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "資源",
+    "research_tags": [
+      {
+        "tag": "生物資源",
+        "weight": 4
+      },
+      {
+        "tag": "作物学",
+        "weight": 2
+      },
+      {
+        "tag": "発酵",
+        "weight": 2
+      },
+      {
+        "tag": "応用微生物学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "農業",
+    "research_tags": [
+      {
+        "tag": "作物学",
+        "weight": 4
+      },
+      {
+        "tag": "植物生理学",
+        "weight": 3
+      },
+      {
+        "tag": "育種",
+        "weight": 2
+      },
+      {
+        "tag": "生物資源",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "材料化学",
+    "research_tags": [
+      {
+        "tag": "材料化学",
+        "weight": 4
+      },
+      {
+        "tag": "有機化学",
+        "weight": 3
+      },
+      {
+        "tag": "医療材料",
+        "weight": 2
+      },
+      {
+        "tag": "糖鎖生物学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "有機化学",
+    "research_tags": [
+      {
+        "tag": "有機化学",
+        "weight": 4
+      },
+      {
+        "tag": "天然物化学",
+        "weight": 3
+      },
+      {
+        "tag": "植物化学",
+        "weight": 2
+      },
+      {
+        "tag": "材料化学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "天然物",
+    "research_tags": [
+      {
+        "tag": "天然物化学",
+        "weight": 4
+      },
+      {
+        "tag": "植物化学",
+        "weight": 3
+      },
+      {
+        "tag": "有機化学",
+        "weight": 2
+      },
+      {
+        "tag": "化学分析",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "生物化学",
+    "research_tags": [
+      {
+        "tag": "生物化学",
+        "weight": 4
+      },
+      {
+        "tag": "酵素工学",
+        "weight": 3
+      },
+      {
+        "tag": "タンパク質解析",
+        "weight": 2
+      },
+      {
+        "tag": "分子生物学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "構造生物学",
+    "research_tags": [
+      {
+        "tag": "構造生物学",
+        "weight": 4
+      },
+      {
+        "tag": "タンパク質構造解析",
+        "weight": 3
+      },
+      {
+        "tag": "タンパク質解析",
+        "weight": 3
+      },
+      {
+        "tag": "分子生物学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "観察",
+    "research_tags": [
+      {
+        "tag": "形態観察",
+        "weight": 3
+      },
+      {
+        "tag": "顕微鏡観察",
+        "weight": 3
+      },
+      {
+        "tag": "画像解析",
+        "weight": 2
+      },
+      {
+        "tag": "分類学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "実験方法",
+    "research_tags": [
+      {
+        "tag": "分子実験",
+        "weight": 3
+      },
+      {
+        "tag": "細胞培養",
+        "weight": 2
+      },
+      {
+        "tag": "微生物培養",
+        "weight": 2
+      },
+      {
+        "tag": "化学分析",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "AI",
+    "research_tags": [
+      {
+        "tag": "AI",
+        "weight": 3
+      },
+      {
+        "tag": "データ解析",
+        "weight": 3
+      },
+      {
+        "tag": "画像解析",
+        "weight": 2
+      },
+      {
+        "tag": "生物情報学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "ゲーム",
+    "research_tags": [
+      {
+        "tag": "情報",
+        "weight": 3
+      },
+      {
+        "tag": "データ解析",
+        "weight": 2
+      },
+      {
+        "tag": "生体信号処理",
+        "weight": 2
+      },
+      {
+        "tag": "AI",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "プログラミング",
+    "research_tags": [
+      {
+        "tag": "データ解析",
+        "weight": 3
+      },
+      {
+        "tag": "生物情報学",
+        "weight": 3
+      },
+      {
+        "tag": "画像解析",
+        "weight": 2
+      },
+      {
+        "tag": "AI",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "ものづくり",
+    "research_tags": [
+      {
+        "tag": "医療機器",
+        "weight": 3
+      },
+      {
+        "tag": "材料科学",
+        "weight": 3
+      },
+      {
+        "tag": "センサ開発",
+        "weight": 2
+      },
+      {
+        "tag": "メディカルロボティクス",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "工学",
+    "research_tags": [
+      {
+        "tag": "医用工学",
+        "weight": 3
+      },
+      {
+        "tag": "医療機器",
+        "weight": 3
+      },
+      {
+        "tag": "材料科学",
+        "weight": 2
+      },
+      {
+        "tag": "生体信号処理",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "再生医療",
+    "research_tags": [
+      {
+        "tag": "再生医療",
+        "weight": 4
+      },
+      {
+        "tag": "細胞培養",
+        "weight": 3
+      },
+      {
+        "tag": "細胞工学",
+        "weight": 3
+      },
+      {
+        "tag": "医療",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "再生生物学",
+    "research_tags": [
+      {
+        "tag": "再生生物学",
+        "weight": 4
+      },
+      {
+        "tag": "発生生物学",
+        "weight": 3
+      },
+      {
+        "tag": "細胞生物学",
+        "weight": 2
+      },
+      {
+        "tag": "再生医療",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "分類学",
+    "research_tags": [
+      {
+        "tag": "分類学",
+        "weight": 4
+      },
+      {
+        "tag": "生物多様性",
+        "weight": 3
+      },
+      {
+        "tag": "形態観察",
+        "weight": 2
+      },
+      {
+        "tag": "生態学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "水圏生態学",
+    "research_tags": [
+      {
+        "tag": "水圏生態学",
+        "weight": 4
+      },
+      {
+        "tag": "水質調査",
+        "weight": 2
+      },
+      {
+        "tag": "生態学",
+        "weight": 2
+      },
+      {
+        "tag": "環境科学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "海洋",
+    "research_tags": [
+      {
+        "tag": "海洋生態学",
+        "weight": 4
+      },
+      {
+        "tag": "水圏生態学",
+        "weight": 3
+      },
+      {
+        "tag": "水生生物",
+        "weight": 2
+      },
+      {
+        "tag": "環境保全",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "放射線",
+    "research_tags": [
+      {
+        "tag": "放射線生物学",
+        "weight": 4
+      },
+      {
+        "tag": "放射線微生物学",
+        "weight": 3
+      },
+      {
+        "tag": "極限環境生命科学",
+        "weight": 2
+      },
+      {
+        "tag": "微生物学",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "concept": "乾燥耐性",
+    "research_tags": [
+      {
+        "tag": "極限環境生命科学",
+        "weight": 3
+      },
+      {
+        "tag": "微小動物",
+        "weight": 2
+      },
+      {
+        "tag": "生理学",
+        "weight": 2
+      },
+      {
+        "tag": "環境応答学",
+        "weight": 2
+      }
     ]
   }
 ]
