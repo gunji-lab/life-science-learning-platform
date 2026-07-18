@@ -30,7 +30,8 @@
 <nav class="tabs" aria-label="メインメニュー">
   <button class="tab active" data-view="home">ホーム</button>
   <button class="tab" data-view="interest">興味から探す</button>
-  <button class="tab" data-view="ai-compass">AI Compass β</button>
+  <button class="tab" data-view="ai-compass">AI Research Compass β</button>
+  <button class="tab admin-tab" data-view="ai-admin">辞書育成支援</button>
   <button class="tab" data-view="labs">研究室一覧</button>
   <button class="tab" data-view="visitors">受験生のみなさんへ</button>
 </nav>
@@ -90,7 +91,7 @@
   <div class="ai-compass-hero card">
     <span class="eyebrow">AI RESEARCH COMPASS β</span>
     <h2>気になることを、研究の言葉へ。</h2>
-    <p>動物園が好き、DNAが面白そう、医療に興味がある。ふだんの言葉を、My Labの研究キーワードへ翻訳して研究室との出会いを探します。</p>
+    <p>動物園が好き、DNAが面白そう、医療に興味がある。ふだんの言葉を、My Labの研究キーワードへ翻訳して研究室との出会いを探します。β版では生成AIを使わず、静的な辞書データで検索します。</p>
   </div>
   <form id="ai-compass-form" class="ai-compass-form card">
     <label for="ai-compass-input">あなたが気になっていることを自由に書いてください。</label>
@@ -105,6 +106,15 @@
     <button class="primary" type="submit">研究を探す →</button>
   </form>
   <section id="ai-compass-results" class="ai-compass-results" aria-live="polite"></section>
+</section>
+
+<section id="view-ai-admin" class="view">
+  <div class="ai-admin-hero">
+    <span class="eyebrow">DICTIONARY GARDEN</span>
+    <h2>辞書育成支援</h2>
+    <p>AI Research Compass βは、完成した推薦AIではありません。未登録語やクリック、👍/👎を見ながら、高校生の言葉と研究タグをつなぐ辞書を育てていきます。</p>
+  </div>
+  <section id="ai-compass-admin" class="ai-compass-admin card" aria-live="polite"></section>
 </section>
 
 <section id="view-labs" class="view">
@@ -158,6 +168,12 @@
   <p>My Lab β1 · 東洋大学生命科学部の公式研究室一覧と公開情報をもとに構成</p>
   <p>© Megu GUNJI [ Toyo University ]</p>
 </footer>
-<script src="app.js?v=20260717-hash-gas-logging"></script>
+<script src="js/ai-compass/normalize.js?v=20260719-two-layer"></script>
+<script src="js/ai-compass/unknownWordLogger.js?v=20260719-two-layer"></script>
+<script src="js/ai-compass/dictionaryMatcher.js?v=20260719-two-layer"></script>
+<script src="js/ai-compass/conceptMapper.js?v=20260719-two-layer"></script>
+<script src="js/ai-compass/labScorer.js?v=20260719-two-layer"></script>
+<script src="js/ai-compass/resultRenderer.js?v=20260719-two-layer"></script>
+<script src="app.js?v=20260719-two-layer-ai-compass"></script>
 </body>
 </html>
