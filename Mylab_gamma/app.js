@@ -1022,6 +1022,9 @@ function runAICompassSearch(rawInput) {
   aiLastResult = { input, analysis, matches };
   renderAICompassResults(aiLastResult);
   renderAICompassAdmin();
+  requestAnimationFrame(() => {
+    resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 }
 
 function analyzeAICompassInput(input) {
@@ -1183,7 +1186,7 @@ function renderAICompassResults(result) {
       <span class="eyebrow">INTEREST MAP</span>
       <h3>あなたの興味を整理しました</h3>
       ${detectedTerms.length || concepts.length ? `<div class="ai-reason-map"><div><strong>検出された入力語</strong><p>${detectedTerms.slice(0, 6).map((item) => `<span>${escapeHtml(item.matched || item.keyword)}</span>`).join('')}</p></div><div><strong>一般概念</strong><p>${concepts.slice(0, 6).map((item) => `<span>${escapeHtml(item.concept)}</span>`).join('')}</p></div></div>` : ''}
-      ${tags.length ? `<div class="ai-tag-list">${tags.map((item) => `<span>✓ ${escapeHtml(item.tag)}</span>`).join('')}</div>` : '<p class="ai-learning">この言葉はまだ学習中です。検索結果は参考程度にご利用ください。</p>'}
+      ${tags.length ? `<div class="ai-tag-row"><strong>研究キーワード</strong><div class="ai-tag-list">${tags.map((item) => `<span>✓ ${escapeHtml(item.tag)}</span>`).join('')}</div></div>` : '<p class="ai-learning">この言葉はまだ学習中です。検索結果は参考程度にご利用ください。</p>'}
       ${unknown.length ? `<p class="ai-learning">まだ辞書で拾いきれていない言葉: ${unknown.map(escapeHtml).join('、')}</p>` : ''}
     </section>
     <section class="hero-question ai-today-question"><span>TODAY'S QUESTION</span><h3>${escapeHtml(topQuestion)}</h3></section>
