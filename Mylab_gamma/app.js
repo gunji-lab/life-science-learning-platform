@@ -1171,18 +1171,18 @@ function extractAICompassInputTerms(input = '') {
 
 function renderAICompassResults(result) {
   const container = qs('#ai-compass-results');
-  const tags = result.analysis.tags.slice(0, 8);
   const unknown = result.analysis.unknownTerms;
   const matches = result.matches;
   const detectedTerms = result.analysis.dictionaryResult?.detectedTerms || [];
   const concepts = result.analysis.dictionaryResult?.concepts || [];
   const researchTags = result.analysis.bridgeResult?.researchTags || [];
+  const tags = (researchTags.length ? researchTags : result.analysis.tags).slice(0, 8);
   const topQuestion = matches[0]?.lab?.question || 'あなたの興味は、どんな研究の問いにつながるだろう？';
   container.innerHTML = `
     <section class="ai-result-block card">
       <span class="eyebrow">INTEREST MAP</span>
       <h3>あなたの興味を整理しました</h3>
-      ${detectedTerms.length ? `<div class="ai-reason-map"><div><strong>検出された入力語</strong><p>${detectedTerms.map((item) => `<span>${escapeHtml(item.matched || item.keyword)}</span>`).join('')}</p></div><div><strong>一般概念</strong><p>${concepts.slice(0, 8).map((item) => `<span>${escapeHtml(item.concept)}</span>`).join('')}</p></div><div><strong>研究タグ</strong><p>${researchTags.slice(0, 8).map((item) => `<span>${escapeHtml(item.tag)}</span>`).join('')}</p></div></div>` : ''}
+      ${detectedTerms.length || concepts.length ? `<div class="ai-reason-map"><div><strong>検出された入力語</strong><p>${detectedTerms.slice(0, 6).map((item) => `<span>${escapeHtml(item.matched || item.keyword)}</span>`).join('')}</p></div><div><strong>一般概念</strong><p>${concepts.slice(0, 6).map((item) => `<span>${escapeHtml(item.concept)}</span>`).join('')}</p></div></div>` : ''}
       ${tags.length ? `<div class="ai-tag-list">${tags.map((item) => `<span>✓ ${escapeHtml(item.tag)}</span>`).join('')}</div>` : '<p class="ai-learning">この言葉はまだ学習中です。検索結果は参考程度にご利用ください。</p>'}
       ${unknown.length ? `<p class="ai-learning">まだ辞書で拾いきれていない言葉: ${unknown.map(escapeHtml).join('、')}</p>` : ''}
     </section>
