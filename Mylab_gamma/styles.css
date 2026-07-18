@@ -2699,6 +2699,19 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   color:var(--navy);
   font-size:1.28rem;
 }
+.ai-tag-row{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px;
+  align-items:start;
+}
+.ai-tag-row > strong{
+  padding:8px 0;
+  color:#7b856d;
+  font-size:.82rem;
+  font-weight:900;
+  white-space:nowrap;
+}
 .ai-tag-list{
   display:flex;
   flex-wrap:wrap;
@@ -3018,6 +3031,13 @@ h1,h2,h3,.welcome h2,.section-head h2,.modal-title h2,.hero-question h3{
   }
   .ai-compass-form textarea{
     min-height:150px;
+  }
+  .ai-tag-row{
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+  .ai-tag-row > strong{
+    padding:0;
   }
   .ai-result-head,
   .ai-admin-head{
