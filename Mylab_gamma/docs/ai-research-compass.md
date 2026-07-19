@@ -133,6 +133,8 @@ python3 Mylab_gamma/tools/build_lab_keyword_sources.py
 python3 Mylab_gamma/tools/build_lab_research_tags.py
 ```
 
+旧CSVの同義語に含まれる `キリン`、`ゾウ`、`動物園` のような具体例は、研究室側辞書へ機械的には取り込みません。これらは「哺乳類」「動物」の説明例であって、その研究室が具体的に扱う対象とは限らないためです。具体的な対象種・対象物は、研究室紹介ページ等で確認できる場合だけ `lab-keyword-sources.json` に入れます。
+
 ## 旧共通辞書CSV
 
 ```csv

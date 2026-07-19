@@ -39,6 +39,17 @@ FIELD_WEIGHTS = {
     "source_confirmed": 4,
 }
 
+TAXON_EXAMPLE_SYNONYMS = {
+    "動物園",
+    "水族館",
+    "野生動物",
+    "マウス",
+    "キリン",
+    "ゾウ",
+    "魚",
+    "メダカ",
+}
+
 
 def normalize(text: str) -> str:
     text = (
@@ -52,9 +63,15 @@ def normalize(text: str) -> str:
     return re.sub(r"[、。,.!?！？「」『』（）()\[\]【】・/／\\\s\-‐‑–—]", "", text)
 
 
-def add_term(store: OrderedDict[str, dict[str, object]], term: str, weight: int, source: str) -> None:
+def add_term(store: OrderedDict[str, dict[str, object]], term: str, weight: int, source: str, lab_id: str = "") -> None:
     term = str(term).strip()
     if not term:
+        return
+    if source == "general_dictionary:concept" and term in TAXON_EXAMPLE_SYNONYMS:
+        return
+    if source.endswith(":synonym") and term in TAXON_EXAMPLE_SYNONYMS:
+        return
+    if source.endswith(":terms") and term in TAXON_EXAMPLE_SYNONYMS and not keep_confirmed_taxon_term(lab_id, term):
         return
     key = normalize(term)
     if len(key) < 2:
@@ -63,6 +80,10 @@ def add_term(store: OrderedDict[str, dict[str, object]], term: str, weight: int,
     current["weight"] = max(int(current["weight"]), int(weight))
     if source not in current["sources"]:
         current["sources"].append(source)
+
+
+def keep_confirmed_taxon_term(lab_id: str, term: str) -> bool:
+    return lab_id == "gunji" and str(term).strip() in {"キリン", "ゾウ"}
 
 
 def lab_text(lab: dict[str, object]) -> str:
@@ -109,11 +130,11 @@ def build_records(labs: list[dict[str, object]], general: list[dict[str, object]
 
         for field in ("fields", "targets", "methods"):
             for term in tags.get(field, []) or []:
-                add_term(terms, term, FIELD_WEIGHTS[field], f"labs.json:tags.{field}")
+                add_term(terms, term, FIELD_WEIGHTS[field], f"labs.json:tags.{field}", lab_id)
         for term in lab.get("keywords", []) or []:
-            add_term(terms, term, FIELD_WEIGHTS["keywords"], "labs.json:keywords")
+            add_term(terms, term, FIELD_WEIGHTS["keywords"], "labs.json:keywords", lab_id)
         for term in lab.get("methods", []) or []:
-            add_term(terms, term, FIELD_WEIGHTS["methods_list"], "labs.json:methods")
+            add_term(terms, term, FIELD_WEIGHTS["methods_list"], "labs.json:methods", lab_id)
 
         text = lab_text(lab)
         normalized_text = normalize(text)
@@ -121,14 +142,16 @@ def build_records(labs: list[dict[str, object]], general: list[dict[str, object]
             candidates = [entry.get("keyword"), *(entry.get("aliases", []) or [])]
             if any(normalize(candidate) and normalize(candidate) in normalized_text for candidate in candidates):
                 weight = min(4, int(entry.get("weight", 2) or 2))
-                add_term(terms, str(entry.get("keyword")), weight, "labs.json:text")
                 for concept in entry.get("concepts", []) or []:
-                    add_term(terms, str(concept), min(3, weight), "general_dictionary:concept")
+                    add_term(terms, str(concept), min(3, weight), "general_dictionary:concept", lab_id)
 
         for row in legacy_terms.get(lab_id, []):
-            add_term(terms, row["word"], int(row.get("weight") or FIELD_WEIGHTS["legacy"]), "ai_lab_dictionary.csv")
+            add_term(terms, row["word"], int(row.get("weight") or FIELD_WEIGHTS["legacy"]), "ai_lab_dictionary.csv", lab_id)
             for synonym in str(row.get("synonym", "")).split("|"):
-                add_term(terms, synonym, max(2, int(row.get("weight") or FIELD_WEIGHTS["legacy"]) - 1), "ai_lab_dictionary.csv:synonym")
+                synonym = synonym.strip()
+                if synonym in TAXON_EXAMPLE_SYNONYMS:
+                    continue
+                add_term(terms, synonym, max(2, int(row.get("weight") or FIELD_WEIGHTS["legacy"]) - 1), "ai_lab_dictionary.csv:synonym", lab_id)
 
         urls: list[str] = []
         for source in source_terms.get(lab_id, []):
@@ -136,9 +159,9 @@ def build_records(labs: list[dict[str, object]], general: list[dict[str, object]
                 urls.append(str(source["url"]))
             for item in source.get("terms", []) or []:
                 if isinstance(item, str):
-                    add_term(terms, item, FIELD_WEIGHTS["source_confirmed"], f"{source.get('source_type', 'source')}:terms")
+                    add_term(terms, item, FIELD_WEIGHTS["source_confirmed"], f"{source.get('source_type', 'source')}:terms", lab_id)
                 else:
-                    add_term(terms, str(item.get("term", "")), int(item.get("weight") or FIELD_WEIGHTS["source_confirmed"]), f"{source.get('source_type', 'source')}:terms")
+                    add_term(terms, str(item.get("term", "")), int(item.get("weight") or FIELD_WEIGHTS["source_confirmed"]), f"{source.get('source_type', 'source')}:terms", lab_id)
 
         sorted_terms = sorted(terms.values(), key=lambda item: (-int(item["weight"]), str(item["tag"])))
         records.append(

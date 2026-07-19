@@ -47,6 +47,24 @@ GENERIC_TERMS = {
     "データ解析",
 }
 
+TAXON_EXAMPLE_SYNONYMS = {
+    "動物園",
+    "水族館",
+    "野生動物",
+    "マウス",
+    "キリン",
+    "ゾウ",
+    "魚",
+    "メダカ",
+}
+
+LAB_CONFIRMED_TERMS = {
+    "gunji": [
+        {"term": "キリン", "weight": 5},
+        {"term": "ゾウ", "weight": 4},
+    ],
+}
+
 
 def normalize(value: str) -> str:
     value = str(value).strip().replace("癌", "がん").replace("ガン", "がん")
@@ -62,6 +80,14 @@ def add_term(terms: OrderedDict[str, dict[str, object]], term: str, weight: int)
         return
     current = terms.setdefault(key, {"term": term, "weight": 0})
     current["weight"] = max(int(current["weight"]), int(weight))
+
+
+def is_taxon_example_synonym(term: str) -> bool:
+    return str(term).strip() in TAXON_EXAMPLE_SYNONYMS
+
+
+def keep_existing_taxon_term(lab_id: str, term: str) -> bool:
+    return lab_id == "gunji" and str(term).strip() in {"キリン", "ゾウ"}
 
 
 def load_legacy(path: Path) -> dict[str, list[dict[str, str]]]:
@@ -88,9 +114,17 @@ def build_sources(labs: list[dict[str, object]], legacy_by_lab: dict[str, list[d
         for source in existing_by_lab.get(lab_id, []):
             for item in source.get("terms", []) or []:
                 if isinstance(item, str):
+                    if is_taxon_example_synonym(item) and not keep_existing_taxon_term(lab_id, item):
+                        continue
                     add_term(terms, item, 4)
                 else:
-                    add_term(terms, str(item.get("term", "")), int(item.get("weight") or 4))
+                    term = str(item.get("term", ""))
+                    if is_taxon_example_synonym(term) and not keep_existing_taxon_term(lab_id, term):
+                        continue
+                    add_term(terms, term, int(item.get("weight") or 4))
+
+        for item in LAB_CONFIRMED_TERMS.get(lab_id, []):
+            add_term(terms, str(item["term"]), int(item["weight"]))
 
         tags = lab.get("tags") or {}
         for field, weight in (("fields", 5), ("targets", 5), ("methods", 4)):
@@ -111,6 +145,8 @@ def build_sources(labs: list[dict[str, object]], legacy_by_lab: dict[str, list[d
                 add_term(terms, word, min(5, max(3, weight)))
             for synonym in str(row.get("synonym", "")).split("|"):
                 synonym = synonym.strip()
+                if is_taxon_example_synonym(synonym):
+                    continue
                 if synonym and synonym not in GENERIC_TERMS and len(normalize(synonym)) >= 3:
                     add_term(terms, synonym, max(2, min(4, weight - 1)))
 

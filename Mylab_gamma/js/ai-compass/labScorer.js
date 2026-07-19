@@ -62,6 +62,12 @@
           }
         });
 
+        const contextFactor = taxonContextFactor(dictionaryResult, record);
+        if (contextFactor !== 1) {
+          score *= contextFactor;
+          if (contextFactor > 1) matched.set('対象に合う研究文脈', (matched.get('対象に合う研究文脈') || 0) + 1);
+        }
+
         const matchedTags = [...matched.entries()]
           .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
           .map(([tag]) => tag);
@@ -90,6 +96,32 @@
     if (normalizedTerm === 'がん') return true;
     if (/^[a-z0-9]+$/i.test(normalizedTerm)) return normalizedTerm.length >= 3;
     return normalizedTerm.length >= 4 || /[ァ-ヶー]{3,}/.test(normalizedTerm);
+  }
+
+  function taxonContextFactor(dictionaryResult, record) {
+    const concepts = new Set((dictionaryResult.concepts || []).map((item) => item.concept));
+    const animalInput = hasAny(concepts, ['動物', '哺乳類', '鳥類', '魚類', '両生類', '爬虫類', '脊椎動物', '無脊椎動物', '昆虫']);
+    const plantInput = hasAny(concepts, ['植物', '作物', '花', '樹木', '植物生理学']);
+    const animalLab = hasStrongLabContext(record, ['動物', '哺乳類', '鳥類', '魚類', '両生類', '爬虫類', '脊椎動物', '無脊椎動物', '動物行動', '比較解剖学']);
+    const plantLab = hasStrongLabContext(record, ['植物', '作物', 'イネ', 'トマト', '植物生理学', '植物分子生物学', '植物ホルモン', '作物学']);
+    if (animalInput && plantLab && !animalLab) return 0.12;
+    if (plantInput && animalLab && !plantLab) return 0.12;
+    if (animalInput && animalLab && !plantLab) return 1.08;
+    if (plantInput && plantLab && !animalLab) return 1.08;
+    return 1;
+  }
+
+  function hasAny(values, candidates) {
+    return candidates.some((item) => values.has(item));
+  }
+
+  function hasStrongLabContext(record, candidates) {
+    const candidateSet = new Set(candidates);
+    return (record.research_tags || []).some((item) => {
+      if (!candidateSet.has(item.tag)) return false;
+      const sources = item.sources || [];
+      return sources.some((source) => source !== 'general_dictionary:concept');
+    });
   }
 
   namespace.scoreLabs = scoreLabs;

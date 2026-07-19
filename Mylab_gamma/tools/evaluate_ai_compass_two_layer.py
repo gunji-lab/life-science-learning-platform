@@ -230,11 +230,44 @@ def score_labs(
                 score += value
                 matched[tag] += value
 
+        context_factor = taxon_context_factor(concept_scores, record)
+        if context_factor != 1:
+            score *= context_factor
+            if context_factor > 1:
+                matched["対象に合う研究文脈"] += 1
+
         if score:
             scored.append((score, lab, [tag for tag, _ in matched.most_common()]))
 
     scored.sort(key=lambda item: (-item[0], item[1].get("department", ""), item[1].get("lab_name", "")))
     return scored
+
+
+def taxon_context_factor(concept_scores: Counter[str], record: dict[str, object]) -> float:
+    concepts = set(concept_scores)
+    animal_input = bool(concepts & {"動物", "哺乳類", "鳥類", "魚類", "両生類", "爬虫類", "脊椎動物", "無脊椎動物", "昆虫"})
+    plant_input = bool(concepts & {"植物", "作物", "花", "樹木", "植物生理学"})
+    animal_lab = has_strong_lab_context(record, {"動物", "哺乳類", "鳥類", "魚類", "両生類", "爬虫類", "脊椎動物", "無脊椎動物", "動物行動", "比較解剖学"})
+    plant_lab = has_strong_lab_context(record, {"植物", "作物", "イネ", "トマト", "植物生理学", "植物分子生物学", "植物ホルモン", "作物学"})
+    if animal_input and plant_lab and not animal_lab:
+        return 0.12
+    if plant_input and animal_lab and not plant_lab:
+        return 0.12
+    if animal_input and animal_lab and not plant_lab:
+        return 1.08
+    if plant_input and plant_lab and not animal_lab:
+        return 1.08
+    return 1
+
+
+def has_strong_lab_context(record: dict[str, object], candidates: set[str]) -> bool:
+    for item in record.get("research_tags", []):
+        if str(item.get("tag")) not in candidates:
+            continue
+        sources = [str(source) for source in item.get("sources", [])]
+        if any(source != "general_dictionary:concept" for source in sources):
+            return True
+    return False
 
 
 def evaluate_examples(args: argparse.Namespace) -> None:
