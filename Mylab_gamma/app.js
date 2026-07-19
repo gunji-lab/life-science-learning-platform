@@ -16,6 +16,7 @@ let aiLastResult = null;
 let aiLastLogId = '';
 let selected = new Set();
 let selectedDetailTerms = new Set();
+let selectedInterestDepartment = '';
 let selectedEventFilters = new Set();
 let selectedEventDate = '';
 let selectedLabJumpDepartment = '';
@@ -29,62 +30,70 @@ const aiLogStorageKey = 'mylab-ai-compass-logs';
 const interestRoutes = [
   {
     id: 'animals',
-    label: '動物やからだが気になる',
-    description: '動物の形、動き、発生、神経などから生命を見たい人へ。',
-    required: ['動物', '野生動物', '哺乳類', '鳥類', '魚類', 'キリン', '骨格', '筋肉', '心臓', '神経', '脳', '比較解剖学', '機能形態学', 'バイオメカニクス'],
-    terms: ['動物', '野生動物', '哺乳類', '鳥類', '魚類', 'キリン', '小型哺乳類', 'コウモリ', '海鳥', '脊椎動物', '骨格', '筋肉', '形態', '発生', '胚', '心臓', '神経', '脳', '行動', '動物行動', '運動', '比較解剖学', '機能形態学', 'バイオメカニクス', '動物福祉']
+    icon: '🦒',
+    label: '生きものや動物に興味がある',
+    description: '動物園や水族館が好き、動物の体や行動、生きものの不思議が気になる人はこちら。',
+    terms: ['動物', '生き物', 'どうぶつ', '哺乳類', '脊椎動物', '魚類', '水生生物', '無脊椎動物', '大型動物', 'けもの', 'キリン', 'ゾウ', '骨格', '筋肉', '筋骨格', '形態', '形態観察', '行動', '動物行動', '行動観察', '比較解剖', '比較解剖学', '進化', '進化生物学', 'バイオメカニクス', '飛行']
+  },
+  {
+    id: 'plants',
+    icon: '🌱',
+    label: '植物や農業に興味がある',
+    description: '花や野菜、米や作物、植物の成長や自然のしくみが気になる人はこちら。',
+    terms: ['植物', '作物', 'イネ', 'お米', '葉っぱ', '草花', '植物栽培', '光合成', '植物生理学', '植物分子生物学', '植物ホルモン', '農業', '食料', '植物化学', '植物バイオーム', '環境応答', '植物成長', '植物工場']
+  },
+  {
+    id: 'microbes',
+    icon: '🧫',
+    label: '菌・発酵・小さな生きものに興味がある',
+    description: '発酵食品、カビ、細菌、目に見えない生きものや極限環境の生命が気になる人はこちら。',
+    terms: ['微生物', '細菌', 'バクテリア', 'カビ', '発酵', '微生物培養', '微生物学', '応用微生物学', '微生物解析', '微生物分離・培養', '極限環境', '極限環境微生物', '南極', '北極', '宇宙', '乾眠', '強い生物', '電気活性微生物', '重金属耐性菌']
+  },
+  {
+    id: 'cells',
+    icon: '🧬',
+    label: 'DNA・細胞・ミクロな世界に興味がある',
+    description: 'DNAや遺伝子、細胞、タンパク質など、生命をつくる小さなしくみが気になる人はこちら。',
+    terms: ['細胞', '分子', '遺伝子', 'DNA', 'ゲノム', 'タンパク質', '分子生物学', '細胞培養', '細胞工学', '遺伝子解析', '遺伝子発現解析', '遺伝子・タンパク質解析', 'タンパク質解析', '分子実験', '分子生物学実験', '生化学実験', '構造生物学', '遺伝学', '遺伝子改変']
   },
   {
     id: 'health',
-    label: '病気・健康・医療に興味がある',
-    description: '健康、毒性、医療、リスク、こころと体の状態を考えたい人へ。',
-    terms: ['健康', '医療', '毒性', '環境健康', '環境保健', 'メンタルヘルス', 'リスク', '曝露', '公衆衛生', '細胞外小胞', 'ダイオキシン', '受容体', 'がん', '炎症', '免疫', '感染症', 'アレルギー', 'ストレス', '介護予防', 'リハビリテーション', '医療機器', '福祉機器', '生殖', '不妊', '再生医療']
+    icon: '🩺',
+    label: 'からだ・健康・病気に興味がある',
+    description: 'がん、免疫、筋肉、運動、睡眠、老化など、人のからだと健康が気になる人はこちら。',
+    terms: ['健康', '健康科学', 'からだ', '病気予防', '健康寿命', 'がん', '免疫', '免疫学', '神経', '神経科学', '筋肉', '骨格筋', '運動', '筋トレ', 'ストレス', '身体機能', '生理', '生理学', '生理測定', '心拍', '血圧', '呼吸', '代謝', '栄養']
   },
   {
-    id: 'plants_food',
-    label: '植物や食べものに関わりたい',
-    description: '植物、作物、食料、栄養、植物が作る成分に興味がある人へ。',
-    terms: ['植物', 'イネ', 'イネ科植物', '作物', '光合成', '植物生理', '植物ホルモン', '成長制御', 'ストリゴラクトン', '植物栄養', '鉄吸収', 'ムギネ酸類', '植物バイオーム', '水草', '水陸両生植物', '品種育成', '食料', '栄養', '収量', '植物化学', '天然物', '植物生化学', '特化代謝産物', '二次代謝産物']
+    id: 'medical_help',
+    icon: '🤝',
+    label: '医療や人を助ける技術に興味がある',
+    description: '医療機器、リハビリ、福祉、診断、ロボットなど、人の役に立つ技術に興味がある人はこちら。',
+    terms: ['医療', '診断', '治療', '再生医療', 'リハビリテーション', '医療機器', '福祉機器', '医用工学', '医療技術', '検査機器', 'センサ開発', '機器開発', 'ロボット', '介護ロボット', '福祉', '生体計測', '生体信号処理', '医療材料', 'バイオマテリアル']
   },
   {
     id: 'environment',
-    label: '環境問題を考えたい',
-    description: '水、地球環境、生態系、生物多様性、環境リスクを考えたい人へ。',
-    terms: ['環境', '水環境', '水質', '地球環境', '気候変動', '環境変動', '環境保全', '環境修復', '環境浄化', '生態系', '生態学', '生態リスク', '生物多様性', '保全', '海洋生態系', '持続可能性', '物質循環', '環境問題', '重金属', '環境低負荷農業']
+    icon: '🌏',
+    label: '環境や自然を守ることに興味がある',
+    description: '地球温暖化、水環境、生物多様性、環境保全など、自然と社会の未来が気になる人はこちら。',
+    terms: ['環境', '生態系', '水環境', '環境問題', '環境保全', '生物多様性', '生態学', '水質調査', '地球温暖化', '持続可能性', '環境科学', '環境化学', '環境化学物質', '環境バイオテクノロジー', '環境データ解析', '環境保健', '生態系評価', '保全生物学', 'フィールド調査', '野外調査', '自然観察', '外で調べる']
   },
   {
-    id: 'micro_world',
-    label: '微生物や見えない世界が気になる',
-    description: '微生物、極限環境、酵素、放射線、宇宙につながる生命を見たい人へ。',
-    terms: ['微生物', 'バクテリア', '糸状菌', '極限環境', '極限環境微生物', '超好熱菌', '極域', '南極', '北極', '低温適応', '放射線', '放射線抵抗性細菌', '宇宙', '酵素', '生体触媒', '発酵', '微生物学', '電気微生物', '電気活性微生物', '発電菌', '有機溶媒耐性微生物', '有用微生物', 'プラスチック分解菌', '重金属耐性菌', '微生物多様性']
+    id: 'food_chemistry',
+    icon: '🍚',
+    label: '食べ物・香り・成分に興味がある',
+    description: '食品、発酵、香り、栄養、植物がつくる成分や化学物質が気になる人はこちら。',
+    terms: ['食品', '食べ物', '発酵', '栄養', '化学成分', '成分分析', '有機化学', '酵素', '酵素活性測定', '物質を調べる', '化学分析', '化学', '化学実験', '生物化学', '生物資源', '資源', '物質', '環境化学物質', '毒性学']
   },
   {
-    id: 'dna_cells',
-    label: 'DNA・細胞・遺伝子を知りたい',
-    description: 'DNA、細胞、遺伝子、タンパク質など、生命の小さなしくみへ。',
-    terms: ['DNA', 'DNA修復', '遺伝子', '遺伝子解析', 'ゲノム', '突然変異', '細胞', '細胞培養', '細胞工学', 'iPS細胞', '分子生物学', 'タンパク質', '分子遺伝学', '分子', '神経回路', '細胞接着', '糖鎖間相互作用']
-  },
-  {
-    id: 'experiments',
-    label: '実験や分析が好き',
-    description: '実験、観察、培養、化学分析、測定を通して確かめたい人へ。',
-    terms: ['顕微鏡', '顕微鏡観察', '電子顕微鏡', '細胞培養', '培養', '化学', '化学分析', '分析化学', '成分分析', '測定', '生理測定', '生化学', '有機化学', '糖質', '糖鎖', '材料', 'バイオマテリアル', '医療材料', 'センサ', '生体センサ', '生体信号計測', '酵素活性', '分子生物学実験', '物理実験', '標本', '解剖', 'CT']
-  },
-  {
-    id: 'fieldwork',
-    label: '野外で生き物を調べたい',
-    description: 'フィールド調査、野生動物、生態系、自然環境を自分の目で見たい人へ。',
-    required: ['フィールド', '野外', '野生動物', '自然環境', '水環境', '海洋生態系', '分布', '分類', '地球環境調査'],
-    terms: ['フィールド', '野外', '野生動物', '自然環境', '生態系', '生物多様性', '分布', '分類', '海洋生態系', '水環境', '保全']
-  },
-  {
-    id: 'data',
-    label: 'データで生命を読み解きたい',
-    description: 'データ解析、統計、情報、ゲノム、計測から生命を理解したい人へ。',
-    terms: ['データ解析', '統計', '統計モデリング', '生物統計', '情報', 'ゲノム', 'バイオインフォマティクス', '生物情報学', '計測', '信号処理', '画像解析', 'AI', '機械学習', 'リスク評価', '疫学', '分布データ', '環境データ', 'モーションキャプチャ', 'バイオロギング']
+    id: 'data_making',
+    icon: '💻',
+    label: 'AI・データ・ものづくりに興味がある',
+    description: 'AI、ゲーム、プログラミング、画像解析、ロボット、材料づくりに興味がある人はこちら。',
+    terms: ['AI', 'プログラミング', 'データ解析', 'データ分析', 'データ', '生物統計', '統計', '統計解析', '画像解析', '画像処理', '画像認識', '情報', 'ものづくり', '材料科学', '材料化学', '材料', '素材', '材料評価', '工学', 'ロボット', 'センサ開発', 'モーションキャプチャ', '動作解析']
   }
 ];
-const homeRouteIds = ['animals', 'plants_food', 'micro_world', 'environment', 'health'];
+const homeRouteIds = ['animals', 'plants', 'microbes', 'health', 'data_making'];
+const interestRouteMinScore = 8;
 const tagParents = {
   'キリン': ['哺乳類', '動物'],
   '哺乳類': ['動物'],
@@ -420,6 +429,7 @@ function bindNavigation() {
   qs('#clear-filters').onclick = () => {
     selected.clear();
     selectedDetailTerms.clear();
+    selectedInterestDepartment = '';
     renderInterest();
   };
   const aiForm = qs('#ai-compass-form');
@@ -591,10 +601,11 @@ function renderHomeTags() {
 function tagButton(route) {
   const button = document.createElement('button');
   button.className = 'interest-tag';
-  button.textContent = route.label;
+  button.textContent = `${route.icon || ''} ${route.label}`.trim();
   button.onclick = () => {
     selected = new Set([route.id]);
     selectedDetailTerms.clear();
+    selectedInterestDepartment = '';
     switchView('interest');
     scrollToDetailTerms();
   };
@@ -616,10 +627,11 @@ function renderTagPanels() {
     if (!count) return;
     const button = document.createElement('button');
     button.className = `interest-route${selected.has(route.id) ? ' selected' : ''}`;
-    button.innerHTML = `<span>${escapeHtml(route.label)}</span><small>${count} LABS</small><p>${escapeHtml(route.description)}</p>`;
+    button.innerHTML = `<span><b>${escapeHtml(route.icon || '')}</b>${escapeHtml(route.label)}</span><small>${count} LABS</small><p>${escapeHtml(route.description)}</p>`;
     button.onclick = () => {
       selected = new Set([route.id]);
       selectedDetailTerms.clear();
+      selectedInterestDepartment = '';
       renderInterest();
       scrollToDetailTerms();
     };
@@ -634,17 +646,17 @@ function routeById(id) {
 }
 
 function routeMatchCount(route) {
-  return labs.filter((lab) => matchesRoute(lab, route)).length;
+  return labs.filter((lab) => routeScoreQualifies(labRouteTermScore(lab, route).score)).length;
 }
 
 function matchesRoute(lab, route) {
   const overrides = lab.interest_overrides || [];
   if (overrides.includes(route.id) || overrides.includes(route.label)) return true;
-  const text = labTagText(lab);
-  if (route.required && !route.required.some((term) => text.includes(String(term).toLowerCase()))) {
-    return false;
-  }
-  return route.terms.some((term) => text.includes(String(term).toLowerCase()));
+  return routeScoreQualifies(labRouteTermScore(lab, route).score);
+}
+
+function routeScoreQualifies(score) {
+  return score >= interestRouteMinScore;
 }
 
 function availableDetailTerms() {
@@ -685,7 +697,7 @@ function renderDetailTermPanel(panel) {
     route.terms.forEach((term) => {
       if (seen.has(term)) return;
       seen.add(term);
-      const count = labs.filter((lab) => matchesRoute(lab, route) && labMatchesTerm(lab, term)).length;
+      const count = labs.filter((lab) => labMatchesInterestTerm(lab, term)).length;
       if (!count) return;
       const button = document.createElement('button');
       button.className = `detail-term${selectedDetailTerms.has(term) ? ' selected' : ''}`;
@@ -698,6 +710,44 @@ function renderDetailTermPanel(panel) {
     });
   });
   panel.appendChild(detail);
+}
+
+function renderInterestDepartmentFilter(items = []) {
+  const container = qs('#interest-department-filter');
+  if (!container) return;
+  const available = departmentNames(items.map((item) => item.lab));
+  if (selectedInterestDepartment && !available.includes(selectedInterestDepartment)) selectedInterestDepartment = '';
+  container.innerHTML = `
+    <div class="keyword-panel-head">
+      <div>
+        <strong>学科でしぼる</strong>
+        <p>興味に近い研究室を、学科ごとに見比べられます。</p>
+      </div>
+    </div>
+    <div class="interest-dept-tabs"></div>`;
+  const tabs = container.querySelector('.interest-dept-tabs');
+  const allButton = document.createElement('button');
+  allButton.type = 'button';
+  allButton.className = `interest-dept-tab${selectedInterestDepartment ? '' : ' active'}`;
+  allButton.textContent = `すべて ${items.length}`;
+  allButton.onclick = () => {
+    selectedInterestDepartment = '';
+    renderInterest();
+  };
+  tabs.appendChild(allButton);
+  available.forEach((department) => {
+    const count = items.filter((item) => item.lab.department === department).length;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `interest-dept-tab ${deptClass(department)}${selectedInterestDepartment === department ? ' active' : ''}`;
+    button.textContent = `${department} ${count}`;
+    applyDepartmentTheme(button, department);
+    button.onclick = () => {
+      selectedInterestDepartment = department;
+      renderInterest();
+    };
+    tabs.appendChild(button);
+  });
 }
 
 function scrollToDetailTerms() {
@@ -714,15 +764,80 @@ function labMatchesTerm(lab, term) {
 }
 
 function labRouteScore(lab, selectedRoutes) {
-  const routeTerms = selectedRoutes.flatMap((route) => route.terms);
-  const targetTerms = selectedDetailTerms.size ? [...selectedDetailTerms] : routeTerms;
-  const matched = [...new Set(targetTerms)].filter((term) => labMatchesTerm(lab, term));
-  const routeLabels = selectedRoutes.filter((route) => matchesRoute(lab, route)).map((route) => route.label);
+  const routeScores = selectedRoutes.map((route) => labRouteTermScore(lab, route)).filter((item) => routeScoreQualifies(item.score));
+  const detailMatches = selectedDetailTerms.size
+    ? [...selectedDetailTerms]
+      .map((term) => ({ term, score: labInterestTermWeight(lab, term) }))
+      .filter((item) => item.score > 0)
+    : [];
+  const matched = (selectedDetailTerms.size ? detailMatches : routeScores.flatMap((item) => item.matched))
+    .sort((a, b) => b.score - a.score || a.term.localeCompare(b.term, 'ja'))
+    .map((item) => item.term);
+  const routeLabels = routeScores.map((item) => item.route.label);
+  const routeScoreTotal = routeScores.reduce((sum, item) => sum + item.score, 0);
+  const detailScoreTotal = detailMatches.reduce((sum, item) => sum + item.score, 0);
   return {
-    score: matched.length + routeLabels.length + (selectedDetailTerms.size ? matched.length * 2 : 0),
-    matched,
+    score: routeScoreTotal + (selectedDetailTerms.size ? detailScoreTotal * 3 : 0) + routeLabels.length,
+    matched: uniqueTerms(matched),
     routeLabels
   };
+}
+
+function labRouteTermScore(lab, route) {
+  const routeTerms = new Set((route.terms || []).map(normalizeInterestTerm));
+  const matched = [];
+  labInterestTerms(lab).forEach((weight, normalizedTerm) => {
+    if (!routeTerms.has(normalizedTerm)) return;
+    matched.push({ term: labInterestTermLabel(lab, normalizedTerm), score: weight });
+  });
+  const score = matched.reduce((sum, item) => sum + item.score, 0);
+  return { route, score, matched };
+}
+
+function labMatchesInterestTerm(lab, term) {
+  return labInterestTermWeight(lab, term) > 0;
+}
+
+function labInterestTermWeight(lab, term) {
+  return labInterestTerms(lab).get(normalizeInterestTerm(term)) || 0;
+}
+
+function labInterestTermLabel(lab, normalizedTerm) {
+  return labInterestTermLabels(lab).get(normalizedTerm) || normalizedTerm;
+}
+
+function labInterestTerms(lab) {
+  const record = aiLabResearchTags.find((item) => item.lab_id === lab.id);
+  if (!record) {
+    const fallback = new Map();
+    labRawTags(lab).forEach((term) => fallback.set(normalizeInterestTerm(term), 1));
+    return fallback;
+  }
+  const scores = new Map();
+  (record.research_tags || []).forEach((item) => {
+    const key = normalizeInterestTerm(item.tag);
+    if (!key) return;
+    scores.set(key, Math.max(scores.get(key) || 0, item.weight || 1));
+  });
+  return scores;
+}
+
+function labInterestTermLabels(lab) {
+  const record = aiLabResearchTags.find((item) => item.lab_id === lab.id);
+  const labels = new Map();
+  (record?.research_tags || []).forEach((item) => {
+    const key = normalizeInterestTerm(item.tag);
+    if (key && !labels.has(key)) labels.set(key, item.tag);
+  });
+  labRawTags(lab).forEach((term) => {
+    const key = normalizeInterestTerm(term);
+    if (key && !labels.has(key)) labels.set(key, term);
+  });
+  return labels;
+}
+
+function normalizeInterestTerm(term) {
+  return String(term || '').trim().toLowerCase();
 }
 
 function searchableText(lab) {
@@ -878,13 +993,18 @@ function renderInterest() {
   renderTagPanels();
   const selectedRoutes = [...selected].map(routeById).filter(Boolean);
   const filtered = rankedInterestLabs(selectedRoutes);
-  renderInterestIndex(qs('#interest-results'), filtered);
-  qs('#result-count').textContent = `${filtered.length} labs`;
+  renderInterestDepartmentFilter(filtered);
+  const visible = selectedInterestDepartment
+    ? filtered.filter((item) => item.lab.department === selectedInterestDepartment)
+    : filtered;
+  renderInterestIndex(qs('#interest-results'), visible);
+  qs('#result-count').textContent = `${visible.length} labs`;
   const selectedLabels = selectedRoutes.map((route) => route.label);
   const detailText = selectedDetailTerms.size ? `、詳細キーワード「${[...selectedDetailTerms].join('・')}」` : '';
+  const departmentText = selectedInterestDepartment ? `、${selectedInterestDepartment}` : '';
   qs('#result-message').textContent = selected.size
-    ? `「${selectedLabels.join('・')}」${detailText}に近い順で表示しています。`
-    : `${labs.length}研究室を表示しています。`;
+    ? `「${selectedLabels.join('・')}」${detailText}${departmentText}に近い順で表示しています。`
+    : `${visible.length}研究室を表示しています。`;
 }
 
 function rankedInterestLabs(selectedRoutes) {
