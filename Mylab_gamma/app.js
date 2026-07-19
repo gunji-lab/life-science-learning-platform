@@ -1031,19 +1031,22 @@ function analyzeAICompassInput(input) {
   if (window.MyLabAICompass && aiGeneralDictionary.length && aiResearchBridge.length) {
     const dictionaryResult = window.MyLabAICompass.matchGeneralDictionary(input, aiGeneralDictionary);
     const bridgeResult = window.MyLabAICompass.mapConceptsToResearchTags(dictionaryResult.conceptScores, aiResearchBridge);
+    const labTermResult = matchAICompassLabTerms(input, aiLabResearchTags);
     const tagScores = new Map();
     dictionaryResult.concepts.forEach((item) => tagScores.set(item.concept, item.score));
     bridgeResult.researchTags.forEach((item) => tagScores.set(item.tag, (tagScores.get(item.tag) || 0) + item.score));
+    labTermResult.researchTags.forEach((item) => tagScores.set(item.tag, (tagScores.get(item.tag) || 0) + item.score));
     return {
       engine: 'two-layer-json',
       dictionaryResult,
       bridgeResult,
+      labTermResult,
       matchedEntries: dictionaryResult.detectedTerms,
       tagScores,
       tags: [...tagScores.entries()]
         .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
         .map(([tag, score]) => ({ tag, score })),
-      unknownTerms: dictionaryResult.unknownTerms
+      unknownTerms: filterKnownLabTerms(dictionaryResult.unknownTerms, labTermResult.normalizedMatches)
     };
   }
   const normalized = normalizeCompassText(input);
@@ -1067,6 +1070,44 @@ function analyzeAICompassInput(input) {
       .map(([tag, score]) => ({ tag, score })),
     unknownTerms: extractUnknownTerms(input, matchedEntries)
   };
+}
+
+function matchAICompassLabTerms(input, labResearchTags = []) {
+  if (!window.MyLabAICompass) return { researchTags: [], normalizedMatches: new Set() };
+  const normalizedInput = window.MyLabAICompass.normalizeText(input);
+  const inputTerms = window.MyLabAICompass.extractInputTerms(input);
+  const scores = new Map();
+  const normalizedMatches = new Set();
+
+  labResearchTags.forEach((record) => {
+    (record.research_tags || []).forEach((item) => {
+      const tag = item.tag;
+      const normalizedTag = window.MyLabAICompass.normalizeText(tag);
+      if (!normalizedTag) return;
+      const exactHit = inputTerms.has(normalizedTag);
+      const containsHit = canUseAICompassSubstringMatch(normalizedTag) && normalizedInput.includes(normalizedTag);
+      if (!exactHit && !containsHit) return;
+      normalizedMatches.add(normalizedTag);
+      const score = (item.weight || 1) * (exactHit ? 5 : 2);
+      scores.set(tag, (scores.get(tag) || 0) + score);
+    });
+  });
+
+  return {
+    normalizedMatches,
+    researchTags: [...scores.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
+      .map(([tag, score]) => ({ tag, score }))
+  };
+}
+
+function canUseAICompassSubstringMatch(normalizedTerm) {
+  return normalizedTerm === 'がん' || normalizedTerm.length > 2 || !/^[ぁ-んァ-ヶー]+$/.test(normalizedTerm);
+}
+
+function filterKnownLabTerms(unknownTerms = [], normalizedMatches = new Set()) {
+  if (!window.MyLabAICompass || !normalizedMatches.size) return unknownTerms;
+  return unknownTerms.filter((term) => !normalizedMatches.has(window.MyLabAICompass.normalizeText(term)));
 }
 
 function normalizeCompassText(value = '') {
@@ -1179,7 +1220,8 @@ function renderAICompassResults(result) {
   const detectedTerms = result.analysis.dictionaryResult?.detectedTerms || [];
   const concepts = result.analysis.dictionaryResult?.concepts || [];
   const researchTags = result.analysis.bridgeResult?.researchTags || [];
-  const tags = (researchTags.length ? researchTags : result.analysis.tags).slice(0, 8);
+  const labResearchTags = result.analysis.labTermResult?.researchTags || [];
+  const tags = mergeAICompassResearchTags(labResearchTags, researchTags.length ? researchTags : result.analysis.tags).slice(0, 8);
   const topQuestion = matches[0]?.lab?.question || 'あなたの興味は、どんな研究の問いにつながるだろう？';
   container.innerHTML = `
     <section class="ai-result-block card">
@@ -1220,6 +1262,18 @@ function renderAICompassResults(result) {
   qs('#ai-go-interest').onclick = () => switchView('interest');
 }
 
+function mergeAICompassResearchTags(primary = [], secondary = []) {
+  const merged = new Map();
+  [...primary, ...secondary].forEach((item) => {
+    const tag = item.tag;
+    if (!tag) return;
+    merged.set(tag, Math.max(merged.get(tag) || 0, item.score || 0));
+  });
+  return [...merged.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
+    .map(([tag, score]) => ({ tag, score }));
+}
+
 function aiMatchCard(item) {
   const article = document.createElement('article');
   const lab = item.lab;
@@ -1256,6 +1310,7 @@ function saveAICompassLogs(logs) {
 }
 
 function saveAICompassLog(input, analysis, matches) {
+  const loggedResearchTags = mergeAICompassResearchTags(analysis.labTermResult?.researchTags || [], analysis.bridgeResult?.researchTags || []);
   const log = {
     id: `ai-${Date.now()}-${Math.random().toString(16).slice(2)}`,
     createdAt: new Date().toISOString(),
@@ -1263,7 +1318,7 @@ function saveAICompassLog(input, analysis, matches) {
     extractedTags: analysis.tags.slice(0, 12).map((item) => item.tag),
     detectedTerms: (analysis.dictionaryResult?.detectedTerms || []).map((item) => item.matched || item.keyword),
     concepts: (analysis.dictionaryResult?.concepts || []).slice(0, 12).map((item) => item.concept),
-    researchTags: (analysis.bridgeResult?.researchTags || []).slice(0, 12).map((item) => item.tag),
+    researchTags: loggedResearchTags.slice(0, 12).map((item) => item.tag),
     unknownTerms: analysis.unknownTerms,
     displayedLabs: matches.slice(0, 8).map((item) => item.lab.id),
     clickedLabs: [],
